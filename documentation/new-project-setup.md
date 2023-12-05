@@ -2,6 +2,8 @@
 
 ## Links
 - [Socket CAN library](https://en.wikipedia.org/wiki/SocketCAN)
+- [Unit Testing with Platformio tutorial](https://www.youtube.com/watch?v=KPesyRp8qqo&t=1s)
+- [Platformio documentation](https://docs.platformio.org/en/latest/)
 
 ## Example Project
 [Here](./Test%20Project/)
