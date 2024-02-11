@@ -28,6 +28,8 @@ elapsedMillis canTimer;
 elapsedMillis brake_sensor_timer;
 elapsedMillis brake_light_active_timer;
 elapsedMillis writeTIMER;
+elapsedMillis CURRENTtimer;
+
 
 Logging loggingInstance;
 
@@ -49,11 +51,18 @@ int motorTemp = 0;
 int lemos = 0;
 int motorTemp2 = 0;
 int powerStageTemp2 = 0;
+int torque = 0;
+int motor_voltage = 0;
+int battery_voltage = 0;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 CAN_message_t brake_sensor_c3;
 CAN_message_t current_controll;
+
+int8_t current_byte1; // MSB
+int8_t current_byte2; // LSB
+CAN_message_t current_message_bamo;
 
 bool R2D = false;
 
@@ -130,6 +139,16 @@ void canbusSniffer(const CAN_message_t& msg) {
                 //if(powerStageTemp2 > powerStageTemp) powerStageTemp = powerStageTemp2;
                 //powerStageTemp = (int)(powerStageTemp / 103.969 - 158.29);
             }
+            if(msg.buf[0] == 0x8a) {
+                motor_voltage = (msg.buf[2] << 8) | msg.buf[1];
+            }
+            if(msg.buf[0] == 0xa0) {
+                torque = (msg.buf[2] << 8) | msg.buf[1];
+            }
+            if(msg.buf[0] == 0xeb) {
+                battery_voltage = (msg.buf[2] << 8) | msg.buf[1];
+            }
+
             break;
     }
 }
@@ -193,13 +212,26 @@ void loop() {
         }
     }
     if(writeTIMER > LOGGING_PERIOD) {
-        loggingInstance.write_to_file_VD(current, voltage, mintmp, maxtmp, avgtmp, apps1, apps2, brake);
+        loggingInstance.write_to_file(current, voltage, mintmp, maxtmp, avgtmp, apps1, apps2, brake, speed, I_actual, powerStageTemp, motorTemp, torque, motor_voltage, battery_voltage);
         //current = 0; voltage = 0; mintmp = 0; maxtmp = 0; avgtmp = 0; apps1 = 0; apps2 = 0; brake = 0;
-        
-        loggingInstance.write_to_file_powertrain(speed, I_actual, powerStageTemp, motorTemp);
         //speed = 0; I_actual = 0; powerStageTemp = 0; motorTemp = 0;
-        
         writeTIMER = 0;
+    }
+    if(CURRENTtimer > 8) {
+        CURRENTtimer = 0;
+            
+        current_byte1 = (I_actual >> 8) & 0xFF;  // MSB
+        current_byte2 = I_actual & 0xFF;         // LSB
+
+        current_message_bamo.id = 0x201;
+        current_message_bamo.len = 5;
+        current_message_bamo.buf[0] = 0xfb;
+        current_message_bamo.buf[1] = current_byte2;
+        current_message_bamo.buf[2] = current_byte1;
+        current_message_bamo.buf[3] = 0x00;
+        current_message_bamo.buf[4] = 0x00;
+
+        can1.write(current_message_bamo);
     }
 
 }
