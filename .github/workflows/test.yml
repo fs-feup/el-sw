@@ -1,9 +1,9 @@
-name: PlatformIO CI
+name: PlatformIO Testgin
 
 on: [push]
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,4 +21,4 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Build PlatformIO Project
-        run: echo "TODO: create a project with tests"
+        run: echo "TODO - create a project with tests"
