@@ -4,6 +4,8 @@ This repository holds the code that runs in the embedded platforms of the FS FEU
 
 Check the [guide on creating a new project](./docs/new-project-setup.md).
 
+[Code doxygen documentation](https://fs-feup.github.io/el-sw/).
+
 ## Structure
 
 - [C1](./C1/) - Teensy Caixa 1 project
