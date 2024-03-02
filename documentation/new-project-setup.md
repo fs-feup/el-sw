@@ -162,23 +162,7 @@ The test_comm_example.cpp file contains a simple test meant to show the executio
 ## Documentation
 In order to pass down the knowledge aquired to the next generations of engineers and to make the code developed easier to understand, it is fundamental that both the code, system design and architecture and decisions are all documented.
 - For code documentation, we will be using **Doxygen**.
-### Doxygen Setup
-In order to help future developers start contributing to this project, code should be easy to read and staightforward. However, this is easier said than done. For this reason, it is helpful to use a documentation tool to document the code developed. Doxygen is the de-facto tool for documentation in C++. To use it you should:
-- [Install doxygen](https://www.doxygen.nl/download.html) in your machine (virtual machine in this case). Download the binaries version.
-    - Download
-    - Run ```sudo make install```
-- Create doxygen file in the project home directory
-    - Run ```doxygen -g``` on the command line
-    - Copy the configuration of the example file
-        - INPUT = ./
-        - GENERATE_LATEX = NO
-        - RECURSIVE = YES
-- Comment the code with doxygen comments
-    - Use [this vscode extension](https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen) for automatic doxygen documentation generation
-- Run ```doxygen``` on the [root folder] to generate documentation.
 
-There is an example doxyfile in the project. This doxyfile is configured to generate only html documentation (as oposed to latex + html). The documentation is therefore generated into html folder and can be consulted with a browser.
-For more information on how to comment code or other details on doxygen, check [here](https://www.doxygen.nl/manual/index.html).
 ### Doxygen C++
 C++ code example:
 ```c++
