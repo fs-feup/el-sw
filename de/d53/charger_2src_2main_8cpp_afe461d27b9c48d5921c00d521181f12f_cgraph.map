@@ -1,0 +1,17 @@
+<map id="loop" name="loop">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,51,106"/>
+<area shape="rect" id="Node000002" href="$de/d53/charger_2src_2main_8cpp.html#a14a93d894b75df01bff24a0d564a070f" title=" " alt="" coords="99,5,212,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,78,97,40,105,36,108,40,100,44,47,82"/>
+<area shape="rect" id="Node000003" href="$de/d53/charger_2src_2main_8cpp.html#a0943e7d593cc4be6c04b1d7c7bde59eb" title=" " alt="" coords="113,55,198,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="51,86,97,76,98,82,52,91"/>
+<area shape="rect" id="Node000004" href="$de/d53/charger_2src_2main_8cpp.html#acfc1d4a44c5d7039701b596a3df6eae3" title=" " alt="" coords="114,104,197,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="52,94,100,104,99,109,51,100"/>
+<area shape="rect" id="Node000005" href="$de/d53/charger_2src_2main_8cpp.html#a8b5f6c0da1e284a1d4a4e5c82f4eb4bf" title=" " alt="" coords="103,153,208,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="47,104,100,140,108,144,105,149,97,144,44,108"/>
+<area shape="rect" id="Node000006" href="$de/d53/charger_2src_2main_8cpp.html#a5896a755ee25def1657ebbb88a9e6500" title=" " alt="" coords="260,104,375,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="200,150,258,132,259,137,201,155"/>
+<area shape="rect" id="Node000007" href="$de/d53/charger_2src_2main_8cpp.html#a6626d45851a7ceec2d3459ce05c19173" title=" " alt="" coords="277,153,358,179"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="209,164,261,164,261,169,209,169"/>
+<area shape="rect" id="Node000008" href="$de/d53/charger_2src_2main_8cpp.html#ac10b87d144d760686fc923b2639ff33e" title=" " alt="" coords="276,203,359,228"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="201,177,262,196,260,201,200,182"/>
+</map>

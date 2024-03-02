@@ -1,0 +1,26 @@
+var apps_8h =
+[
+    [ "APPS1_DEAD_THRESHOLD", "da/d81/apps_8h.html#afc4e38e50e28878a02f946564808ee71", null ],
+    [ "APPS1_DEADZONE_EQUIVALENT", "da/d81/apps_8h.html#a9189d5dd1c3dbb5b1ef7839a2514faa1", null ],
+    [ "APPS2_DEAD_THRESHOLD", "da/d81/apps_8h.html#ad9bf2c8e4f011cbd1bb9b8dd7c441b96", null ],
+    [ "APPS2_DEADZONE_EQUIVALENT", "da/d81/apps_8h.html#ab7d551ff63c6c4a6bfa4b3ada4e9a619", null ],
+    [ "APPS_1_LOWER_BOUND", "da/d81/apps_8h.html#a025a579ecbe77b60c6c90cd3a3b03bbb", null ],
+    [ "APPS_1_PIN", "da/d81/apps_8h.html#a3259333dc574a4ca0e9097f1bc955042", null ],
+    [ "APPS_1_UPPER_BOUND", "da/d81/apps_8h.html#a7488cf4b35029db397e5483ed7cef068", null ],
+    [ "APPS_2_LOWER_BOUND", "da/d81/apps_8h.html#a7f6e8323e6cd4d5de6d0fdb11c1bb635", null ],
+    [ "APPS_2_PIN", "da/d81/apps_8h.html#afeaaf98c3cce1d346bd10c5b0c3043c1", null ],
+    [ "APPS_2_UPPER_BOUND", "da/d81/apps_8h.html#a965b816f37e85de9f92b4b3b98d63791", null ],
+    [ "APPS_BLOCK_THRESHOLD", "da/d81/apps_8h.html#a85bac57459a4547836dd9cf53aae1de1", null ],
+    [ "APPS_BRAKE_PLAUSIBILITY_TIMEOUT_MS", "da/d81/apps_8h.html#aa5b521b4316e272a910c227ab5c6cfb2", null ],
+    [ "APPS_IMPLAUSIBLE_TIMEOUT_MS", "da/d81/apps_8h.html#af25482c6831fde95a9c0ff23f06e4503", null ],
+    [ "APPS_LINEAR_OFFSET", "da/d81/apps_8h.html#a46ea4a654428d67d898a56a30b9e7c7b", null ],
+    [ "APPS_MAX", "da/d81/apps_8h.html#a3e1ce4b671ebb9d21296995f5a68f7af", null ],
+    [ "APPS_MAX_ERROR_ABS", "da/d81/apps_8h.html#a36164f5f1a1feb3ecdaa887b889d8f88", null ],
+    [ "APPS_MAX_ERROR_PERCENT", "da/d81/apps_8h.html#a76f652aa75e04fb3423abe7c972e0a37", null ],
+    [ "APPS_MIN", "da/d81/apps_8h.html#a673928d2ffc18f6ae45a896b0dc04546", null ],
+    [ "AVG_SAMPLES", "da/d81/apps_8h.html#ae2ccd5787498d4d76fccbb64a06b8ea2", null ],
+    [ "BAMOCAR_MAX", "da/d81/apps_8h.html#a2cd58a6955a6c7fab2fd7d63d663d7f6", null ],
+    [ "BAMOCAR_MIN", "da/d81/apps_8h.html#ab6357d202c6daa179eac85b1f95241cf", null ],
+    [ "BRAKE_BLOCK_THRESHOLD", "da/d81/apps_8h.html#a7c48a741049e693a3016f8217d5b9805", null ],
+    [ "readApps", "da/d81/apps_8h.html#aa0b17a93999463751af07de85755aaa7", null ]
+];

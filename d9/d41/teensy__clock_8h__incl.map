@@ -1,0 +1,11 @@
+<map id="C1/include/teensy_clock.h" name="C1/include/teensy_clock.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="49,5,221,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,81,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,34,72,72,69,67,118,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="105,79,165,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,31,138,63,132,63,132,31"/>
+<area shape="rect" id="Node000004" href="$d1/d98/cycles64_8h.html" title=" " alt="" coords="190,79,272,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,29,205,68,201,72,150,34"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="201,153,261,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,105,234,137,228,137,228,105"/>
+</map>

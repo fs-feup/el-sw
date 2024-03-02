@@ -1,0 +1,13 @@
+<map id="ADCconversion" name="ADCconversion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="273,55,384,80"/>
+<area shape="rect" id="Node000002" href="$d1/d91/temp-acq_2src_2main_8cpp.html#a7ab8b55a50349de739bae2f8f64ea1e1" title=" " alt="" coords="121,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,52,202,33,204,28,269,47"/>
+<area shape="rect" id="Node000004" href="$d1/d91/temp-acq_2src_2main_8cpp.html#adad6a69ed4d09d97bffdcbf1b11014aa" title=" " alt="" coords="122,55,202,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="258,70,202,70,202,65,258,65"/>
+<area shape="rect" id="Node000005" href="$d1/d91/temp-acq_2src_2main_8cpp.html#a7e62213420c108fbf83c9147fa1cbab6" title=" " alt="" coords="99,104,225,130"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="269,88,209,106,207,101,267,83"/>
+<area shape="rect" id="Node000003" href="$d1/d91/temp-acq_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,55,51,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,39,52,62,50,57,110,34"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="106,70,51,70,51,65,106,65"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="110,101,50,78,52,73,112,96"/>
+</map>
