@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../UNI"
+		},
+		{
+			"name": "AMI",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
