@@ -1,0 +1,47 @@
+@startuml Component Failure Sequence
+box "Teensy Master"
+participant "Main Loop" as ML
+participant "Orchestrator" as CC
+participant "Emergency Handler" as EH
+end box
+participant "CAN Sender/Receiver" as CAN
+participant "EBS PCB" as EBS
+participant "ASSI" as ASSI
+participant "Inversor" as INV
+
+autoactivate on
+loop Main loop
+    ML -> CC: performChecks()
+    CC -> CAN: checkBrakePressure()
+    CAN --> CC: return pressure
+    CC -> EBS: checkWatchDog()
+    EBS --> CC: return WatchDogStatus
+
+    CC -> INV: checkTSTimestamp()
+    INV --> CC: return signal
+    CC -> CAN: checkPCTimestamp()
+    CAN --> CC: return signal
+    CC -> CAN: checkSteerTimestamp()
+    CAN --> CC: return signal
+    CC -> CAN: checkBMSTimestamp()
+    CAN --> CC: return signal
+    CC -> CAN: PCHealthCheck()
+    CAN --> CC: return signal
+    |||
+
+    CC -> CC: processResponses()
+
+    alt No failure
+        CC --> ML: No anomaly detected
+    else Component failure
+        CC --> ML: Anomaly detected
+        ML -> EH: callEmergencyHandler()
+        EH -> EBS: openSDC()
+        EBS --> EH: return bool
+        EH -> ASSI: update(blue, flashing)
+        EH -> CAN: turnBuzzerOnFor(8-10s)
+        EH --> ML: return ASSI::Emergency
+    end
+    ML -> CAN: broadcastState()
+end
+@enduml

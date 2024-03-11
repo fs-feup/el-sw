@@ -1,0 +1,53 @@
+@startuml Component Failure Sequence
+box "Teensy Master"
+participant "Checkup Sequence" as CS
+participant "Orchestrator" as ORCH
+end box
+participant "CAN Sender/Receiver" as CAN
+participant "EBS PCB" as EBS
+participant "ASSI" as ASSI
+participant "EBS" as ASB
+participant "Inversor" as INV
+'participant "Box 3" as B3
+
+autoactivate on
+CS -> ORCH: initialCheckup()
+activate CS
+ORCH -> EBS: checkWatchDog()
+EBS --> ORCH: return WatchDogStatus
+ORCH -> CAN: checkBothPPS()
+CAN --> ORCH: return signal
+ORCH -> ASB: activateEBSValves()
+ASB --> ORCH: return 
+ORCH -> CAN: getBothHLPSensors()
+CAN --> ORCH: return pair<brakePressure>
+ORCH -> EBS: closeAndCheckSDC()
+EBS --> ORCH: return bool
+ORCH -> INV: checkTSTimestamp()
+INV --> ORCH: return signal
+
+ORCH -> CAN: checkPCTimestamp()
+CAN --> ORCH: return signal
+ORCH -> CAN: checkSteerTimestamp()
+CAN --> ORCH: return signal
+ORCH -> CAN: checkBMSTimestamp()
+CAN --> ORCH: return signal
+
+|||
+ORCH -> ORCH: processResponses()
+note right
+Responses are not processed at the 
+end of the sequence but rather after 
+each response is received.
+end note
+
+alt Component failure
+    ORCH --> CS: Anomaly detected
+else Verification successfull
+    ORCH --> CS: No anomaly detected
+    CS -> ASSI: update(yellow, continuous)
+    'activate B3
+    CS -> CS: updateState(AS_Ready)
+end
+CS -> CAN: publishState()
+@enduml
