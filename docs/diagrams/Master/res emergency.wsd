@@ -1,0 +1,24 @@
+@startuml RES Emergency Sequence
+participant "RES" as RES
+box "Teensy Master"
+participant "Main Loop" as ML
+participant "Emergency Handler" as EH
+end box
+participant "EBS PCB" as SDC
+participant "ASSI" as ASSI
+participant "CAN Sender/Receiver" as CAN
+
+RES -> ML: callEmergencySignal()
+
+alt Emergency Signal Callback
+    ML -> EH: callEmergencyHandler()
+    return return ASSI::Emergency
+    EH -> SDC: openSDC()
+    SDC --> EH: return success
+    EH -> ASSI: update(blue, flashing)
+    EH -> CAN: turnBuzzerOnFor(8-10s)
+end
+loop Main loop
+    ML -> CAN: broadcastState()
+end
+@enduml
