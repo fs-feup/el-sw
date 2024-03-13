@@ -1,13 +1,14 @@
+
 #include <Arduino.h>
-#include "logic/state_logic.hpp"
+#include "logic/StateLogic.hpp"
+#include "logic/CheckupManager.hpp"
 
 // put function declarations here:
 int myFunction(int, int);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-  printf("The result is: %d\n", result);
+  CheckupManager *checkupManager = new CheckupManager();
+  ASState* asState = new ASState(checkupManager);
 }
 
 void loop() {

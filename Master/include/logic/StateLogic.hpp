@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include <elapsedMillis.h>
 #include <embedded/Timestamp.hpp>
@@ -5,7 +7,6 @@
 #include <logic/CheckupManager.hpp>
 #include "CheckupManager.hpp"
 
-static CheckupManager checkupManager;
 
 enum State
 {
@@ -21,10 +22,10 @@ class ASState
 {
 private:
     State state;
+    CheckupManager* _checkupManager;
 
 public:
-    ASState() : state(AS_MANUAL) {}
-    ASState(State state) : state(state){};
+    ASState(CheckupManager* checkupManager) : _checkupManager(checkupManager), state(AS_MANUAL) {};
     State getState() { return state; };
     void calculateState();
 };

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <logic/SystemDiagnostics.hpp>
 
 // Also known as Orchestrator

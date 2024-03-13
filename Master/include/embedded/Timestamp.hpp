@@ -1,3 +1,5 @@
+#pragma once
+
 #include <elapsedMillis.h>
 
 class Timestamp {
