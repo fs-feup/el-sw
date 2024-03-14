@@ -29,7 +29,14 @@ A .devcontainer folder exists in the root of this repository already configured 
 2. Install remote development extension (can follow [set up guide in AS repo](https://github.com/fs-feup/autonomous-systems/blob/main/docs/tutorials/environment_setup/coding_environment.md) for full setup (ignore ROS2 parts))
 3. Do CTRL+SHIFT+P and select `Dev Containers: (Re-)build and Reopen in Container` and execute (in the root folder of the repo)
 
-That's it, all should be installed automatically. To program in each project, you still need to navigation Platform.io to open each project individually.
+That's it, all should be installed automatically. To program in each project, you still need to navigation Platform.io to open each project individually. This can be configured through the line in the [settings.json](./test_project/.vscode/settings.json) file in the test project:
+```json
+{
+    "platformio-ide.pioHomeServerHttpPort": 8008
+}
+```
+
+One more important factor: you need to set Platform.io's port to 8008 if using the dev container, or else pages from the integrated IDE will be blank.
 
 ### Platformio Manual Installation
 1. Install vscode
