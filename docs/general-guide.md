@@ -1,46 +1,38 @@
 # New Project Setup
 
+## Prerequisites
+
+- Git set up with GitHub and ssh
+- VSCode
+
+You can find tutorials for this [here](https://github.com/fs-feup/autonomous-systems/blob/main/docs/tutorials/environment_setup/coding_environment.md) (ignore parts rephering to ROS).
+
 ## Links
-- [Socket CAN library](https://en.wikipedia.org/wiki/SocketCAN)
 - [Unit Testing with Platformio tutorial](https://www.youtube.com/watch?v=KPesyRp8qqo&t=1s)
 - [Platformio documentation](https://docs.platformio.org/en/latest/)
 
 ## Example Project
 [Here](./Test%20Project/)
-## Set up Virtual CAN Network
-These steps enable you to setup a can virtual network on your computer. With this network, you can utilize programs inside your computer and let them communicate through the network.
-1. Add linux kernel module:
-```sh
-sudo modprobe vcan
-```
-2. (Every pc reboot) Add can network:
-```sh
-sudo ip link add dev vcan0 type vcan
-```
-3. (Every pc reboot) Bring the virtual CAN interface online: 
-```sh
-sudo ip link set up vcan0
-```
-4. Check configuration:
-```
-ifconfig vcan0
-```
-5. (Optional) install can-utils:
-```
-sudo apt install can-utils
-```
-1. Generate and listen to can packets:
-	1. In one terminal:
-	```sh
-	cangen vcan0
-	```
-	2. On the other:
-	```sh
-	candump vcan0
-	```
-## Platformio Installation
+
+## Two Ways to Set Up
+
+You can either:
+- install platformio on your computer manually
+- set up the docker development container
+
+### Docker Dev Container
+
+A .devcontainer folder exists in the root of this repository already configured for a docker development container to work with VSCode. The docker development container will enable you to program without installing any dependencies directly in your computer. 
+
 1. Install vscode
-2. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
+2. Install docker ([guide in AS repo](https://github.com/fs-feup/autonomous-systems/blob/main/docs/tutorials/environment_setup/docker-install.md))
+2. Install remote development extension (can follow [set up guide in AS repo](https://github.com/fs-feup/autonomous-systems/blob/main/docs/tutorials/environment_setup/coding_environment.md) for full setup (ignore ROS2 parts))
+3. Do CTRL+SHIFT+P and select `Dev Containers: (Re-)build and Reopen in Container` and execute (in the root folder of the repo)
+
+That's it, all should be installed automatically. To program in each project, you still need to navigation Platform.io to open each project individually.
+
+### Platformio Manual Installation
+1. Install vscode
 3. Make sure you have python3 installed
 4. Install python3-venv: ```sudo apt install python3-venv```
 5. Install gcc
@@ -48,13 +40,16 @@ sudo apt install can-utils
 	sudo apt install gcc
 	sudo apt install g++
 	```
-6. Install platformio on pc
+2. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
+6. Install platformio on pc (optional)
 	```sh
 	sudo apt install python3-pip
 	pip install -U platformio
 	```
 7. Open platformio extension in vscode
+
 ## Creating project
+In case you need to create a new project for a new microcontroller.
 ### Creating new project
 1. Select PIO Home - Home
 2. New Project
@@ -67,11 +62,11 @@ How to configure a project for **EL&SW** boards at FS FEUP:
 	2. **src** folder contains executable files
 	3. **lib** folder contains external libraries
 	4. **test** folder contains unit tests
-2. create 'comm', 'embedded' and 'logic' sub-folders inside *include*
+2. create 'comm', 'embedded' and 'logic' sub-folders inside *include* (purely organizational as of now)
 	1. **comm** folders contain the code related to communication (CAN). No files external to this folder should include information on ports, communication protocols or include CAN libraries. Files from this folder should not contain any other logic other than pure translation from CAN to useful information.
 	2. **embedded** folder contains the code related to IO operations with the board, which require inclusion of Arduino.h library or any other resource only available when connected to a board. Files from this folder should not contain any other logic other the direct calling functions and classes to the board's functionalities.
 	3. **logic** folder contains the code regarding all the logic of the actual programs running in the boards. This folder should not contain calls to either communication or embedded libraries. This folder can and should be further subdivided if it contains many files. 
-3. create 'test_comm', 'test_embedded' and 'test_logic' sub-bfolders inside *test*
+3. create 'test_comm', 'test_embedded' and 'test_logic' and 'test_logic_native' (logic that can be tested on pc) sub-bfolders inside *test*
 4. In platformio.ini
 	1. ![platformio.ini file](./assets/new-project-setup/inifile.png)
 	2. under [platformio] general rules are defined 
@@ -90,21 +85,6 @@ The way the platformio.ini file is defined, the native environment is only made 
 The projects are supposed to follow the folder structure that is defined in. However, this is not the only requirement for the code to work properly.
 ### Using Executable Files (.cpp in src)
 By default, the tests defined with unity only fetch files from the include folder (.hpp) files. There is a flag that can allow them to also fetch files from the src folder but this action will lead the tests to include the main file, which includes the Arduino library, which is not present in the desktop and thus will remove the tests' ability to be run in desktop. What this means is a change in paradigm of development: all code that should be tested should be entirely defined in the include folder, in .hpp files. This means the only executable files (.cpp) in the project are ones that contain calls to these header files' components, such as the main files and few other helper programs. In conclusion -> code in .hpp files in the include directory.
-### Communication (CAN) Interface
-The Linux kernel supports add-ons that enable communication channels using CAN protocol to be established. As described in an earlier section of this tutorial, it is possible to create a virtual CAN network, which enables programs to communicate via CAN inside the computer. However, the libraries used by Teensys to create CAN messages and communicate them *(FlexCAN_T4.h)* are not the same libraries used for the linux kernel *(linux/can.h and linux/can/raw.h - SocketCAN)*. As such, we need to perform a little trick to be able to test code related to the communications part in the computer: **program two communication modules for each environment with the same function signatures and abstract them through a parent class - Strategy Design Pattern.** An example of this pattern can be seen in the example project.
-#### Strategy Pattern
-The base class is the Communicator class. It defines an interface to be used for the rest of the system to communicate via CAN. It is an abstract class, an abstraction of the communication. It respects the Dependency Inversion principle: "Rely on abstractions, not higher level modules.".
-![Base Class Communicator](./assets/new-project-setup/communicator.png)
-The VCAN Communicator implements the aforementioned abstract class and defines the send_message function. The send_message function will use the necessary code from the Socket CAN libraries to send a message via CAN to the corresponding network. 
-![Virtual CAN Class Communicator](./assets/new-project-setup/vcancommunicator.png)
-The CAN Communicator also implements the Communicator base class and is another strategy at communication, which uses the Teensy library for CAN Communication.
-![Teensy CAN Class Communicator](./assets/new-project-setup/cancommunicator.png)
-This way, the rest of the system only depends on the base abstract class, respecting the SOLID principles. Following this pattern allows the rest of the program to not depend on the environment it is running on regarding the communication part. The only down side of this approach is that the Communicator's implementation can't be tested easily.
-#### Compiler Flags
-The difference in strategy is useful to enable the same code to run in desktop or in the board. However, it also has to compile in both. As the libraries being included are not present in both environments, we need to let the compiles know which strategy we want to use. For this, a **build-flag** was added in platformio.ini file to signal if the program is building for embedded system or not. The flag is only defined to the environments to be used for teensy. This way, we can use the #ifndef directive to tell the compiler what parts to compile or not. This can also be used when defining which strategy to use in the program, as depicted in the example to be provided next.
-#### Example
-An example of usage of this design pattern can be found in the comms.hpp file. The Messager class is just a class that is part of the communication module and defines some common behaviours of communication (an example). For the communication, it must use one of the strategies. It therefore contains a Communicator* as an attribute. When creating an instance of a Messager in the *example_usage_function*, we use the #ifdef directives to define what strategy to give to the messager. After that, we just need to use the messager normally, independent of the environment and libraries we are using.
-![Example Usage](./assets/new-project-setup/example.png)
 ## Compiling and Running
 You can use the platformio functions both through the VSCode gui or the terminal. I prefer the terminal as it is easier to set some options. To upload the project into the board, simply run:
 ```sh
@@ -141,8 +121,9 @@ Some examples test files were developed in the project to demonstrate how they s
 2. Unit testing - each test tests only one function/method and one scenario of that function
 3. Each test file should correspond to one implementation file and be name 'test_<file_name>', to improve traceability
 The test framework used is **unity**. It was chosen due to having support with platformio out of the box and being able to run tests both in native environment and embedded. To get more information on the framework, visit [this website](https://docs.platformio.org/en/latest/advanced/unit-testing/frameworks/unity.html#unit-testing-frameworks-unity). More information in pio testing can be found [here](https://docs.platformio.org/en/latest/advanced/unit-testing/index.html).
-### Other Testing
-It might be interesting to create some other types of tests. For instance, it might be interesting to create a test function that simply runs most functions of the board and possibly abstracts the behaviour of the board. This test can be used simply as a normal program to execute in pc and to test the communication between multiple boards. This type of testing should be included in a separate folder, but this will have to be reviewed later.
+### Testing Environments
+Some tests can be run on the computer, as they only depend on logic or ever present libraries. However, many of the tests depend in some way of functionalities inherent to arduino. As such, most testing will be performed using a breadboard for testing with a Teensy. Soon...
+
 ## Static Analysis
 Platformio is capable of including a static analysis tool, like cppcheck, which is the one we will use. To run the static analysis, do:
 ```sh
@@ -157,8 +138,7 @@ If the pio check gets stuck with no results for more than 5 minutes, update pio:
 pio upgrade --dev
 ```
 The static analysis tool chosen was **cppcheck**, as it is a well established and complete tool.
-## CAN communication in Desktop
-The test_comm_example.cpp file contains a simple test meant to show the execution. Executing this test will make a CAN message be sent into the vcan1 network. You need to set it up first as indicated in the beginning of this tutorial. Then, if you use candump from can-utils while executing the test, you will see the message arrive.
+
 ## Documentation
 In order to pass down the knowledge aquired to the next generations of engineers and to make the code developed easier to understand, it is fundamental that both the code, system design and architecture and decisions are all documented.
 - For code documentation, we will be using **Doxygen**.
@@ -190,7 +170,6 @@ In the future, the most important ideas to study are:
 - Development of system-level tests
 - Executing the programs in the native environment (not that relevant)
 - Testing and Checking automation with github actions
-- Abstracting the Arduino framework just like FlexCAN was
 - Better visualization options for documentation
 ## Notes
 - No board was used while developing this tutorial, some of the code and instruction on the teensy's part might have errors.
