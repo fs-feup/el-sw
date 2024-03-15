@@ -1,0 +1,25 @@
+#define AS_CU_EMERGENCY_SIGNAL 0x01
+#define MISSION_FINISHED 0x02
+#define PC_ALIVE 0x03
+#define RL_WHEEL 0x04
+#define HYDRAULIC_LINE 0x05
+#define BAMOCAR_TENSION 0x08
+#define STEERING_ANGLE 0x09
+
+// IDS
+#define BMS_ID 0x666
+#define BAMO_RESPONSE_ID 0x181
+#define C3_ID 0x111
+
+// STATUS
+#define DRIVING_STATE 0x500
+#define DRIVING_CONTROL 0x501
+#define SYSTEM_STATUS 0x502
+
+// RES
+#define NODE_ID 0x011 // Competition Defined
+#define RES (0x180 + NODE_ID)
+
+// SENDER
+#define STATE_MSG 0x31
+#define MISSION_MSG 0x32

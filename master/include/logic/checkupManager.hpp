@@ -1,15 +1,20 @@
-#include <logic/SystemDiagnostics.hpp>
+#include <logic/systemDiagnostics.hpp>
 
 // Also known as Orchestrator
 class CheckupManager
 {
 private:
-    FailureDetection _failureDetection;
-    InternalLogics _internalLogics;
+    
+    
     Timestamp _ebsSoundTimestamp;
-    bool _ready2Drive, _emergency, _SDCState, _ASMSState;
+    bool _emergency, _SDCState, _ASMSState;
 
 public:
+    InternalLogics _internalLogics;
+    FailureDetection _failureDetection;
+
+    bool _ready2Drive, _missionFinished;
+
     CheckupManager(): _failureDetection(), _internalLogics() {}
     bool r2dCheckup();
     bool emergencyCheckup();

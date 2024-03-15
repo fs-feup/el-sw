@@ -1,4 +1,4 @@
-#include <embedded/Timestamp.hpp>
+#include <logic/timestamp.hpp>
 
 struct InternalLogics
 {
@@ -13,7 +13,7 @@ struct InternalLogics
         goSignal = false;
     }
 
-    bool canProcessGoSignal()
+    bool processGoSignal()
     {
         // If goSignal is not received or received before 5 seconds, return false
         if (!goSignal || !readyTimestamp.hasTimedOut(5000))
@@ -21,6 +21,7 @@ struct InternalLogics
             return false;
         }
         // If goSignal is received after 5 seconds, return true
+        goSignal = true;
         return true;
     }
 };
