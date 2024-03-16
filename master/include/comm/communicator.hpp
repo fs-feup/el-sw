@@ -34,7 +34,7 @@ class Communicator {
 
     int publish_state(int state_id);
     int publish_mission(int mission_id);
-    int publish_rr_wheel_rpm(double value);
+    int publish_left_wheel_rpm(double value);
     int send_message(const unsigned int len, const unsigned char* buffer, const unsigned int id);
 };
 
@@ -76,7 +76,7 @@ void Communicator::parse_message(const CAN_message_t& msg) {
             break;
 
         // sensor messages
-        case RL_WHEEL:
+        case RIGHT_WHEEL:
             // see with barros É SÓ SANITY CHECK?
             break;
         case HYDRAULIC_LINE:
@@ -108,7 +108,7 @@ int Communicator::publish_mission(int mission_id) {
     this->send_message(1, msg, id);
 }
 
-int Communicator::publish_rr_wheel_rpm(double value) {
+int Communicator::publish_left_wheel_rpm(double value) {
     // TODO (andre): define ordem de grandeza para mandar
 }
 

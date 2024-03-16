@@ -1,13 +1,24 @@
 #include <Arduino.h>
 #include "logic/checkupManager.hpp"
 #include "comm/manager.hpp"
+#include "embedded/digitalData.hpp"
+
+DigitalData* digitalData;
+CheckupManager* checkupManager;
+Sensors* sensors;
+CommunicationManager* commManager;
+
 
 void setup() {
-  CheckupManager* checkupManager = new CheckupManager();
-  Sensors* sensors = new Sensors();
-  CommunicationManager* commManager = new CommunicationManager(checkupManager, sensors);
+  digitalData = new DigitalData();
+  sensors = new Sensors();
+  
+  checkupManager = new CheckupManager();
+  
+  commManager = new CommunicationManager(checkupManager, sensors);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  digitalData->digitalReads();
 }
+
