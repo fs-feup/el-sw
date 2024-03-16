@@ -8,6 +8,5 @@ struct AnalogDigitalData {
     AnalogDigitalData();
 };
 
-
 AnalogDigitalData::AnalogDigitalData() : _rl_wheel_rpm(0), pneumatic_line_pressure(0),
         aats_on(false), asms_on(false), watchdog_state(0) {}

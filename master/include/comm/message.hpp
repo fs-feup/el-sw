@@ -1,10 +1,9 @@
-#define AS_CU_EMERGENCY_SIGNAL 0x01
-#define MISSION_FINISHED 0x02
-#define PC_ALIVE 0x03
-#define RL_WHEEL 0x04
-#define HYDRAULIC_LINE 0x05
-#define BAMOCAR_TENSION 0x08
-#define STEERING_ANGLE 0x09
+#define AS_CU_EMERGENCY_SIGNAL 0x403 // TODO(andre): change or confirm code
+#define MISSION_FINISHED 0x402 // TODO(andre): change or confirm code
+#define PC_ALIVE 0x401 // TODO(andre): change or confirm code
+
+#define RL_WHEEL 0x04 // TODO(andre): change or confirm code
+#define HYDRAULIC_LINE 0x05 // TODO(andre): change or confirm code
 
 // IDS
 #define BMS_ID 0x666
@@ -23,3 +22,11 @@
 // SENDER
 #define STATE_MSG 0x31
 #define MISSION_MSG 0x32
+
+//BAMOCAR
+
+#define BTB_READY 0xE2
+#define VDC_BUS 0xEB
+
+// STEERING
+#define STEERING_ACTUATOR 0x301 // TODO(andre): change or confirm code
