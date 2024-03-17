@@ -11,12 +11,12 @@
  * where the communicator is the strategy
 */
 class CommunicationManager {
-
-    Communicator* communicator;
     CheckupManager* checkupManager;
     Sensors* sensors;
 
     public:
+    Communicator* communicator;
+
     CommunicationManager(CheckupManager* checkupManager, Sensors* sensors);
 
     void emergencySignalCallback();

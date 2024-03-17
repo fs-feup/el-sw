@@ -1,7 +1,11 @@
-#define WHEEL_MEASUREMENT_INTERVAL_MIN 5e4 // 30ms // TODO(andre): change to adequate value 
+#define WHEEL_MEASUREMENT_INTERVAL_MS 30 // 30ms // TODO(andre): change to adequate value
+#define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000)
 #define PULSES_PER_ROTATION 50 // TODO(andre): change to true value 
 
-#define LWSS_PIN A9 // 5ODO(andre): change pin
+#define WD_PULSE_INTERVAL_MS 10 // TODO(andre): change to adequate value 
+#define WD_WAIT_INTERVAL_MS 100 // TODO(andre): change to adequate value 
+
+#define LWSS_PIN A9 // TODO(andre): change pin
 
 // Missions TODO(andre): confirm order
 #define MISSION_MANUAL_PIN A1
@@ -15,3 +19,7 @@
 // Switches TODO(andre): change to real
 #define ASMS_SWITCH_PIN A11
 #define AATS_SWITCH_PIN A12
+
+// Watchdog TODO(andre): change to real
+#define WD_OUT A13 // d1 not working
+#define WD_IN A14
