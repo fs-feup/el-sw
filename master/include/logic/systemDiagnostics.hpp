@@ -13,16 +13,26 @@ struct InternalLogics
         goSignal = false;
     }
 
+    
+    /**
+     * @brief Processes the go signal.
+     *
+     * This function is responsible for processing the go signal.
+     * It performs the necessary actions based on the received signal.
+     *
+     * @return 0 if the go signal was successfully processed, 1 otherwise.
+     */
     bool processGoSignal()
     {
         // If goSignal is not received or received before 5 seconds, return false
-        if (!goSignal || !readyTimestamp.hasTimedOut(5000))
+        if (goSignal && readyTimestamp.hasTimedOut(5000))
         {
-            return false;
+            goSignal = false;
+            return 0;
         }
         // If goSignal is received after 5 seconds, return true
-        goSignal = true;
-        return true;
+        goSignal = false;
+        return 1;
     }
 };
 
