@@ -19,13 +19,13 @@ class CommunicationManager {
     public:
     CommunicationManager(CheckupManager* checkupManager, Sensors* sensors);
 
-    void emergencySignalCallback(std::string msg);
+    void emergencySignalCallback();
     void missionFinishedCallback();
     void pcAliveCallback();
     void rlWheelCallback(double value);
     void hydraulicLineCallback(double value);
-    void resCallback(uint8_t *buf);
-    void bamocarCallback(uint8_t *buf);
+    void resCallback(const uint8_t *buf);
+    void bamocarCallback(const uint8_t *buf);
     void steeringCallback();
 };
 
@@ -33,10 +33,10 @@ class CommunicationManager {
 
 CommunicationManager::CommunicationManager(CheckupManager* checkupManager, Sensors* sensors) 
     : checkupManager(checkupManager), sensors(sensors) {
-    communicator = new Communicator("can1");
+    communicator = new Communicator(this, "can1");
 };
 
-void CommunicationManager::emergencySignalCallback(std::string msg) {
+void CommunicationManager::emergencySignalCallback() {
     checkupManager->_failureDetection.emergencySignal = true;
 }
 
@@ -56,11 +56,11 @@ void CommunicationManager::hydraulicLineCallback(double value) {
     sensors->updateHydraulic(value);
 }
 
-void CommunicationManager::resCallback(uint8_t *buf) {
-    bool emg_stop1 = buf[0] && 0x01;
-    bool emg_stop2 = buf[3] >> 7 && 0x01;
-    bool go_switch = (buf[0] >> 1) && 0x01;
-    bool go_button = (buf[0] >> 2) && 0x01;
+void CommunicationManager::resCallback(const uint8_t *buf) {
+    bool emg_stop1 = buf[0] & 0x01;
+    bool emg_stop2 = buf[3] >> 7 & 0x01;
+    bool go_switch = (buf[0] >> 1) & 0x01;
+    bool go_button = (buf[0] >> 2) & 0x01;
 
     if (go_button || go_switch)
         checkupManager->_internalLogics.processGoSignal();
@@ -68,7 +68,7 @@ void CommunicationManager::resCallback(uint8_t *buf) {
         checkupManager->_failureDetection.emergencySignal = true;
 }
 
-void CommunicationManager::bamocarCallback(uint8_t *buf) {
+void CommunicationManager::bamocarCallback(const uint8_t *buf) {
     if (buf[0] == BTB_READY)
         bool alive = true;
         // TODO(andre): what to do with btb ready?

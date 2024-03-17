@@ -3,8 +3,10 @@
 
 #include <string>
 #include "comm/message.hpp"
+#ifdef EMBEDDED
+#include <FlexCAN_T4.h>
 
-CommunicationManager manager;
+class CommunicationManager;
 
 struct Code {
     int key;
@@ -23,11 +25,12 @@ Code fifoCodes[] = {
  * using Teensy CAN libraries.
 */
 class Communicator {
+    static CommunicationManager* manager;
     std::string can_network_name;
     FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
     public: 
-    Communicator(std::string can_network);
+    Communicator(CommunicationManager* manager, std::string can_network);
     std::string get_network_name() const;
 
     static void parse_message(const CAN_message_t& msg);
@@ -38,10 +41,11 @@ class Communicator {
     int send_message(const unsigned int len, const unsigned char* buffer, const unsigned int id);
 };
 
-#ifdef EMBEDDED
-#include <FlexCAN_T4.h>
 
-Communicator::Communicator(std::string can_network) : can_network_name(can_network) {
+
+Communicator::Communicator(CommunicationManager* manager, std::string can_network) :can_network_name(can_network) {
+    this->manager = manager;
+
     can1.begin();
     can1.setBaudRate(500000);
     can1.enableFIFO();
@@ -62,17 +66,17 @@ void Communicator::parse_message(const CAN_message_t& msg) {
     switch(msg.id) {
         // pc messages
         case AS_CU_EMERGENCY_SIGNAL:
-            manager.emergencyCallback();
+            manager->emergencySignalCallback();
             break;
         case MISSION_FINISHED:
-            manager.missionFinishedCallback();
+            manager->missionFinishedCallback();
             break;
         case PC_ALIVE:
-            manager.pcAliveCallback();
+            manager->pcAliveCallback();
             break;
 
         case RES:
-            manager.resCallback(msg.buf);
+            manager->resCallback(msg.buf);
             break;
 
         // sensor messages
@@ -84,10 +88,10 @@ void Communicator::parse_message(const CAN_message_t& msg) {
             break;
 
         case BAMO_RESPONSE_ID:
-            manager.bamocarCallback(msg.buf);
+            manager->bamocarCallback(msg.buf);
             break;
         case STEERING_ACTUATOR:
-            manager.steeringCallback();
+            manager->steeringCallback();
             break;
         default:
             break;
