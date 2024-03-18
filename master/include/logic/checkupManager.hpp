@@ -1,3 +1,5 @@
+#pragma once
+
 #include <logic/systemDiagnostics.hpp>
 
 // Also known as Orchestrator
@@ -15,7 +17,7 @@ public:
 
     bool _ready2Drive, _missionFinished;
 
-    CheckupManager(): _failureDetection(), _internalLogics() {}
+    CheckupManager() = default;
 
     /**
      * @brief Performs a manual driving checkup.
@@ -71,13 +73,13 @@ public:
 };
 
 bool CheckupManager::manualDrivingCheckup() {
-    if (_failureDetection.) {
-        return false;
-    }
+    // if (_failureDetection.) {
+    //     return false;
+    // }
 }
 
 bool CheckupManager::r2dCheckup() {
-    if (_internalLogics.processGoSignal()) {
+    if (!_internalLogics.goSignal) {
         return 1;
     }
     return 0;
@@ -91,3 +93,5 @@ bool CheckupManager::emergencySequenceComplete() {
 bool CheckupManager::resTriggered() {
     //TODO
 }
+
+ // TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure-> bamocar-ready false emergency 

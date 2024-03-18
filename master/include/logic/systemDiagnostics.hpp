@@ -1,11 +1,15 @@
+#pragma once
+
 #include <logic/timestamp.hpp>
+
+#define READY_TIMEOUT_MS 5000
 
 struct InternalLogics
 {
     Timestamp readyTimestamp;
-    bool goSignal;
+    bool goSignal = false;
 
-    InternalLogics() : goSignal(false) {}
+    InternalLogics() = default;
 
     void enterReadyState()
     {
@@ -13,7 +17,6 @@ struct InternalLogics
         goSignal = false;
     }
 
-    
     /**
      * @brief Processes the go signal.
      *
@@ -25,9 +28,9 @@ struct InternalLogics
     bool processGoSignal()
     {
         // If goSignal is not received or received before 5 seconds, return false
-        if (goSignal && readyTimestamp.hasTimedOut(5000))
+        if (goSignal && readyTimestamp.hasTimedOut(READY_TIMEOUT_MS))
         {
-            goSignal = false;
+            goSignal = true;
             return 0;
         }
         // If goSignal is received after 5 seconds, return true
@@ -39,12 +42,13 @@ struct InternalLogics
 struct FailureDetection
 {
     Timestamp pcAliveTimestamp, steerAliveTimestamp, inversorAliveTimestamp, bmsAliveTimestamp;
-    bool emergencySignal;
-    double bamocarTension;
+    bool emergencySignal = false;
+    bool bamocarReady = true;
+    double bamocarTension = 0;
 
-    FailureDetection() : emergencySignal(false), bamocarTension(0.0) {}
+    FailureDetection() = default;
 
-    bool hasAnyComponentTimedOut(unsigned long timeout)
+    bool hasAnyComponentTimedOut(unsigned long timeout) const
     {
         return pcAliveTimestamp.hasTimedOut(timeout) ||
                steerAliveTimestamp.hasTimedOut(timeout) ||

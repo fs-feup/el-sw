@@ -1,36 +1,29 @@
+#pragma once
+
 #include "embedded/digitalSettings.hpp"
 #include "logic/timestamp.hpp"
-
-enum Mission {
-    MANUAL,
-    ACCELERATION,
-    SKIDPAD,
-    AUTOCROSS,
-    TRACKDRIVE,
-    EBS_TEST,
-    INSPECTION
-};
+#include "logic/structure.hpp"
 
 struct DigitalData {
     // Rear Left Wheel Speed Encoder
-    double _left_wheel_rpm;
+    double _left_wheel_rpm = 0;
     bool last_lwss_state = 0;
     int pulse_count = 0;
     Timestamp left_wheel_update_ts;
 
     // Watchdog
-    bool watchdog_state;
+    bool watchdog_state = true; // starts true until false
     bool watchdog_comm_state = false;
     Timestamp wd_pulse_ts;
 
-    double pneumatic_line_pressure;
-    bool asms_on;
-    bool aats_on;
-    Mission mission; // TODO(andre) change later to State Class maybe
+    // Other reads
+    double pneumatic_line_pressure = 0;
+    bool asms_on = false;
+    bool aats_on = false;
 
-    // TODO(andre): organize vars order
+    Mission* mission;
 
-    DigitalData();
+    DigitalData(Mission* mission);
     void digitalReads();
 
     void readLwss();
@@ -43,9 +36,10 @@ struct DigitalData {
     void updateLeftWheelRpm();
 };
 
-DigitalData::DigitalData() : _left_wheel_rpm(0), pneumatic_line_pressure(0),
-        aats_on(false), asms_on(false), watchdog_state(true) {
-            pinMode(LWSS_PIN, INPUT);
+DigitalData::DigitalData(Mission *mission) : mission(mission) {
+    pinMode(LWSS_PIN, INPUT);
+    pinMode(WD_IN, INPUT);
+    pinMode(WD_OUT, OUTPUT);
 }
 
 void DigitalData::updateLeftWheelRpm() {
@@ -82,7 +76,7 @@ void DigitalData::readPneumaticLine() {
 
 void DigitalData::readMission() {
     // Enum value attributed considering the True Boolean Value
-    Mission mission = static_cast<Mission>(
+    *mission = static_cast<Mission>(
         digitalRead(MISSION_MANUAL_PIN) * MANUAL |
         digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
         digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |

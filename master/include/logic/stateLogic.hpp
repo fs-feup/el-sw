@@ -5,26 +5,18 @@
 #include <logic/timestamp.hpp>
 #include <logic/systemDiagnostics.hpp>
 #include <logic/checkupManager.hpp>
-
-enum State
-{
-    AS_MANUAL,
-    AS_OFF,
-    AS_READY,
-    AS_DRIVING,
-    AS_FINISHED,
-    AS_EMERGENCY
-};
+#include <logic/structure.hpp>
 
 class ASState
 {
 private:
-    State state;
     CheckupManager *_checkupManager;
 
 public:
-    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager), state(AS_MANUAL){};
-    State getState() { return state; };
+    State state{AS_MANUAL};
+    Mission mission{MANUAL};
+
+    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager) {};
     void calculateState();
 };
 
