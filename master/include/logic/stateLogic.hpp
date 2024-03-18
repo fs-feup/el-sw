@@ -1,9 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-#include <elapsedMillis.h>
-#include <logic/timestamp.hpp>
-#include <logic/systemDiagnostics.hpp>
 #include <logic/checkupManager.hpp>
 
 enum State
@@ -19,11 +16,11 @@ enum State
 class ASState
 {
 private:
-    State state;
+    State state{AS_MANUAL};
     CheckupManager *_checkupManager;
 
 public:
-    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager), state(AS_MANUAL){};
+    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager){};
     State getState() { return state; };
     void calculateState();
 };
@@ -34,9 +31,9 @@ void ASState::calculateState()
     {
     case AS_MANUAL:
         if (_checkupManager->manualDrivingCheckup())
-        {
-            return;
-        }
+            break;
+        
+
         // TODO: EBS from disabled to inactive
         // TODO: Open SDC circuit
         state = AS_OFF;
@@ -44,9 +41,8 @@ void ASState::calculateState()
 
     case AS_OFF:
         if (_checkupManager->offCheckup())
-        {
             break;
-        }
+
         state = AS_READY;
         break;
 
@@ -57,8 +53,7 @@ void ASState::calculateState()
             /* TODO:
             ASSI to blue flashing
             EBS to Active
-            SA to disable
-            TS to OFF
+            TS to OFF (open sdc)
             Buzzer to on for 8-10s
             */
             state = AS_EMERGENCY;
@@ -91,7 +86,7 @@ void ASState::calculateState()
     case AS_FINISHED:
         if (_checkupManager->resTriggered())
         {
-            //TODO: perform necessary actions to enter AS_EMERGENCY
+            // TODO: perform necessary actions to enter AS_EMERGENCY
             state = AS_EMERGENCY;
             break;
         }

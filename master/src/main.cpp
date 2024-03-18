@@ -2,6 +2,7 @@
 #include "logic/checkupManager.hpp"
 #include "comm/manager.hpp"
 #include "embedded/digitalData.hpp"
+#include <logic/stateLogic.hpp>
 
 DigitalData* digitalData;
 CheckupManager* checkupManager;
@@ -9,11 +10,12 @@ Sensors* sensors;
 CommunicationManager* commManager;
 
 
+
 void setup() {
   digitalData = new DigitalData();
   sensors = new Sensors();
 
-  checkupManager = new CheckupManager();
+  checkupManager = new CheckupManager(digitalData);
   
   commManager = new CommunicationManager(checkupManager, sensors);
 }

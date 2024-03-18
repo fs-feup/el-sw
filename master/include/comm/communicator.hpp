@@ -38,7 +38,7 @@ class Communicator {
     int publish_state(int state_id);
     int publish_mission(int mission_id);
     int publish_left_wheel_rpm(double value);
-    int send_message(const unsigned int len, const unsigned char* buffer, const unsigned int id);
+    int send_message(unsigned int len, const unsigned char* buffer, const unsigned int id);
 };
 
 
