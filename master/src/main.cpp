@@ -12,7 +12,7 @@ CommunicationManager* commManager;
 void setup() {
   digitalData = new DigitalData();
   sensors = new Sensors();
-  
+
   checkupManager = new CheckupManager();
   
   commManager = new CommunicationManager(checkupManager, sensors);
@@ -20,5 +20,9 @@ void setup() {
 
 void loop() {
   digitalData->digitalReads();
+
+  // commManager->communicator->publish_state(); // TODO(andre): fill with state
+  // commManager->communicator->publish_mission(); // TODO(andre): fill with mission
+  commManager->communicator->publish_left_wheel_rpm(digitalData->_left_wheel_rpm);
 }
 

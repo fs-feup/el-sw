@@ -18,10 +18,14 @@ struct DigitalData {
     int pulse_count = 0;
     Timestamp left_wheel_update_ts;
 
+    // Watchdog
+    bool watchdog_state;
+    bool watchdog_comm_state = false;
+    Timestamp wd_pulse_ts;
+
     double pneumatic_line_pressure;
     bool asms_on;
     bool aats_on;
-    bool watchdog_state;
     Mission mission; // TODO(andre) change later to State Class maybe
 
     // TODO(andre): organize vars order
@@ -34,15 +38,15 @@ struct DigitalData {
     void readMission();
     void readAsmsSwitch();
     void readAatsSwitch();
-    void readWatchdog();
+    void askReadWatchdog();
 
     void updateLeftWheelRpm();
 };
 
 DigitalData::DigitalData() : _left_wheel_rpm(0), pneumatic_line_pressure(0),
-        aats_on(false), asms_on(false), watchdog_state(0) {
+        aats_on(false), asms_on(false), watchdog_state(true) {
             pinMode(LWSS_PIN, INPUT);
-        }
+}
 
 void DigitalData::updateLeftWheelRpm() {
     _left_wheel_rpm = pulse_count / (WHEEL_MEASUREMENT_INTERVAL_MIN * PULSES_PER_ROTATION);
@@ -57,7 +61,7 @@ void DigitalData::digitalReads() {
     readMission();
     readAsmsSwitch();
     readAatsSwitch();
-    readWatchdog();
+    askReadWatchdog();
 }
 
 void DigitalData::readLwss() {
@@ -97,6 +101,19 @@ void DigitalData::readAatsSwitch() {
     aats_on = digitalRead(AATS_SWITCH_PIN);
 }
 
-void DigitalData::readWatchdog() {
-    // TODO(andre): ask first, then read
+void DigitalData::askReadWatchdog() {
+    if (wd_pulse_ts.hasTimedOut(WD_WAIT_INTERVAL_MS)){ // After timeout send pulse
+        wd_pulse_ts.update();
+        digitalWrite(WD_OUT, HIGH);
+        watchdog_comm_state = true;
+    }
+    else if (wd_pulse_ts.hasTimedOut(WD_PULSE_INTERVAL_MS) && watchdog_comm_state){
+        // after pulse put pin in low again
+        digitalWrite(WD_OUT, LOW);
+        watchdog_comm_state = false;
+    }
+
+    if (digitalRead(WD_IN) == LOW) // if low, failure checks will open sdc
+        watchdog_state = false;
+        
 }
