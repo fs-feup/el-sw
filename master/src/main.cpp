@@ -1,12 +1,14 @@
 #include <Arduino.h>
 #include "logic/checkupManager.hpp"
-#include "comm/manager.hpp"
+#include "comm/communicator.hpp"
 #include "embedded/digitalData.hpp"
 
 DigitalData* digitalData;
 CheckupManager* checkupManager;
 Sensors* sensors;
-CommunicationManager* commManager;
+Communicator* communicator;
+CheckupManager* Communicator::checkupManager = nullptr;
+Sensors* Communicator::sensors = nullptr;
 
 
 void setup() {
@@ -15,7 +17,7 @@ void setup() {
 
   checkupManager = new CheckupManager();
   
-  commManager = new CommunicationManager(checkupManager, sensors);
+  communicator = new Communicator(checkupManager, sensors);
 }
 
 void loop() {
@@ -23,6 +25,6 @@ void loop() {
 
   // commManager->communicator->publish_state(); // TODO(andre): fill with state
   // commManager->communicator->publish_mission(); // TODO(andre): fill with mission
-  commManager->communicator->publish_left_wheel_rpm(digitalData->_left_wheel_rpm);
+  communicator->publish_left_wheel_rpm(digitalData->_left_wheel_rpm);
 }
 

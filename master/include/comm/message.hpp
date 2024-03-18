@@ -5,6 +5,9 @@
 #define RIGHT_WHEEL 0x601 // TODO(andre): change or confirm code
 #define HYDRAULIC_LINE 0x602 // TODO(andre): change or confirm code
 
+#define WHEEL_PRECISION 1e-2 // TODO(andre): change or confirm value
+#define HYDRAULIC_LINE_PRECISION 1e-1 // TODO(andre): change or confirm value
+
 // IDS
 #define BMS_ID 0x666
 #define BAMO_RESPONSE_ID 0x181
@@ -22,6 +25,7 @@
 // SENDER
 #define STATE_MSG 0x31
 #define MISSION_MSG 0x32
+#define LEFT_WHEEL_MSG 0x33
 
 // BAMOCAR
 
