@@ -9,15 +9,16 @@
 class CheckupManager {
 private:
     Timestamp _ebsSoundTimestamp;
-    bool _emergency, _SDCState, _ASMSState;
+    bool _emergency, _sdcState, _asmsState;
 
 public:
+    DigitalData* _digitalData;
     InternalLogics _internalLogics;
     FailureDetection _failureDetection;
 
     bool _ready2Drive, _missionFinished;
 
-    CheckupManager() = default;
+    CheckupManager(DigitalData* digitalData) : _digitalData(digitalData) {};
 
     /**
      * @brief Performs a manual driving checkup.
@@ -73,9 +74,9 @@ public:
 };
 
 bool CheckupManager::manualDrivingCheckup() {
-    // if (_failureDetection.) {
-    //     return false;
-    // }
+    if (/*TS OFF | DRIVERLESS MISSION SELECTED | EBS MANUAL ENABLE | EBS IS DEACTIVATED*/) {
+        return false;
+    }
 }
 
 bool CheckupManager::r2dCheckup() {
@@ -87,6 +88,7 @@ bool CheckupManager::r2dCheckup() {
 
 bool CheckupManager::emergencySequenceComplete() {
     // TODO: If the emergency sequence is complete (buzzer done & ASMS OFF), return 0, else 1
+    if (/* BUZZER.hastimeout(8-9s) | ASMS_STATE == OFF*/)
     return 0;
 }
 

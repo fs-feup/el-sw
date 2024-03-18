@@ -4,7 +4,7 @@
 #include "logic/checkupManager.hpp"
 #include "comm/communicator.hpp"
 #include "embedded/digitalData.hpp"
-#include "logic/stateLogic.hpp"
+#include <logic/stateLogic.hpp>
 
 DigitalData digitalData;
 CheckupManager checkupManager;

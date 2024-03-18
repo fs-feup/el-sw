@@ -49,6 +49,7 @@ class Communicator {
     static void resCallback(const uint8_t *buf);
     static void bamocarCallback(const uint8_t *buf);
     static void steeringCallback();
+    int send_message(unsigned int len, const unsigned char* buffer, const unsigned int id);
 };
 
 Communicator::Communicator(CheckupManager* checkupManager, Sensors* sensors) {

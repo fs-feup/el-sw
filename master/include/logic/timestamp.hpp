@@ -1,3 +1,5 @@
+#pragma once
+
 #include <elapsedMillis.h>
 
 class Timestamp {
@@ -20,7 +22,8 @@ public:
      * @param timeout The timeout in milliseconds.
      * @return true if the timestamp has timed out, false otherwise.
      */
-    bool hasTimedOut(unsigned long timeout) const {
+    [[nodiscard]] bool hasTimedOut(unsigned long timeout) const
+    {
         return _timeElapsed > timeout;
     }
 };
