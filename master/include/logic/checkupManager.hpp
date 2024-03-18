@@ -1,3 +1,5 @@
+#pragma once
+
 #include <logic/systemDiagnostics.hpp>
 
 // Also known as Orchestrator
@@ -78,7 +80,7 @@ bool CheckupManager::manualDrivingCheckup() {
 }
 
 bool CheckupManager::r2dCheckup() {
-    if (_internalLogics.processGoSignal()) {
+    if (!_internalLogics.goSignal) {
         return 1;
     }
     return 0;
@@ -93,3 +95,5 @@ bool CheckupManager::emergencySequenceComplete() {
 bool CheckupManager::resTriggered() {
     //TODO
 }
+
+ // TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure-> bamocar-ready false emergency 

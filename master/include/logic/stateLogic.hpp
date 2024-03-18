@@ -2,26 +2,18 @@
 
 #include <Arduino.h>
 #include <logic/checkupManager.hpp>
-
-enum State
-{
-    AS_MANUAL,
-    AS_OFF,
-    AS_READY,
-    AS_DRIVING,
-    AS_FINISHED,
-    AS_EMERGENCY
-};
+#include <logic/structure.hpp>
 
 class ASState
 {
 private:
-    State state{AS_MANUAL};
     CheckupManager *_checkupManager;
 
 public:
-    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager){};
-    State getState() { return state; };
+    State state{AS_MANUAL};
+    Mission mission{MANUAL};
+
+    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager) {};
     void calculateState();
 };
 

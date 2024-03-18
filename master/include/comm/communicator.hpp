@@ -1,50 +1,60 @@
-#ifndef COMM_Communicator_HPP_
-#define COMM_Communicator_HPP_
+#pragma once
 
-#include <string>
-#include "comm/message.hpp"
-#ifdef EMBEDDED
+#ifndef COMM_COMMS_HPP_
+#define COMM_COMMS_HPP_
+
 #include <FlexCAN_T4.h>
-
-class CommunicationManager;
-
-struct Code {
-    int key;
-    int code;
-};
+#include <string>
+#include "logic/checkupManager.hpp"
+#include "logic/sensors.hpp"
+#include "comm/message.hpp"
 
 Code fifoCodes[] = {
-    {0, C3_ID},
+    {0, C1_ID},
     {1, BMS_ID},
-    {2, BAMO_RESPONSE_ID}
+    {2, BAMO_RESPONSE_ID},
+    {3, AS_CU_EMERGENCY_SIGNAL},
+    {4, MISSION_FINISHED},
+    {5, PC_ALIVE},
+    {6, STEERING_ID},
+    {7, RES}
 };
-// TODO(andre): fill the rest of the map
 
 /**
- * @brief Communication strategy class for communication
- * using Teensy CAN libraries.
+ * @brief Class that contains definitions of typical messages to send via CAN
+ * It serves only as an example of the usage of the strategy pattern,
+ * where the communicator is the strategy
 */
 class Communicator {
-    static CommunicationManager* manager;
-    std::string can_network_name;
     FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
-    public: 
-    Communicator(CommunicationManager* manager, std::string can_network);
-    std::string get_network_name() const;
+    public:
+    static CheckupManager* checkupManager;
+    static Sensors* sensors;
+
+    Communicator(CheckupManager* checkupManager, Sensors* sensors);
 
     static void parse_message(const CAN_message_t& msg);
+    int send_message(unsigned len, const unsigned char* buffer, unsigned id);
 
     int publish_state(int state_id);
     int publish_mission(int mission_id);
     int publish_left_wheel_rpm(double value);
+
+    static void emergencySignalCallback();
+    static void missionFinishedCallback();
+    static void pcAliveCallback();
+    static void pcCallback(const uint8_t *buf);
+    static void c1Callback(const uint8_t *buf);
+    static void resCallback(const uint8_t *buf);
+    static void bamocarCallback(const uint8_t *buf);
+    static void steeringCallback();
     int send_message(unsigned int len, const unsigned char* buffer, const unsigned int id);
 };
 
-
-
-Communicator::Communicator(CommunicationManager* manager, std::string can_network) :can_network_name(can_network) {
-    this->manager = manager;
+Communicator::Communicator(CheckupManager* checkupManager, Sensors* sensors) {
+    Communicator::checkupManager = checkupManager;
+    Communicator::sensors = sensors;
 
     can1.begin();
     can1.setBaudRate(500000);
@@ -55,43 +65,84 @@ Communicator::Communicator(CommunicationManager* manager, std::string can_networ
         can1.setFIFOFilter(fifoCodes[i].key, fifoCodes[i].code, STD);
     
     can1.onReceive(parse_message);
-    //initMessages();
 };
 
-std::string Communicator::get_network_name() const {
-    return this->can_network_name; 
+void Communicator::emergencySignalCallback() {
+    checkupManager->_failureDetection.emergencySignal = true;
+}
+
+void Communicator::missionFinishedCallback() {
+    checkupManager->_missionFinished = true;
+}
+
+void Communicator::pcAliveCallback() {
+    checkupManager->_failureDetection.pcAliveTimestamp.update();
+}
+
+void Communicator::c1Callback(const uint8_t *buf) {
+    if (buf[0] == HYDRAULIC_LINE) {
+        double break_pressure = (buf[2] << 8) | buf[1];
+        break_pressure *= HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
+        sensors->updateHydraulic(break_pressure);
+    } else if (buf[0] == RIGHT_WHEEL) {
+        double right_wheel_rpm = (buf[2] << 8) | buf[1];
+        right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
+        sensors->updateRL(right_wheel_rpm);
+    }
+}
+
+void Communicator::resCallback(const uint8_t *buf) {
+    bool emg_stop1 = buf[0] & 0x01;
+    bool emg_stop2 = buf[3] >> 7 & 0x01;
+    bool go_switch = (buf[0] >> 1) & 0x01;
+    bool go_button = (buf[0] >> 2) & 0x01;
+
+    if (go_button || go_switch)
+        checkupManager->_internalLogics.processGoSignal();
+    else if (emg_stop1 || emg_stop2)
+        checkupManager->_failureDetection.emergencySignal = true;
+}
+
+void Communicator::bamocarCallback(const uint8_t *buf) {
+    if (buf[0] == BTB_READY){
+        if (buf[1] == false)
+            checkupManager->_failureDetection.bamocarReady = false;
+    }
+    else if (buf[0] == VDC_BUS){
+        int battery_voltage = (buf[2] << 8) | buf[1];
+        checkupManager->_failureDetection.bamocarTension = battery_voltage;
+    }
+}
+
+void Communicator::pcCallback(const uint8_t *buf) {
+    if (buf[0] == PC_ALIVE) {
+        checkupManager->_failureDetection.pcAliveTimestamp.update();
+    } else if (buf[0] == MISSION_FINISHED) {
+        checkupManager->_missionFinished = true;
+    } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
+        checkupManager->_failureDetection.emergencySignal = true;
+    }
+}
+
+void Communicator::steeringCallback() {
+    checkupManager->_failureDetection.steerAliveTimestamp.update();
 }
 
 void Communicator::parse_message(const CAN_message_t& msg) {
     switch(msg.id) {
-        // pc messages
-        case AS_CU_EMERGENCY_SIGNAL:
-            manager->emergencySignalCallback();
-            break;
-        case MISSION_FINISHED:
-            manager->missionFinishedCallback();
-            break;
-        case PC_ALIVE:
-            manager->pcAliveCallback();
-            break;
-
+        case PC_ID:
+            Communicator::pcCallback(msg.buf);
         case RES:
-            manager->resCallback(msg.buf);
+            Communicator::resCallback(msg.buf);
             break;
-
-        // sensor messages
-        case RIGHT_WHEEL:
-            // see with barros É SÓ SANITY CHECK?
+        case C1_ID:
+            Communicator::c1Callback(msg.buf); // rwheel and hydraulic line
             break;
-        case HYDRAULIC_LINE:
-            // see with barros É SÓ SANITY CHECK?
-            break;
-
         case BAMO_RESPONSE_ID:
-            manager->bamocarCallback(msg.buf);
+            Communicator::bamocarCallback(msg.buf);
             break;
-        case STEERING_ACTUATOR:
-            manager->steeringCallback();
+        case STEERING_ID:
+            Communicator::steeringCallback();
             break;
         default:
             break;
@@ -99,29 +150,34 @@ void Communicator::parse_message(const CAN_message_t& msg) {
 }
 
 int Communicator::publish_state(int state_id) {
-    unsigned int id = STATE_MSG;
-    unsigned char msg[] = {static_cast<unsigned char>(state_id)};
+    unsigned id = STATE_MSG;
+    uint8_t msg[] = {static_cast<unsigned char>(state_id)};
 
     this->send_message(1, msg, id);
 }
 
 int Communicator::publish_mission(int mission_id) {
-    unsigned int id = MISSION_MSG;
-    unsigned char msg[] = {static_cast<unsigned char>(mission_id)};
+    unsigned id = MISSION_MSG;
+    uint8_t msg[] = {static_cast<unsigned char>(mission_id)};
 
     this->send_message(1, msg, id);
 }
 
 int Communicator::publish_left_wheel_rpm(double value) {
-    // TODO (andre): define ordem de grandeza para mandar
+    unsigned id = LEFT_WHEEL_MSG;
+
+    value /= WHEEL_PRECISION; // take precision off to send interger value
+    uint8_t *msg = reinterpret_cast<uint8_t*>(&value);
+
+    this->send_message(2, msg, id);
 }
 
-int Communicator::send_message(const unsigned int len, const unsigned char* buffer, const unsigned int id) {
+int Communicator::send_message(unsigned len, const unsigned char* buffer, unsigned id) {
     
     CAN_message_t can_message;
     can_message.id = id;
     can_message.len = len;
-    for (unsigned int i = 0; i < len; i++) {
+    for (unsigned i = 0; i < len; i++) {
         can_message.buf[i] = buffer[i];
     }
     can1.begin();
@@ -129,6 +185,5 @@ int Communicator::send_message(const unsigned int len, const unsigned char* buff
     
     return 0;
 } 
-#endif
 
 #endif

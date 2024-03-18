@@ -2,13 +2,14 @@
 
 #include <logic/timestamp.hpp>
 
-constexpr unsigned long TIMEOUT_DURATION = 5000;
+constexpr unsigned long READY_TIMEOUT_MS = 5000;
 
 struct InternalLogics
 {
     Timestamp readyTimestamp;
     bool goSignal{false};
 
+    InternalLogics() = default;
     InternalLogics() = default;
 
     void enterReadyState()
@@ -17,7 +18,6 @@ struct InternalLogics
         goSignal = false;
     }
 
-    
     /**
      * @brief Processes the go signal.
      *
@@ -29,10 +29,10 @@ struct InternalLogics
 
     bool processGoSignal()
     {
-        // If goSignal is not received or received before the timeout duration, return false
-        if (goSignal && readyTimestamp.hasTimedOut(TIMEOUT_DURATION))
+        // If goSignal is not received or received before 5 seconds, return false
+        if (goSignal && readyTimestamp.hasTimedOut(READY_TIMEOUT_MS))
         {
-            goSignal = false;
+            goSignal = true;
             return 0;
         }
         // If goSignal is received after the timeout duration, return true
@@ -46,6 +46,9 @@ struct FailureDetection
     Timestamp pcAliveTimestamp, steerAliveTimestamp, inversorAliveTimestamp, bmsAliveTimestamp;
     bool emergencySignal{false};
     double bamocarTension{0.0}; // Add default member initializer
+    bool bamocarReady{true};
+
+    FailureDetection() = default;
 
     [[nodiscard]] bool hasAnyComponentTimedOut(unsigned long timeout) const
     {

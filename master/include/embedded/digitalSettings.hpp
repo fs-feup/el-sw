@@ -1,3 +1,5 @@
+#pragma once
+
 #define WHEEL_MEASUREMENT_INTERVAL_MS 30 // 30ms // TODO(andre): change to adequate value
 #define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000)
 #define PULSES_PER_ROTATION 50 // TODO(andre): change to true value 

@@ -1,13 +1,15 @@
+#pragma once
+
 struct Sensors {
-    double _rl_wheel_rpm;
-    double _hydraulic_line_pressure;
+    double _rl_wheel_rpm = 0;
+    double _hydraulic_line_pressure = 0;
 
     Sensors();
     void updateRL(double value);
     void updateHydraulic(double value);
 };
 
-Sensors::Sensors() : _rl_wheel_rpm(0), _hydraulic_line_pressure(0) {}
+Sensors::Sensors() = default;
 
 void Sensors::updateRL(double value){
     // check what it receives and convert to rpm
