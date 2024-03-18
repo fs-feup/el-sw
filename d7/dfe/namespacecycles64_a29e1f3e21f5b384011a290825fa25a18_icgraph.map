@@ -1,9 +1,0 @@
-<map id="cycles64::get" name="cycles64::get">
-<area shape="rect" id="Node000001" title=" " alt="" coords="407,31,503,56"/>
-<area shape="rect" id="Node000002" href="$d8/d23/structteensy__clock.html#a777d9141b0f5e73eb44c9169c6c0dbc8" title=" " alt="" coords="210,5,337,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="391,37,337,30,338,24,392,32"/>
-<area shape="rect" id="Node000003" href="$d8/d23/structteensy__clock.html#a25cd5e1a62ce7a3cb856fb825dfe9ff0" title=" " alt="" coords="188,55,359,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="392,54,360,59,359,53,391,49"/>
-<area shape="rect" id="Node000004" href="$d8/d23/structteensy__clock.html#a8e85f87ca9b842cc51ed08b5bc03f0c4" title=" " alt="" coords="5,55,140,80"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="172,70,140,70,140,65,172,65"/>
-</map>

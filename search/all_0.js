@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['_5f_5fmain_5f_5f_0',['__main__',['../da/db7/namespacecalibv2.html#ab228fb87f30284e91eace746acd422af',1,'calibv2']]],
-  ['_5flog_1',['_LOG',['../db/d16/debug_8h.html#a0220fc284232d020fb25737c1e39bdf3',1,'debug.h']]],
-  ['_5fr2d_5fmode_2',['_r2d_mode',['../d8/dd7/r2d_8h.html#a7b282ab82b7f4d84f19ae89b6f5b8c99',1,'r2d.h']]]
+  ['adcconversion_0',['ADCconversion',['../d1/d91/temp-acq_2src_2main_8cpp.html#a290bd861e02d80e74c7c574bae51d7c2',1,'main.cpp']]],
+  ['adcraw_1',['ADCRaw',['../d1/d91/temp-acq_2src_2main_8cpp.html#a661dd00182ba0bff14ccb061c16e0783',1,'main.cpp']]],
+  ['adcs_2',['ADCs',['../d1/d91/temp-acq_2src_2main_8cpp.html#ac5e77a25d46423eaf19332dac3bde4d5',1,'main.cpp']]],
+  ['allowedcurrent_3',['allowedCurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0e1d6da13860e01a20fa9e3c448eed3c',1,'PARAMETERS']]],
+  ['and_20software_20repository_4',['Eletronics and Software Repository',['../index.html',1,'']]],
+  ['avgtemp_5',['avgTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a76e9789db2776a2239445cf0299b5721',1,'main.cpp']]]
 ];

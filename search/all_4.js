@@ -1,19 +1,4 @@
 var searchData=
 [
-  ['data_0',['data',['../df/d1d/namespacecalibration.html#ad9e96821c1dc82753458f02d4bcbd2b3',1,'calibration']]],
-  ['data_5fdisplay_1',['DATA_DISPLAY',['../db/d16/debug_8h.html#a49d10dd1c1eb93a4006fa8c9acb1ab0d',1,'debug.h']]],
-  ['day_2',['day',['../d2/d24/struct_log_entry.html#a69b7d5c63f741cdf0b91323a219ebd93',1,'LogEntry']]],
-  ['dc_5fthreshold_3',['DC_THRESHOLD',['../db/dac/can_8cpp.html#a8fec7ffed26aa85871864d0aec13887c',1,'can.cpp']]],
-  ['dcvoltagerequest_4',['dcvoltagerequest',['../db/dac/can_8cpp.html#a3b87c393b29614a85ca1a48d13b4d37f',1,'DCVoltageRequest:&#160;can.cpp'],['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#a3b87c393b29614a85ca1a48d13b4d37f',1,'DCVoltageRequest:&#160;can.cpp']]],
-  ['debug_2eh_5',['debug.h',['../db/d16/debug_8h.html',1,'']]],
-  ['disable_6',['disable',['../db/dac/can_8cpp.html#a82ff36330cfe9ed9b0a027e34578bf25',1,'disable:&#160;can.cpp'],['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#a82ff36330cfe9ed9b0a027e34578bf25',1,'disable:&#160;can.cpp']]],
-  ['disabled_7',['disabled',['../db/dac/can_8cpp.html#a30eb6a6289c0fbe15130cc1c3c9f0881',1,'disabled:&#160;main.cpp'],['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#a30eb6a6289c0fbe15130cc1c3c9f0881',1,'disabled:&#160;main.cpp']]],
-  ['display_8',['display',['../df/d1d/namespacecalibration.html#af37528d2eafe1346436f586c1fd2b960',1,'calibration']]],
-  ['display_2ecpp_9',['display.cpp',['../db/d86/display_8cpp.html',1,'']]],
-  ['display_2eh_10',['display.h',['../d4/d68/display_8h.html',1,'']]],
-  ['displaysetup_11',['displaysetup',['../d4/d68/display_8h.html#a6736549d34e3776c0e19e9ed2dc25fe1',1,'displaySetup():&#160;display.cpp'],['../db/d86/display_8cpp.html#a6736549d34e3776c0e19e9ed2dc25fe1',1,'displaySetup():&#160;display.cpp']]],
-  ['displayupdate_12',['displayupdate',['../d4/d68/display_8h.html#ac9294c5bea8a9e0fe67e6a02f462bff2',1,'displayUpdate():&#160;display.cpp'],['../db/d86/display_8cpp.html#ac9294c5bea8a9e0fe67e6a02f462bff2',1,'displayUpdate():&#160;display.cpp']]],
-  ['done_13',['done',['../df/d1d/namespacecalibration.html#a9d0eb219a522aa69c39cccc8130e216b',1,'calibration']]],
-  ['driving_14',['DRIVING',['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959a1ce8e3e112b2c058a7f945e753c4c23e',1,'main.cpp']]],
-  ['duration_15',['duration',['../d8/d23/structteensy__clock.html#a6bd2e0f7a4165c1ebe3ecbf22fe0210b',1,'teensy_clock']]]
+  ['idle_0',['idle',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959a0e9a37114c0e458d28d52f06ec0f2242',1,'main.cpp']]]
 ];

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['debug_2eh_0',['debug.h',['../db/d16/debug_8h.html',1,'']]],
-  ['display_2ecpp_1',['display.cpp',['../db/d86/display_8cpp.html',1,'']]],
-  ['display_2eh_2',['display.h',['../d4/d68/display_8h.html',1,'']]]
+  ['readme_2emd_0',['readme.md',['../d9/dd6/_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../dd/d20/temp-acq_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)']]]
 ];

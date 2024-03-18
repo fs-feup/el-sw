@@ -1,19 +1,15 @@
 var searchData=
 [
-  ['latching_5ferror_5fpin_0',['LATCHING_ERROR_PIN',['../de/d53/charger_2src_2main_8cpp.html#a1ff3b52ee0ab91741129bbc7e2c4280f',1,'main.cpp']]],
-  ['latchingstatus_1',['latchingStatus',['../de/d53/charger_2src_2main_8cpp.html#a70ed66607b27ce61896ca0e65b8870a8',1,'main.cpp']]],
-  ['lbuf_2',['lbuf',['../dd/daf/logging_8cpp.html#a8dbbc8e20aa077c3f9b244e5618c9da1',1,'logging.cpp']]],
-  ['lbuf_5fhead_3',['lbuf_head',['../dd/daf/logging_8cpp.html#a731b6defe02b49f53fdc38c17f9d1cbe',1,'logging.cpp']]],
-  ['lbuf_5ftail_4',['lbuf_tail',['../dd/daf/logging_8cpp.html#aaa6bacadc2a28fce23bff313605253be',1,'logging.cpp']]],
-  ['lemos_5',['lemos',['../db/dc5/_c1_2src_2main_8cpp.html#ad8f32207836c36199d81ec1cbe469a86',1,'main.cpp']]],
-  ['lines_5fy_6',['lines_y',['../df/d1d/namespacecalibration.html#aa1c272c926efbda4508e5351a44c93b6',1,'calibration']]],
-  ['log_7',['LOG',['../db/d16/debug_8h.html#a3577749fb48d57a158b8ac1a0b3ab57e',1,'debug.h']]],
-  ['logentry_8',['LogEntry',['../d2/d24/struct_log_entry.html',1,'']]],
-  ['logging_9',['Logging',['../d9/d98/class_logging.html',1,'']]],
-  ['logging_2ecpp_10',['logging.cpp',['../dd/daf/logging_8cpp.html',1,'']]],
-  ['logging_2eh_11',['logging.h',['../d5/d77/logging_8h.html',1,'']]],
-  ['logging_5fperiod_12',['logging_period',['../d5/d77/logging_8h.html#af6d1ebc060209bbfeec09f073f2a986a',1,'LOGGING_PERIOD:&#160;logging.h'],['../db/dc5/_c1_2src_2main_8cpp.html#af6d1ebc060209bbfeec09f073f2a986a',1,'LOGGING_PERIOD:&#160;main.cpp']]],
-  ['logginginstance_13',['loggingInstance',['../db/dc5/_c1_2src_2main_8cpp.html#acc5c46306bce5643556dcbc9d6d7913a',1,'main.cpp']]],
-  ['loop_14',['loop',['../db/dc5/_c1_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp'],['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp'],['../d8/d6a/message_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;message.cpp'],['../de/d53/charger_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp'],['../d1/d91/temp-acq_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp']]],
-  ['lowtemp_15',['lowtemp',['../db/dac/can_8cpp.html#aeb147d216d5a8da62435eed3222d4e18',1,'lowTemp:&#160;display.cpp'],['../db/d86/display_8cpp.html#aeb147d216d5a8da62435eed3222d4e18',1,'lowTemp:&#160;display.cpp']]]
+  ['sendtempstobms_0',['sendTempsToBMS',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae5455474ac198d04f0cafc26f926da43',1,'main.cpp']]],
+  ['setcurrent_1',['setcurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a91baecd3e523773b9107eadf4c091f46',1,'PARAMETERS::setCurrent'],['../de/d53/charger_2src_2main_8cpp.html#a6626d45851a7ceec2d3459ce05c19173',1,'setCurrent(uint32_t current):&#160;main.cpp']]],
+  ['setlow_2',['setLOW',['../de/d53/charger_2src_2main_8cpp.html#ab59d380a02cf9f9278b9d7766ed1565a',1,'main.cpp']]],
+  ['setup_3',['setup',['../de/d53/charger_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp'],['../d1/d91/temp-acq_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp']]],
+  ['setvoltage_4',['setvoltage',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0bda9fcdef6fe1e2bd23939b61037021',1,'PARAMETERS::setVoltage'],['../de/d53/charger_2src_2main_8cpp.html#ac10b87d144d760686fc923b2639ff33e',1,'setVoltage(uint32_t voltage):&#160;main.cpp']]],
+  ['shutdown_5',['shutdown',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959a806a2e610a79f2c33cb4d122a0f0f877',1,'main.cpp']]],
+  ['shutdown_5fpin_6',['SHUTDOWN_PIN',['../de/d53/charger_2src_2main_8cpp.html#aa0eccb352651e5c430624a1aa6f76c16',1,'main.cpp']]],
+  ['shutdownstatus_7',['shutdownStatus',['../de/d53/charger_2src_2main_8cpp.html#a0ffdb62ae4f809f7f65c968783c167d7',1,'main.cpp']]],
+  ['software_20repository_8',['Eletronics and Software Repository',['../index.html',1,'']]],
+  ['status_9',['status',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959',1,'main.cpp']]],
+  ['step_10',['step',['../de/d53/charger_2src_2main_8cpp.html#a696e5f800880fb998c90e82d4921da90',1,'main.cpp']]],
+  ['structure_11',['Structure',['../index.html#autotoc_md1',1,'']]]
 ];

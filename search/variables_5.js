@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_0',['file',['../dd/daf/logging_8cpp.html#ac8486d0d6ea35e0bfa0a86f58160e4b7',1,'logging.cpp']]]
+  ['nx_5fch_5fstatus_0',['NX_CH_Status',['../de/d53/charger_2src_2main_8cpp.html#a180ef2c1c10b423699666f5bc203bbdc',1,'main.cpp']]]
 ];

@@ -1,9 +1,0 @@
-<map id="canSetup" name="canSetup">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,82,56"/>
-<area shape="rect" id="Node000002" href="$db/dac/can_8cpp.html#ae329f241967c37a5f46b9fc5d5817067" title=" " alt="" coords="151,5,230,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,34,135,25,136,30,82,40"/>
-<area shape="rect" id="Node000004" href="$db/dac/can_8cpp.html#a5e56a57c6a15762df99fb4e4d9f97d6f" title="Initialize CAN messages." alt="" coords="130,55,251,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="82,47,114,52,114,58,82,52"/>
-<area shape="rect" id="Node000003" href="$db/dac/can_8cpp.html#a8169159057bcab21075fd1d44829bc79" title=" " alt="" coords="299,5,405,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,16,284,16,284,21,231,21"/>
-</map>

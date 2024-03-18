@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['globallogentry_0',['globalLogEntry',['../dd/daf/logging_8cpp.html#ad74ab5fdce3f8ef5b288ef22aad6e1f2',1,'logging.cpp']]]
+  ['param_0',['param',['../de/d53/charger_2src_2main_8cpp.html#a439a02652a34fbc9788daf229f1d4c7e',1,'main.cpp']]]
 ];

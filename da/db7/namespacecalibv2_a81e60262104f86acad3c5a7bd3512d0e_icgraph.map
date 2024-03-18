@@ -1,8 +1,0 @@
-<map id="calibv2.plot_2d_data_nonblocking" name="calibv2.plot_2d_data_nonblocking">
-<area shape="rect" id="Node000001" title=" " alt="" coords="360,22,499,63"/>
-<area shape="rect" id="Node000002" href="$da/db7/namespacecalibv2.html#ab764be7fa812dc01d4ecb78f21d30903" title=" " alt="" coords="175,22,312,63"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="344,45,312,45,312,40,344,40"/>
-<area shape="rect" id="Node000003" href="$da/db7/namespacecalibv2.html#ab228fb87f30284e91eace746acd422af" title=" " alt="" coords="5,29,127,55"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="159,45,127,45,127,40,159,40"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="96,16,86,10,66,8,47,10,38,15,36,20,40,28,36,30,30,21,34,11,46,5,66,3,88,5,99,12"/>
-</map>

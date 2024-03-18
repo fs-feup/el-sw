@@ -1,11 +1,12 @@
 <map id="charger/src/main.cpp" name="charger/src/main.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="151,5,293,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,81,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,34,88,75,87,70,190,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="105,79,210,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,33,180,69,176,66,209,29"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="234,79,340,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,29,268,66,264,69,230,33"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="365,79,417,105"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="251,29,352,71,350,76,249,34"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="69,5,212,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="110,153,185,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,34,55,46,26,62,15,71,10,81,9,91,13,103,30,121,50,135,96,153,94,158,47,140,26,125,9,106,3,92,5,79,11,68,23,58,53,41,88,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="24,79,129,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,33,99,69,95,66,128,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="153,79,259,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,29,187,66,183,69,149,33"/>
+<area shape="rect" id="Node000005" href="$d7/da8/can_8h.html" title=" " alt="" coords="284,79,336,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="170,29,271,71,268,76,168,34"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="284,107,190,149,187,144,282,102"/>
 </map>

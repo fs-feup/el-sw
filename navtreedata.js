@@ -26,34 +26,21 @@ var NAVTREE =
 [
   [ "Formula Student Electronics & Software", "index.html", [
     [ "Eletronics and Software Repository", "index.html", "index" ],
-    [ "teensyC1", "d9/da2/md__c1_2_r_e_a_d_m_e.html", null ],
-    [ "TeensyC3APPS", "d9/dda/md__c3_a_p_p_s_2_r_e_a_d_m_e.html", null ],
     [ "teensyTemp", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html", null ],
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
-      ] ]
-    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
+        [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", "globals_vars" ],
-        [ "Typedefs", "globals_type.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -64,9 +51,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"db/d86/display_8cpp.html#a5da863842ebb05aec8a2ec82743a1bcf",
-"de/d53/charger_2src_2main_8cpp.html#a19afc905fc69a9d4d28353cebd6a6173"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['latchingstatus_0',['latchingStatus',['../de/d53/charger_2src_2main_8cpp.html#a70ed66607b27ce61896ca0e65b8870a8',1,'main.cpp']]],
-  ['lbuf_1',['lbuf',['../dd/daf/logging_8cpp.html#a8dbbc8e20aa077c3f9b244e5618c9da1',1,'logging.cpp']]],
-  ['lbuf_5fhead_2',['lbuf_head',['../dd/daf/logging_8cpp.html#a731b6defe02b49f53fdc38c17f9d1cbe',1,'logging.cpp']]],
-  ['lbuf_5ftail_3',['lbuf_tail',['../dd/daf/logging_8cpp.html#aaa6bacadc2a28fce23bff313605253be',1,'logging.cpp']]],
-  ['lemos_4',['lemos',['../db/dc5/_c1_2src_2main_8cpp.html#ad8f32207836c36199d81ec1cbe469a86',1,'main.cpp']]],
-  ['lines_5fy_5',['lines_y',['../df/d1d/namespacecalibration.html#aa1c272c926efbda4508e5351a44c93b6',1,'calibration']]],
-  ['logginginstance_6',['loggingInstance',['../db/dc5/_c1_2src_2main_8cpp.html#acc5c46306bce5643556dcbc9d6d7913a',1,'main.cpp']]],
-  ['lowtemp_7',['lowtemp',['../db/dac/can_8cpp.html#aeb147d216d5a8da62435eed3222d4e18',1,'lowTemp:&#160;display.cpp'],['../db/d86/display_8cpp.html#aeb147d216d5a8da62435eed3222d4e18',1,'lowTemp:&#160;display.cpp']]]
+  ['temp_0',['temp',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a4e3d52993a6fe37c8d4e7ed6efe14252',1,'PARAMETERS::temp'],['../de/d53/charger_2src_2main_8cpp.html#a813c382ea67b33dc90f802f3bf17bc5f',1,'temp:&#160;main.cpp']]],
+  ['tempbroadcast_1',['tempBroadcast',['../d1/d91/temp-acq_2src_2main_8cpp.html#a9fdad824abd589bc143483efc6aac296',1,'main.cpp']]],
+  ['temperature_2',['temperature',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab4b11c8d9c758430960896bc3fe82ead',1,'main.cpp']]],
+  ['temperr_3',['tempErr',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad3f733671651600197cc99bd90e70a8b',1,'main.cpp']]],
+  ['temperrortimer_4',['tempErrorTimer',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6bc7f6aad7fe3026a8daeb29562b17d1',1,'main.cpp']]],
+  ['temps_5',['Temps',['../d1/d91/temp-acq_2src_2main_8cpp.html#a2d2fa21c3563eaafd55a33ad647e8081',1,'main.cpp']]],
+  ['tempsum_6',['tempSum',['../d1/d91/temp-acq_2src_2main_8cpp.html#a82c63f65b5e9702f431ccd4c91f33c69',1,'main.cpp']]]
 ];

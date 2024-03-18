@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['from_5ftime_5ft_0',['from_time_t',['../d8/d23/structteensy__clock.html#af6cdffbf01dc67d719f7bc12ffee7a1a',1,'teensy_clock']]]
+  ['readinputs_0',['readInputs',['../de/d53/charger_2src_2main_8cpp.html#acfc1d4a44c5d7039701b596a3df6eae3',1,'main.cpp']]],
+  ['readrawadcdata_1',['readRawADCData',['../d1/d91/temp-acq_2src_2main_8cpp.html#a7e62213420c108fbf83c9147fa1cbab6',1,'main.cpp']]]
 ];

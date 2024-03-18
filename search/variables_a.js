@@ -1,20 +1,8 @@
 var searchData=
 [
-  ['mainloopperiod_0',['mainLoopPeriod',['../dc/d85/_c3_a_p_p_s_2src_2main_8cpp.html#ab9f5ec44397b55ccffbe87c62d25120c',1,'main.cpp']]],
-  ['maxtemp_1',['maxTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a5bfe99639bd14bc2d6dc4acb76fff092',1,'main.cpp']]],
-  ['maxtmp_2',['maxtmp',['../db/dc5/_c1_2src_2main_8cpp.html#ac6eeec57ed9eb2290e89826a295d6030',1,'main.cpp']]],
-  ['millisecond_3',['millisecond',['../d2/d24/struct_log_entry.html#aaa58fd083f7720328896bb40682326ca',1,'LogEntry']]],
-  ['mintemp_4',['minTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b12333be2129eb4f00fc67d344a22a0',1,'main.cpp']]],
-  ['mintmp_5',['mintmp',['../db/dc5/_c1_2src_2main_8cpp.html#abe441bb34e9b1fa684bd2a32bdf063cc',1,'main.cpp']]],
-  ['minute_6',['minute',['../d2/d24/struct_log_entry.html#ae8a7c7d3e737823f3f7c4a6631ab0838',1,'LogEntry']]],
-  ['month_7',['month',['../d2/d24/struct_log_entry.html#a6db4dcf647dd0e5e24e898a40a7e096d',1,'LogEntry']]],
-  ['motor_5fvoltage_8',['motor_voltage',['../db/dc5/_c1_2src_2main_8cpp.html#a65a8f5eb64b6c58a9a9ce9e6ffd2b8c4',1,'main.cpp']]],
-  ['motortemp_9',['motortemp',['../db/dac/can_8cpp.html#a3a8ab212ae54c885224b212c0d4bc777',1,'motorTemp:&#160;main.cpp'],['../d1/d87/write__data_8cpp.html#a3a8ab212ae54c885224b212c0d4bc777',1,'motorTemp:&#160;main.cpp'],['../db/d86/display_8cpp.html#a3a8ab212ae54c885224b212c0d4bc777',1,'motorTemp:&#160;display.cpp'],['../db/dc5/_c1_2src_2main_8cpp.html#a3a8ab212ae54c885224b212c0d4bc777',1,'motorTemp:&#160;main.cpp']]],
-  ['motortemp2_10',['motorTemp2',['../db/dc5/_c1_2src_2main_8cpp.html#a15aeefba2d02e60ae407e5ecb35fb106',1,'main.cpp']]],
-  ['mout_11',['mout',['../db/dac/can_8cpp.html#a2a92559649fe7da265b63fca5c840e30',1,'Mout:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a2a92559649fe7da265b63fca5c840e30',1,'Mout:&#160;can.cpp']]],
-  ['mout_5fmsg_12',['Mout_msg',['../d1/d87/write__data_8cpp.html#aac9dd73f590aa4a2503622aa0edd4629',1,'write_data.cpp']]],
-  ['msg2_13',['msg2',['../d8/d6a/message_8cpp.html#aed438a95912ed588e2e0337c33eb4bff',1,'message.cpp']]],
-  ['msg_5f1_14',['msg_1',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b3f8939747bf0e94e8110a65a07771c',1,'main.cpp']]],
-  ['myfile_15',['myFile',['../dd/daf/logging_8cpp.html#a8eb13a6b9ea8026221cb3a45a822526a',1,'logging.cpp']]],
-  ['myfile_5fsetup_16',['myFile_setup',['../dd/daf/logging_8cpp.html#a90eb069b7440e7c45781558c297957fd',1,'logging.cpp']]]
+  ['voltage_0',['voltage',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad3c64efcaba662da1a2f4393d00584e9',1,'main.cpp']]],
+  ['voltage1_1',['voltage1',['../d1/d91/temp-acq_2src_2main_8cpp.html#a87cb333db6238549f271767712d728f0',1,'main.cpp']]],
+  ['voltage2_2',['voltage2',['../d1/d91/temp-acq_2src_2main_8cpp.html#af4b7b879cdaaca4030ffe5a8905929d6',1,'main.cpp']]],
+  ['voltage3_3',['voltage3',['../d1/d91/temp-acq_2src_2main_8cpp.html#a2f8e711aa1b3585d93c58f73ad3c9556',1,'main.cpp']]],
+  ['voltage4_4',['voltage4',['../d1/d91/temp-acq_2src_2main_8cpp.html#af2cee7da82dc259c1c15bdf0d654dc8d',1,'main.cpp']]]
 ];

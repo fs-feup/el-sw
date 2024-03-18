@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['logentry_0',['LogEntry',['../d2/d24/struct_log_entry.html',1,'']]],
-  ['logging_1',['Logging',['../d9/d98/class_logging.html',1,'']]]
+  ['parameters_0',['PARAMETERS',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html',1,'']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['display_0',['display',['../df/d1d/namespacecalibration.html#af37528d2eafe1346436f586c1fd2b960',1,'calibration']]],
-  ['displaysetup_1',['displaysetup',['../d4/d68/display_8h.html#a6736549d34e3776c0e19e9ed2dc25fe1',1,'displaySetup():&#160;display.cpp'],['../db/d86/display_8cpp.html#a6736549d34e3776c0e19e9ed2dc25fe1',1,'displaySetup():&#160;display.cpp']]],
-  ['displayupdate_2',['displayupdate',['../d4/d68/display_8h.html#ac9294c5bea8a9e0fe67e6a02f462bff2',1,'displayUpdate():&#160;display.cpp'],['../db/d86/display_8cpp.html#ac9294c5bea8a9e0fe67e6a02f462bff2',1,'displayUpdate():&#160;display.cpp']]]
+  ['parsemessage_0',['parseMessage',['../de/d53/charger_2src_2main_8cpp.html#ab222e5d38b8d0cefaa19ec6d5aa18658',1,'main.cpp']]],
+  ['poweronmodule_1',['powerOnModule',['../de/d53/charger_2src_2main_8cpp.html#a5896a755ee25def1657ebbb88a9e6500',1,'main.cpp']]],
+  ['printstates_2',['printStates',['../de/d53/charger_2src_2main_8cpp.html#a0943e7d593cc4be6c04b1d7c7bde59eb',1,'main.cpp']]],
+  ['printtemp_3',['printTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#adad6a69ed4d09d97bffdcbf1b11014aa',1,'main.cpp']]]
 ];

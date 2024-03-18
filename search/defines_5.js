@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['error_0',['ERROR',['../db/d16/debug_8h.html#a02ce8a968600d004ba60858425c46307',1,'debug.h']]],
-  ['error_5ftime_1',['ERROR_TIME',['../d1/d91/temp-acq_2src_2main_8cpp.html#a7fd4464b12b773673dfb019cdfdaffb6',1,'main.cpp']]]
+  ['n_5fadc_5fchannels_0',['N_ADC_CHANNELS',['../d1/d91/temp-acq_2src_2main_8cpp.html#aa63b81a7669146464a606e90ce8aafe8',1,'main.cpp']]],
+  ['n_5fadcs_1',['N_ADCs',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab52d92e5c36eefdf42f18b9b4bff6379',1,'main.cpp']]]
 ];
