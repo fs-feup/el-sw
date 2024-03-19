@@ -1,6 +1,7 @@
 #pragma once
 
-struct Code {
+struct Code
+{
     int key;
     int code;
 };
@@ -15,7 +16,8 @@ enum State
     AS_EMERGENCY
 };
 
-enum Mission {
+enum Mission
+{
     MANUAL,
     ACCELERATION,
     SKIDPAD,
