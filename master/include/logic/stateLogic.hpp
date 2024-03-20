@@ -7,13 +7,13 @@
 class ASState
 {
 private:
-    CheckupManager *_checkupManager;
+    CheckupManager _checkupManager;
+    // DigitalSender _digitalSender;
 
 public:
     State state{AS_MANUAL};
-    Mission mission{MANUAL};
 
-    ASState(CheckupManager *checkupManager) : _checkupManager(checkupManager) {};
+    ASState(CheckupManager checkupManager) : _checkupManager(checkupManager){};
     void calculateState();
 };
 
@@ -22,9 +22,8 @@ void ASState::calculateState()
     switch (state)
     {
     case AS_MANUAL:
-        if (_checkupManager->manualDrivingCheckup())
+        if (_checkupManager.manualDrivingCheckup())
             break;
-        
 
         // TODO: EBS from disabled to inactive
         // TODO: Open SDC circuit
@@ -32,14 +31,14 @@ void ASState::calculateState()
         break;
 
     case AS_OFF:
-        if (_checkupManager->offCheckup())
+        if (_checkupManager.offCheckup())
             break;
 
         state = AS_READY;
         break;
 
     case AS_READY:
-        if (_checkupManager->emergencyCheckup())
+        if (_checkupManager.emergencyCheckup())
         {
             // Emergency, go to emergency state
             /* TODO:
@@ -51,7 +50,7 @@ void ASState::calculateState()
             state = AS_EMERGENCY;
             break;
         }
-        if (_checkupManager->r2dCheckup())
+        if (_checkupManager.r2dCheckup())
         {
             // Not ready, do nothing
             break;
@@ -64,25 +63,25 @@ void ASState::calculateState()
         state = AS_DRIVING;
         break;
     case AS_DRIVING:
-        if (_checkupManager->emergencyCheckup())
+        if (_checkupManager.emergencyCheckup())
         {
             // Emergency, go to emergency state
             state = AS_EMERGENCY;
             break;
         }
-        if (_checkupManager->missionFinishedCheckup())
+        if (_checkupManager.missionFinishedCheckup())
         {
             break;
         }
         break;
     case AS_FINISHED:
-        if (_checkupManager->resTriggered())
+        if (_checkupManager.resTriggered())
         {
             // TODO: perform necessary actions to enter AS_EMERGENCY
             state = AS_EMERGENCY;
             break;
         }
-        if (_checkupManager->offCheckup())
+        if (_checkupManager.offCheckup())
         {
             break;
         }
@@ -90,7 +89,7 @@ void ASState::calculateState()
         state = AS_OFF;
         break;
     case AS_EMERGENCY:
-        if (_checkupManager->emergencySequenceComplete())
+        if (_checkupManager.emergencySequenceComplete())
         {
             break;
         }

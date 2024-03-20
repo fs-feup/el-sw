@@ -10,7 +10,6 @@ struct InternalLogics
     bool goSignal{false};
 
     InternalLogics() = default;
-    InternalLogics() = default;
 
     void enterReadyState()
     {
@@ -43,7 +42,8 @@ struct InternalLogics
 
 struct FailureDetection
 {
-    Timestamp pcAliveTimestamp, steerAliveTimestamp, inversorAliveTimestamp, bmsAliveTimestamp;
+    Timestamp pcAliveTimestamp, steerAliveTimestamp, inversorAliveTimestamp,
+        bmsAliveTimestamp;
     bool emergencySignal{false};
     double bamocarTension{0.0}; // Add default member initializer
     bool bamocarReady{true};

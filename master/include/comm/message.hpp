@@ -12,14 +12,14 @@
 
 // PC
 #define AS_CU_EMERGENCY_SIGNAL 0x43 // TODO(andre): change or confirm code
-#define MISSION_FINISHED 0x42 // TODO(andre): change or confirm code
-#define PC_ALIVE 0x41 // TODO(andre): change or confirm code
+#define MISSION_FINISHED 0x42       // TODO(andre): change or confirm code
+#define PC_ALIVE 0x41               // TODO(andre): change or confirm code
 
 // Sensors
-#define RIGHT_WHEEL 0x11 // TODO(andre): change or confirm code
+#define RIGHT_WHEEL 0x11    // TODO(andre): change or confirm code
 #define HYDRAULIC_LINE 0x12 // TODO(andre): change or confirm code
 
-#define WHEEL_PRECISION 1e-2 // TODO(andre): change or confirm value
+#define WHEEL_PRECISION 1e-2          // TODO(andre): change or confirm value
 #define HYDRAULIC_LINE_PRECISION 1e-1 // TODO(andre): change or confirm value
 
 // Logging Status
@@ -39,4 +39,3 @@
 // Bamocar
 #define BTB_READY 0xE2
 #define VDC_BUS 0xEB
-
