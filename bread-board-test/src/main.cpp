@@ -33,47 +33,64 @@ void setup() {
   Serial.begin(9600);
 }
 
+void reset() {
+  Serial.println("Reseting");
+  digitalWrite(GREEN_LED_1, LOW);
+  digitalWrite(GREEN_LED_2, LOW);
+  digitalWrite(GREEN_LED_3, LOW);
+  digitalWrite(RED_LED_1, LOW);
+  digitalWrite(RED_LED_2, LOW);
+  digitalWrite(YELLOW_LED_1, LOW);
+  digitalWrite(YELLOW_LED_2, LOW);
+}
+
 void loop() {
 
-  if(digitalRead(BUTTON_1) == HIGH){
+  if(digitalRead(BUTTON_1) == LOW){
     Serial.println("Botão 1 pressionado");
-    digitalWrite(GREEN_LED_1, HIGH);
-  }
-  if(digitalRead(BUTTON_2) == HIGH){
-    Serial.println("Botão 2 pressionado");
-    digitalWrite(GREEN_LED_2, HIGH);
-  }
-  if(digitalRead(BUTTON_3) == HIGH){
-    Serial.println("Botão 3 pressionado");
-    digitalWrite(GREEN_LED_3, HIGH);
-  }
-  if(digitalRead(BUTTON_4) == HIGH){
-    Serial.println("Botão 4 pressionado");
     digitalWrite(RED_LED_1, HIGH);
+    delay(10);
+    reset();
   }
-  if(digitalRead(BUTTON_5) == HIGH){
-    Serial.println("Botão 5 pressionado");
+  if(digitalRead(BUTTON_2) == LOW){
+    Serial.println("Botão 2 pressionado");
     digitalWrite(RED_LED_2, HIGH);
+    delay(10);
+    reset();
   }
-  if(digitalRead(BUTTON_6) == HIGH){
-    Serial.println("Botão 6 pressionado");
+  if(digitalRead(BUTTON_3) == LOW){
+    Serial.println("Botão 3 pressionado");
     digitalWrite(YELLOW_LED_1, HIGH);
+    delay(10);
+    reset();
+  }
+  if(digitalRead(BUTTON_4) == LOW){
+    Serial.println("Botão 4 pressionado");
+    digitalWrite(YELLOW_LED_2, HIGH);
+    delay(10);
+    reset();
+  }
+  if(digitalRead(BUTTON_5) == LOW){
+    Serial.println("Botão 5 pressionado");
+    digitalWrite(GREEN_LED_1, HIGH);
+    delay(10);
+    reset();
+  }
+  if(digitalRead(BUTTON_6) == LOW){
+    Serial.println("Botão 6 pressionado");
+    digitalWrite(GREEN_LED_2, HIGH);
+    delay(10);
+    reset();
   }
 
   int potencio = analogRead(POTENCIO);
+  Serial.print("Potenciometro: ");
   Serial.println(potencio);
 
-
+  // Turn last green led on if potencio is greater than 512
   if (potencio > 512) {
-    digitalWrite(YELLOW_LED_2, HIGH);
+    digitalWrite(GREEN_LED_3, HIGH);
   } else {
-    digitalWrite(YELLOW_LED_2, LOW);
+    digitalWrite(GREEN_LED_3, LOW);
   }
-
-  delay(1000);
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }

@@ -3,6 +3,8 @@
 THIS IS UNUSED FOR NOW.
 ## Links
 - [Socket CAN library](https://en.wikipedia.org/wiki/SocketCAN)
+- [CAN Tutorials](https://www.youtube.com/watch?v=9db-q5ffYpU)
+- [VCAN Network Tutoial](https://www.youtube.com/watch?v=iUgaoTJiO70)
 
 ## Set up Virtual CAN Network
 
