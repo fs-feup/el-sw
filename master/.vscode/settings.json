@@ -6,5 +6,8 @@
         "readability-implicit-bool-conversion",
         "modernize-use-bool-literals",
         "readability-braces-around-statements"
-    ]
+    ],
+    "files.associations": {
+        "*.tpp": "cpp"
+    }
 }

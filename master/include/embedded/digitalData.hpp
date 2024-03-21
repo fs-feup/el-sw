@@ -4,8 +4,7 @@
 #include "logic/timestamp.hpp"
 #include "logic/structure.hpp"
 
-struct DigitalData
-{
+struct DigitalData {
     // Rear Left Wheel Speed Encoder
     double _left_wheel_rpm = 0;
     bool last_lwss_state = 0;
