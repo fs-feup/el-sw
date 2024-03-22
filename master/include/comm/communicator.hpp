@@ -17,7 +17,8 @@ Code fifoCodes[] = {
     {4, MISSION_FINISHED},
     {5, PC_ALIVE},
     {6, STEERING_ID},
-    {7, RES}
+    {7, RES_STATE},
+    {8, RES_READY}
 };
 
 /**
@@ -26,7 +27,7 @@ Code fifoCodes[] = {
  * where the communicator is the strategy
 */
 class Communicator {
-    FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+    static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
     public:
     static CheckupManager* checkupManager;
@@ -35,20 +36,22 @@ class Communicator {
     Communicator(CheckupManager* checkupManager, Sensors* sensors);
 
     static void parse_message(const CAN_message_t& msg);
-    int send_message(unsigned len, const unsigned char* buffer, unsigned id);
-
-    int publish_state(int state_id);
-    int publish_mission(int mission_id);
-    int publish_left_wheel_rpm(double value);
+    static int send_message(unsigned len, const unsigned char* buffer, unsigned id);
 
     static void emergencySignalCallback();
     static void missionFinishedCallback();
     static void pcAliveCallback();
     static void pcCallback(const uint8_t *buf);
     static void c1Callback(const uint8_t *buf);
-    static void resCallback(const uint8_t *buf);
+    static void resStateCallback(const uint8_t *buf);
+    static void resReadyCallback();
     static void bamocarCallback(const uint8_t *buf);
     static void steeringCallback();
+
+    int publish_state(int state_id);
+    int publish_mission(int mission_id);
+    int publish_left_wheel_rpm(double value);
+    static int activateRes();
 };
 
 Communicator::Communicator(CheckupManager* checkupManager, Sensors* sensors) {
@@ -90,7 +93,7 @@ void Communicator::c1Callback(const uint8_t *buf) {
     }
 }
 
-void Communicator::resCallback(const uint8_t *buf) {
+void Communicator::resStateCallback(const uint8_t *buf) {
     bool emg_stop1 = buf[0] & 0x01;
     bool emg_stop2 = buf[3] >> 7 & 0x01;
     bool go_switch = (buf[0] >> 1) & 0x01;
@@ -100,6 +103,15 @@ void Communicator::resCallback(const uint8_t *buf) {
         checkupManager->_internalLogics.processGoSignal();
     else if (emg_stop1 || emg_stop2)
         checkupManager->_failureDetection.emergencySignal = true;
+
+    checkupManager->_failureDetection.radio_quality =  buf[6];
+    bool signal_loss = (buf[7] >> 6) & 0x01;
+    Communicator::emergencySignalCallback();
+}
+
+void Communicator::resReadyCallback() {
+    // If res sends boot message, activate it
+    Communicator::activateRes();
 }
 
 void Communicator::bamocarCallback(const uint8_t *buf) {
@@ -131,9 +143,11 @@ void Communicator::parse_message(const CAN_message_t& msg) {
     switch(msg.id) {
         case PC_ID:
             Communicator::pcCallback(msg.buf);
-        case RES:
-            Communicator::resCallback(msg.buf);
+        case RES_STATE:
+            Communicator::resStateCallback(msg.buf);
             break;
+        case RES_READY:
+            Communicator::resReadyCallback();
         case C1_ID:
             Communicator::c1Callback(msg.buf); // rwheel and hydraulic line
             break;
@@ -169,6 +183,14 @@ int Communicator::publish_left_wheel_rpm(double value) {
     uint8_t *msg = reinterpret_cast<uint8_t*>(&value);
 
     this->send_message(2, msg, id);
+}
+
+int Communicator::activateRes() {
+    unsigned id = RES_ACTIVATE;
+    uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
+
+    Communicator::send_message(2, msg, id);
+    return 0;
 }
 
 int Communicator::send_message(unsigned len, const unsigned char* buffer, unsigned id) {

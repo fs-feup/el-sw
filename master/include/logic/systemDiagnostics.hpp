@@ -45,6 +45,7 @@ struct FailureDetection
     bool emergencySignal = false;
     bool bamocarReady = true;
     double bamocarTension = 0;
+    double radio_quality = 0;
 
     FailureDetection() = default;
 

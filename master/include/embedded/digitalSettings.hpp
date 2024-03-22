@@ -22,6 +22,8 @@
 #define ASMS_SWITCH_PIN A11
 #define AATS_SWITCH_PIN A12
 
+#define PNEUMATIC_PIN A13 // TODO(andre): change to real
+
 // Watchdog TODO(andre): change to real
 #define WD_OUT A13 // d1 not working
 #define WD_IN A14

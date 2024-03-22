@@ -29,7 +29,9 @@
 
 // RES
 #define NODE_ID 0x011 // Competition Defined
-#define RES (0x180 + NODE_ID)
+#define RES_STATE (0x180 + NODE_ID)
+#define RES_READY (0x700 + NODE_ID)
+#define RES_ACTIVATE 0x000
 
 // Master State
 #define STATE_MSG 0x31
@@ -39,4 +41,3 @@
 // Bamocar
 #define BTB_READY 0xE2
 #define VDC_BUS 0xEB
-

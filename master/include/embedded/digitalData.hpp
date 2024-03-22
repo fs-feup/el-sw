@@ -17,7 +17,7 @@ struct DigitalData {
     Timestamp wd_pulse_ts;
 
     // Other reads
-    double pneumatic_line_pressure = 0;
+    bool pneumatic_line_pressure = true;
     bool asms_on = false;
     bool aats_on = false;
 
@@ -37,6 +37,9 @@ struct DigitalData {
 };
 
 DigitalData::DigitalData(Mission *mission) : mission(mission) {
+    pinMode(ASMS_SWITCH_PIN, INPUT);
+    pinMode(AATS_SWITCH_PIN, INPUT);
+    pinMode(PNEUMATIC_PIN, INPUT);
     pinMode(LWSS_PIN, INPUT);
     pinMode(WD_IN, INPUT);
     pinMode(WD_OUT, OUTPUT);
@@ -71,7 +74,10 @@ void DigitalData::readLwss() {
 }
 
 void DigitalData::readPneumaticLine() {
+    pneumatic_line_pressure = digitalRead(PNEUMATIC_PIN);
+
     // TODO(andre): wait for eletro indications
+    // high okay, low shutdown
 }
 
 void DigitalData::readMission() {
@@ -110,4 +116,5 @@ void DigitalData::askReadWatchdog() {
     if (digitalRead(WD_IN) == LOW) // if low, failure checks will open sdc
         watchdog_state = false;
         
+    // TODO(andre): 
 }
