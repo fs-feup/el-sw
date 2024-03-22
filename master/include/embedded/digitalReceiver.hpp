@@ -1,6 +1,9 @@
+#include <Bounce2.h>
 #include <embedded/digitalData.hpp>
 #include <logic/structure.hpp>
 
+#define DEBOUNCE_INTERVAL 5
+#define PRESSED_STATE LOW
 
 class DigitalReceiver {
 public:
@@ -11,11 +14,18 @@ public:
     pinMode(LWSS_PIN, INPUT);
     pinMode(WD_IN, INPUT);
     pinMode(WD_OUT, OUTPUT);
+
+    asms_switch = newButton(ASMS_SWITCH_PIN);
+    aats_switch = newButton(AATS_SWITCH_PIN);
   }
 
 private:
   DigitalData *digitalData;
   Mission *mission;
+
+  Button asms_switch, aats_switch;
+
+  Button newButton(uint8_t pin);
 
   void readLwss();
   void readPneumaticLine();
@@ -34,6 +44,15 @@ void DigitalReceiver::updateLeftWheelRpm() {
 
   digitalData->pulse_count = 0;
   digitalData->left_wheel_update_ts.update();
+}
+
+Button DigitalReceiver::newButton(uint8_t pin) {
+  Button button = Button();
+  button.attach(pin, INPUT_PULLUP);
+  button.interval(DEBOUNCE_INTERVAL);
+  button.setPressedState(PRESSED_STATE);
+
+  return button;
 }
 
 void DigitalReceiver::digitalReads() {
@@ -75,11 +94,19 @@ void DigitalReceiver::readMission() {
 }
 
 void DigitalReceiver::readAsmsSwitch() {
-  digitalData->asms_on = digitalRead(ASMS_SWITCH_PIN);
+  asms_switch.update();
+  if (asms_switch.pressed())
+    digitalData->asms_on = true;
+  else
+    digitalData->asms_on = false;
 }
 
 void DigitalReceiver::readAatsSwitch() {
-  digitalData->aats_on = digitalRead(AATS_SWITCH_PIN);
+  aats_switch.update();
+  if (aats_switch.pressed())
+    digitalData->aats_on = true;
+  else
+    digitalData->aats_on = false;
 }
 
 void DigitalReceiver::askReadWatchdog() {
