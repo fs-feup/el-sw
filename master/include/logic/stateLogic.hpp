@@ -14,29 +14,35 @@ private:
 public:
     State state{AS_MANUAL};
 
-    explicit ASState(CheckupManager checkupManager) : _checkupManager(std::move(checkupManager)) {};
+    explicit ASState(CheckupManager checkupManager) : _checkupManager(std::move(checkupManager)) {
+    };
 
     void calculateState();
-
-    ASState();
 };
 
-void ASState::calculateState() {
+inline void ASState::calculateState() {
     switch (state) {
         case AS_MANUAL:
-            if (_checkupManager.manualDrivingCheckup())
+            if (!_checkupManager.manualDrivingCheckup())
                 break;
 
-            // TODO: EBS from disabled to inactive
-            // TODO: Open SDC circuit
+        // TODO: EBS from disabled to inactive
+        // TODO: Open SDC circuit
 
             state = AS_OFF;
             break;
 
         case AS_OFF:
+            // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
+            if (_checkupManager.manualDrivingCheckup()) {
+                //TODO: OFF -> MANUAL Operations
+                state = AS_MANUAL;
+                break;
+            }
             if (_checkupManager.offCheckup())
                 break;
 
+            // TODO: OFF -> READY Operations
             state = AS_READY;
             break;
 
@@ -56,11 +62,11 @@ void ASState::calculateState() {
                 // Not ready, do nothing
                 break;
             }
-            /* TODO:
-            Ready to drive, go to driving state
-            ASSI to yellow flashing
-            EBS to inactive
-            */
+        /* TODO:
+        Ready to drive, go to driving state
+        ASSI to yellow flashing
+        EBS to inactive
+        */
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
@@ -79,17 +85,17 @@ void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.offCheckup()) {
+            if (_checkupManager.missionFinishedCheckup()) {
                 break;
             }
-            // TODO: perform necessary actions to enter AS_OFF
+        // TODO: perform necessary actions to enter AS_OFF
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
             if (_checkupManager.emergencySequenceComplete()) {
                 break;
             }
-            // TODO: perform necessary actions to enter AS_OFF
+        // TODO: perform necessary actions to enter AS_OFF
             state = AS_OFF;
             break;
         default:

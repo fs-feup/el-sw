@@ -8,14 +8,16 @@
 #include <FlexCAN_T4.h>
 #include <string>
 
-inline Code fifoCodes[] = {{0, C1_ID},
-                    {1, BMS_ID},
-                    {2, BAMO_RESPONSE_ID},
-                    {3, AS_CU_EMERGENCY_SIGNAL},
-                    {4, MISSION_FINISHED},
-                    {5, PC_ALIVE},
-                    {6, STEERING_ID},
-                    {7, RES}};
+inline Code fifoCodes[] = {
+    {0, C1_ID},
+    {1, BMS_ID},
+    {2, BAMO_RESPONSE_ID},
+    {3, AS_CU_EMERGENCY_SIGNAL},
+    {4, MISSION_FINISHED},
+    {5, PC_ALIVE},
+    {6, STEERING_ID},
+    {7, RES}
+};
 
 /**
  * @brief Class that contains definitions of typical messages to send via CAN
@@ -27,7 +29,7 @@ private:
     FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 public:
-    static SystemData *_systemData;
+    inline static SystemData *_systemData = nullptr;
 
     Communicator();
 
@@ -64,25 +66,25 @@ Communicator::Communicator() {
     can1.enableFIFO();
     can1.enableFIFOInterrupt();
     can1.setFIFOFilter(REJECT_ALL);
-    for (auto & fifoCode : fifoCodes)
+    for (auto &fifoCode: fifoCodes)
         can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
     can1.onReceive(parse_message);
 }
 
-void Communicator::emergencySignalCallback() {
+inline void Communicator::emergencySignalCallback() {
     _systemData->failureDetection.emergencySignal = true;
 }
 
-void Communicator::missionFinishedCallback() {
+inline void Communicator::missionFinishedCallback() {
     _systemData->missionFinished = true;
 }
 
-void Communicator::pcAliveCallback() {
+inline void Communicator::pcAliveCallback() {
     _systemData->failureDetection.pcAliveTimestamp.update();
 }
 
-void Communicator::c1Callback(const uint8_t *buf) {
+inline void Communicator::c1Callback(const uint8_t *buf) {
     if (buf[0] == HYDRAULIC_LINE) {
         double break_pressure = (buf[2] << 8) | buf[1];
         break_pressure *=
@@ -95,7 +97,7 @@ void Communicator::c1Callback(const uint8_t *buf) {
     }
 }
 
-void Communicator::resCallback(const uint8_t *buf) {
+inline void Communicator::resCallback(const uint8_t *buf) {
     bool emg_stop1 = buf[0] & 0x01;
     bool emg_stop2 = buf[3] >> 7 & 0x01;
     bool go_switch = (buf[0] >> 1) & 0x01;
@@ -107,7 +109,7 @@ void Communicator::resCallback(const uint8_t *buf) {
         _systemData->failureDetection.emergencySignal = true;
 }
 
-void Communicator::bamocarCallback(const uint8_t *buf) {
+inline void Communicator::bamocarCallback(const uint8_t *buf) {
     // TODO(andré): inversor timestamp
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
@@ -118,7 +120,7 @@ void Communicator::bamocarCallback(const uint8_t *buf) {
     }
 }
 
-void Communicator::pcCallback(const uint8_t *buf) {
+inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
         _systemData->failureDetection.pcAliveTimestamp.update();
     } else if (buf[0] == MISSION_FINISHED) {
@@ -128,11 +130,11 @@ void Communicator::pcCallback(const uint8_t *buf) {
     }
 }
 
-void Communicator::steeringCallback() {
+inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.update();
 }
 
-void Communicator::parse_message(const CAN_message_t &msg) {
+inline void Communicator::parse_message(const CAN_message_t &msg) {
     switch (msg.id) {
         case PC_ID:
             Communicator::pcCallback(msg.buf);
@@ -153,40 +155,34 @@ void Communicator::parse_message(const CAN_message_t &msg) {
     }
 }
 
-int Communicator::publish_state(const int state_id) {
-    const unsigned id = STATE_MSG;
-    uint8_t msg[] = {static_cast<unsigned char>(state_id)};
+inline int Communicator::publish_state(const int state_id) {
+    const uint8_t msg[] = {static_cast<unsigned char>(state_id)};
 
-    this->send_message(1, msg, id);
-
-    return 0;
-}
-
-int Communicator::publish_mission(int mission_id) {
-    unsigned id = MISSION_MSG;
-    uint8_t msg[] = {static_cast<unsigned char>(mission_id)};
-
-    this->send_message(1, msg, id);
+    this->send_message(1, msg, STATE_MSG);
 
     return 0;
 }
 
+inline int Communicator::publish_mission(int mission_id) {
+    const uint8_t msg[] = {static_cast<unsigned char>(mission_id)};
+
+    this->send_message(1, msg, MISSION_MSG);
+
+    return 0;
+}
 
 
-int Communicator::publish_left_wheel_rpm(double value) {
-    unsigned id = LEFT_WHEEL_MSG;
-
+inline int Communicator::publish_left_wheel_rpm(double value) {
     value /= WHEEL_PRECISION; // take precision off to send interger value
-    auto msg = reinterpret_cast<uint8_t *>(&value);
+    const auto msg = reinterpret_cast<uint8_t *>(&value);
 
-    this->send_message(2, msg, id);
+    this->send_message(2, msg, LEFT_WHEEL_MSG);
 
     return 0;
 }
 
-int Communicator::send_message(const unsigned len, const unsigned char *buffer,
-                               const unsigned id) {
-
+inline int Communicator::send_message(const unsigned len, const unsigned char *buffer,
+                                      const unsigned id) {
     CAN_message_t can_message;
     can_message.id = id;
     can_message.len = len;

@@ -19,10 +19,10 @@ public:
     /**
      * @brief Checks if the timestamp has timed out.
      *
-     * @param timeout The timeout in milliseconds.
+     * @param millisTimeout The timeout in milliseconds.
      * @return true if the timestamp has timed out, false otherwise.
      */
-    [[nodiscard]] bool hasTimedOut(unsigned long timeout) const {
-        return _timeElapsed > timeout;
+    [[nodiscard]] bool hasTimedOut(const unsigned long millisTimeout) const {
+        return _timeElapsed > millisTimeout;
     }
 };

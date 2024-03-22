@@ -26,11 +26,11 @@ struct InternalLogics {
         // If goSignal is not received or received before 5 seconds, return false
         if (goSignal && readyTimestamp.hasTimedOut(READY_TIMEOUT_MS)) {
             goSignal = true;
-            return 0;
+            return EXIT_SUCCESS;
         }
         // If goSignal is received after the timeout duration, return true
         goSignal = false;
-        return 1;
+        return EXIT_FAILURE;
     }
 };
 

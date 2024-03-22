@@ -5,17 +5,17 @@
 #include <logic/checkupManager.hpp>
 
 SystemData systemData;
-SystemData *Communicator::_systemData = &systemData;
 Communicator communicator;
 auto digitalData = DigitalReceiver(&systemData.digitalData, &systemData.mission);
 auto as_state = ASState(CheckupManager(&systemData));
 
 void setup() {
+    Communicator::_systemData = &systemData;
 }
 
 void loop() {
     digitalData.digitalReads();
-
+    as_state.calculateState();
     communicator.publish_state(as_state.state); // TODO(andre): fill with state
     // commManager->communicator->publish_mission(); // TODO(andre): fill with
     // mission
