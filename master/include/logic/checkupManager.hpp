@@ -1,6 +1,6 @@
 #pragma once
 
-#include <logic/systemDiagnostics.hpp>
+#include <logic/systemData.hpp>
 
 // Also known as Orchestrator
 /**
@@ -8,90 +8,90 @@
  */
 class CheckupManager {
 private:
-    Timestamp _ebsSoundTimestamp;
-    bool _emergency, _SDCState, _ASMSState;
+  SystemData *_systemData;
+  Timestamp _ebsSoundTimestamp;
 
 public:
-    InternalLogics _internalLogics;
-    FailureDetection _failureDetection;
+  CheckupManager(SystemData *systemData) : _systemData(systemData){};
 
-    bool _ready2Drive, _missionFinished;
+  /**
+   * @brief Performs a manual driving checkup.
+   * @return 0 if success, else 1.
+   */
+  bool manualDrivingCheckup();
 
-    CheckupManager() = default;
+  /**
+   * @brief Performs an off checkup.
+   * @return 0 if success, else 1.
+   */
+  bool offCheckup();
 
-    /**
-     * @brief Performs a manual driving checkup.
-     * @return 0 if success, else 1.
-     */
-    bool manualDrivingCheckup();
+  /**
+   * @brief Performs an initial checkup.
+   * @return 0 if success, else 1.
+   */
+  bool initialCheckup();
 
-    /**
-     * @brief Performs an off checkup.
-     * @return 0 if success, else 1.
-     */
-    bool offCheckup();
+  /**
+   * @brief Performs a ready to drive checkup.
+   * @return 0 if success, else 1.
+   */
+  bool r2dCheckup();
 
-    /**
-     * @brief Performs an initial checkup.
-     * @return 0 if success, else 1.
-     */
-    bool initialCheckup();
+  /**
+   * @brief Performs an emergency checkup.
+   * @return 0 if success, else 1.
+   */
+  bool emergencyCheckup();
 
-    /**
-     * @brief Performs a ready to drive checkup.
-     * @return 0 if success, else 1.
-     */
-    bool r2dCheckup();
+  /**
+   * @brief Performs a mission finished checkup.
+   * @return 0 if success, else 1.
+   */
+  bool missionFinishedCheckup();
 
-    /**
-     * @brief Performs an emergency checkup.
-     * @return 0 if success, else 1.
-     */
-    bool emergencyCheckup();
+  /**
+   * @brief Checks if the emergency sequence is complete and the vehicle can
+   * transition to AS_OFF.
+   * @return 0 if success, else 1.
+   */
+  bool emergencySequenceComplete();
 
-    /**
-     * @brief Performs a mission finished checkup.
-     * @return 0 if success, else 1.
-     */
-    bool missionFinishedCheckup();
-
-    /**
-     * @brief Checks if the emergency sequence is complete and the vehicle can transition to AS_OFF.
-     * @return 0 if success, else 1.
-     */
-    bool emergencySequenceComplete();
-
-    
-    /**
-     * @brief Checks if the RES has been triggered.
-     * 
-     * This function checks whether the RES has been triggered or not.
-     * 
-     * @return 1 if the RES has been triggered, 0 otherwise.
-     */
-    bool resTriggered();
+  /**
+   * @brief Checks if the RES has been triggered.
+   *
+   * This function checks whether the RES has been triggered or not.
+   *
+   * @return 1 if the RES has been triggered, 0 otherwise.
+   */
+  bool resTriggered();
 };
 
 bool CheckupManager::manualDrivingCheckup() {
-    // if (_failureDetection.) {
-    //     return false;
-    // }
+  if (/*TS OFF | DRIVERLESS MISSION SELECTED | EBS MANUAL ENABLE | EBS IS DEACTIVATED*/)
+    {
+    return false;
+  }
 }
 
 bool CheckupManager::r2dCheckup() {
-    if (!_internalLogics.goSignal) {
-        return 1;
-    }
-    return 0;
+  if (!_systemData->internalLogics.goSignal) {
+    return 1;
+  }
+  return 0;
 }
 
 bool CheckupManager::emergencySequenceComplete() {
-    // TODO: If the emergency sequence is complete (buzzer done & ASMS OFF), return 0, else 1
+
+  // TODO: If the emergency sequence is complete (buzzer done & ASMS OFF),
+  // return 0, else 1
+  if (/* BUZZER.hastimeout(8-9s) | ASMS_STATE == OFF*/)
     return 0;
 }
 
 bool CheckupManager::resTriggered() {
-    //TODO
+  // TODO
 }
 
- // TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure-> bamocar-ready false emergency 
+// TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure->
+// bamocar-ready false emergency

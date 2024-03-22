@@ -1,0 +1,10 @@
+{
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "modernize-use-trailing-return-type",
+        "misc-non-private-member-variables-in-classes",
+        "readability-identifier-length",
+        "readability-implicit-bool-conversion",
+        "modernize-use-bool-literals",
+        "readability-braces-around-statements"
+    ]
+}

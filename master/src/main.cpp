@@ -1,35 +1,23 @@
-#pragma once
-
-#include <Arduino.h>
+#include "logic/systemData.hpp"
+#include <comm/communicator.hpp>
+#include <embedded/digitalReceiver.hpp>
 #include "logic/checkupManager.hpp"
-#include "comm/communicator.hpp"
-#include "embedded/digitalData.hpp"
-#include "logic/stateLogic.hpp"
+#include <logic/stateLogic.hpp>
 
-DigitalData digitalData;
-CheckupManager checkupManager;
-Sensors sensors;
+
+SystemData systemData;
 Communicator communicator;
-CheckupManager* Communicator::checkupManager = nullptr;
-Sensors* Communicator::sensors = nullptr;
-ASState as_state;
+DigitalReceiver digitalData = DigitalReceiver(&systemData.digitalData, &systemData.mission);
+ASState as_state = ASState(CheckupManager(&systemData));
 
 void setup() {
-  checkupManager = CheckupManager();
-  sensors =  Sensors();
-  communicator = Communicator(&checkupManager, &sensors);
-
-  as_state = ASState(&checkupManager);
-
-  digitalData = DigitalData(&as_state.mission);
-  
+    Communicator::_systemData = &systemData;
 }
 
 void loop() {
   digitalData.digitalReads();
 
-  communicator.publish_state(as_state.state); // TODO(andre): fill with state
-  // commManager->communicator->publish_mission(); // TODO(andre): fill with mission
-  communicator.publish_left_wheel_rpm(as_state.mission);
+  communicator.publish_state(as_state.state);
+  communicator.publish_mission(systemData.mission);
+  communicator.publish_left_wheel_rpm(systemData.mission);
 }
-
