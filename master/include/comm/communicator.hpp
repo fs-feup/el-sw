@@ -1,7 +1,6 @@
 #pragma once
 
 #include "comm/message.hpp"
-#include "logic/checkupManager.hpp"
 #include "logic/systemData.hpp"
 #include <Arduino.h>
 #include <FlexCAN_T4.h>
@@ -26,7 +25,7 @@ inline Code fifoCodes[] = {
  */
 class Communicator {
 private:
-    FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+    static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 public:
     inline static SystemData *_systemData = nullptr;
@@ -101,7 +100,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
         _systemData->failureDetection.emergencySignal = true;
 
     _systemData->failureDetection.radio_quality =  buf[6];
-    bool signal_loss = (buf[7] >> 6) & 0x01;
+    //bool signal_loss = (buf[7] >> 6) & 0x01;
     Communicator::emergencySignalCallback();
 }
 

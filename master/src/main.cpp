@@ -8,6 +8,7 @@ SystemData systemData;
 Communicator communicator;
 auto digitalData = DigitalReceiver(&systemData.digitalData, &systemData.mission);
 auto as_state = ASState(CheckupManager(&systemData));
+FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> Communicator::can1;
 
 void setup() {
     Communicator::_systemData = &systemData;

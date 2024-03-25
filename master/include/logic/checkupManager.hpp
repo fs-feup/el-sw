@@ -113,6 +113,7 @@ inline bool CheckupManager::r2dCheckup() const {
 
 inline bool CheckupManager::emergencyCheckup() const {
     //TODO Continuous monitoring sequence
+    return EXIT_SUCCESS;
 }
 
 inline bool CheckupManager::missionFinishedCheckup() const {
