@@ -1,0 +1,31 @@
+| Publisher | Id | length | buf[0]| buf[1]| buf[2]| buf[3] | buf[4] | buf[5] | buf[6] | buf[7] | Comments |
+|:-------------|:------|---------:|:------------|:------------------|:------------------|:-----------|---------:|---------:|---------:|---------:|:---------------------------------------------------------------------------------------------------|
+| Teensy C3 | 0x111 | 4 | APPS1 LSB | APPS1 MSB | APPS2 LSB | APPS 2 MSB | | | | |More information [here](https://docs.google.com/document/d/1OHhF_4qy_adlV3IM-yzU2rS6dTElfm43VSPI2wBDXpY/edit?usp=sharing) | 
+| Teensy C3 | 0x201 | 3 | 0x90 | Torque LSB | Torque MSB | | | | | | Torque Request to Bamocar |
+| Bamocar | 0x181 | 4 | 0xE8 | 0x01 | 0x00 | 0x00 | | | | | receive enable Response form Bamocar |
+| Teensy C3 | 0x201 | 3 | 0x8E | 0x44 | 0x4D | | | | | | clear Bamocar errors (this is not a bypass of the errors if the error persist it won't be cleared) |
+| Teensy C3 | 0x201 | 3 | 0x51 | 0x00 | 0x00 | | | | | | This is part of the setup sequence of the bamocar ([see Ndrive manual](https://drive.google.com/drive/folders/1bdFkmG5v9gZULkJfAdY3rqtZdVJwwXQX))|
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xE2 | 0x00 | | | | | | Transmission request REGID 0xE2, 0x00 -> only one transmission, [all REGID Information](https://drive.google.com/file/d/1UVcGhsBRz_DpuVszRFBb6By628RkIuaZ/view) |
+| Bamocar| 0x181 | 4 | 0xE2 | 0x01 | 0x00 | 0x00 | | | | | BTB Response, if we receive this message means that bamocar is ready for operation |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xE8 | 0x00 | | | | | | Transmission Request REGID 0xE8, "Enable", this is also part of the setup sequence of the bamocar |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0x40 | 0x00 | | | | | | Transmission Request REGID 0x40, "Status |
+| Teensy C3 | 0x201 | 3 | 0x51 | 0x04 | 0x00 | | | | | | This is part of the Shutdown sequence of the bamocar ([see Ndrive manual](https://drive.google.com/drive/folders/1bdFkmG5v9gZULkJfAdY3rqtZdVJwwXQX)) |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xEB | 0x64 | | | | | | Transmission Request DC Voltage, 100ms cycle |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xCE | 0x64 | | | | | | Transmission Request RPM, 10ms cycle |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0x30 | 0x64 | | | | | | Transmission Request Speed , 10ms cycle|
+| Teensy C3 | 0x201 | 3 | 0x3D | 0x5F | 0x64 | | | | | | Transmission Request Current , 10ms cycle |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0x49 | 0x64 | | | | | | Transmission Request Motor Temperature, 10ms cycle|
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xA0 | 0x64 | | | | | | Transmission Request Torque Motor , 10ms cycle |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0X8A | 0x64 | | | | | | Transmission Request Voltage Motor, 10ms cycle |
+| Teensy C3 | 0x201 | 3 | 0x3D | 0xEB | 0x64 | | | | | | Transmission Request DC Voltage , 10ms cycle |
+| Bamocar| 0x181 | 4 | 0x30 | Speed LSB | Speed MSB | --- | | | | | Receive Speed from bamocar, speed = (msg.buf[2] << 8) | msg.buf[1]; |
+| Bamocar| 0x181 | 4 | 0xEB | DCVotlage LSB | DCVoltage MSB | --- | | | | | Receive DC Voltage |
+| Bamocar| 0x181 | 4 | 0xCE | RPM LSB | RPM MSB | --- | | | | | Receive motor RPM |
+| Bamocar| 0x181 | 4 | 0x5F | Current LSB | Current MSB | --- | | | | | Receive Current|
+| Bamocar| 0x181 | 4 | 0x49 | Motor Temp LSB | Motor Temp MSB | --- | | | | | Receive Motor temperature |
+| Bamocar| 0x181 | 4 | 0x4A | Inv Temp LSB| Inv Temp MSB | --- | | | | | Receive Inversor temperature (I assume that "powerStage" is the inverter temperature) |
+| Bamocar| 0x181 | 4 | 0x8A | Motor Voltage LSB | Motor Voltage MSB | --- | | | | | Receive Motor Voltage|
+| Bamocar| 0x181 | 4 | 0xA0 | Torque LSB | Torque MSB | --- | | | | | Receive Torque |
+| BMS | 0x666 | 3 | Current LSB | Current MSB | | | | | | | Receive Current from BMS |
+| Teensy C1 | 0x123 | 3 | 0x90 | Brake Value LSB | Brake Value MSB | | | | | | Brake pressure value |
+| PC | 0x665 | 1 | --- | | | | | | | | This was used during debugging, to Test de R2D state withtout turn on the car |
