@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Bounce2.h>
 #include <embedded/digitalData.hpp>
 #include <logic/structure.hpp>
@@ -72,9 +74,9 @@ void DigitalReceiver::readLwss() {
 
   digitalData->last_lwss_state = current_lwss_state;
 
-  if (digitalData->left_wheel_update_ts.hasTimedOut(
-          WHEEL_MEASUREMENT_INTERVAL_MIN))
-    updateLeftWheelRpm();
+    if (digitalData->left_wheel_update_ts.hasTimedOut(
+        WHEEL_MEASUREMENT_INTERVAL_MIN))  // TODO André: I believe this won't work because it's in minutes, not ms
+        updateLeftWheelRpm();
 }
 
 void DigitalReceiver::readPneumaticLine() {

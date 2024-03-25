@@ -1,11 +1,11 @@
+#pragma once
 
 #include <logic/sensors.hpp>
 #include <logic/systemDiagnostics.hpp>
 #include <logic/structure.hpp>
 #include <embedded/digitalData.hpp>
 
-struct SystemData
-{
+struct SystemData {
     InternalLogics internalLogics;
     FailureDetection failureDetection;
     Sensors sensors;
@@ -13,6 +13,6 @@ struct SystemData
     DigitalData digitalData;
     Mission mission{MANUAL};
 
-    bool ready2Drive{0}, missionFinished{0};
-    bool sdcState{0}, asmsState{0};
+    bool ready2Drive{false}, missionFinished{false};
+    bool sdcState_OPEN{false};
 };
