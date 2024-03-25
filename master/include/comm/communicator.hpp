@@ -142,6 +142,7 @@ void Communicator::parse_message(const CAN_message_t& msg) {
             break;
         case RES_READY:
             Communicator::resReadyCallback();
+            break;
         case C1_ID:
             Communicator::c1Callback(msg.buf); // rwheel and hydraulic line
             break;
