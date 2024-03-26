@@ -5,8 +5,7 @@ struct Code {
     int code;
 };
 
-enum State
-{
+enum State {
     AS_MANUAL,
     AS_OFF,
     AS_READY,

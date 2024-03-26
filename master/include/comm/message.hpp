@@ -1,42 +1,43 @@
 #pragma once
 
 // IDS
-#define MASTER_ID 0x300
+constexpr auto MASTER_ID = 0x300;
 
-#define BMS_ID 0x666
-#define BAMO_RESPONSE_ID 0x181
-#define C1_ID 0x123
-#define C3_ID 0x111
-#define PC_ID 0x400
-#define STEERING_ID 0x700 // TODO(andre): change or confirm code
+constexpr auto BMS_ID = 0x666;
+constexpr auto BAMO_RESPONSE_ID = 0x181;
+constexpr auto C1_ID = 0x123;
+constexpr auto C3_ID = 0x111;
+constexpr auto PC_ID = 0x400;
+constexpr auto STEERING_ID = 0x700; // TODO(andre): change or confirm code
 
 // PC
-#define AS_CU_EMERGENCY_SIGNAL 0x43 // TODO(andre): change or confirm code
-#define MISSION_FINISHED 0x42 // TODO(andre): change or confirm code
-#define PC_ALIVE 0x41 // TODO(andre): change or confirm code
+constexpr auto AS_CU_EMERGENCY_SIGNAL = 0x43; // TODO(andre): change or confirm code
+constexpr auto MISSION_FINISHED = 0x42;       // TODO(andre): change or confirm code
+constexpr auto PC_ALIVE = 0x41;               // TODO(andre): change or confirm code
 
 // Sensors
-#define RIGHT_WHEEL 0x11 // TODO(andre): change or confirm code
-#define HYDRAULIC_LINE 0x12 // TODO(andre): change or confirm code
+constexpr auto RIGHT_WHEEL = 0x11;    // TODO(andre): change or confirm code
+constexpr auto HYDRAULIC_LINE = 0x12; // TODO(andre): change or confirm code
 
-#define WHEEL_PRECISION 1e-2 // TODO(andre): change or confirm value
-#define HYDRAULIC_LINE_PRECISION 1e-1 // TODO(andre): change or confirm value
+constexpr auto WHEEL_PRECISION = 1e-2;          // TODO(andre): change or confirm value
+constexpr auto HYDRAULIC_LINE_PRECISION = 1e-1; // TODO(andre): change or confirm value
 
 // Logging Status
-#define DRIVING_STATE 0x500
-#define DRIVING_CONTROL 0x501
-#define SYSTEM_STATUS 0x502
+constexpr auto DRIVING_STATE = 0x500;
+constexpr auto DRIVING_CONTROL = 0x501;
+constexpr auto SYSTEM_STATUS = 0x502;
 
 // RES
-#define NODE_ID 0x011 // Competition Defined
-#define RES (0x180 + NODE_ID)
+constexpr auto NODE_ID = 0x011; // Competition Defined
+constexpr auto RES_STATE = (0x180 + NODE_ID);
+constexpr auto RES_READY = (0x700 + NODE_ID);
+constexpr auto RES_ACTIVATE = 0x000;
 
 // Master State
-#define STATE_MSG 0x31
-#define MISSION_MSG 0x32
-#define LEFT_WHEEL_MSG 0x33
+constexpr auto STATE_MSG = 0x31;
+constexpr auto MISSION_MSG = 0x32;
+constexpr auto LEFT_WHEEL_MSG = 0x33;
 
 // Bamocar
-#define BTB_READY 0xE2
-#define VDC_BUS 0xEB
-
+constexpr auto BTB_READY = 0xE2;
+constexpr auto VDC_BUS = 0xEB;
