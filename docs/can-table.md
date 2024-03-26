@@ -38,12 +38,12 @@
 | RES | 0x180 + 0x11 | 8 | PMO2000 | PMO2001 | PMO2002 | PMO2003 | PMO2004 | PMO2005 | PMO2006 | PMO2007 | Res State Message. 0x11 in ID refers to the 0x11 Node ID defined by FSG. PMO2000: emergency - bit 0, go signals - bit 1 & 2. PMO2003: emergency - bit 7. PMO2006: Radio Quality (0-100%). PMO2007: signal loss - bit 6 |
 | RES | 0x700 + 0x11 | 1 | 0x00 | | | | | | | | RES Ready Message Informs that the device is initialized. 0x11 in ID refers to the 0x11 Node ID defined by FSG |
 | Master | 0x000 | 2 | 0x01 | 0x11 |  | | | | | | Set RES to operational mode. First byte sets the state. Second refers to the 0x11 Node ID defined by FSG |
-| Master | 0x300 | 2 | 0x31 | Current AS State | | | | | | | Current ASState represented by the defined ENUM value |
-| Master | 0x300 | 2 | 0x32 | Current Mission |  | | | | | | Current Mission represented by the defined ENUM value |
+| Master | 0x300 | 2 | 0x31 | Current AS State | | | | | | | Current ASState represented by the defined ENUM value {0 - AS_Manual, 1 - AS_Off, 2 - AS_Ready, 3 - AS_Driving, 4 - AS_Finished, 5 - AS_Emergency} |
+| Master | 0x300 | 2 | 0x32 | Current Mission |  | | | | | | Current Mission represented by the defined ENUM value {0 - Manual, 1 - Acceleration, 2 - Skidpad, 3 - Autocross, 4 - Trackdrive, 5 - EBS_Test, 6 - Inspection} |
 | Master | 0x300 | 3 | 0x33 | Left Wheel RPM LSB | Left Wheel RPM MSB | | | | | | Left Wheel Current RPM Value, scaled by 1e2 in an integer value |
 | Master | 0x500 | 8 | Speed Actual | Speed Target | Steering Angle Actual | Steering Angle Target | Hydraulic Brake Actual | Hydraulic Brake Target | Motor Moment Actual | Motor Moment Target | Logging Message with Vehicle's Current Driving Mechanics States as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
 | Master | 0x501 | 6 | Acceleration Longitudinal LSB | Acceleration Longitudinal MSB | Acceleration Lateral LSB | Acceleration Lateral MSB | Yaw Rate LSB | Yaw Rate MSB | | | Logging Message with Vehicle's Current Vehicle Driving Mechanics Controls as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
 | Master | 0x502 | 5 | AS + EBS + AMI States | Steering + Service Brake States + Lap Counter + Cones Count Actual | Cones Count Actual + Cones Count All | Cones Count All | Cones Count All | | | |  Logging Message with Vehicle's Current System Status as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
 
 
-Table information last updated in 25/03/24.
+Last updated in 26/03/24.
