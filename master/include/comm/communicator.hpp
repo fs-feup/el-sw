@@ -78,13 +78,12 @@ inline void Communicator::pcAliveCallback() {
 void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     double break_pressure = (buf[2] << 8) | buf[1];
-    break_pressure *=
-        HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
-    _systemData->sensors.updateHydraulic(break_pressure);
+    break_pressure *= HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
+    _systemData->sensors._hydraulic_line_pressure = break_pressure;
   } else if (buf[0] == RIGHT_WHEEL) {
     double right_wheel_rpm = (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
-    _systemData->sensors.updateRL(right_wheel_rpm);
+    _systemData->sensors._rl_wheel_rpm = right_wheel_rpm;
   }
 }
 
