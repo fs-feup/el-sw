@@ -5,8 +5,9 @@
 #define DEBOUNCE_INTERVAL 5
 #define PRESSED_STATE LOW
 
-int inputPins[NUM_PINS] = {2, 3, 4, 5, 6, 7, 8};
-int outputPins[NUM_PINS] = {9, 10, 11, 12, 13, 14, 15};
+// Use ATtiny pin identifiers
+int inputPins[NUM_PINS] = {PA2, PA3, PA4, PA5, PA6, PA7, PB0};
+int outputPins[NUM_PINS] = {PB1, PB2, PB3, PB4, PB5, PA0, PA1};
 Bounce2::Button buttons[NUM_PINS];
 
 void setup()
@@ -19,11 +20,6 @@ void setup()
   }
 }
 
-/**
- * @brief AMI main loop: 
- * Button gets picked and lights up the corresponding LED
- * LAST BUTTON CHECKED WINS
-*/
 void loop() {
   int currentButtonPressed = -1;
 
