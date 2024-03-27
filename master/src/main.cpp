@@ -7,7 +7,7 @@
 SystemData systemData;
 Communicator communicator;
 auto digitalData = DigitalReceiver(&systemData.digitalData, &systemData.mission);
-auto as_state = ASState(CheckupManager(&systemData));
+auto as_state = ASState(&systemData, &communicator);
 
 void setup() {
     Communicator::_systemData = &systemData;

@@ -1,34 +1,34 @@
 #pragma once
 
-#include <Arduino.h>
 #include <logic/checkupManager.hpp>
 #include <logic/structure.hpp>
 #include <embedded/digitalSender.hpp>
-#include <utility>
 
 class ASState {
 private:
     CheckupManager _checkupManager;
     DigitalSender _digitalSender;
+    Communicator *_communicator;
 
 public:
     State state{AS_MANUAL};
 
-    explicit ASState(CheckupManager checkupManager) : _checkupManager(std::move(checkupManager)) {
+    explicit ASState(SystemData *system_data, Communicator *communicator) : _checkupManager(system_data),
+                                                                            _communicator(communicator) {
     }
 
     void calculateState();
+
+    void performEmergencyOperations();
 };
 
 inline void ASState::calculateState() {
     switch (state) {
         case AS_MANUAL:
-            if (!_checkupManager.manualDrivingCheckup())
+            if (_checkupManager.manualDrivingCheckup())
                 break;
 
-            DigitalSender::openSDC();
-            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
+            DigitalSender::enterOffState();
             state = AS_OFF;
             break;
 
@@ -36,8 +36,7 @@ inline void ASState::calculateState() {
 
             // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
             if (_checkupManager.manualDrivingCheckup()) {
-                //SDC TO Shortcut ???
-                //TODO: Nothing needed?
+                DigitalSender::enterManualState();
                 state = AS_MANUAL;
                 break;
             }
@@ -45,16 +44,13 @@ inline void ASState::calculateState() {
             if (_checkupManager.offCheckup())
                 break;
 
-            DigitalSender::sendDigitalSignal(ASSI_READY_PIN, HIGH);
-            DigitalSender::closeSDC();
-            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, HIGH);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, HIGH);
+            DigitalSender::enterReadyState();
             state = AS_READY;
             break;
 
         case AS_READY:
             if (_checkupManager.emergencyCheckup()) {
-                DigitalSender::enterEmergencyState();
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -63,16 +59,12 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            DigitalSender::sendDigitalSignal(ASSI_DRIVING_PIN, HIGH);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
+            DigitalSender::enterDrivingState();
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
             if (_checkupManager.emergencyCheckup()) {
-                // Emergency, go to emergency state
-                DigitalSender::enterEmergencyState();
-                
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -81,15 +73,12 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            DigitalSender::sendDigitalSignal(ASSI_FINISH_PIN, HIGH);
-            DigitalSender::openSDC();
-            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, HIGH);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, HIGH);
+            DigitalSender::enterFinishState();
             state = AS_FINISHED;
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                DigitalSender::enterEmergencyState();
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -97,19 +86,24 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
-            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
-            DigitalSender::openSDC();
+            DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
             if (_checkupManager.emergencySequenceComplete()) {
                 break;
             }
-        // TODO: perform necessary actions to enter AS_OFF
+
+            DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         default:
             break;
     }
+}
+
+inline void ASState::performEmergencyOperations() {
+    //TODO: SET CORRECT MESSAGE HERE
+    // _communicator->send_message();
+    DigitalSender::enterEmergencyState();
 }
