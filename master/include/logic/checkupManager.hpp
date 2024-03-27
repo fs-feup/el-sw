@@ -15,8 +15,8 @@ private:
     Timestamp _ebsSoundTimestamp;
 
 public:
-     CheckupManager(SystemData *systemData) : _systemData(systemData) {
-    }
+    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
+    };
 
     /**
      * @brief Performs a manual driving checkup.
@@ -149,7 +149,6 @@ inline bool CheckupManager::resTriggered() const {
     }
     return EXIT_FAILURE;
 }
-
 
 // TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure->
 // bamocar-ready false emergency

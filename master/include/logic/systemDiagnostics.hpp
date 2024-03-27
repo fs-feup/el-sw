@@ -40,6 +40,7 @@ struct FailureDetection {
     bool emergencySignal{false};
     double bamocarTension{0.0}; // Add default member initializer
     bool bamocarReady{true};
+    double radio_quality{0};
 
     FailureDetection() = default;
 

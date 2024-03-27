@@ -17,7 +17,7 @@ struct DigitalData {
     Timestamp wd_pulse_ts;
 
     // Other reads
-    double pneumatic_line_pressure = 0;
+    bool pneumatic_line_pressure = true;
     bool asms_on = false;
     bool aats_on = false;
 };

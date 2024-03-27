@@ -1,108 +1,129 @@
 #pragma once
 
+#include <Bounce2.h>
 #include <embedded/digitalData.hpp>
 #include <logic/structure.hpp>
 
+#define DEBOUNCE_INTERVAL 5
+#define PRESSED_STATE LOW
+
 class DigitalReceiver {
 public:
-    void digitalReads();
+  void digitalReads();
 
-    DigitalReceiver(DigitalData *digitalData, Mission *mission)
-        : digitalData(digitalData), mission(mission) {
-        pinMode(LWSS_PIN, INPUT);
-        pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
-        pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
-    }
+  DigitalReceiver(DigitalData *digitalData, Mission *mission)
+      : digitalData(digitalData), mission(mission) {
+    pinMode(LWSS_PIN, INPUT);
+    pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
+    pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
+
+    asms_switch = newButton(ASMS_IN_PIN);
+    aats_switch = newButton(AATS_SWITCH_PIN);
+  }
 
 private:
-    DigitalData *digitalData;
-    Mission *mission;
+  DigitalData *digitalData;
+  Mission *mission;
 
-    void readLwss() const;
+  Button asms_switch, aats_switch;
 
-    void readPneumaticLine();
+  Button newButton(uint8_t pin);
 
-    void readMission() const;
+  void readLwss() const;
+  void readPneumaticLine() const;
+  void readMission() const;
+  void readAsmsSwitch();
+  void readAatsSwitch();
+  void askReadWatchdog() const;
 
-    void readAsmsSwitch() const;
-
-    void readAatsSwitch() const;
-
-    void askReadWatchdog() const;
-
-    void updateLeftWheelRpm() const;
+  void updateLeftWheelRpm() const;
 };
 
 inline void DigitalReceiver::updateLeftWheelRpm() const {
-    digitalData->_left_wheel_rpm =
-            digitalData->pulse_count /
-            (WHEEL_MEASUREMENT_INTERVAL_MIN * PULSES_PER_ROTATION);
+  digitalData->_left_wheel_rpm =
+      digitalData->pulse_count /
+      (WHEEL_MEASUREMENT_INTERVAL_MIN * PULSES_PER_ROTATION);
 
-    digitalData->pulse_count = 0;
-    digitalData->left_wheel_update_ts.update();
+  digitalData->pulse_count = 0;
+  digitalData->left_wheel_update_ts.update();
+}
+
+inline Button DigitalReceiver::newButton(uint8_t pin) {
+  Button button = Button();
+  button.attach(pin, INPUT_PULLUP);
+  button.interval(DEBOUNCE_INTERVAL);
+  button.setPressedState(PRESSED_STATE);
+
+  return button;
 }
 
 inline void DigitalReceiver::digitalReads() {
-    readLwss();
-    readPneumaticLine();
-    readMission();
-    readAsmsSwitch();
-    readAatsSwitch();
-    askReadWatchdog();
+  readLwss();
+  readPneumaticLine();
+  readMission();
+  readAsmsSwitch();
+  readAatsSwitch();
+  askReadWatchdog();
 }
 
 inline void DigitalReceiver::readLwss() const {
-    bool const current_lwss_state = digitalRead(LWSS_PIN);
+  bool const current_lwss_state = digitalRead(LWSS_PIN);
 
-    if (current_lwss_state == HIGH && digitalData->last_lwss_state == LOW)
-        digitalData->pulse_count++;
+  if (current_lwss_state == HIGH && digitalData->last_lwss_state == LOW)
+    digitalData->pulse_count++;
 
-    digitalData->last_lwss_state = current_lwss_state;
+  digitalData->last_lwss_state = current_lwss_state;
 
     if (digitalData->left_wheel_update_ts.hasTimedOut(
         WHEEL_MEASUREMENT_INTERVAL_MS))
         updateLeftWheelRpm();
 }
 
-inline void DigitalReceiver::readPneumaticLine() {
-    // TODO: wait for eletro indications
+inline void DigitalReceiver::readPneumaticLine() const {
+  // TODO: wait for eletro indications
 }
 
 inline void DigitalReceiver::readMission() const {
-    // Enum value attributed considering the True Boolean Value
-    *mission = static_cast<Mission>(
-        digitalRead(MISSION_MANUAL_PIN) * MANUAL |
-        digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
-        digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
-        digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
-        digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
-        digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
-        digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
+  // Enum value attributed considering the True Boolean Value
+  *mission = static_cast<Mission>(
+      digitalRead(MISSION_MANUAL_PIN) * MANUAL |
+      digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
+      digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
+      digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
+      digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
+      digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
+      digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
 }
 
-inline void DigitalReceiver::readAsmsSwitch() const {
-    digitalData->asms_on = digitalRead(ASMS_IN_PIN);
+inline void DigitalReceiver::readAsmsSwitch() {
+  asms_switch.update();
+  if (asms_switch.pressed())
+    digitalData->asms_on = true;
+  else
+    digitalData->asms_on = false;
 }
 
-inline void DigitalReceiver::readAatsSwitch() const {
-    //TODO: FIRST DEFINE CORRECT PIN
-   // digitalData->aats_on = digitalRead(AATS_SWITCH_PIN);
+inline void DigitalReceiver::readAatsSwitch() {
+  aats_switch.update();
+  if (aats_switch.pressed())
+    digitalData->aats_on = true;
+  else
+    digitalData->aats_on = false;
 }
 
 inline void DigitalReceiver::askReadWatchdog() const {
-    if (digitalData->wd_pulse_ts.hasTimedOut(
-        WD_WAIT_INTERVAL_MS)) {
-        // After timeout send pulse
-        digitalData->wd_pulse_ts.update();
-        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
-        digitalData->watchdog_comm_state = true;
-    } else if (digitalData->wd_pulse_ts.hasTimedOut(WD_PULSE_INTERVAL_MS) &&
-               digitalData->watchdog_comm_state) {
-        // after pulse put pin in low again
-        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
-        digitalData->watchdog_comm_state = false;
-    }
+  if (digitalData->wd_pulse_ts.hasTimedOut(
+          WD_WAIT_INTERVAL_MS)) { // After timeout send pulse
+    digitalData->wd_pulse_ts.update();
+    digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
+    digitalData->watchdog_comm_state = true;
+  } else if (digitalData->wd_pulse_ts.hasTimedOut(WD_PULSE_INTERVAL_MS) &&
+             digitalData->watchdog_comm_state) {
+    // after pulse put pin in low again
+    digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
+    digitalData->watchdog_comm_state = false;
+  }
 
-    if (digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN) == LOW) // if low, failure checks will open sdc
-        digitalData->watchdog_state = false;
+  if (digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN) == LOW) // if low, failure checks will open sdc
+    digitalData->watchdog_state = false;
 }

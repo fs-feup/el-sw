@@ -29,7 +29,9 @@ constexpr auto SYSTEM_STATUS = 0x502;
 
 // RES
 constexpr auto NODE_ID = 0x011; // Competition Defined
-constexpr auto RES = 0x180 + NODE_ID;
+constexpr auto RES_STATE = (0x180 + NODE_ID);
+constexpr auto RES_READY = (0x700 + NODE_ID);
+constexpr auto RES_ACTIVATE = 0x000;
 
 // Master State
 constexpr auto STATE_MSG = 0x31;
