@@ -20,6 +20,11 @@ void setup()
   }
 }
 
+/**
+ * @brief AMI main loop: 
+ * Button gets picked and lights up the corresponding LED
+ * LAST BUTTON CHECKED WINS
+*/
 void loop() {
   int currentButtonPressed = -1;
 
