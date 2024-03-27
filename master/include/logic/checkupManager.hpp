@@ -15,8 +15,7 @@ private:
     Timestamp _ebsSoundTimestamp;
 
 public:
-    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
-    };
+    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {}
 
     /**
      * @brief Performs a manual driving checkup.
@@ -48,6 +47,8 @@ public:
      */
     bool emergencyCheckup() const;
 
+    bool drivingCheckup() const;
+
     /**
      * @brief Performs a mission finished checkup.
      * @return 0 if success, else 1.
@@ -69,6 +70,7 @@ public:
      * @return 1 if the RES has been triggered, 0 otherwise.
      */
     bool resTriggered() const;
+
 
     CheckupManager();
 };
@@ -113,6 +115,7 @@ inline bool CheckupManager::r2dCheckup() const {
 
 inline bool CheckupManager::emergencyCheckup() const {
     //TODO Continuous monitoring sequence
+    return EXIT_SUCCESS;
 }
 
 inline bool CheckupManager::missionFinishedCheckup() const {
@@ -133,6 +136,13 @@ inline bool CheckupManager::emergencySequenceComplete() {
 
 inline bool CheckupManager::resTriggered() const {
     if (_systemData->failureDetection.emergencySignal) {
+        return EXIT_SUCCESS;
+    }
+    return EXIT_FAILURE;
+}
+
+inline bool CheckupManager::drivingCheckup() const {
+    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->missionFinished) {
         return EXIT_SUCCESS;
     }
     return EXIT_FAILURE;

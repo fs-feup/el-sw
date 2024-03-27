@@ -10,8 +10,8 @@ public:
     DigitalReceiver(DigitalData *digitalData, Mission *mission)
         : digitalData(digitalData), mission(mission) {
         pinMode(LWSS_PIN, INPUT);
-        pinMode(WD_IN, INPUT);
-        pinMode(WD_OUT, OUTPUT);
+        pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
+        pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
     }
 
 private:
@@ -60,7 +60,7 @@ inline void DigitalReceiver::readLwss() const {
     digitalData->last_lwss_state = current_lwss_state;
 
     if (digitalData->left_wheel_update_ts.hasTimedOut(
-        WHEEL_MEASUREMENT_INTERVAL_MIN))  // TODO André: I believe this won't work because it's in minutes, not ms
+        WHEEL_MEASUREMENT_INTERVAL_MS))
         updateLeftWheelRpm();
 }
 
@@ -81,11 +81,12 @@ inline void DigitalReceiver::readMission() const {
 }
 
 inline void DigitalReceiver::readAsmsSwitch() const {
-    digitalData->asms_on = digitalRead(ASMS_SWITCH_PIN);
+    digitalData->asms_on = digitalRead(ASMS_IN_PIN);
 }
 
 inline void DigitalReceiver::readAatsSwitch() const {
-    digitalData->aats_on = digitalRead(AATS_SWITCH_PIN);
+    //TODO: FIRST DEFINE CORRECT PIN
+   // digitalData->aats_on = digitalRead(AATS_SWITCH_PIN);
 }
 
 inline void DigitalReceiver::askReadWatchdog() const {
@@ -93,15 +94,15 @@ inline void DigitalReceiver::askReadWatchdog() const {
         WD_WAIT_INTERVAL_MS)) {
         // After timeout send pulse
         digitalData->wd_pulse_ts.update();
-        digitalWrite(WD_OUT, HIGH);
+        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
         digitalData->watchdog_comm_state = true;
     } else if (digitalData->wd_pulse_ts.hasTimedOut(WD_PULSE_INTERVAL_MS) &&
                digitalData->watchdog_comm_state) {
         // after pulse put pin in low again
-        digitalWrite(WD_OUT, LOW);
+        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
         digitalData->watchdog_comm_state = false;
     }
 
-    if (digitalRead(WD_IN) == LOW) // if low, failure checks will open sdc
+    if (digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN) == LOW) // if low, failure checks will open sdc
         digitalData->watchdog_state = false;
 }

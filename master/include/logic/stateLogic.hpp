@@ -9,13 +9,13 @@
 class ASState {
 private:
     CheckupManager _checkupManager;
-    // DigitalSender _digitalSender;
+    DigitalSender _digitalSender;
 
 public:
     State state{AS_MANUAL};
 
     explicit ASState(CheckupManager checkupManager) : _checkupManager(std::move(checkupManager)) {
-    };
+    }
 
     void calculateState();
 };
@@ -26,35 +26,35 @@ inline void ASState::calculateState() {
             if (!_checkupManager.manualDrivingCheckup())
                 break;
 
-        // TODO: EBS from disabled to inactive
-        // TODO: Open SDC circuit
-
+            DigitalSender::openSDC();
+            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
             state = AS_OFF;
             break;
 
         case AS_OFF:
+
             // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
             if (_checkupManager.manualDrivingCheckup()) {
-                //TODO: OFF -> MANUAL Operations
+                //SDC TO Shortcut ???
+                //TODO: Nothing needed?
                 state = AS_MANUAL;
                 break;
             }
+
             if (_checkupManager.offCheckup())
                 break;
 
-            // TODO: OFF -> READY Operations
+            DigitalSender::sendDigitalSignal(ASSI_READY_PIN, HIGH);
+            DigitalSender::closeSDC();
+            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, HIGH);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, HIGH);
             state = AS_READY;
             break;
 
         case AS_READY:
             if (_checkupManager.emergencyCheckup()) {
-                // Emergency, go to emergency state
-                /* TODO:
-                ASSI to blue flashing
-                EBS to Active
-                TS to OFF (open sdc)
-                Buzzer to on for 8-10s
-                */
+                DigitalSender::enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -62,33 +62,44 @@ inline void ASState::calculateState() {
                 // Not ready, do nothing
                 break;
             }
-        /* TODO:
-        Ready to drive, go to driving state
-        ASSI to yellow flashing
-        EBS to inactive
-        */
+
+            DigitalSender::sendDigitalSignal(ASSI_DRIVING_PIN, HIGH);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
             if (_checkupManager.emergencyCheckup()) {
                 // Emergency, go to emergency state
+                DigitalSender::enterEmergencyState();
+                
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup()) {
+            if (_checkupManager.drivingCheckup()) {
+                // Mission not complete, do nothing
                 break;
             }
+
+            DigitalSender::sendDigitalSignal(ASSI_FINISH_PIN, HIGH);
+            DigitalSender::openSDC();
+            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, HIGH);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, HIGH);
+            state = AS_FINISHED;
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                // TODO: perform necessary actions to enter AS_EMERGENCY
+                DigitalSender::enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
             if (_checkupManager.missionFinishedCheckup()) {
                 break;
             }
-        // TODO: perform necessary actions to enter AS_OFF
+
+            DigitalSender::sendDigitalSignal(EBS_VALVE_1_PIN, LOW);
+            DigitalSender::sendDigitalSignal(EBS_VALVE_2_PIN, LOW);
+            DigitalSender::openSDC();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
