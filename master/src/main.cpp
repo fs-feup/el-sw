@@ -16,7 +16,7 @@ void setup() {
 void loop() {
     digitalData.digitalReads();
     as_state.calculateState();
-    communicator.publish_state(as_state.state);
-    communicator.publish_mission(systemData.mission);
-    communicator.publish_left_wheel_rpm(systemData.mission);
+    Communicator::publish_state(as_state.state);
+    Communicator::publish_mission(systemData.mission);
+    Communicator::publish_left_wheel_rpm(systemData.mission);
 }
