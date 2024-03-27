@@ -77,16 +77,6 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="066
 
 The instructions for the installation of the file are in the file's comments.
 
-### Unit Testing
-Some examples test files were developed in the project to demonstrate how they should be written:
-1. Folder separation
-2. Unit testing - each test tests only one function/method and one scenario of that function
-3. Each test file should correspond to one implementation file and be name 'test_<file_name>', to improve traceability
-The test framework used is **unity**. It was chosen due to having support with platformio out of the box and being able to run tests both in native environment and embedded. To get more information on the framework, visit [this website](https://docs.platformio.org/en/latest/advanced/unit-testing/frameworks/unity.html#unit-testing-frameworks-unity). More information in pio testing can be found [here](https://docs.platformio.org/en/latest/advanced/unit-testing/index.html).
-### Testing Environments
-Some tests can be run on the computer, as they only depend on logic or ever present libraries. However, many of the tests depend in some way of functionalities inherent to arduino. As such, most testing will be performed using a breadboard for testing with a Teensy.
-
-```
 
 ## Links
 - [Platformio ini file](https://docs.platformio.org/en/latest/projectconf/index.html)
