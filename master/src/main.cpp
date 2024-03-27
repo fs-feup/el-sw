@@ -1,7 +1,6 @@
 #include "logic/systemData.hpp"
 #include <comm/communicator.hpp>
 #include <embedded/digitalReceiver.hpp>
-#include "logic/checkupManager.hpp"
 #include <logic/stateLogic.hpp>
 
 SystemData systemData;

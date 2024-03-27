@@ -4,6 +4,8 @@
 #include <embedded/digitalData.hpp>
 #include <logic/structure.hpp>
 
+#include "digitalSettings.hpp"
+
 #define DEBOUNCE_INTERVAL 5
 #define PRESSED_STATE LOW
 
@@ -27,7 +29,7 @@ private:
 
   Button asms_switch, aats_switch;
 
-  Button newButton(uint8_t pin);
+  static Button newButton(uint8_t pin);
 
   void readLwss() const;
   void readPneumaticLine() const;
@@ -49,7 +51,7 @@ inline void DigitalReceiver::updateLeftWheelRpm() const {
 }
 
 inline Button DigitalReceiver::newButton(uint8_t pin) {
-  Button button = Button();
+  Button button;
   button.attach(pin, INPUT_PULLUP);
   button.interval(DEBOUNCE_INTERVAL);
   button.setPressedState(PRESSED_STATE);

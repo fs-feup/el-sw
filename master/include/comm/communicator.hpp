@@ -45,13 +45,13 @@ public:
     static void bamocarCallback(const uint8_t *buf);
     static void steeringCallback();
 
-    int publish_state(int state_id);
-    int publish_mission(int mission_id);
-    int publish_left_wheel_rpm(double value);
+    static int publish_state(int state_id) ;
+    static int publish_mission(int mission_id);
+    static int publish_left_wheel_rpm(double value);
     static int activateRes();
 };
 
-Communicator::Communicator() {
+inline Communicator::Communicator() {
     can1.begin();
     can1.setBaudRate(500000);
     can1.enableFIFO();
@@ -75,7 +75,7 @@ inline void Communicator::pcAliveCallback() {
     _systemData->failureDetection.pcAliveTimestamp.update();
 }
 
-void Communicator::c1Callback(const uint8_t *buf) {
+inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     double break_pressure = (buf[2] << 8) | buf[1];
     break_pressure *= HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
@@ -100,7 +100,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
     _systemData->failureDetection.radio_quality =  buf[6];
     //bool signal_loss = (buf[7] >> 6) & 0x01;
-    Communicator::emergencySignalCallback();
+    emergencySignalCallback();
 }
 
 inline void Communicator::resReadyCallback() {
@@ -136,21 +136,21 @@ inline void Communicator::steeringCallback() {
 inline void Communicator::parse_message(const CAN_message_t& msg) {
     switch(msg.id) {
         case PC_ID:
-            Communicator::pcCallback(msg.buf);
+            pcCallback(msg.buf);
         case RES_STATE:
-            Communicator::resStateCallback(msg.buf);
+            resStateCallback(msg.buf);
             break;
         case RES_READY:
-            Communicator::resReadyCallback();
+            resReadyCallback();
             break;
         case C1_ID:
-            Communicator::c1Callback(msg.buf); // rwheel and hydraulic line
+            c1Callback(msg.buf); // rwheel and hydraulic line
             break;
         case BAMO_RESPONSE_ID:
-            Communicator::bamocarCallback(msg.buf);
+            bamocarCallback(msg.buf);
             break;
         case STEERING_ID:
-            Communicator::steeringCallback();
+            steeringCallback();
             break;
         default:
             break;
@@ -160,7 +160,7 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
 inline int Communicator::publish_state(const int state_id) {
     const uint8_t msg[] = {static_cast<unsigned char>(state_id)};
 
-    this->send_message(1, msg, STATE_MSG);
+    send_message(1, msg, STATE_MSG);
 
     return 0;
 }
@@ -168,7 +168,7 @@ inline int Communicator::publish_state(const int state_id) {
 inline int Communicator::publish_mission(int mission_id) {
     const uint8_t msg[] = {static_cast<unsigned char>(mission_id)};
 
-    Communicator::send_message(1, msg, MISSION_MSG);
+    send_message(1, msg, MISSION_MSG);
 
     return 0;
 }
@@ -177,18 +177,18 @@ inline int Communicator::publish_left_wheel_rpm(double value) {
     value /= WHEEL_PRECISION; // take precision off to send interger value
     const auto msg = reinterpret_cast<uint8_t *>(&value);
 
-    Communicator::send_message(2, msg, LEFT_WHEEL_MSG);
+    send_message(2, msg, LEFT_WHEEL_MSG);
     return 0;
 }
 inline int Communicator::activateRes() {
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
-    Communicator::send_message(2, msg, id);
+    send_message(2, msg, id);
     return 0;
 }
 
-inline int Communicator::send_message(unsigned len, const unsigned char* buffer, unsigned id) {
+inline int Communicator::send_message(const unsigned len, const unsigned char* buffer, const unsigned id) {
 
     CAN_message_t can_message;
     can_message.id = id;

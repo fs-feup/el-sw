@@ -44,7 +44,7 @@ struct FailureDetection {
 
     FailureDetection() = default;
 
-    [[nodiscard]] bool hasAnyComponentTimedOut(unsigned long timeout) const {
+    [[nodiscard]] bool hasAnyComponentTimedOut(const unsigned long timeout) const {
         return pcAliveTimestamp.hasTimedOut(timeout) ||
                steerAliveTimestamp.hasTimedOut(timeout) ||
                inversorAliveTimestamp.hasTimedOut(timeout) ||
