@@ -25,10 +25,10 @@ public:
 inline void ASState::calculateState() {
     switch (state) {
         case AS_MANUAL:
-            if (_checkupManager.manualDrivingCheckup())
-                break;
+            if (_checkupManager.manualDrivingCheckup()) break;
 
             DigitalSender::enterOffState();
+
             state = AS_OFF;
             break;
 
@@ -41,8 +41,7 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            if (_checkupManager.offCheckup())
-                break;
+            if (_checkupManager.offCheckup()) break;
 
             DigitalSender::enterReadyState();
             state = AS_READY;
@@ -54,10 +53,7 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.r2dCheckup()) {
-                // Not ready, do nothing
-                break;
-            }
+            if (_checkupManager.r2dCheckup()) break;
 
             DigitalSender::enterDrivingState();
             state = AS_DRIVING;
@@ -68,10 +64,7 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.drivingCheckup()) {
-                // Mission not complete, do nothing
-                break;
-            }
+            if (_checkupManager.drivingCheckup()) break;
 
             DigitalSender::enterFinishState();
             state = AS_FINISHED;
@@ -82,17 +75,13 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup()) {
-                break;
-            }
+            if (_checkupManager.missionFinishedCheckup()) break;
 
             DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            if (_checkupManager.emergencySequenceComplete()) {
-                break;
-            }
+            if (_checkupManager.emergencySequenceComplete()) break;
 
             DigitalSender::enterOffState();
             state = AS_OFF;

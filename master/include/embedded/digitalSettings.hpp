@@ -1,6 +1,10 @@
 #pragma once
 
-#define WHEEL_MEASUREMENT_INTERVAL_MS 30.0 // 30ms // TODO(andre): change to adequate value
+#define COMPONENT_TIMESTAMP_TIMEOUT 500
+#define WATCHDOG_TOGGLE_TIMEOUT 100
+#define EBS_BUZZER_TIMEOUT 8000
+
+#define WHEEL_MEASUREMENT_INTERVAL_MS 30 // 30ms // TODO(andre): change to adequate value
 #define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0)
 #define PULSES_PER_ROTATION 50 // TODO(andre): change to true value
 

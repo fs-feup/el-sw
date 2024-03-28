@@ -7,12 +7,12 @@ struct DigitalData {
     double _left_wheel_rpm = 0;
     bool last_lwss_state = false;
     int pulse_count = 0;
-    Timestamp left_wheel_update_ts;
+    Metro left_wheel_update_ts{WHEEL_MEASUREMENT_INTERVAL_MS};
 
     // Watchdog
     bool watchdog_state = true; // starts true until false
     bool watchdog_comm_state = false;
-    Timestamp wd_pulse_ts;
+    Metro wd_pulse_ts{WD_PULSE_INTERVAL_MS};
 
     // Other reads
     bool pneumatic_line_pressure = true;

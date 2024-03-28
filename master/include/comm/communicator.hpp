@@ -72,7 +72,7 @@ inline void Communicator::missionFinishedCallback() {
 }
 
 inline void Communicator::pcAliveCallback() {
-    _systemData->failureDetection.pcAliveTimestamp.update();
+    _systemData->failureDetection.pcAliveTimestamp.reset();
 }
 
 inline void Communicator::c1Callback(const uint8_t *buf) {
@@ -121,7 +121,7 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
-        _systemData->failureDetection.pcAliveTimestamp.update();
+        _systemData->failureDetection.pcAliveTimestamp.reset();
     } else if (buf[0] == MISSION_FINISHED) {
         _systemData->missionFinished = true;
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
@@ -130,7 +130,7 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
 }
 
 inline void Communicator::steeringCallback() {
-    _systemData->failureDetection.steerAliveTimestamp.update();
+    _systemData->failureDetection.steerAliveTimestamp.reset();
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {

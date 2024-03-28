@@ -2,8 +2,8 @@
 
 #include <logic/systemData.hpp>
 #include <cstdlib>
-#include <x10.h>
-#include <XBee.h>
+
+#include "embedded/digitalSettings.hpp"
 
 // Also known as Orchestrator
 /**
@@ -12,7 +12,8 @@
 class CheckupManager {
 private:
     SystemData *_systemData;
-    Timestamp _ebsSoundTimestamp;
+    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT};
+    // Metro _initialCheckupTimestamp;
 
 public:
     explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
@@ -44,7 +45,7 @@ public:
 
     /**
      * @brief Performs an emergency checkup.
-     * @return 0 if success, else 1.
+     * @return 0 if the car passes emergency checks, else 1.
      */
     [[nodiscard]] bool emergencyCheckup() const;
 
@@ -61,7 +62,7 @@ public:
      * transition to AS_OFF.
      * @return 0 if success, else 1.
      */
-    [[nodiscard]] bool emergencySequenceComplete() const;
+    [[nodiscard]] bool emergencySequenceComplete();
 
     /**
      * @brief Checks if the RES has been triggered.
@@ -104,6 +105,7 @@ inline bool CheckupManager::offCheckup() {
 
 inline bool CheckupManager::initialCheckup() {
     // TODO: Refer to initial checkup flowchart
+    
     return EXIT_SUCCESS;
 }
 
@@ -115,10 +117,10 @@ inline bool CheckupManager::r2dCheckup() const {
 }
 
 inline bool CheckupManager::emergencyCheckup() const {
-    if (_systemData->sdcState_OPEN) return EXIT_SUCCESS;
-
-
-    //TODO Continuous monitoring sequence
+    if (_systemData->failureDetection.hasAnyComponentTimedOut()
+        && !_systemData->failureDetection.emergencySignal && _systemData->sdcState_OPEN) {
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }
 
@@ -136,8 +138,8 @@ inline bool CheckupManager::missionFinishedCheckup() const {
     return EXIT_SUCCESS;
 }
 
-inline bool CheckupManager::emergencySequenceComplete() const {
-    if (_ebsSoundTimestamp.hasTimedOut(8000) && !_systemData->digitalData.asms_on) {
+inline bool CheckupManager::emergencySequenceComplete() {
+    if (_ebsSoundTimestamp.check() && !_systemData->digitalData.asms_on) {
         return EXIT_SUCCESS;
     }
     return EXIT_FAILURE;

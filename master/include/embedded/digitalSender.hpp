@@ -4,6 +4,8 @@
 
 class DigitalSender {
 private:
+
+
     static constexpr std::array<int, 9> validOutputPins = {
         ASSI_DRIVING_PIN,
         ASSI_READY_PIN,
@@ -27,6 +29,12 @@ private:
     static void deactivateEBS();
 
 public:
+    DigitalSender() {
+        for (const auto pin : validOutputPins) {
+            pinMode(pin, OUTPUT);
+        }
+    }
+
     static void sendDigitalSignal(int pin, int signal);
 
     static void enterEmergencyState();
