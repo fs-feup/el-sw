@@ -90,6 +90,7 @@ inline void ASState::calculateState() {
             break;
         case AS_EMERGENCY:
             _digitalSender.blinkLED();
+
             if (_checkupManager.emergencySequenceComplete())
                 break;
             DigitalSender::enterOffState();
