@@ -4,8 +4,6 @@
 
 class DigitalSender {
 private:
-
-
     static constexpr std::array<int, 9> validOutputPins = {
         ASSI_DRIVING_PIN,
         ASSI_READY_PIN,
@@ -29,15 +27,18 @@ private:
     static void deactivateEBS();
 
 public:
+    Metro _blinkTimer{LED_BLINK_INTERVAL};
+    bool _blinkState = false;
+
     DigitalSender() {
-        for (const auto pin : validOutputPins) {
+        for (const auto pin: validOutputPins) {
             pinMode(pin, OUTPUT);
         }
     }
 
     static void sendDigitalSignal(int pin, int signal);
 
-    static void enterEmergencyState();
+    void enterEmergencyState();
 
     static void enterManualState();
 
@@ -45,9 +46,11 @@ public:
 
     static void enterReadyState();
 
-    static void enterDrivingState();
+    void enterDrivingState();
 
     static void enterFinishState();
+
+    void blinkLED();
 };
 
 inline void DigitalSender::sendDigitalSignal(const int pin, const int signal) {
@@ -85,7 +88,7 @@ inline void DigitalSender::turnOffASSI() {
 
 inline void DigitalSender::enterEmergencyState() {
     turnOffASSI();
-    digitalWrite(ASSI_EMERGENCY_PIN, HIGH);
+    _blinkTimer.reset();
     activateEBS();
     openSDC();
 }
@@ -105,13 +108,15 @@ inline void DigitalSender::enterOffState() {
 inline void DigitalSender::enterReadyState() {
     turnOffASSI();
     digitalWrite(ASSI_READY_PIN, HIGH);
-    activateEBS();
-    closeSDC();
+    activateEBS();  ///  these 2 should be redundant since we do it during initial checkup
+    closeSDC();     ///
 }
 
 inline void DigitalSender::enterDrivingState() {
     turnOffASSI();
-    digitalWrite(ASSI_DRIVING_PIN, HIGH);
+    _blinkTimer.reset();
+    deactivateEBS();
+    closeSDC();
 }
 
 inline void DigitalSender::enterFinishState() {
@@ -119,4 +124,11 @@ inline void DigitalSender::enterFinishState() {
     digitalWrite(ASSI_FINISH_PIN, HIGH);
     activateEBS();
     openSDC();
+}
+
+inline void DigitalSender::blinkLED() {
+    if (_blinkTimer.check()) {
+        _blinkState = !_blinkState;
+        digitalWrite(ASSI_DRIVING_PIN, _blinkState);
+    }
 }

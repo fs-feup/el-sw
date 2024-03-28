@@ -15,6 +15,25 @@ private:
     Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT};
     // Metro _initialCheckupTimestamp;
 
+    enum class CheckupState {
+        START,
+        TOGGLE_WATCHDOG,
+        WAIT_FOR_WATCHDOG,
+        CHECK_WATCHDOG,
+        CLOSE_SDC,
+        WAIT_FOR_TS,
+        TOGGLE_VALVE,
+        CHECK_PRESSURE,
+        CHECK_TIMESTAMPS,
+        DONE
+    };
+
+    enum class CheckupError {
+        WAITING_FOR_RESPONSE,
+        ERROR,
+        SUCCESS
+    };
+
 public:
     explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
     };
@@ -35,7 +54,9 @@ public:
      * @brief Performs an initial checkup.
      * @return 0 if success, else 1.
      */
-    bool initialCheckup();
+    CheckupError initialCheckup();
+
+    [[nodiscard]] bool readyCheckup() const;
 
     /**
      * @brief Performs a ready to drive checkup.
@@ -96,16 +117,62 @@ inline bool CheckupManager::offCheckup() {
     if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
         return EXIT_FAILURE;
     }
-    if (initialCheckup())
-        return EXIT_FAILURE;
+    CheckupError initSequenceState = initialCheckup();
 
-    _systemData->internalLogics.enterReadyState();
+    if (initSequenceState == CheckupError::SUCCESS) {
+        _systemData->internalLogics.enterReadyState();
+    }
     return EXIT_SUCCESS;
 }
 
-inline bool CheckupManager::initialCheckup() {
+inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
     // TODO: Refer to initial checkup flowchart
-    
+    static auto state = CheckupState::START;
+    switch (state) {
+        case CheckupState::START:
+            //TODO: TOGGLE WATCHDOG
+            state = CheckupState::WAIT_FOR_WATCHDOG;
+            break;
+        case CheckupState::WAIT_FOR_WATCHDOG:
+            //TODO: CHECK WATCHDOG UNTIL TIMEOUT; THEN RETURN ERROR
+            state = CheckupState::CLOSE_SDC;
+            break;
+        case CheckupState::CLOSE_SDC:
+            digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
+            digitalWrite(MASTER_SDC_OUT_PIN, LOW);
+            state = CheckupState::WAIT_FOR_TS;
+        case CheckupState::WAIT_FOR_TS:
+            if (_systemData->digitalData.aats_on) {
+                state = CheckupState::CHECK_PRESSURE;
+            }
+            break;
+
+        //TODO CHECK HERE CORRECT BRAKE PRESSURE LOGIC
+        case CheckupState::TOGGLE_VALVE:
+            digitalWrite(EBS_VALVE_1_PIN, LOW);
+            digitalWrite(EBS_VALVE_2_PIN, LOW);
+            state = CheckupState::CHECK_TIMESTAMPS;
+            break;
+        case CheckupState::CHECK_PRESSURE:
+            if (_systemData->sensors._hydraulic_line_pressure > 0) {
+                state = CheckupState::TOGGLE_VALVE;
+            }
+        case CheckupState::CHECK_TIMESTAMPS:
+            if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.emergencySignal) {
+                return CheckupError::ERROR;
+            }
+        default:
+            break;
+    }
+    return CheckupError::WAITING_FOR_RESPONSE;
+}
+
+inline bool CheckupManager::readyCheckup() const {
+    //TODO: UPDATE BRAKE PRESSURE CONDITION
+    if (!_systemData->digitalData.asms_on || !_systemData->digitalData.aats_on || _systemData->sensors.
+        _hydraulic_line_pressure == 0) {
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }
 
@@ -118,7 +185,7 @@ inline bool CheckupManager::r2dCheckup() const {
 
 inline bool CheckupManager::emergencyCheckup() const {
     if (_systemData->failureDetection.hasAnyComponentTimedOut()
-        && !_systemData->failureDetection.emergencySignal && _systemData->sdcState_OPEN) {
+        || _systemData->failureDetection.emergencySignal || _systemData->sdcState_OPEN) {
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;

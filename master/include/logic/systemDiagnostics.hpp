@@ -1,7 +1,7 @@
 #pragma once
 
+#include <cstdlib>
 #include <Metro.h>
-#include <logic/timestamp.hpp>
 #include <embedded/digitalSettings.hpp>
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;

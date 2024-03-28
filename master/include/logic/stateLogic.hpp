@@ -48,6 +48,12 @@ inline void ASState::calculateState() {
             break;
 
         case AS_READY:
+            if (_checkupManager.readyCheckup()) {
+                DigitalSender::enterOffState();
+                state = AS_OFF;
+                break;
+            }
+
             if (_checkupManager.emergencyCheckup()) {
                 performEmergencyOperations();
                 state = AS_EMERGENCY;
@@ -55,10 +61,11 @@ inline void ASState::calculateState() {
             }
             if (_checkupManager.r2dCheckup()) break;
 
-            DigitalSender::enterDrivingState();
+            _digitalSender.enterDrivingState();
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
+            _digitalSender.blinkLED();
             if (_checkupManager.emergencyCheckup()) {
                 performEmergencyOperations();
                 state = AS_EMERGENCY;
@@ -75,14 +82,16 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup()) break;
+            if (_checkupManager.missionFinishedCheckup())
+                break;
 
             DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            if (_checkupManager.emergencySequenceComplete()) break;
-
+            _digitalSender.blinkLED();
+            if (_checkupManager.emergencySequenceComplete())
+                break;
             DigitalSender::enterOffState();
             state = AS_OFF;
             break;
@@ -94,5 +103,5 @@ inline void ASState::calculateState() {
 inline void ASState::performEmergencyOperations() {
     //TODO: SET CORRECT MESSAGE HERE
     // _communicator->send_message();
-    DigitalSender::enterEmergencyState();
+    _digitalSender.enterEmergencyState();
 }

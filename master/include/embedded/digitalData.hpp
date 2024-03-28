@@ -1,6 +1,5 @@
 #pragma once
 
-#include "logic/timestamp.hpp"
 
 struct DigitalData {
     // Rear Left Wheel Speed Encoder

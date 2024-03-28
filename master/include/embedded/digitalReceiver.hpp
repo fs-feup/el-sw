@@ -118,6 +118,7 @@ inline void DigitalReceiver::readAatsSwitch() {
 }
 
 inline void DigitalReceiver::askReadWatchdog() const {
+    //TODO: I THINK THIS SHOULD BE 2 DIFFERENT FUNCTIONS, YOU CANT READ AND RECEIVE AT THE SAME TIME
     if (digitalData->wd_pulse_ts.check()) {
         // After timeout send pulse
         digitalData->wd_pulse_ts.reset();
