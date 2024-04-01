@@ -4,6 +4,9 @@
 
 class DigitalSender {
 private:
+    Metro _blinkTimer{LED_BLINK_INTERVAL};
+    Metro _watchdogTimer{WD_PULSE_INTERVAL_MS};
+
     static constexpr std::array<int, 9> validOutputPins = {
         ASSI_DRIVING_PIN,
         ASSI_READY_PIN,
@@ -27,9 +30,6 @@ private:
     static void deactivateEBS();
 
 public:
-    Metro _blinkTimer{LED_BLINK_INTERVAL};
-    bool _blinkState = false;
-
     DigitalSender() {
         for (const auto pin: validOutputPins) {
             pinMode(pin, OUTPUT);
@@ -50,7 +50,9 @@ public:
 
     static void enterFinishState();
 
-    void blinkLED();
+    void blinkLED(int pin);
+
+    void toggleWatchdog();
 };
 
 inline void DigitalSender::sendDigitalSignal(const int pin, const int signal) {
@@ -108,8 +110,8 @@ inline void DigitalSender::enterOffState() {
 inline void DigitalSender::enterReadyState() {
     turnOffASSI();
     digitalWrite(ASSI_READY_PIN, HIGH);
-    activateEBS();  ///  these 2 should be redundant since we do it during initial checkup
-    closeSDC();     ///
+    activateEBS(); ///  these 2 should be redundant since we do it during initial checkup
+    closeSDC(); ///
 }
 
 inline void DigitalSender::enterDrivingState() {
@@ -126,9 +128,18 @@ inline void DigitalSender::enterFinishState() {
     openSDC();
 }
 
-inline void DigitalSender::blinkLED() {
+inline void DigitalSender::blinkLED(const int pin) {
+    static bool blinkState = false;
     if (_blinkTimer.check()) {
-        _blinkState = !_blinkState;
-        digitalWrite(ASSI_DRIVING_PIN, _blinkState);
+        blinkState = !blinkState;
+        digitalWrite(pin, blinkState);
+    }
+}
+
+inline void DigitalSender::toggleWatchdog() {
+    static bool watchdogState = false;
+    if (_watchdogTimer.check()) {
+        watchdogState = !watchdogState;
+        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, watchdogState);
     }
 }

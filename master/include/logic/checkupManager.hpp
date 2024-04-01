@@ -17,16 +17,16 @@ private:
     // Metro _initialCheckupTimestamp;
 
     enum class CheckupState {
-        START,
-        TOGGLE_WATCHDOG,
+        WAIT_FOR_ASMS,
+        START_TOGGLING_WATCHDOG,
         WAIT_FOR_WATCHDOG,
+        STOP_TOGGLING_WATCHDOG,
         CHECK_WATCHDOG,
         CLOSE_SDC,
         WAIT_FOR_TS,
         TOGGLE_VALVE,
         CHECK_PRESSURE,
-        CHECK_TIMESTAMPS,
-        DONE
+        CHECK_TIMESTAMPS
     };
 
     //This is for easier debugging in case initial checkup fails
@@ -56,7 +56,7 @@ public:
      * @brief Performs an initial checkup.
      * @return 0 if success, else 1.
      */
-    CheckupError initialCheckup();
+    CheckupError initialCheckupSequence();
 
     [[nodiscard]] bool shouldRevertToOffFromReady() const;
 
@@ -121,41 +121,68 @@ inline bool CheckupManager::shouldStayOff() {
     // if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
     //     return true;
     // }
-    CheckupError initSequenceState = initialCheckup();
+    CheckupError initSequenceState = initialCheckupSequence();
 
     if (initSequenceState != CheckupError::SUCCESS) {
         return true;
     }
     _systemData->internalLogics.enterReadyState();
+    _systemData->digitalData.watchdogTimestamp.reset();
     return false;
 }
 
-inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
+inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence() {
     // TODO: Refer to initial checkup flowchart
-    static auto state = CheckupState::START;
+    static auto state = CheckupState::WAIT_FOR_ASMS;
     switch (state) {
-        case CheckupState::START:
-            //TODO: TOGGLE WATCHDOG
-
+        case CheckupState::WAIT_FOR_ASMS:
+            // ASMS Activated?
+            if (_systemData->digitalData.asms_on) {
+                state = CheckupState::START_TOGGLING_WATCHDOG;
+            }
+            break;
+        case CheckupState::START_TOGGLING_WATCHDOG:
+            // Start toggling watchdog
+            digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
             initialCheckupTimestamp.reset();
             state = CheckupState::WAIT_FOR_WATCHDOG;
             break;
         case CheckupState::WAIT_FOR_WATCHDOG:
-            //TODO: CHECK WATCHDOG UNTIL TIMEOUT; THEN RETURN ERROR
-            state = CheckupState::CLOSE_SDC;
+            // Watchdog_is_ready == 1
+            if (initialCheckupTimestamp.check()) {
+                return CheckupError::ERROR;
+            }
+            if (_systemData->digitalData.watchdog_state) {
+                state = CheckupState::STOP_TOGGLING_WATCHDOG;
+            }
+            break;
+        case CheckupState::STOP_TOGGLING_WATCHDOG:
+            // Stop toggling watchdog
+            digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
+            initialCheckupTimestamp.reset();
+            state = CheckupState::CHECK_WATCHDOG;
+            break;
+        case CheckupState::CHECK_WATCHDOG:
+            // Watchdog_is_ready == 0
+            if (initialCheckupTimestamp.check() && !_systemData->digitalData.watchdog_state) {
+                state = CheckupState::CLOSE_SDC;
+                //Start toggling watchdog again (will only actually happen when the car is in AS_READY)
+            }
             break;
         case CheckupState::CLOSE_SDC:
+            // Close SDC
             digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
             digitalWrite(MASTER_SDC_OUT_PIN, LOW);
             state = CheckupState::WAIT_FOR_TS;
             break;
         case CheckupState::WAIT_FOR_TS:
+            // TS Activated?
             if (_systemData->digitalData.aats_on) {
                 state = CheckupState::TOGGLE_VALVE;
             }
             break;
-
         case CheckupState::TOGGLE_VALVE:
+            // Toggle EBS Valves
             digitalWrite(EBS_VALVE_1_PIN, HIGH);
             digitalWrite(EBS_VALVE_2_PIN, HIGH);
 
@@ -163,6 +190,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
             state = CheckupState::CHECK_PRESSURE;
             break;
         case CheckupState::CHECK_PRESSURE: {
+            // Check hyraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
             }
@@ -173,6 +201,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
             break;
         }
         case CheckupState::CHECK_TIMESTAMPS:
+            // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {
                 return CheckupError::ERROR;
@@ -197,12 +226,16 @@ inline bool CheckupManager::shouldStayR2D() const {
     if (!_systemData->internalLogics.goSignal) {
         return true;
     }
+
+    _systemData->digitalData.watchdogTimestamp.reset();
     return false;
 }
 
 inline bool CheckupManager::shouldEnterEmergency() const {
-    if (_systemData->failureDetection.hasAnyComponentTimedOut()
-        || _systemData->failureDetection.emergencySignal || _systemData->sdcState_OPEN) {
+    if (_systemData->failureDetection.hasAnyComponentTimedOut() ||
+        _systemData->failureDetection.emergencySignal ||
+        _systemData->sdcState_OPEN ||
+        _systemData->digitalData.watchdogTimestamp.check()) {
         return true;
     }
     return false;

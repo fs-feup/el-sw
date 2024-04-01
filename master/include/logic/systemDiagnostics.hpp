@@ -46,8 +46,6 @@ struct FailureDetection {
     bool bamocarReady{true};
     double radio_quality{0};
 
-    FailureDetection() = default;
-
     [[nodiscard]] bool hasAnyComponentTimedOut() {
         return pcAliveTimestamp.check() ||
                steerAliveTimestamp.check() ||

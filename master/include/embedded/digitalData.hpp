@@ -9,9 +9,8 @@ struct DigitalData {
     Metro left_wheel_update_ts{WHEEL_MEASUREMENT_INTERVAL_MS};
 
     // Watchdog
+    Metro watchdogTimestamp{WATCHDOG_TIMEOUT};
     bool watchdog_state = true; // starts true until false
-    bool watchdog_comm_state = false;
-    Metro wd_pulse_ts{WD_PULSE_INTERVAL_MS};
 
     // Other reads
     bool pneumatic_line_pressure = true;

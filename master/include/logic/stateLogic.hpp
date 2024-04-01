@@ -48,6 +48,8 @@ inline void ASState::calculateState() {
             break;
 
         case AS_READY:
+            _digitalSender.toggleWatchdog();
+
             if (_checkupManager.shouldRevertToOffFromReady()) {
                 DigitalSender::enterOffState();
                 state = AS_OFF;
@@ -65,7 +67,9 @@ inline void ASState::calculateState() {
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
-            _digitalSender.blinkLED();
+            _digitalSender.toggleWatchdog();
+            _digitalSender.blinkLED(ASSI_DRIVING_PIN);
+
             if (_checkupManager.shouldEnterEmergency()) {
                 performEmergencyOperations();
                 state = AS_EMERGENCY;
@@ -89,7 +93,7 @@ inline void ASState::calculateState() {
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            _digitalSender.blinkLED();
+            _digitalSender.blinkLED(ASSI_EMERGENCY_PIN);
 
             if (_checkupManager.emergencySequenceComplete())
                 break;

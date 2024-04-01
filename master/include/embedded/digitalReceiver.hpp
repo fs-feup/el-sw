@@ -42,7 +42,7 @@ private:
 
     void readAatsSwitch();
 
-    void askReadWatchdog();
+    void readWatchdog();
 
     void updateLeftWheelRpm();
 };
@@ -71,7 +71,7 @@ inline void DigitalReceiver::digitalReads() {
     readMission();
     readAsmsSwitch();
     readAatsSwitch();
-    askReadWatchdog();
+    readWatchdog();
 }
 
 inline void DigitalReceiver::readLwss() {
@@ -118,20 +118,6 @@ inline void DigitalReceiver::readAatsSwitch() {
         digitalData->aats_on = false;
 }
 
-inline void DigitalReceiver::askReadWatchdog() {
-    //TODO: I THINK THIS SHOULD BE 2 DIFFERENT FUNCTIONS, YOU CANT READ AND RECEIVE AT THE SAME TIME
-    if (digitalData->wd_pulse_ts.check()) {
-        // After timeout send pulse
-        digitalData->wd_pulse_ts.reset();
-        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
-        digitalData->watchdog_comm_state = true;
-    } else if (digitalData->wd_pulse_ts.check() &&
-               digitalData->watchdog_comm_state) {
-        // after pulse put pin in low again
-        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
-        digitalData->watchdog_comm_state = false;
-    }
-
-    if (digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN) == LOW) // if low, failure checks will open sdc
-        digitalData->watchdog_state = false;
+inline void DigitalReceiver::readWatchdog() {
+    digitalData->watchdog_state = digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN);
 }
