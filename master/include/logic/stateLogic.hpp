@@ -25,7 +25,7 @@ public:
 inline void ASState::calculateState() {
     switch (state) {
         case AS_MANUAL:
-            if (_checkupManager.manualDrivingCheckup()) break;
+            if (_checkupManager.shouldStayManualDriving()) break;
 
             DigitalSender::enterOffState();
 
@@ -35,43 +35,43 @@ inline void ASState::calculateState() {
         case AS_OFF:
 
             // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
-            if (_checkupManager.manualDrivingCheckup()) {
+            if (_checkupManager.shouldStayManualDriving()) {
                 DigitalSender::enterManualState();
                 state = AS_MANUAL;
                 break;
             }
 
-            if (_checkupManager.offCheckup()) break;
+            if (_checkupManager.shouldStayOff()) break;
 
             DigitalSender::enterReadyState();
             state = AS_READY;
             break;
 
         case AS_READY:
-            if (_checkupManager.readyCheckup()) {
+            if (_checkupManager.shouldRevertToOffFromReady()) {
                 DigitalSender::enterOffState();
                 state = AS_OFF;
                 break;
             }
 
-            if (_checkupManager.emergencyCheckup()) {
+            if (_checkupManager.shouldEnterEmergency()) {
                 performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.r2dCheckup()) break;
+            if (_checkupManager.shouldStayR2D()) break;
 
             _digitalSender.enterDrivingState();
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
             _digitalSender.blinkLED();
-            if (_checkupManager.emergencyCheckup()) {
+            if (_checkupManager.shouldEnterEmergency()) {
                 performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.drivingCheckup()) break;
+            if (_checkupManager.shouldStayDriving()) break;
 
             DigitalSender::enterFinishState();
             state = AS_FINISHED;
@@ -82,7 +82,7 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup())
+            if (_checkupManager.shouldStayMissionFinished())
                 break;
 
             DigitalSender::enterOffState();

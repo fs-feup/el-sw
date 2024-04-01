@@ -44,13 +44,13 @@ public:
      * @brief Performs a manual driving checkup.
      * @return 0 if success, else 1.
      */
-    [[nodiscard]] bool manualDrivingCheckup() const;
+    [[nodiscard]] bool shouldStayManualDriving() const;
 
     /**
      * @brief Performs an off checkup.
      * @return 0 if success, else 1.
      */
-    bool offCheckup();
+    bool shouldStayOff();
 
     /**
      * @brief Performs an initial checkup.
@@ -58,27 +58,27 @@ public:
      */
     CheckupError initialCheckup();
 
-    [[nodiscard]] bool readyCheckup() const;
+    [[nodiscard]] bool shouldRevertToOffFromReady() const;
 
     /**
      * @brief Performs a ready to drive checkup.
      * @return 0 if success, else 1.
      */
-    [[nodiscard]] bool r2dCheckup() const;
+    [[nodiscard]] bool shouldStayR2D() const;
 
     /**
      * @brief Performs an emergency checkup.
      * @return 0 if the car passes emergency checks, else 1.
      */
-    [[nodiscard]] bool emergencyCheckup() const;
+    [[nodiscard]] bool shouldEnterEmergency() const;
 
-    [[nodiscard]] bool drivingCheckup() const;
+    [[nodiscard]] bool shouldStayDriving() const;
 
     /**
      * @brief Performs a mission finished checkup.
      * @return 0 if success, else 1.
      */
-    [[nodiscard]] bool missionFinishedCheckup() const;
+    [[nodiscard]] bool shouldStayMissionFinished() const;
 
     /**
      * @brief Checks if the emergency sequence is complete and the vehicle can
@@ -100,34 +100,34 @@ public:
     CheckupManager();
 };
 
-inline bool CheckupManager::manualDrivingCheckup() const {
+inline bool CheckupManager::shouldStayManualDriving() const {
     /* AATS OFF | MISSION NOT MANUAL | EBS IS DISABLED --> Transition to AS_OFF
      * AATS ON  & MISSION MANUAL     & EBS INACTIVE    --> Transition to AS_READY
      *
      * In EXIT_SUCCESS, the vehicle can transition to AS_OFF.
-     * IN EXIT_FAILURE, the vehicle can transition to AS_MANUAL.
+     * IN true, the vehicle can transition to AS_MANUAL.
      */
 
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
         || !_systemData->digitalData.aats_on || _systemData->sdcState_OPEN) {
-        return EXIT_SUCCESS;
+        return false;
     }
-    return EXIT_FAILURE;
+    return true;
 }
 
-inline bool CheckupManager::offCheckup() {
+inline bool CheckupManager::shouldStayOff() {
     // THIS CHECKUP SEQUENCE IS NOT LONGER NEEDED AS IF ONE OF THOSE GET TRIGGERED DURING THE INITIAL SEQUENCE,
     // THE CAR WOULD REVERT STATE TO OFF OR EMERGENCY ACCORDINGLY.
     // if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
-    //     return EXIT_FAILURE;
+    //     return true;
     // }
     CheckupError initSequenceState = initialCheckup();
 
     if (initSequenceState != CheckupError::SUCCESS) {
-        return EXIT_FAILURE;
+        return true;
     }
     _systemData->internalLogics.enterReadyState();
-    return EXIT_SUCCESS;
+    return false;
 }
 
 inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
@@ -184,56 +184,56 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckup() {
     return CheckupError::WAITING_FOR_RESPONSE;
 }
 
-inline bool CheckupManager::readyCheckup() const {
+inline bool CheckupManager::shouldRevertToOffFromReady() const {
     //TODO: UPDATE BRAKE PRESSURE CONDITION
     if (!_systemData->digitalData.asms_on || !_systemData->digitalData.aats_on || _systemData->sensors.
         _hydraulic_line_pressure == 0) {
-        return EXIT_FAILURE;
+        return true;
     }
-    return EXIT_SUCCESS;
+    return false;
 }
 
-inline bool CheckupManager::r2dCheckup() const {
+inline bool CheckupManager::shouldStayR2D() const {
     if (!_systemData->internalLogics.goSignal) {
-        return EXIT_FAILURE;
+        return true;
     }
-    return EXIT_SUCCESS;
+    return false;
 }
 
-inline bool CheckupManager::emergencyCheckup() const {
+inline bool CheckupManager::shouldEnterEmergency() const {
     if (_systemData->failureDetection.hasAnyComponentTimedOut()
         || _systemData->failureDetection.emergencySignal || _systemData->sdcState_OPEN) {
-        return EXIT_FAILURE;
+        return true;
     }
-    return EXIT_SUCCESS;
+    return false;
 }
 
-inline bool CheckupManager::drivingCheckup() const {
+inline bool CheckupManager::shouldStayDriving() const {
     if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->missionFinished) {
-        return EXIT_SUCCESS;
+        return false;
     }
-    return EXIT_FAILURE;
+    return true;
 }
 
-inline bool CheckupManager::missionFinishedCheckup() const {
+inline bool CheckupManager::shouldStayMissionFinished() const {
     if (_systemData->digitalData.asms_on) {
-        return EXIT_FAILURE;
+        return true;
     }
-    return EXIT_SUCCESS;
+    return false;
 }
 
 inline bool CheckupManager::emergencySequenceComplete() {
     if (_ebsSoundTimestamp.check() && !_systemData->digitalData.asms_on) {
-        return EXIT_SUCCESS;
+        return false;
     }
-    return EXIT_FAILURE;
+    return true;
 }
 
 inline bool CheckupManager::resTriggered() const {
     if (_systemData->failureDetection.emergencySignal) {
-        return EXIT_SUCCESS;
+        return false;
     }
-    return EXIT_FAILURE;
+    return true;
 }
 
 // TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure->
