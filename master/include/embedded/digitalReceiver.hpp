@@ -1,3 +1,4 @@
+// ReSharper disable CppMemberFunctionMayBeConst
 #pragma once
 
 #include <Bounce2.h>
@@ -31,22 +32,22 @@ private:
 
     static Button newButton(uint8_t pin);
 
-    void readLwss() const;
+    void readLwss();
 
-    void readPneumaticLine() const;
+    void readPneumaticLine();
 
-    void readMission() const;
+    void readMission();
 
     void readAsmsSwitch();
 
     void readAatsSwitch();
 
-    void askReadWatchdog() const;
+    void askReadWatchdog();
 
-    void updateLeftWheelRpm() const;
+    void updateLeftWheelRpm();
 };
 
-inline void DigitalReceiver::updateLeftWheelRpm() const {
+inline void DigitalReceiver::updateLeftWheelRpm() {
     digitalData->_left_wheel_rpm =
             digitalData->pulse_count /
             (WHEEL_MEASUREMENT_INTERVAL_MIN * PULSES_PER_ROTATION);
@@ -73,7 +74,7 @@ inline void DigitalReceiver::digitalReads() {
     askReadWatchdog();
 }
 
-inline void DigitalReceiver::readLwss() const {
+inline void DigitalReceiver::readLwss() {
     bool const current_lwss_state = digitalRead(LWSS_PIN);
 
     if (current_lwss_state == HIGH && digitalData->last_lwss_state == LOW)
@@ -85,11 +86,11 @@ inline void DigitalReceiver::readLwss() const {
         updateLeftWheelRpm();
 }
 
-inline void DigitalReceiver::readPneumaticLine() const {
+inline void DigitalReceiver::readPneumaticLine() {
     // TODO: wait for eletro indications
 }
 
-inline void DigitalReceiver::readMission() const {
+inline void DigitalReceiver::readMission() {
     // Enum value attributed considering the True Boolean Value
     *mission = static_cast<Mission>(
         digitalRead(MISSION_MANUAL_PIN) * MANUAL |
@@ -117,7 +118,7 @@ inline void DigitalReceiver::readAatsSwitch() {
         digitalData->aats_on = false;
 }
 
-inline void DigitalReceiver::askReadWatchdog() const {
+inline void DigitalReceiver::askReadWatchdog() {
     //TODO: I THINK THIS SHOULD BE 2 DIFFERENT FUNCTIONS, YOU CANT READ AND RECEIVE AT THE SAME TIME
     if (digitalData->wd_pulse_ts.check()) {
         // After timeout send pulse
