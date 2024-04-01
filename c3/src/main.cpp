@@ -8,7 +8,7 @@
 #include "debug.h"
 #include "display.h"
 
-#define buzzerPin 4  //! trocar para pino 2 no shield novo
+#define buzzerPin 4 //! trocar para pino 2 no shield novo
 
 #define R2D_PIN 32
 #define R2D_TIMEOUT 500
@@ -20,6 +20,8 @@
 
 #define APPS_READ_PERIOD_MS 20
 #define BAMOCAR_ATTENUATION_FACTOR 1
+
+#define ASBuzzer 8000
 
 int current_BMS = 0;
 
@@ -42,12 +44,13 @@ extern CAN_message_t actualSpeedRequest;
 extern int speed;
 
 uint8_t current_byte1; // MSB
-uint8_t current_byte2;        // LSB
+uint8_t current_byte2; // LSB
 CAN_message_t current_msg;
 
-enum status {
-    IDLE,    // waiting for r2d && ATS off
-    DRIVING  // r2d pressed && ATS on
+enum status
+{
+    IDLE,   // waiting for r2d && ATS off
+    DRIVING // r2d pressed && ATS on
 };
 
 status R2DStatus;
@@ -56,10 +59,12 @@ Bounce r2dButton = Bounce();
 elapsedMillis R2DTimer;
 elapsedMillis APPSTimer;
 elapsedMillis CURRENTtimer;
+elapsedMillis ASEmergencyTimer;
 
 elapsedMicros mainLoopPeriod;
 
-void sendMout (int value) {
+void sendMout(int value)
+{
     uint8_t byte1 = (value >> 8) & 0xFF;
     uint8_t byte2 = value & 0xFF;
 
@@ -72,12 +77,23 @@ void sendMout (int value) {
     can1.write(msg);
 }
 
-void playR2DSound() {
+void playR2DSound()
+{
     digitalWrite(buzzerPin, HIGH);
     delay(1000);
     digitalWrite(buzzerPin, LOW);
 }
-void setup() {
+
+void checkASEmergencySound()
+{
+    if (ASEmergencyTimer < ASBuzzer)
+        digitalWrite(buzzerPin, HIGH);
+    else
+        digitalWrite(buzzerPin, LOW);
+}
+
+void setup()
+{
     Serial.begin(9600);
     pinMode(APPS_1_PIN, INPUT);
     pinMode(APPS_2_PIN, INPUT);
@@ -90,6 +106,9 @@ void setup() {
 
     R2DStatus = IDLE;
     R2DTimer = 0;
+
+    // Init the timer higher than the timeout (ASBuzzer)
+    ASEmergencyTimer = 100000;
 
     delay(STARTUP_DELAY_MS);
 
@@ -106,7 +125,8 @@ void setup() {
 #endif
 }
 
-void loop() {
+void loop()
+{
     if (mainLoopPeriod < 10)
         return;
 
@@ -118,49 +138,53 @@ void loop() {
         displayUpdate();
 #endif
 
-    switch (R2DStatus) {
-        case IDLE:
-            r2dButton.update();
+    switch (R2DStatus)
+    {
+    case IDLE:
+        r2dButton.update();
 
 #ifdef R2D_DEBUG
-            LOG("R2D Button: %d\tR2D: %s", r2dButton.read(), TSOn ? "MAINS OK" : "MAINS OFF");
-            Serial.print("\tR2D Timer: ");
-            Serial.println(R2DTimer);
+        LOG("R2D Button: %d\tR2D: %s", r2dButton.read(), TSOn ? "MAINS OK" : "MAINS OFF");
+        Serial.print("\tR2D Timer: ");
+        Serial.println(R2DTimer);
 #endif
 
-            if ((r2dButton.fell() and TSOn and R2DTimer < R2D_TIMEOUT) or R2DOverride) {
+        if ((r2dButton.fell() and TSOn and R2DTimer < R2D_TIMEOUT) or R2DOverride)
+        {
 #ifdef R2D_DEBUG
-                LOG("R2D OK, Switching to drive mode\n");
+            LOG("R2D OK, Switching to drive mode\n");
 #endif
-                playR2DSound();
-                initBamocarD3();
-                request_dataLOG_messages();
-                R2DStatus = DRIVING;
-                break;
-            }
+            playR2DSound();
+            initBamocarD3();
+            request_dataLOG_messages();
+            R2DStatus = DRIVING;
             break;
+        }
+        break;
 
-        case DRIVING:
-            if (not TSOn and not R2DOverride) {
-                R2DStatus = IDLE;
-                can1.write(disable);
-                break;
-            }
-
-            if (APPSTimer > APPS_READ_PERIOD_MS) {
-                APPSTimer = 0;
-                int apps_value = readApps();
-
-                if (apps_value >= 0)
-                    sendTorqueVal(apps_value);
-                else
-                    sendTorqueVal(0);
-                break;
-            }
-
+    case DRIVING:
+        if (not TSOn and not R2DOverride)
+        {
+            R2DStatus = IDLE;
+            can1.write(disable);
             break;
-        default:
-            ERROR("Invalid r2d_status");
+        }
+
+        if (APPSTimer > APPS_READ_PERIOD_MS)
+        {
+            APPSTimer = 0;
+            int apps_value = readApps();
+
+            if (apps_value >= 0)
+                sendTorqueVal(apps_value);
+            else
+                sendTorqueVal(0);
             break;
+        }
+
+        break;
+    default:
+        ERROR("Invalid r2d_status");
+        break;
     }
 }

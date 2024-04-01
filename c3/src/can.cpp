@@ -5,6 +5,7 @@ FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 CAN_message_t disable;
 CAN_message_t BTBStatus;
+CAN_message_t BTBCyclic;
 CAN_message_t noDisable;
 CAN_message_t clearErrors;
 CAN_message_t BTBResponse;
@@ -23,6 +24,8 @@ CAN_message_t tempBAMO;
 CAN_message_t VoltageMotor;
 CAN_message_t torque_motor;
 CAN_message_t battery_voltage;
+
+CAN_message_t ASStatus;
 
 int Ibat;
 int Vbat;
@@ -134,6 +137,9 @@ void initCanMessages() {
     DCVoltageRequest.buf[0] = 0x3D;
     DCVoltageRequest.buf[1] = 0xEB;
     DCVoltageRequest.buf[2] = 0x64;
+
+    //ASStatus msg
+    
 }
 
 void request_dataLOG_messages() {
@@ -193,6 +199,13 @@ void request_dataLOG_messages() {
     battery_voltage.buf[2] = 0x0A;
     can1.write(battery_voltage);
 
+    //This is for the Master Teensy
+    //Period = 0x0A = 10 ms
+    BTBCyclic.id = BAMO_COMMAND_ID;
+    BTBCyclic.len = 3;
+    BTBCyclic.buf[0] = 0x3D;
+    BTBCyclic.buf[1] = 0xE2;
+    BTBCyclic.buf[2] = 0x0A;
 }
 
 void sendTorqueVal(int value_bamo) {
@@ -239,55 +252,6 @@ void initBamocarD3() {
 
 void REGIDHandler(const CAN_message_t& msg) {
     switch (msg.buf[0]) {
-        /*
-        case REGID_VOUT:
-            Vout = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_ACTUAL_IQ:
-            Iq_actual = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_CMD_IQ:
-            Iq_cmd = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_MOUT:
-            Mout = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_I_LIM_INUSE:
-            I_lim_inuse = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_I_ACT_FILTERED:
-            I_actual_filtered = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_T_PEAK:
-            Tpeak = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_I_MAX_PEAK:
-            Imax_peak = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_I_CON_EFF:
-            I_con_eff = (msg.buf[2] << 8) | msg.buf[1];
-            break;
-
-        case REGID_ACTUAL_SPEED: {
-            double speed = 0;
-            speed = (msg.buf[2] << 8) | msg.buf[1];
-            if (speed < 0)
-                speed *= -1;
-            rpm = speed;
-            rpm = (rpm * 6500) / 32760;
-            speed = (speed / 5.04) * 0.02394;
-            speedInt = (int)speed;
-            break;
-        }
-        */
         case 0x30:
             speed = (msg.buf[2] << 8) | msg.buf[1];
             break;
@@ -308,29 +272,12 @@ void REGIDHandler(const CAN_message_t& msg) {
 }
 
 void canSniffer(const CAN_message_t& msg) {
-#ifdef CAN_DEBUG
-    LOG("CAN message received\n");
-    INFO("Message ID: %x\n", msg.id);
-    INFO("Message length: %d\n", msg.len);
-    INFO("Message data: ");
-    for (int i = 0; i < msg.len; i++)
-        Serial.printf("%x ", msg.buf[i]);
-    Serial.println();
-#endif  // CAN_DEBUG
-
     switch (msg.id) {
         case 0x666:
             current_BMS = ((msg.buf[1] << 8) | msg.buf[0]);
-            //Serial.printf("Message data received: ");
-            //for (int i = 0; i < 2; i++)
-                //Serial.printf("%x ", msg.buf[i]);
-            //Serial.println();
             break;
 
         case C3_ID:
-#ifdef R2D_DEBUG
-            INFO("Braking signal received\n");
-#endif  // R2D_DEBUG
             brakeValue = (msg.buf[2] << 8) | msg.buf[1];
             if (brakeValue > 165)
                 R2DTimer = 0;
@@ -356,6 +303,11 @@ void canSniffer(const CAN_message_t& msg) {
                 break;
             }
             break;
+        case MASTER_ID:
+            /* TODO: sp que recebo a mensagem da master ver o conteudo
+            * Se AS STATUS for AS EMERGENCY é preciso dar reset ao timer ASEmergencyTimer
+            *  ASEmergencyTimer=0;
+            */
 
         default:
             break;

@@ -6,6 +6,7 @@
 #define C3_ID 0x123
 #define R2D_ID 0x665
 #define BMS_ID 0x675
+#define MASTER_ID 1
 
 #define BAMO_COMMAND_ID 0x201
 #define BAMO_RESPONSE_ID 0x181
