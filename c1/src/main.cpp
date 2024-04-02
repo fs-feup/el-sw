@@ -104,7 +104,7 @@ float calculateRPM()
     return (float)pulses / RWS_PULSES_PER_ROTATION * (60000 / RWS_SAMPLE_PERIOD);
 }
 
-// Inte rrupt service routine for counting pulses
+// Interrupt service routine for counting pulses
 void countPulse()
 {
     pulseCount++;
@@ -270,6 +270,7 @@ void setup()
     loggingInstance.setup_log();
     pinMode(BRAKE_SENSOR_PIN, INPUT);
     pinMode(BRAKE_LIGHT, OUTPUT);
+
     attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), countPulse, RISING);
 }
 

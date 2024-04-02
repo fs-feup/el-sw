@@ -71,6 +71,9 @@ const int CANTimeoutMS = 100;
 
 #define DC_THRESHOLD 4328  // Threshold for DC voltage to be considered present for R2D
 
+elapsedMillis ASEmergencyTimer;
+
+
 // Initialize CAN messages
 /**
  * @brief Initialize CAN messages
@@ -304,10 +307,12 @@ void canSniffer(const CAN_message_t& msg) {
             }
             break;
         case MASTER_ID:
-            /* TODO: sp que recebo a mensagem da master ver o conteudo
-            * Se AS STATUS for AS EMERGENCY é preciso dar reset ao timer ASEmergencyTimer
-            *  ASEmergencyTimer=0;
-            */
+            if (msg.buf[0] == 0x31) {
+                if (msg.buf[1] == 5) { // ASEmergency
+                    ASEmergencyTimer=0;
+                }
+            }
+
 
         default:
             break;
@@ -324,6 +329,7 @@ void canSetup() {
     can1.setFIFOFilter(1, R2D_ID, STD);
     can1.setFIFOFilter(2, BMS_ID, STD);
     can1.setFIFOFilter(3, BAMO_RESPONSE_ID, STD);
+    can1.setFIFOFilter(3, MASTER_ID, STD);
     can1.onReceive(canSniffer);
 
     initCanMessages();

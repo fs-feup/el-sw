@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Bounce2.h>
 #include <FlexCAN_T4.h>
-#include <elapsedMillis.h>
 
 #include "apps.h"
 #include "can.h"
@@ -24,6 +23,7 @@
 #define ASBuzzer 8000
 
 int current_BMS = 0;
+extern elapsedMillis ASEmergencyTimer;
 
 volatile bool disabled = false;
 volatile bool BTBReady = false;
@@ -59,8 +59,6 @@ Bounce r2dButton = Bounce();
 elapsedMillis R2DTimer;
 elapsedMillis APPSTimer;
 elapsedMillis CURRENTtimer;
-elapsedMillis ASEmergencyTimer;
-
 elapsedMicros mainLoopPeriod;
 
 void sendMout(int value)
@@ -130,30 +128,12 @@ void loop()
     if (mainLoopPeriod < 10)
         return;
 
-#ifdef DATA_LOGGING
-    write()
-#endif
-
-#if DATA_DISPLAY > 0
-        displayUpdate();
-#endif
-
     switch (R2DStatus)
     {
     case IDLE:
         r2dButton.update();
-
-#ifdef R2D_DEBUG
-        LOG("R2D Button: %d\tR2D: %s", r2dButton.read(), TSOn ? "MAINS OK" : "MAINS OFF");
-        Serial.print("\tR2D Timer: ");
-        Serial.println(R2DTimer);
-#endif
-
         if ((r2dButton.fell() and TSOn and R2DTimer < R2D_TIMEOUT) or R2DOverride)
         {
-#ifdef R2D_DEBUG
-            LOG("R2D OK, Switching to drive mode\n");
-#endif
             playR2DSound();
             initBamocarD3();
             request_dataLOG_messages();
@@ -187,4 +167,5 @@ void loop()
         ERROR("Invalid r2d_status");
         break;
     }
+    checkASEmergencySound();
 }
