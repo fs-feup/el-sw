@@ -41,7 +41,7 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            if (_checkupManager.shouldStayOff()) break;
+            if (_checkupManager.shouldStayOff(_digitalSender)) break;
 
             DigitalSender::enterReadyState();
             state = AS_READY;

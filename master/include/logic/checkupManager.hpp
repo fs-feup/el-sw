@@ -3,6 +3,7 @@
 #include <logic/systemData.hpp>
 #include <cstdlib>
 
+#include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
 
 // Also known as Orchestrator
@@ -50,13 +51,13 @@ public:
      * @brief Performs an off checkup.
      * @return 0 if success, else 1.
      */
-    bool shouldStayOff();
+    bool shouldStayOff(DigitalSender& digitalSender);
 
     /**
      * @brief Performs an initial checkup.
      * @return 0 if success, else 1.
      */
-    CheckupError initialCheckupSequence();
+    CheckupError initialCheckupSequence(DigitalSender &digitalSender);
 
     [[nodiscard]] bool shouldRevertToOffFromReady() const;
 
@@ -115,13 +116,13 @@ inline bool CheckupManager::shouldStayManualDriving() const {
     return true;
 }
 
-inline bool CheckupManager::shouldStayOff() {
+inline bool CheckupManager::shouldStayOff(DigitalSender& digitalSender) {
     // THIS CHECKUP SEQUENCE IS NOT LONGER NEEDED AS IF ONE OF THOSE GET TRIGGERED DURING THE INITIAL SEQUENCE,
     // THE CAR WOULD REVERT STATE TO OFF OR EMERGENCY ACCORDINGLY.
     // if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
     //     return true;
     // }
-    CheckupError initSequenceState = initialCheckupSequence();
+    CheckupError initSequenceState = initialCheckupSequence(digitalSender);
 
     if (initSequenceState != CheckupError::SUCCESS) {
         return true;
@@ -131,8 +132,7 @@ inline bool CheckupManager::shouldStayOff() {
     return false;
 }
 
-inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence() {
-    // TODO: Refer to initial checkup flowchart
+inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender &digitalSender) {
     static auto state = CheckupState::WAIT_FOR_ASMS;
     switch (state) {
         case CheckupState::WAIT_FOR_ASMS:
@@ -166,30 +166,31 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence() {
             // Watchdog_is_ready == 0
             if (initialCheckupTimestamp.check() && !_systemData->digitalData.watchdog_state) {
                 state = CheckupState::CLOSE_SDC;
-                //Start toggling watchdog again (will only actually happen when the car is in AS_READY)
+                //Start toggling watchdog again
             }
             break;
         case CheckupState::CLOSE_SDC:
             // Close SDC
-            digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
-            digitalWrite(MASTER_SDC_OUT_PIN, LOW);
+            DigitalSender::closeSDC();
             state = CheckupState::WAIT_FOR_TS;
             break;
         case CheckupState::WAIT_FOR_TS:
+            digitalSender.toggleWatchdog();
             // TS Activated?
             if (_systemData->digitalData.aats_on) {
                 state = CheckupState::TOGGLE_VALVE;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
+            digitalSender.toggleWatchdog();
             // Toggle EBS Valves
-            digitalWrite(EBS_VALVE_1_PIN, HIGH);
-            digitalWrite(EBS_VALVE_2_PIN, HIGH);
+            DigitalSender::activateEBS();
 
             initialCheckupTimestamp.reset();
             state = CheckupState::CHECK_PRESSURE;
             break;
         case CheckupState::CHECK_PRESSURE: {
+            digitalSender.toggleWatchdog();
             // Check hyraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
@@ -201,6 +202,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence() {
             break;
         }
         case CheckupState::CHECK_TIMESTAMPS:
+            digitalSender.toggleWatchdog();
             // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {
@@ -238,6 +240,8 @@ inline bool CheckupManager::shouldEnterEmergency() const {
         _systemData->digitalData.watchdogTimestamp.check()) {
         return true;
     }
+
+    _systemData->digitalData.watchdogTimestamp.reset();
     return false;
 }
 

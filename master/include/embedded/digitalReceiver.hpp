@@ -120,4 +120,7 @@ inline void DigitalReceiver::readAatsSwitch() {
 
 inline void DigitalReceiver::readWatchdog() {
     digitalData->watchdog_state = digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN);
+    if (digitalData->watchdog_state) {
+        digitalData->watchdogTimestamp.reset();
+    }
 }

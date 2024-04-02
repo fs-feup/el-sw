@@ -21,6 +21,13 @@ private:
 
     static void turnOffASSI();
 
+public:
+    DigitalSender() {
+        for (const auto pin: validOutputPins) {
+            pinMode(pin, OUTPUT);
+        }
+    }
+
     static void openSDC();
 
     static void closeSDC();
@@ -28,13 +35,6 @@ private:
     static void activateEBS();
 
     static void deactivateEBS();
-
-public:
-    DigitalSender() {
-        for (const auto pin: validOutputPins) {
-            pinMode(pin, OUTPUT);
-        }
-    }
 
     static void sendDigitalSignal(int pin, int signal);
 
