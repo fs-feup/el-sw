@@ -4,7 +4,7 @@
 #include <embedded/digitalData.hpp>
 #include <logic/structure.hpp>
 
-#define DEBOUNCE_INTERVAL 5
+#define DEBOUNCE_INTERVAL 10
 #define PRESSED_STATE LOW
 
 class DigitalReceiver {
@@ -16,6 +16,7 @@ public:
     pinMode(LWSS_PIN, INPUT);
     pinMode(WD_IN, INPUT);
     pinMode(WD_OUT, OUTPUT);
+    pinMode(PNEUMATIC_PIN, INPUT);
 
     asms_switch = newButton(ASMS_SWITCH_PIN);
     aats_switch = newButton(AATS_SWITCH_PIN);
@@ -75,12 +76,13 @@ void DigitalReceiver::readLwss() {
   digitalData->last_lwss_state = current_lwss_state;
 
     if (digitalData->left_wheel_update_ts.hasTimedOut(
-        WHEEL_MEASUREMENT_INTERVAL_MIN))  // TODO André: I believe this won't work because it's in minutes, not ms
+        WHEEL_MEASUREMENT_INTERVAL_MS))  // TODO André: I believe this won't work because it's in minutes, not ms
         updateLeftWheelRpm();
 }
 
 void DigitalReceiver::readPneumaticLine() {
-  // TODO: wait for eletro indications
+    digitalData->pneumatic_line_pressure = digitalRead(PNEUMATIC_PIN);
+    // high okay, low shutdown
 }
 
 void DigitalReceiver::readMission() {
@@ -97,7 +99,7 @@ void DigitalReceiver::readMission() {
 
 void DigitalReceiver::readAsmsSwitch() {
   asms_switch.update();
-  if (asms_switch.pressed())
+  if (asms_switch.read() == HIGH)
     digitalData->asms_on = true;
   else
     digitalData->asms_on = false;
@@ -105,7 +107,7 @@ void DigitalReceiver::readAsmsSwitch() {
 
 void DigitalReceiver::readAatsSwitch() {
   aats_switch.update();
-  if (aats_switch.pressed())
+  if (aats_switch.read() == HIGH)
     digitalData->aats_on = true;
   else
     digitalData->aats_on = false;
