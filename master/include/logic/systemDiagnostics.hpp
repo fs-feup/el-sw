@@ -1,15 +1,17 @@
 #pragma once
 
-#include <logic/timestamp.hpp>
+#include <cstdlib>
+#include <Metro.h>
+#include <embedded/digitalSettings.hpp>
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
 
 struct InternalLogics {
-    Timestamp readyTimestamp;
+    Metro readyTimestamp{READY_TIMEOUT_MS};
     bool goSignal{false};
 
     void enterReadyState() {
-        readyTimestamp.update();
+        readyTimestamp.reset();
         goSignal = false;
     }
 
@@ -24,7 +26,7 @@ struct InternalLogics {
 
     bool processGoSignal() {
         // If goSignal is not received or received before 5 seconds, return false
-        if (goSignal && readyTimestamp.hasTimedOut(READY_TIMEOUT_MS)) {
+        if (goSignal && readyTimestamp.check()) {
             goSignal = true;
             return EXIT_SUCCESS;
         }
@@ -35,19 +37,19 @@ struct InternalLogics {
 };
 
 struct FailureDetection {
-    Timestamp pcAliveTimestamp, steerAliveTimestamp, inversorAliveTimestamp,
-            bmsAliveTimestamp;
+    Metro pcAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
+    Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
+    Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     bool emergencySignal{false};
     double bamocarTension{0.0}; // Add default member initializer
     bool bamocarReady{true};
     double radio_quality{0};
 
-    FailureDetection() = default;
-
-    [[nodiscard]] bool hasAnyComponentTimedOut(unsigned long timeout) const {
-        return pcAliveTimestamp.hasTimedOut(timeout) ||
-               steerAliveTimestamp.hasTimedOut(timeout) ||
-               inversorAliveTimestamp.hasTimedOut(timeout) ||
-               bmsAliveTimestamp.hasTimedOut(timeout);
+    [[nodiscard]] bool hasAnyComponentTimedOut() {
+        return pcAliveTimestamp.check() ||
+               steerAliveTimestamp.check() ||
+               inversorAliveTimestamp.check();
+        //TODO MISSING INVERSOR ALIVE TIMESTAMP
+        //TODO ALSO USAGE OF BAMOCAR VARIABLES AND RADIO QUALITY
     }
 };

@@ -1,104 +1,112 @@
 #pragma once
 
-#include <Arduino.h>
 #include <logic/checkupManager.hpp>
 #include <logic/structure.hpp>
 #include <embedded/digitalSender.hpp>
-#include <utility>
 
 class ASState {
 private:
     CheckupManager _checkupManager;
-    // DigitalSender _digitalSender;
+    DigitalSender _digitalSender;
+    Communicator *_communicator;
 
 public:
     State state{AS_MANUAL};
 
-    explicit ASState(CheckupManager checkupManager) : _checkupManager(std::move(checkupManager)) {
-    };
+    explicit ASState(SystemData *system_data, Communicator *communicator) : _checkupManager(system_data),
+                                                                            _communicator(communicator) {
+    }
 
     void calculateState();
+
+    void performEmergencyOperations();
 };
 
 inline void ASState::calculateState() {
     switch (state) {
         case AS_MANUAL:
-            if (!_checkupManager.manualDrivingCheckup())
-                break;
+            if (_checkupManager.shouldStayManualDriving()) break;
 
-        // TODO: EBS from disabled to inactive
-        // TODO: Open SDC circuit
+            DigitalSender::enterOffState();
 
             state = AS_OFF;
             break;
 
         case AS_OFF:
+
             // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
-            if (_checkupManager.manualDrivingCheckup()) {
-                //TODO: OFF -> MANUAL Operations
+            if (_checkupManager.shouldStayManualDriving()) {
+                DigitalSender::enterManualState();
                 state = AS_MANUAL;
                 break;
             }
-            if (_checkupManager.offCheckup())
-                break;
 
-            // TODO: OFF -> READY Operations
+            if (_checkupManager.shouldStayOff(_digitalSender)) break;
+
+            DigitalSender::enterReadyState();
             state = AS_READY;
             break;
 
         case AS_READY:
-            if (_checkupManager.emergencyCheckup()) {
-                // Emergency, go to emergency state
-                /* TODO:
-                ASSI to blue flashing
-                EBS to Active
-                TS to OFF (open sdc)
-                Buzzer to on for 8-10s
-                */
+            _digitalSender.toggleWatchdog();
+
+            if (_checkupManager.shouldRevertToOffFromReady()) {
+                DigitalSender::enterOffState();
+                state = AS_OFF;
+                break;
+            }
+
+            if (_checkupManager.shouldEnterEmergency()) {
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.r2dCheckup()) {
-                // Not ready, do nothing
-                break;
-            }
-        /* TODO:
-        Ready to drive, go to driving state
-        ASSI to yellow flashing
-        EBS to inactive
-        */
+            if (_checkupManager.shouldStayR2D()) break;
+
+            _digitalSender.enterDrivingState();
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
-            if (_checkupManager.emergencyCheckup()) {
-                // Emergency, go to emergency state
+            _digitalSender.toggleWatchdog();
+            _digitalSender.blinkLED(ASSI_DRIVING_PIN);
+
+            if (_checkupManager.shouldEnterEmergency()) {
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup()) {
-                break;
-            }
+            if (_checkupManager.shouldStayDriving()) break;
+
+            DigitalSender::enterFinishState();
+            state = AS_FINISHED;
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                // TODO: perform necessary actions to enter AS_EMERGENCY
+                performEmergencyOperations();
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.missionFinishedCheckup()) {
+            if (_checkupManager.shouldStayMissionFinished())
                 break;
-            }
-        // TODO: perform necessary actions to enter AS_OFF
+
+            DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            if (_checkupManager.emergencySequenceComplete()) {
+            _digitalSender.blinkLED(ASSI_EMERGENCY_PIN);
+
+            if (_checkupManager.emergencySequenceComplete())
                 break;
-            }
-        // TODO: perform necessary actions to enter AS_OFF
+            DigitalSender::enterOffState();
             state = AS_OFF;
             break;
         default:
             break;
     }
+}
+
+inline void ASState::performEmergencyOperations() {
+    //TODO: SET CORRECT MESSAGE HERE
+    // _communicator->send_message();
+    _digitalSender.enterEmergencyState();
 }
