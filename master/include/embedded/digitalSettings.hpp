@@ -12,8 +12,6 @@
 #define PULSES_PER_ROTATION 50 // TODO(andre): change to true value
 
 #define WD_PULSE_INTERVAL_MS 10 // TODO(andre): change to adequate value
-#define WD_WAIT_INTERVAL_MS 100 // TODO(andre): change to adequate value
-
 /*
  * ===========
  * OUTPUT PINS
