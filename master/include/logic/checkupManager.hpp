@@ -51,7 +51,7 @@ public:
      * @brief Performs an off checkup.
      * @return 0 if success, else 1.
      */
-    bool shouldStayOff(DigitalSender& digitalSender);
+    bool shouldStayOff(DigitalSender &digitalSender);
 
     /**
      * @brief Performs an initial checkup.
@@ -116,7 +116,7 @@ inline bool CheckupManager::shouldStayManualDriving() const {
     return true;
 }
 
-inline bool CheckupManager::shouldStayOff(DigitalSender& digitalSender) {
+inline bool CheckupManager::shouldStayOff(DigitalSender &digitalSender) {
     // THIS CHECKUP SEQUENCE IS NOT LONGER NEEDED AS IF ONE OF THOSE GET TRIGGERED DURING THE INITIAL SEQUENCE,
     // THE CAR WOULD REVERT STATE TO OFF OR EMERGENCY ACCORDINGLY.
     // if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
@@ -176,14 +176,14 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             break;
         case CheckupState::WAIT_FOR_TS:
             digitalSender.toggleWatchdog();
-            // TS Activated?
+        // TS Activated?
             if (_systemData->digitalData.aats_on) {
                 state = CheckupState::TOGGLE_VALVE;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
             digitalSender.toggleWatchdog();
-            // Toggle EBS Valves
+        // Toggle EBS Valves
             DigitalSender::activateEBS();
 
             initialCheckupTimestamp.reset();
@@ -203,7 +203,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
         }
         case CheckupState::CHECK_TIMESTAMPS:
             digitalSender.toggleWatchdog();
-            // Check if all components have responded and no emergency signal has been sent
+        // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {
                 return CheckupError::ERROR;
@@ -237,6 +237,8 @@ inline bool CheckupManager::shouldEnterEmergency() const {
     if (_systemData->failureDetection.hasAnyComponentTimedOut() ||
         _systemData->failureDetection.emergencySignal ||
         _systemData->sdcState_OPEN ||
+        _systemData->digitalData.pneumatic_line_pressure == 0 ||
+        _systemData->digitalData.asms_on == 0 ||
         _systemData->digitalData.watchdogTimestamp.check()) {
         return true;
     }

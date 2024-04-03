@@ -40,7 +40,6 @@ struct FailureDetection {
     Metro pcAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
-    Metro bmsAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     bool emergencySignal{false};
     double bamocarTension{0.0}; // Add default member initializer
     bool bamocarReady{true};
@@ -49,7 +48,8 @@ struct FailureDetection {
     [[nodiscard]] bool hasAnyComponentTimedOut() {
         return pcAliveTimestamp.check() ||
                steerAliveTimestamp.check() ||
-               inversorAliveTimestamp.check() ||
-               bmsAliveTimestamp.check();
+               inversorAliveTimestamp.check();
+        //TODO MISSING INVERSOR ALIVE TIMESTAMP
+        //TODO ALSO USAGE OF BAMOCAR VARIABLES AND RADIO QUALITY
     }
 };
