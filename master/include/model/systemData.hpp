@@ -1,9 +1,9 @@
 #pragma once
 
-#include <logic/sensors.hpp>
-#include <logic/systemDiagnostics.hpp>
-#include <logic/structure.hpp>
-#include <embedded/digitalData.hpp>
+#include <model/sensors.hpp>
+#include <model/systemDiagnostics.hpp>
+#include <model/structure.hpp>
+#include <model/digitalData.hpp>
 
 struct SystemData {
     InternalLogics internalLogics;

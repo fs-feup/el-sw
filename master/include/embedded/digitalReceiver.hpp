@@ -2,8 +2,8 @@
 #pragma once
 
 #include <Bounce2.h>
-#include <embedded/digitalData.hpp>
-#include <logic/structure.hpp>
+#include <model/digitalData.hpp>
+#include <model/structure.hpp>
 
 #include "digitalSettings.hpp"
 
@@ -12,16 +12,21 @@
 
 class DigitalReceiver {
 public:
+    static double _current_left_wheel_rpm; // class var to keep digital data non-static
+    static unsigned long last_wheel_pulse_ts;
+
     void digitalReads();
+    static void updateLeftWheelRpm(); 
 
     DigitalReceiver(DigitalData *digitalData, Mission *mission)
         : digitalData(digitalData), mission(mission) {
-        pinMode(LWSS_PIN, INPUT);
+        pinMode(SDC_STATE_PIN, INPUT);
         pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
         pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
 
         asms_switch = newButton(ASMS_IN_PIN);
-        aats_switch = newButton(AATS_SWITCH_PIN);
+
+        attachInterrupt(digitalPinToInterrupt(LWSS_PIN), DigitalReceiver::updateLeftWheelRpm, RISING);
     }
 
 private:
@@ -30,31 +35,19 @@ private:
 
     Button asms_switch, aats_switch;
 
-    static Button newButton(uint8_t pin);
+    Button newButton(uint8_t pin);
 
     void readLwss();
-
     void readPneumaticLine();
-
     void readMission();
-
     void readAsmsSwitch();
-
-    void readAatsSwitch();
-
+    void readTSState();
     void readWatchdog();
 
-    void updateLeftWheelRpm();
 };
 
-inline void DigitalReceiver::updateLeftWheelRpm() {
-    digitalData->_left_wheel_rpm =
-            digitalData->pulse_count /
-            (WHEEL_MEASUREMENT_INTERVAL_MIN * PULSES_PER_ROTATION);
-
-    digitalData->pulse_count = 0;
-    digitalData->left_wheel_update_ts.check();
-}
+double DigitalReceiver::_current_left_wheel_rpm = 0;
+unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
 
 inline Button DigitalReceiver::newButton(uint8_t pin) {
     Button button;
@@ -65,29 +58,33 @@ inline Button DigitalReceiver::newButton(uint8_t pin) {
     return button;
 }
 
+inline void DigitalReceiver::updateLeftWheelRpm() {
+    noInterrupts(); // Disable interrupts to read pulseCount safely
+
+    // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
+    unsigned long time_interval_s = (millis() - last_wheel_pulse_ts) * 1e-3;
+    _current_left_wheel_rpm = 1 / (time_interval_s * PULSES_PER_ROTATION) * 60;  
+    last_wheel_pulse_ts = millis(); // refresh timestamp
+
+    interrupts();   // Re-enable interrupts
+}
+
+
 inline void DigitalReceiver::digitalReads() {
-    readLwss();
     readPneumaticLine();
     readMission();
     readAsmsSwitch();
-    readAatsSwitch();
+    readTSState();
     readWatchdog();
+    digitalData->_left_wheel_rpm = _current_left_wheel_rpm;
 }
 
-inline void DigitalReceiver::readLwss() {
-    bool const current_lwss_state = digitalRead(LWSS_PIN);
-
-    if (current_lwss_state == HIGH && digitalData->last_lwss_state == LOW)
-        digitalData->pulse_count++;
-
-    digitalData->last_lwss_state = current_lwss_state;
-
-    if (digitalData->left_wheel_update_ts.check())
-        updateLeftWheelRpm();
-}
 
 inline void DigitalReceiver::readPneumaticLine() {
-    // TODO: wait for eletro indications
+    bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
+    bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
+
+    digitalData->pneumatic_line_pressure = pneumatic1 && pneumatic2; // both need to be True
 }
 
 inline void DigitalReceiver::readMission() {
@@ -110,12 +107,9 @@ inline void DigitalReceiver::readAsmsSwitch() {
         digitalData->asms_on = false;
 }
 
-inline void DigitalReceiver::readAatsSwitch() {
-    aats_switch.update();
-    if (aats_switch.pressed())
-        digitalData->aats_on = true;
-    else
-        digitalData->aats_on = false;
+inline void DigitalReceiver::readTSState() {
+    // TS is on if SDC is closed (SDC STATE PIN AS HIGH)
+    digitalData->aats_on = digitalRead(SDC_STATE_PIN);
 }
 
 inline void DigitalReceiver::readWatchdog() {

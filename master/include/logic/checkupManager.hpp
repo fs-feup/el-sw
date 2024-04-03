@@ -1,6 +1,6 @@
 #pragma once
 
-#include <logic/systemData.hpp>
+#include <model/systemData.hpp>
 #include <cstdlib>
 
 #include "embedded/digitalSender.hpp"
@@ -216,7 +216,6 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 }
 
 inline bool CheckupManager::shouldRevertToOffFromReady() const {
-    //TODO: UPDATE BRAKE PRESSURE CONDITION
     if (!_systemData->digitalData.asms_on || !_systemData->digitalData.aats_on || _systemData->sensors.
         _hydraulic_line_pressure == 0) {
         return true;

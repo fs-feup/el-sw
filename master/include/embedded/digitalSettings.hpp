@@ -9,10 +9,10 @@
 
 #define WHEEL_MEASUREMENT_INTERVAL_MS 30 // 30ms // TODO(andre): change to adequate value
 #define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0)
-#define PULSES_PER_ROTATION 50 // TODO(andre): change to true value
+#define PULSES_PER_ROTATION 48
 
-#define WD_PULSE_INTERVAL_MS 10 // TODO(andre): change to adequate value
-#define WD_WAIT_INTERVAL_MS 100 // TODO(andre): change to adequate value
+#define WD_PULSE_INTERVAL_MS 10
+// TODO(andre): confirm wd timer values
 
 /*
  * ===========
@@ -39,7 +39,7 @@
 
 #define LWSS_PIN 32
 
-//When pressure on the line passes the threshold defined, pin is set to HIGH
+// When pressure on the line passes the threshold defined, pin is set to HIGH
 #define SENSOR_PRESSURE_2_PIN 22
 #define SENSOR_PRESSURE_1_PIN 23
 
@@ -54,8 +54,6 @@
 #define MISSION_INSPECTION_PIN 21
 
 
-//TODO: PROPERLY REPLACE HERE
-#define AATS_SWITCH_PIN 0
-
+#define SDC_STATE_PIN 37
 #define SDC_LOGIC_WATCHDOG_IN_PIN 35
 #define ASMS_IN_PIN 33
