@@ -166,7 +166,7 @@ inline int Communicator::publish_state(const int state_id) {
 }
 
 inline int Communicator::publish_mission(int mission_id) {
-    const uint8_t msg[] = {MISSION_MSG, static_cast<unsigned char>(mission_id)};
+    const uint8_t msg[] = {MISSION_MSG, static_cast<uint8_t>(mission_id)};
 
     send_message(2, msg, MASTER_ID);
     return 0;
@@ -175,14 +175,12 @@ inline int Communicator::publish_mission(int mission_id) {
 inline int Communicator::publish_left_wheel_rpm(double value) {
     value /= WHEEL_PRECISION; // take precision off to send interger value
 
-    const uint8_t* valueBytes = reinterpret_cast<const uint8_t*>(&value);
     uint8_t msg[5];
 
     msg[0] = LEFT_WHEEL_MSG;
     // Copy the bytes of the double value to msg[1] to msg[4]
-    // From msb->lsb to lsb->msb
-    for (int i = 1; i <= 4; i++) 
-        msg[i] = valueBytes[sizeof(double) - i];
+    for (int i = 0; i < 4; i++) 
+        msg[i + 1] = static_cast<int>(value) >> (8*i); // shift 8(byte) to msb each time
     
     send_message(5, msg, MASTER_ID);
     return 0;
@@ -196,7 +194,6 @@ inline int Communicator::activateRes() {
 }
 
 inline int Communicator::send_message(const unsigned len, const unsigned char* buffer, const unsigned id) {
-
     CAN_message_t can_message;
     can_message.id = id;
     can_message.len = len;
