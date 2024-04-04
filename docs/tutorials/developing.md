@@ -25,15 +25,3 @@ For more information on debugging, visit [this](https://docs.platformio.org/en/l
 ```sh
 pio -h
 ```
-## Testing
-
-To run the tests in the desktop:
-```sh
-pio test --environment native
-```
-This will not run the tests in the *test_embedded* folder, as the environment is set to ignore them.
-To run the tests when using a teensy:
-```sh
-pio test
-```
-More information on commands can be found [here](https://docs.platformio.org/en/latest/core/userguide/cmd_test.html).

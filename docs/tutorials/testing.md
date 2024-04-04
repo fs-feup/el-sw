@@ -60,6 +60,19 @@ void test_x(void) {
 
 As depicted, these steps can have both actions and assertions to be performed by the user himself (not necessarily both, some tests may only require actions and all assertions be made in code).
 
+## Testing
+
+To run the tests in the desktop:
+```sh
+pio test --environment native
+```
+This will not run the tests in the *test_embedded* folder, as the environment is set to ignore them.
+To run the tests when using a teensy:
+```sh
+pio test
+```
+More information on commands can be found [here](https://docs.platformio.org/en/latest/core/userguide/cmd_test.html).
+
 ## Static Analysis
 Platformio is capable of including a static analysis tool, like cppcheck, which is the one we will use. To run the static analysis, do:
 ```sh

@@ -19,10 +19,11 @@ Before anything, go over the rules on programming and program design, present in
 ### Basic Tutorials
 
 - [Environment Setup](./environment-setup.md)
-- [New Projec Guide](./new-project-guide.md) (optional)
+- [New Project Guide](./new-project-guide.md) (optional)
 - [Developing](./developing.md)
 - [Testing](./testing.md)
 - [Documentation](./documentation.md)
+- [Example Project (old project for testing)](../test_project/)
 
 
 ### Extra Turorials 
