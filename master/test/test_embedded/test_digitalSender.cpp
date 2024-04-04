@@ -45,9 +45,11 @@ void tearDown(void) {
 void test_openSDC_then_closeSDC(void) {
     Metro test{3000};
     DigitalSender::openSDC();
-    while (!test.check()) {}
+    while (!test.check()) {
+    }
     DigitalSender::closeSDC();
-    while (!test.check()) {};
+    while (!test.check()) {
+    };
     TEST_PASS();
 }
 
@@ -57,43 +59,29 @@ void test_enterEmergencyState_and_turn_off_LEDS(void) {
     Metro test{3000};
     DigitalSender ds;
     ds.enterEmergencyState();
-    while (!test.check()) {}
+    while (!test.check()) {
+    }
     TEST_PASS();
 }
 
+
+// Test Completion:
+// Observer that LED correctly blinks at 1hz for 10 seconds
 //
-// void test_DigitalSender_activateEBS_sets_correct_pins(void) {
-//     DigitalSender ds;
-//     ds.activateEBS();
-//     TEST_ASSERT_EQUAL_INT(LOW, digitalRead(EBS_VALVE_1_PIN));
-//     TEST_ASSERT_EQUAL_INT(LOW, digitalRead(EBS_VALVE_2_PIN));
-// }
-//
-// void test_DigitalSender_deactivateEBS_sets_correct_pins(void) {
-//     DigitalSender ds;
-//     ds.deactivateEBS();
-//     TEST_ASSERT_EQUAL_INT(HIGH, digitalRead(EBS_VALVE_1_PIN));
-//     TEST_ASSERT_EQUAL_INT(HIGH, digitalRead(EBS_VALVE_2_PIN));
-// }
-//
-// void test_DigitalSender_blinkLED_toggles_pin_state(void) {
-//     DigitalSender ds;
-//     int initial_state = digitalRead(LED_BUILTIN);
-//     ds.blinkLED(LED_BUILTIN);
-//     TEST_ASSERT_EQUAL_INT(!initial_state, digitalRead(LED_BUILTIN));
-// }
-//
-// void test_DigitalSender_toggleWatchdog_toggles_watchdog_state(void) {
-//     DigitalSender ds;
-//     int initial_state = digitalRead(SDC_LOGIC_WATCHDOG_OUT_PIN);
-//     ds.toggleWatchdog();
-//     TEST_ASSERT_EQUAL_INT(!initial_state, digitalRead(SDC_LOGIC_WATCHDOG_OUT_PIN));
-// }
-//
-int main(void) {
+// The toggle watchdog is the same function as blink LED so we can afirm
+// that passing this test implies that the toggleWatchdog function works
+void test_blinkLED(void) {
+    Metro test{10000};
+    DigitalSender ds;
+
+    while (!test.check()) { ds.blinkLED(1); }
+    TEST_PASS();
+}
+
+int main() {
     UNITY_BEGIN();
     // RUN_TEST(test_openSDC_then_closeSDC);
-    RUN_TEST(test_enterEmergencyState_and_turn_off_LEDS);
+    RUN_TEST(test_blinkLED);
     // RUN_TEST(test_DigitalSender_openSDC_sets_correct_pins);
     // RUN_TEST(test_DigitalSender_closeSDC_sets_correct_pins);
     // RUN_TEST(test_DigitalSender_activateEBS_sets_correct_pins);

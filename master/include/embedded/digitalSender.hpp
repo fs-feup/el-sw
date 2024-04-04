@@ -14,10 +14,8 @@ private:
 
 public:
     static constexpr std::array<int, 9> validOutputPins = {
-        ASSI_DRIVING_PIN,
-        ASSI_READY_PIN,
-        ASSI_FINISH_PIN,
-        ASSI_EMERGENCY_PIN,
+        ASSI_BLUE_PIN,
+        ASSI_YELLOW_PIN,
         EBS_VALVE_1_PIN,
         EBS_VALVE_2_PIN,
         MASTER_SDC_OUT_PIN,
@@ -57,30 +55,28 @@ public:
 };
 
 inline void DigitalSender::openSDC() {
-    digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, HIGH);
+    digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
     digitalWrite(MASTER_SDC_OUT_PIN, HIGH);
 }
 
 inline void DigitalSender::closeSDC() {
-    digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
+    digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, HIGH);
     digitalWrite(MASTER_SDC_OUT_PIN, LOW);
 }
 
 inline void DigitalSender::activateEBS() {
-    digitalWrite(EBS_VALVE_1_PIN, LOW);
-    digitalWrite(EBS_VALVE_2_PIN, LOW);
-}
-
-inline void DigitalSender::deactivateEBS() {
     digitalWrite(EBS_VALVE_1_PIN, HIGH);
     digitalWrite(EBS_VALVE_2_PIN, HIGH);
 }
 
+inline void DigitalSender::deactivateEBS() {
+    digitalWrite(EBS_VALVE_1_PIN, LOW);
+    digitalWrite(EBS_VALVE_2_PIN, LOW);
+}
+
 inline void DigitalSender::turnOffASSI() {
-    digitalWrite(ASSI_DRIVING_PIN, LOW);
-    digitalWrite(ASSI_READY_PIN, LOW);
-    digitalWrite(ASSI_FINISH_PIN, LOW);
-    digitalWrite(ASSI_EMERGENCY_PIN, LOW);
+    digitalWrite(ASSI_YELLOW_PIN, LOW);
+    digitalWrite(ASSI_BLUE_PIN, LOW);
 }
 
 inline void DigitalSender::enterEmergencyState() {
@@ -104,7 +100,7 @@ inline void DigitalSender::enterOffState() {
 
 inline void DigitalSender::enterReadyState() {
     turnOffASSI();
-    digitalWrite(ASSI_READY_PIN, HIGH);
+    digitalWrite(ASSI_YELLOW_PIN, HIGH);
     activateEBS(); ///  these 2 should be redundant since we do it during initial checkup
     closeSDC(); ///
 }
@@ -118,7 +114,7 @@ inline void DigitalSender::enterDrivingState() {
 
 inline void DigitalSender::enterFinishState() {
     turnOffASSI();
-    digitalWrite(ASSI_FINISH_PIN, HIGH);
+    digitalWrite(ASSI_BLUE_PIN, HIGH);
     activateEBS();
     openSDC();
 }

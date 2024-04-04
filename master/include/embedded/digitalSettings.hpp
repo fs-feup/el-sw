@@ -18,10 +18,9 @@
  * ===========
  */
 
-#define ASSI_DRIVING_PIN 4
-#define ASSI_READY_PIN 5
-#define ASSI_FINISH_PIN 6
-#define ASSI_EMERGENCY_PIN 7
+#define ASSI_BLUE_PIN 5
+#define ASSI_YELLOW_PIN 7
+
 
 #define SDC_LOGIC_CLOSE_SDC_PIN 8
 #define SDC_LOGIC_WATCHDOG_OUT_PIN 10

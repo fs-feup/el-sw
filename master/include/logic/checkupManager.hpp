@@ -41,7 +41,7 @@ public:
         SUCCESS
     };
 
-    CheckupState checkupState{CheckupState::WAIT_FOR_TS};
+    CheckupState checkupState{CheckupState::WAIT_FOR_ASMS};
 
     explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
     };

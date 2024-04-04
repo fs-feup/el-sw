@@ -68,7 +68,7 @@ inline void ASState::calculateState() {
             break;
         case AS_DRIVING:
             _digitalSender.toggleWatchdog();
-            _digitalSender.blinkLED(ASSI_DRIVING_PIN);
+            _digitalSender.blinkLED(ASSI_YELLOW_PIN);
 
             if (_checkupManager.shouldEnterEmergency()) {
                 performEmergencyOperations();
@@ -93,7 +93,7 @@ inline void ASState::calculateState() {
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            _digitalSender.blinkLED(ASSI_EMERGENCY_PIN);
+            _digitalSender.blinkLED(ASSI_BLUE_PIN);
 
             if (_checkupManager.emergencySequenceComplete()) {
                 DigitalSender::enterOffState();

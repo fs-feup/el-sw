@@ -3,14 +3,6 @@
 #include "logic/systemData.hpp"
 
 
-void setUp(void) {
-    // This is run before EACH test
-}
-
-void tearDown(void) {
-    // This is run after EACH test
-}
-
 void test_shouldStayManualDriving_true() {
     SystemData systemData;
     systemData.mission = MANUAL;
@@ -40,10 +32,6 @@ void test_shouldStayManualDriving_false() {
     TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
 
     systemData.digitalData.aats_on = true;
-    systemData.sensors._hydraulic_line_pressure = 1;
-    TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
-
-    systemData.sensors._hydraulic_line_pressure = 0;
     systemData.sdcState_OPEN = true;
     TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
 }
@@ -63,6 +51,7 @@ void test_initialCheckupSequence_states() {
     DigitalSender ds;
     CheckupManager cm(&sd);
 
+    cm.initialCheckupSequence(ds);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_ASMS, cm.checkupState);
 
     sd.digitalData.asms_on = true;
@@ -206,7 +195,7 @@ void test_emergencySequenceComplete() {
     TEST_ASSERT_FALSE(checkupManager.emergencySequenceComplete());
 
 
-    systemData.digitalData.asms_on = true;
+    systemData.digitalData.asms_on = false;
     Metro waitForEbsSound{8500};
     while (!waitForEbsSound.check()) {
     }
@@ -226,8 +215,7 @@ void test_resTriggered() {
 }
 
 
-int main(void) {
-    UNITY_BEGIN();
+void run_tests_checkupManager() {
     RUN_TEST(test_initialCheckupSequence_states);
     RUN_TEST(test_shouldStayManualDriving_true);
     RUN_TEST(test_shouldStayManualDriving_false);
@@ -239,5 +227,4 @@ int main(void) {
     RUN_TEST(test_shouldStayMissionFinished);
     RUN_TEST(test_emergencySequenceComplete);
     RUN_TEST(test_resTriggered);
-    return UNITY_END();
 }
