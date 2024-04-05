@@ -6,8 +6,8 @@
 #define PRESSED_STATE LOW
 
 // Use ATtiny pin identifiers
-int inputPins[NUM_PINS] = {PA2, PA3, PA4, PA5, PA6, PA7, PB0};
-int outputPins[NUM_PINS] = {PB1, PB2, PB3, PB4, PB5, PA0, PA1};
+int inputPins[NUM_PINS] = {PA4, PA5, PA6, PA7, PB5, PB4, PB1};
+int outputPins[NUM_PINS] = {PA2, PA1, PC3, PC2, PC1, PC0, PB0};
 Bounce2::Button buttons[NUM_PINS];
 
 void setup()
