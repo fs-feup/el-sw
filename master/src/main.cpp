@@ -1,4 +1,4 @@
-#include "logic/systemData.hpp"
+#include "model/systemData.hpp"
 #include <comm/communicator.hpp>
 #include <embedded/digitalReceiver.hpp>
 #include <logic/stateLogic.hpp>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <logic/systemData.hpp>
+#include <model/systemData.hpp>
 #include <cstdlib>
 
 #include "embedded/digitalSender.hpp"
@@ -110,7 +110,7 @@ inline bool CheckupManager::shouldStayManualDriving() const {
      */
 
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
-        || !_systemData->digitalData.aats_on || _systemData->sdcState_OPEN) {
+        || !_systemData->failureDetection.ts_on || _systemData->digitalData.sdcState_OPEN) {
         return false;
     }
     return true;
@@ -177,7 +177,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
         case CheckupState::WAIT_FOR_TS:
             digitalSender.toggleWatchdog();
         // TS Activated?
-            if (_systemData->digitalData.aats_on) {
+            if (_systemData->failureDetection.ts_on) {
                 state = CheckupState::TOGGLE_VALVE;
             }
             break;
@@ -216,8 +216,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 }
 
 inline bool CheckupManager::shouldRevertToOffFromReady() const {
-    //TODO: UPDATE BRAKE PRESSURE CONDITION
-    if (!_systemData->digitalData.asms_on || !_systemData->digitalData.aats_on || _systemData->sensors.
+    if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
         _hydraulic_line_pressure == 0) {
         return true;
     }
@@ -236,7 +235,7 @@ inline bool CheckupManager::shouldStayR2D() const {
 inline bool CheckupManager::shouldEnterEmergency() const {
     if (_systemData->failureDetection.hasAnyComponentTimedOut() ||
         _systemData->failureDetection.emergencySignal ||
-        _systemData->sdcState_OPEN ||
+        _systemData->digitalData.sdcState_OPEN ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
         _systemData->digitalData.asms_on == 0 ||
         _systemData->digitalData.watchdogTimestamp.check()) {
@@ -275,5 +274,3 @@ inline bool CheckupManager::resTriggered() const {
     return true;
 }
 
-// TODO: don't forget check se batteryvoltage(aka vdc) > 60 e failure->
-// bamocar-ready false emergency

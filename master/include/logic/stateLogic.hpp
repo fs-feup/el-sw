@@ -1,7 +1,7 @@
 #pragma once
 
 #include <logic/checkupManager.hpp>
-#include <logic/structure.hpp>
+#include <model/structure.hpp>
 #include <embedded/digitalSender.hpp>
 
 class ASState {
@@ -18,8 +18,6 @@ public:
     }
 
     void calculateState();
-
-    void performEmergencyOperations();
 };
 
 inline void ASState::calculateState() {
@@ -57,7 +55,7 @@ inline void ASState::calculateState() {
             }
 
             if (_checkupManager.shouldEnterEmergency()) {
-                performEmergencyOperations();
+                _digitalSender.enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -71,7 +69,7 @@ inline void ASState::calculateState() {
             _digitalSender.blinkLED(ASSI_DRIVING_PIN);
 
             if (_checkupManager.shouldEnterEmergency()) {
-                performEmergencyOperations();
+                _digitalSender.enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -82,7 +80,7 @@ inline void ASState::calculateState() {
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                performEmergencyOperations();
+                _digitalSender.enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -105,8 +103,4 @@ inline void ASState::calculateState() {
     }
 }
 
-inline void ASState::performEmergencyOperations() {
-    //TODO: SET CORRECT MESSAGE HERE
-    // _communicator->send_message();
-    _digitalSender.enterEmergencyState();
-}
+
