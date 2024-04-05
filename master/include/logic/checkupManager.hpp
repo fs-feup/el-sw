@@ -226,7 +226,7 @@ inline bool CheckupManager::shouldRevertToOffFromReady() const {
 }
 
 inline bool CheckupManager::shouldStayR2D() const {
-    if (!_systemData->internalLogics.goSignal) {
+    if (!_systemData->internalLogics.r2d) {
         return true;
     }
 

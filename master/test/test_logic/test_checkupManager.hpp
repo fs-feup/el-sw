@@ -128,13 +128,13 @@ void test_shouldRevertToOffFromReady() {
 
 void test_shouldStayR2D() {
     SystemData systemData;
-    systemData.internalLogics.goSignal = false;
+    systemData.internalLogics.r2d = false;
 
     CheckupManager checkupManager(&systemData);
 
     TEST_ASSERT_TRUE(checkupManager.shouldStayR2D());
 
-    systemData.internalLogics.goSignal = true;
+    systemData.internalLogics.r2d = true;
     TEST_ASSERT_FALSE(checkupManager.shouldStayR2D());
 }
 
@@ -155,6 +155,25 @@ void test_shouldEnterEmergency() {
 
     sd.sdcState_OPEN = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
+
+    sd.sdcState_OPEN = false;
+    sd.digitalData.pneumatic_line_pressure = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
+
+    sd.digitalData.pneumatic_line_pressure = true;
+    sd.digitalData.asms_on = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
+
+    sd.digitalData.asms_on = true;
+    sd.failureDetection.emergencySignal = true;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
+
+    sd.failureDetection.emergencySignal = false;
+    Metro wait{500};
+    while (!wait.check()) {
+    }
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
+
 }
 
 void test_shouldStayDriving() {
