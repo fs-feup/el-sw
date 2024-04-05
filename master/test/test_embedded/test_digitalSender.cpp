@@ -80,13 +80,8 @@ void test_blinkLED(void) {
 
 int main() {
     UNITY_BEGIN();
-    // RUN_TEST(test_openSDC_then_closeSDC);
+    RUN_TEST(test_openSDC_then_closeSDC);
+    RUN_TEST(test_enterEmergencyState_and_turn_off_LEDS);
     RUN_TEST(test_blinkLED);
-    // RUN_TEST(test_DigitalSender_openSDC_sets_correct_pins);
-    // RUN_TEST(test_DigitalSender_closeSDC_sets_correct_pins);
-    // RUN_TEST(test_DigitalSender_activateEBS_sets_correct_pins);
-    // RUN_TEST(test_DigitalSender_deactivateEBS_sets_correct_pins);
-    // RUN_TEST(test_DigitalSender_blinkLED_toggles_pin_state);
-    // RUN_TEST(test_DigitalSender_toggleWatchdog_toggles_watchdog_state);
     return UNITY_END();
 }
