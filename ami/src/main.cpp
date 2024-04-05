@@ -5,8 +5,9 @@
 #define DEBOUNCE_INTERVAL 5
 #define PRESSED_STATE LOW
 
-int inputPins[NUM_PINS] = {2, 3, 4, 5, 6, 7, 8};
-int outputPins[NUM_PINS] = {9, 10, 11, 12, 13, 14, 15};
+// Use ATtiny pin identifiers
+int inputPins[NUM_PINS] = {PA4, PA5, PA6, PA7, PB5, PB4, PB1};
+int outputPins[NUM_PINS] = {PA2, PA1, PC3, PC2, PC1, PC0, PB0};
 Bounce2::Button buttons[NUM_PINS];
 
 void setup()
