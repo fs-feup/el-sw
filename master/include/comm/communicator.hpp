@@ -113,11 +113,16 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
-            _systemData->failureDetection.bamocarReady = false;
+            _systemData->failureDetection.ts_on = false;
+     
     } else if (buf[0] == VDC_BUS) {
-        int battery_voltage = (buf[2] << 8) | buf[1];
-        _systemData->failureDetection.bamocarTension = battery_voltage;
-    }
+        int dc_voltage = (buf[2] << 8) | buf[1];
+
+        if (dc_voltage < DC_THRESHOLD)
+            _systemData->failureDetection.ts_on = false;
+        else 
+            _systemData->failureDetection.ts_on = true;       
+    }   
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {

@@ -41,7 +41,7 @@ private:
     void readPneumaticLine();
     void readMission();
     void readAsmsSwitch();
-    void readTSState();
+    void readAatsState();
     void readWatchdog();
 
 };
@@ -59,26 +59,20 @@ inline Button DigitalReceiver::newButton(uint8_t pin) {
 }
 
 inline void DigitalReceiver::updateLeftWheelRpm() {
-    noInterrupts(); // Disable interrupts to read pulseCount safely
-
     // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
     unsigned long time_interval_s = (millis() - last_wheel_pulse_ts) * 1e-3;
     _current_left_wheel_rpm = 1 / (time_interval_s * PULSES_PER_ROTATION) * 60;  
     last_wheel_pulse_ts = millis(); // refresh timestamp
-
-    interrupts();   // Re-enable interrupts
 }
-
 
 inline void DigitalReceiver::digitalReads() {
     readPneumaticLine();
     readMission();
     readAsmsSwitch();
-    readTSState();
+    readAatsState();
     readWatchdog();
     digitalData->_left_wheel_rpm = _current_left_wheel_rpm;
 }
-
 
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
@@ -107,9 +101,9 @@ inline void DigitalReceiver::readAsmsSwitch() {
         digitalData->asms_on = false;
 }
 
-inline void DigitalReceiver::readTSState() {
+inline void DigitalReceiver::readAatsState() {
     // TS is on if SDC is closed (SDC STATE PIN AS HIGH)
-    digitalData->aats_on = digitalRead(SDC_STATE_PIN);
+    digitalData->sdcState_OPEN = !digitalRead(SDC_STATE_PIN);
 }
 
 inline void DigitalReceiver::readWatchdog() {

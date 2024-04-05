@@ -11,6 +11,6 @@ struct DigitalData {
     // Other reads
     bool pneumatic_line_pressure = true;
     bool asms_on = false;
-    bool aats_on = false;
+    bool sdcState_OPEN{true};
 };
 

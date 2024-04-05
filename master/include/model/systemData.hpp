@@ -14,5 +14,4 @@ struct SystemData {
     Mission mission{MANUAL};
 
     bool ready2Drive{false}, missionFinished{false};
-    bool sdcState_OPEN{false};
 };
