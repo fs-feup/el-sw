@@ -1,7 +1,7 @@
 #pragma once
 
-#include "comm/message.hpp"
-#include "logic/systemData.hpp"
+#include "comm/communicatorSettings.hpp"
+#include "model/systemData.hpp"
 #include <Arduino.h>
 #include <FlexCAN_T4.h>
 #include <string>
@@ -45,13 +45,13 @@ public:
     static void bamocarCallback(const uint8_t *buf);
     static void steeringCallback();
 
-    int publish_state(int state_id);
-    int publish_mission(int mission_id);
-    int publish_left_wheel_rpm(double value);
+    static int publish_state(int state_id) ;
+    static int publish_mission(int mission_id);
+    static int publish_left_wheel_rpm(double value);
     static int activateRes();
 };
 
-Communicator::Communicator() {
+inline Communicator::Communicator() {
     can1.begin();
     can1.setBaudRate(500000);
     can1.enableFIFO();
@@ -72,16 +72,16 @@ inline void Communicator::missionFinishedCallback() {
 }
 
 inline void Communicator::pcAliveCallback() {
-    _systemData->failureDetection.pcAliveTimestamp.update();
+    _systemData->failureDetection.pcAliveTimestamp.reset();
 }
 
-void Communicator::c1Callback(const uint8_t *buf) {
+inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     double break_pressure = (buf[2] << 8) | buf[1];
     break_pressure *= HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
     _systemData->sensors._hydraulic_line_pressure = break_pressure;
   } else if (buf[0] == RIGHT_WHEEL) {
-    double right_wheel_rpm = (buf[2] << 8) | buf[1];
+    double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._rl_wheel_rpm = right_wheel_rpm;
   }
@@ -99,8 +99,9 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
         _systemData->failureDetection.emergencySignal = true;
 
     _systemData->failureDetection.radio_quality =  buf[6];
-    //bool signal_loss = (buf[7] >> 6) & 0x01;
-    Communicator::emergencySignalCallback();
+    bool signal_loss = (buf[7] >> 6) & 0x01;
+    if (signal_loss)
+        emergencySignalCallback();
 }
 
 inline void Communicator::resReadyCallback() {
@@ -109,19 +110,24 @@ inline void Communicator::resReadyCallback() {
 }
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
-    // TODO(andré): inversor timestamp
+    _systemData->failureDetection.inversorAliveTimestamp.reset();
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
-            _systemData->failureDetection.bamocarReady = false;
+            _systemData->failureDetection.ts_on = false;
+     
     } else if (buf[0] == VDC_BUS) {
-        int battery_voltage = (buf[2] << 8) | buf[1];
-        _systemData->failureDetection.bamocarTension = battery_voltage;
-    }
+        int dc_voltage = (buf[2] << 8) | buf[1];
+
+        if (dc_voltage < DC_THRESHOLD)
+            _systemData->failureDetection.ts_on = false;
+        else 
+            _systemData->failureDetection.ts_on = true;       
+    }   
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
-        _systemData->failureDetection.pcAliveTimestamp.update();
+        _systemData->failureDetection.pcAliveTimestamp.reset();
     } else if (buf[0] == MISSION_FINISHED) {
         _systemData->missionFinished = true;
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
@@ -130,27 +136,27 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
 }
 
 inline void Communicator::steeringCallback() {
-    _systemData->failureDetection.steerAliveTimestamp.update();
+    _systemData->failureDetection.steerAliveTimestamp.reset();
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
     switch(msg.id) {
         case PC_ID:
-            Communicator::pcCallback(msg.buf);
+            pcCallback(msg.buf);
         case RES_STATE:
-            Communicator::resStateCallback(msg.buf);
+            resStateCallback(msg.buf);
             break;
         case RES_READY:
-            Communicator::resReadyCallback();
+            resReadyCallback();
             break;
         case C1_ID:
-            Communicator::c1Callback(msg.buf); // rwheel and hydraulic line
+            c1Callback(msg.buf); // rwheel and hydraulic line
             break;
         case BAMO_RESPONSE_ID:
-            Communicator::bamocarCallback(msg.buf);
+            bamocarCallback(msg.buf);
             break;
         case STEERING_ID:
-            Communicator::steeringCallback();
+            steeringCallback();
             break;
         default:
             break;
@@ -158,38 +164,41 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
 }
 
 inline int Communicator::publish_state(const int state_id) {
-    const uint8_t msg[] = {static_cast<unsigned char>(state_id)};
+    const uint8_t msg[] = {STATE_MSG, static_cast<uint8_t>(state_id)};
 
-    this->send_message(1, msg, STATE_MSG);
-
+    send_message(2, msg, MASTER_ID);
     return 0;
 }
 
 inline int Communicator::publish_mission(int mission_id) {
-    const uint8_t msg[] = {static_cast<unsigned char>(mission_id)};
+    const uint8_t msg[] = {MISSION_MSG, static_cast<uint8_t>(mission_id)};
 
-    Communicator::send_message(1, msg, MISSION_MSG);
-
+    send_message(2, msg, MASTER_ID);
     return 0;
 }
 
 inline int Communicator::publish_left_wheel_rpm(double value) {
     value /= WHEEL_PRECISION; // take precision off to send interger value
-    const auto msg = reinterpret_cast<uint8_t *>(&value);
 
-    Communicator::send_message(2, msg, LEFT_WHEEL_MSG);
+    uint8_t msg[5];
+
+    msg[0] = LEFT_WHEEL_MSG;
+    // Copy the bytes of the double value to msg[1] to msg[4]
+    for (int i = 0; i < 4; i++) 
+        msg[i + 1] = static_cast<int>(value) >> (8*i); // shift 8(byte) to msb each time
+    
+    send_message(5, msg, MASTER_ID);
     return 0;
 }
 inline int Communicator::activateRes() {
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
-    Communicator::send_message(2, msg, id);
+    send_message(2, msg, id);
     return 0;
 }
 
-inline int Communicator::send_message(unsigned len, const unsigned char* buffer, unsigned id) {
-
+inline int Communicator::send_message(const unsigned len, const unsigned char* buffer, const unsigned id) {
     CAN_message_t can_message;
     can_message.id = id;
     can_message.len = len;
