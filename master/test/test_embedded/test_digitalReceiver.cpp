@@ -1,4 +1,4 @@
-#include "../../include/embedded/digitalData.hpp"
+#include "../../include/model/digitalData.hpp"
 
 #undef WHEEL_MEASUREMENT_INTERVAL_MS
 #undef WHEEL_MEASUREMENT_INTERVAL_MIN
@@ -23,10 +23,11 @@
 #define BUTTON_5 11
 #define BUTTON_6 12
 
-#define ASMS_SWITCH_PIN BUTTON_1
-#define AATS_SWITCH_PIN BUTTON_2
-#define WD_IN BUTTON_3
-#define PNEUMATIC_PIN BUTTON_4
+#define ASMS_IN_PIN BUTTON_1
+#define SDC_STATE_PIN BUTTON_2
+#define SDC_LOGIC_WATCHDOG_IN_PIN BUTTON_3
+#define SENSOR_PRESSURE_1_PIN BUTTON_4
+#define SENSOR_PRESSURE_2_PIN BUTTON_5
 #define LWSS_PIN BUTTON_6
 
 #define WHEEL_MEASUREMENT_INTERVAL_MS 1000 // clicks measured every second 
@@ -35,7 +36,7 @@
 // Constants defined to meassure number of clicks in 1s as rpm
 
 #include "../../include/embedded/digitalReceiver.hpp"
-#include "../../include/logic/systemData.hpp"
+#include "../../include/model/systemData.hpp"
 
 
 SystemData systemData;
@@ -44,7 +45,7 @@ auto digitalRecv = DigitalReceiver(&systemData.digitalData, &systemData.mission)
 /**
  * @attention PROTOCOL TEST
  * @brief Test the ASMS Switch
- * Check the ASMS Switch High Low Read 
+ * Check the ASMS Switch High Read 
  * CAN communication in desktop
  * PROTOCOL:
  * 1. Click Button 1
@@ -61,19 +62,19 @@ void test_asms() {
 
 /**
  * @attention PROTOCOL TEST
- * @brief Test the AATS Switch
- * Check the AATS Switch High Low Read 
+ * @brief Test the SDCState
+ * Check the SDCState Low Read 
  * CAN communication in desktop
  * PROTOCOL:
  * 1. Click Button 2
  * 2. Verify LED2 Red Turning Off (Low)
 */
 void test_aats() {
-    if (systemData.digitalData.aats_on){
-        digitalWrite(RED_LED_2, HIGH);
+    if (systemData.digitalData.sdcState_OPEN){
+        digitalWrite(RED_LED_2, LOW);
     }
     else{
-        digitalWrite(RED_LED_2, LOW);
+        digitalWrite(RED_LED_2, HIGH);
     }
 }
 

@@ -33,7 +33,7 @@ private:
     DigitalData *digitalData;
     Mission *mission;
 
-    Button asms_switch, aats_switch;
+    Button asms_switch;
 
     Button newButton(uint8_t pin);
 
