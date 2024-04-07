@@ -1,0 +1,19 @@
+{
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "modernize-use-trailing-return-type",
+        "misc-non-private-member-variables-in-classes",
+        "readability-identifier-length",
+        "readability-implicit-bool-conversion",
+        "modernize-use-bool-literals",
+        "readability-braces-around-statements"
+    ],
+    "files.associations": {
+        "*.tpp": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
+}
