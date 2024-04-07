@@ -57,7 +57,7 @@ inline void ASState::calculateState() {
                 break;
             }
 
-            if (_checkupManager.shouldEnterEmergency()) {
+            if (_checkupManager.shouldEnterEmergency(state)) {
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
@@ -71,7 +71,7 @@ inline void ASState::calculateState() {
             _digitalSender->toggleWatchdog();
             _digitalSender->blinkLED(ASSI_YELLOW_PIN);
 
-            if (_checkupManager.shouldEnterEmergency()) {
+            if (_checkupManager.shouldEnterEmergency(state)) {
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;

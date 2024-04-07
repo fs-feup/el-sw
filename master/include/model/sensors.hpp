@@ -1,5 +1,7 @@
 #pragma once
 
+#define HYDRAULIC_LINE_ACTIVE_PRESSURE 100
+
 /**
  * @brief Sensors from CAN
 */

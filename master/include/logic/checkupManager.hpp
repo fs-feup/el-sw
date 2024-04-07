@@ -80,7 +80,7 @@ public:
     /**
      * @brief Performs an emergency checkup.
      */
-    [[nodiscard]] bool shouldEnterEmergency() const;
+    [[nodiscard]] bool shouldEnterEmergency(State current_state) const;
 
     [[nodiscard]] bool shouldStayDriving() const;
 
@@ -228,13 +228,22 @@ inline bool CheckupManager::shouldStayReady() const {
     return false;
 }
 
-inline bool CheckupManager::shouldEnterEmergency() const {
-    if (_systemData->failureDetection.hasAnyComponentTimedOut() ||
+inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
+    if (current_state == AS_READY && (
+        _systemData->failureDetection.emergencySignal ||
+        _systemData->digitalData.pneumatic_line_pressure == 0 ||
+        _systemData->failureDetection.hasAnyComponentTimedOut()) ||
+        _systemData->digitalData.watchdogTimestamp.check()) {
+        return true;
+    }
+    if (current_state == AS_DRIVING && (
+        _systemData->failureDetection.hasAnyComponentTimedOut() ||
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.sdcState_OPEN ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
+        _systemData->sensors._hydraulic_line_pressure > HYDRAULIC_LINE_ACTIVE_PRESSURE ||
         _systemData->digitalData.asms_on == 0 ||
-        _systemData->digitalData.watchdogTimestamp.check()) {
+        _systemData->digitalData.watchdogTimestamp.check())) {
         return true;
     }
 
