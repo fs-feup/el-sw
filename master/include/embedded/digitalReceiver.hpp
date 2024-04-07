@@ -7,7 +7,7 @@
 
 #include "digitalSettings.hpp"
 
-#define DEBOUNCE_INTERVAL 5
+#define DEBOUNCE_INTERVAL 10
 #define PRESSED_STATE LOW
 
 class DigitalReceiver {
@@ -33,7 +33,7 @@ private:
     DigitalData *digitalData;
     Mission *mission;
 
-    Button asms_switch, aats_switch;
+    Button asms_switch;
 
     Button newButton(uint8_t pin);
 
