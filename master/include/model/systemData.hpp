@@ -5,8 +5,12 @@
 #include <model/structure.hpp>
 #include <model/digitalData.hpp>
 
+/**
+ * @brief The whole model of the system:
+ * holds all the data necessary
+*/
 struct SystemData {
-    InternalLogics internalLogics;
+    R2DLogics internalLogics;
     FailureDetection failureDetection;
     Sensors sensors;
 

@@ -34,23 +34,66 @@ public:
 
     Communicator();
 
+    /**
+     * @brief Parses the message received from the CAN bus
+    */
     static void parse_message(const CAN_message_t& msg);
+
+    /**
+     * @brief Sends a message to the CAN bus
+     * @param len Length of the message
+     * @param buffer Buffer containing the message
+     * @param id ID of the message
+     * @return 0 if successful
+    */
     static int send_message(unsigned len, const unsigned char* buffer, unsigned id);
 
-    static void emergencySignalCallback();
-    static void missionFinishedCallback();
-    static void pcAliveCallback();
+
+    /**
+     * @brief Callback for message from AS CU
+    */
     static void pcCallback(const uint8_t *buf);
+    
+    /**
+     * @brief Callback for data from C1 Teensy
+    */
     static void c1Callback(const uint8_t *buf);
+
+    /**
+     * @brief Callback RES default callback
+    */
     static void resStateCallback(const uint8_t *buf);
+
+    /**
+     * @brief Callback for RES activation
+    */
     static void resReadyCallback();
+
+    /**
+     * @brief Callback from inversor, for alive signal and data
+    */
     static void bamocarCallback(const uint8_t *buf);
+
+    /**
+     * @brief Callback for steering actuator information
+    */
     static void steeringCallback();
 
-    static int publish_state(int state_id) ;
+
+    /**
+     * @brief Publish AS State to CAN
+    */
+    static int publish_state(int state_id);
+
+    /**
+     * @brief Publish AS Mission to CAN
+    */
     static int publish_mission(int mission_id);
+
+    /**
+     * @brief Publish rl wheel rpm to CAN
+    */
     static int publish_left_wheel_rpm(double value);
-    static int activateRes();
 };
 
 inline Communicator::Communicator() {
@@ -63,18 +106,6 @@ inline Communicator::Communicator() {
         can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
   can1.onReceive(parse_message);
-}
-
-inline void Communicator::emergencySignalCallback() {
-    _systemData->failureDetection.emergencySignal = true;
-}
-
-inline void Communicator::missionFinishedCallback() {
-    _systemData->missionFinished = true;
-}
-
-inline void Communicator::pcAliveCallback() {
-    _systemData->failureDetection.pcAliveTimestamp.reset();
 }
 
 inline void Communicator::c1Callback(const uint8_t *buf) {
@@ -102,13 +133,17 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
     _systemData->failureDetection.radio_quality =  buf[6];
     bool signal_loss = (buf[7] >> 6) & 0x01;
-    if (signal_loss)
-        emergencySignalCallback();
+    if (signal_loss) {
+        _systemData->failureDetection.emergencySignal = true;
+    }
 }
 
 inline void Communicator::resReadyCallback() {
     // If res sends boot message, activate it
-    activateRes();
+    unsigned id = RES_ACTIVATE;
+    uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
+
+    send_message(2, msg, id);
 }
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
@@ -184,13 +219,6 @@ inline int Communicator::publish_left_wheel_rpm(double value) {
     create_left_wheel_msg(msg, value);
     
     send_message(5, msg, MASTER_ID);
-    return 0;
-}
-inline int Communicator::activateRes() {
-    unsigned id = RES_ACTIVATE;
-    uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
-
-    send_message(2, msg, id);
     return 0;
 }
 

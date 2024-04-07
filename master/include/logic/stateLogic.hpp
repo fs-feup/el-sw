@@ -7,16 +7,19 @@
 class ASState {
 private:
     CheckupManager _checkupManager;
-    DigitalSender _digitalSender;
+    DigitalSender *_digitalSender;
     Communicator *_communicator;
 
 public:
-    State state{AS_MANUAL};
+    State state{AS_OFF};
 
-    explicit ASState(SystemData *system_data, Communicator *communicator) : _checkupManager(system_data),
-                                                                            _communicator(communicator) {
-    }
+    explicit ASState(SystemData *system_data, Communicator *communicator, 
+    DigitalSender *digital_sender) : 
+    _checkupManager(system_data), _digitalSender(digital_sender), _communicator(communicator) {}
 
+    /**
+     * @brief Calculates the state of the vehicle.
+     */
     void calculateState();
 };
 
@@ -46,7 +49,7 @@ inline void ASState::calculateState() {
             break;
 
         case AS_READY:
-            _digitalSender.toggleWatchdog();
+            _digitalSender->toggleWatchdog();
 
             if (_checkupManager.shouldRevertToOffFromReady()) {
                 DigitalSender::enterOffState();
@@ -55,21 +58,21 @@ inline void ASState::calculateState() {
             }
 
             if (_checkupManager.shouldEnterEmergency()) {
-                _digitalSender.enterEmergencyState();
+                _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
             if (_checkupManager.shouldStayReady()) break;
 
-            _digitalSender.enterDrivingState();
+            _digitalSender->enterDrivingState();
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
-            _digitalSender.toggleWatchdog();
-            _digitalSender.blinkLED(ASSI_YELLOW_PIN);
+            _digitalSender->toggleWatchdog();
+            _digitalSender->blinkLED(ASSI_YELLOW_PIN);
 
             if (_checkupManager.shouldEnterEmergency()) {
-                _digitalSender.enterEmergencyState();
+                _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -80,7 +83,8 @@ inline void ASState::calculateState() {
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                _digitalSender.enterEmergencyState();
+                // Buazzer is automatically triggered by state
+                _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -91,7 +95,7 @@ inline void ASState::calculateState() {
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
-            _digitalSender.blinkLED(ASSI_BLUE_PIN);
+            _digitalSender->blinkLED(ASSI_BLUE_PIN);
 
             if (_checkupManager.emergencySequenceComplete()) {
                 DigitalSender::enterOffState();

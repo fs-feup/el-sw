@@ -6,7 +6,7 @@
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
 
-struct InternalLogics {
+struct R2DLogics {
     Metro readyTimestamp{READY_TIMEOUT_MS};
     bool r2d{false};
 
@@ -48,7 +48,5 @@ struct FailureDetection {
         return pcAliveTimestamp.check() ||
                steerAliveTimestamp.check() ||
                inversorAliveTimestamp.check();
-        //TODO MISSING INVERSOR ALIVE TIMESTAMP
-        //TODO ALSO USAGE OF BAMOCAR VARIABLES AND RADIO QUALITY
     }
 };

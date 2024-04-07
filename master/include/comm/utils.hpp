@@ -2,7 +2,10 @@
 
 #include "comm/communicatorSettings.hpp"
 
-
+/**
+ * @brief Function to create left wheel msg
+ * extracted for unit testing
+*/
 void create_left_wheel_msg(uint8_t *msg, double value) {
     value /= WHEEL_PRECISION; // take precision off to send interger value
     if (value < 0) value = 0;

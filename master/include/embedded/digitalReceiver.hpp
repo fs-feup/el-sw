@@ -10,14 +10,28 @@
 #define DEBOUNCE_INTERVAL 10
 #define PRESSED_STATE LOW
 
+/**
+ * @brief Class responsible for the reading of the digital
+ * inputs into the Master teensy 
+*/
 class DigitalReceiver {
 public:
     static double _current_left_wheel_rpm; // class var to keep digital data non-static
-    static unsigned long last_wheel_pulse_ts;
+    static unsigned long last_wheel_pulse_ts; // micros since last pulse
 
+    /**
+     * @brief read all digital inputs
+    */
     void digitalReads();
+
+    /**
+     * @brief callback to update rl wheel rpm
+    */
     static void updateLeftWheelRpm(); 
 
+    /**
+     * @brief Constructor for the class, sets pintmodes and buttons
+    */
     DigitalReceiver(DigitalData *digitalData, Mission *mission)
         : digitalData(digitalData), mission(mission) {
         pinMode(SDC_STATE_PIN, INPUT);

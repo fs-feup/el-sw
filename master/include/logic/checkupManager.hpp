@@ -21,6 +21,12 @@ public:
         return initialCheckupTimestamp;
     }
 
+    /**
+     * @brief The CheckupState enum represents the different states of 
+     * the initial checkup process.
+     * The checkup process is a sequence of checks that the vehicle must pass
+     * before it can transition to ready state.
+    */
     enum class CheckupState {
         WAIT_FOR_ASMS,
         START_TOGGLING_WATCHDOG,
@@ -35,7 +41,9 @@ public:
         CHECK_TIMESTAMPS
     };
 
-    //This is for easier debugging in case initial checkup fails
+    /**
+     * This is for easier debugging in case initial checkup fails
+    */
     enum class CheckupError {
         WAITING_FOR_RESPONSE,
         ERROR,
@@ -49,33 +57,28 @@ public:
 
     /**
      * @brief Performs a manual driving checkup.
-     * @return 0 if success, else 1.
      */
     [[nodiscard]] bool shouldStayManualDriving() const;
 
     /**
      * @brief Performs an off checkup.
-     * @return 0 if success, else 1.
      */
-    bool shouldStayOff(DigitalSender &digitalSender);
+    bool shouldStayOff(DigitalSender *digitalSender);
 
     /**
      * @brief Performs an initial checkup.
-     * @return 0 if success, else 1.
      */
-    CheckupError initialCheckupSequence(DigitalSender &digitalSender);
+    CheckupError initialCheckupSequence(DigitalSender *digitalSender);
 
     [[nodiscard]] bool shouldRevertToOffFromReady() const;
 
     /**
      * @brief Performs a ready to drive checkup.
-     * @return 0 if success, else 1.
      */
     [[nodiscard]] bool shouldStayReady() const;
 
     /**
      * @brief Performs an emergency checkup.
-     * @return 0 if the car passes emergency checks, else 1.
      */
     [[nodiscard]] bool shouldEnterEmergency() const;
 
@@ -83,14 +86,12 @@ public:
 
     /**
      * @brief Performs a mission finished checkup.
-     * @return 0 if success, else 1.
      */
     [[nodiscard]] bool shouldStayMissionFinished() const;
 
     /**
      * @brief Checks if the emergency sequence is complete and the vehicle can
      * transition to AS_OFF.
-     * @return 0 if success, else 1.
      */
     [[nodiscard]] bool emergencySequenceComplete();
 
@@ -99,18 +100,11 @@ public:
      *
      * This function checks whether the RES has been triggered or not.
      *
-     * @return 1 if the RES has been triggered, 0 otherwise.
      */
     [[nodiscard]] bool resTriggered() const;
 };
 
 inline bool CheckupManager::shouldStayManualDriving() const {
-    /* AATS OFF | MISSION NOT MANUAL | EBS IS DISABLED --> Transition to AS_OFF
-     * AATS ON  & MISSION MANUAL     & EBS INACTIVE    --> Transition to AS_READY
-     *
-     * In EXIT_SUCCESS, the vehicle can transition to AS_OFF.
-     * IN true, the vehicle can transition to AS_MANUAL.
-     */
 
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
         || _systemData->digitalData.asms_on) {
@@ -119,12 +113,7 @@ inline bool CheckupManager::shouldStayManualDriving() const {
     return true;
 }
 
-inline bool CheckupManager::shouldStayOff(DigitalSender &digitalSender) {
-    // THIS CHECKUP SEQUENCE IS NOT LONGER NEEDED AS IF ONE OF THOSE GET TRIGGERED DURING THE INITIAL SEQUENCE,
-    // THE CAR WOULD REVERT STATE TO OFF OR EMERGENCY ACCORDINGLY.
-    // if (!(_systemData->digitalData.asms_on && _systemData->digitalData.aats_on && !_systemData->sdcState_OPEN)) {
-    //     return true;
-    // }
+inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
     CheckupError initSequenceState = initialCheckupSequence(digitalSender);
 
     if (initSequenceState != CheckupError::SUCCESS) {
@@ -135,7 +124,7 @@ inline bool CheckupManager::shouldStayOff(DigitalSender &digitalSender) {
     return false;
 }
 
-inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender &digitalSender) {
+inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender *digitalSender) {
     switch (checkupState) {
         case CheckupState::WAIT_FOR_ASMS:
             // ASMS Activated?
@@ -177,21 +166,21 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             checkupState = CheckupState::WAIT_FOR_AATS;
             break;
         case CheckupState::WAIT_FOR_AATS:
-            digitalSender.toggleWatchdog();
+            digitalSender->toggleWatchdog();
         // AATS Activated?
             if (!_systemData->digitalData.sdcState_OPEN) {
                 checkupState = CheckupState::WAIT_FOR_TS;
             }
             break;
         case CheckupState::WAIT_FOR_TS:
-            digitalSender.toggleWatchdog();
+            digitalSender->toggleWatchdog();
         // TS Activated?
             if (_systemData->failureDetection.ts_on) {
                 checkupState = CheckupState::TOGGLE_VALVE;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
-            digitalSender.toggleWatchdog();
+            digitalSender->toggleWatchdog();
         // Toggle EBS Valves
             DigitalSender::activateEBS();
 
@@ -199,7 +188,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             checkupState = CheckupState::CHECK_PRESSURE;
             break;
         case CheckupState::CHECK_PRESSURE: {
-            digitalSender.toggleWatchdog();
+            digitalSender->toggleWatchdog();
             // Check hyraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
@@ -211,7 +200,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             break;
         }
         case CheckupState::CHECK_TIMESTAMPS:
-            digitalSender.toggleWatchdog();
+            digitalSender->toggleWatchdog();
         // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {

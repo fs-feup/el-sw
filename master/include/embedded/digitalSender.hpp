@@ -29,28 +29,65 @@ public:
         }
     }
 
+    /**
+     * @brief Opens the SDC in Master and SDC Logic.
+     */
     static void openSDC();
 
+    /**
+     * @brief Closes the SDC in Master and SDC Logic.
+     */
     static void closeSDC();
 
+    /**
+     * @brief Activates the solenoid EBS valves.
+     */
     static void activateEBS();
 
+    /**
+     * @brief Deactivates the solenoid EBS valves.
+     */
     static void deactivateEBS();
 
+    /**
+     * @brief ASSI LEDs blue flashing, sdc open and buzzer ringing.
+    */
     void enterEmergencyState();
 
+    /**
+     * @brief Everything off, sdc closed.
+    */
     static void enterManualState();
 
+    /**
+     * @brief Everything off, sdc open.
+    */
     static void enterOffState();
 
+    /**
+     * @brief ASSI yellow LED on, ebs valves activated, sdc closed.
+    */
     static void enterReadyState();
 
+    /**
+     * @brief ASSI LEDs yellow flashing, ebs valves deactivated, sdc closed.
+    */
     void enterDrivingState();
 
+    /**
+     * @brief ASSI blue LED on, ebs valves activated, sdc open.
+    */
     static void enterFinishState();
 
+    /**
+     * @brief Blinks the LED at the given pin.
+     * @param pin The pin to blink.
+     */
     void blinkLED(int pin);
 
+    /**
+     * @brief Toggles the watchdog pin, to ensure certify of masters' liveness.
+     */
     void toggleWatchdog();
 };
 

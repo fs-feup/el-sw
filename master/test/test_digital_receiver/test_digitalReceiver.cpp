@@ -92,9 +92,6 @@ void test_lwss() {
     TEST_ASSERT_TRUE(test_pass);
 }
 
-/**
-  * For Arduino framework
-  */
 void setUp() {
     pinMode(GREEN_LED_1, OUTPUT);
     pinMode(GREEN_LED_2, OUTPUT);

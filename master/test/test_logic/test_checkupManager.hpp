@@ -40,58 +40,58 @@ void test_shouldStayOff_whenInitialCheckupFails_false() {
     // default values shouldnt allow to pass test
     CheckupManager checkupManager(&systemData);
 
-    TEST_ASSERT_TRUE(checkupManager.shouldStayOff(digitalSender));
+    TEST_ASSERT_TRUE(checkupManager.shouldStayOff(&digitalSender));
 }
 
 void test_initialCheckupSequence_states() {
     SystemData sd;
-    DigitalSender ds;
+    DigitalSender digitalSender;
     CheckupManager cm(&sd);
 
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_ASMS, cm.checkupState);
 
     sd.digitalData.asms_on = true;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::START_TOGGLING_WATCHDOG, cm.checkupState);
 
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_WATCHDOG, cm.checkupState);
 
     cm.getInitialCheckupTimestamp().reset();
     sd.digitalData.watchdog_state = true;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::STOP_TOGGLING_WATCHDOG, cm.checkupState);
 
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CHECK_WATCHDOG, cm.checkupState);
 
     Metro waitForWatchdogExpiration{1000};
     while (!waitForWatchdogExpiration.check()) {
     }
     sd.digitalData.watchdog_state = false;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CLOSE_SDC, cm.checkupState);
 
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_AATS, cm.checkupState);
 
     sd.digitalData.sdcState_OPEN = false;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_TS, cm.checkupState);
 
     sd.failureDetection.ts_on = true;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::TOGGLE_VALVE, cm.checkupState);
 
     sd.digitalData.pneumatic_line_pressure = true;
     //TODO Change code and test to reflect real brake pressure
     sd.sensors._hydraulic_line_pressure = 100;
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CHECK_PRESSURE, cm.checkupState);
 
     cm.getInitialCheckupTimestamp().reset();
-    cm.initialCheckupSequence(ds);
+    cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CHECK_TIMESTAMPS, cm.checkupState);
 
     sd.failureDetection.emergencySignal = false;
@@ -100,7 +100,7 @@ void test_initialCheckupSequence_states() {
     sd.failureDetection.steerAliveTimestamp.reset();
     //todo MISSING INVERSOR ALIVE TIMESTAMP
 
-    TEST_ASSERT_EQUAL(CheckupManager::CheckupError::SUCCESS, cm.initialCheckupSequence(ds));
+    TEST_ASSERT_EQUAL(CheckupManager::CheckupError::SUCCESS, cm.initialCheckupSequence(&digitalSender));
 
 }
 
