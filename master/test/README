@@ -1,1 +1,6 @@
 # Tests
+
+- **test_comm** : test the communication functions (only test is for wss calculation for now)
+- **test_digital_receiver** (EMBEDDED) : test the receival of digital signals
+- **test_digital_sender** (EMBEDDED) : test the digital sending functions
+- **test_logic** : test the logic functions, related to the state machine
