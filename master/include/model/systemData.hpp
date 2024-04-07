@@ -1,9 +1,9 @@
 #pragma once
 
-#include <logic/sensors.hpp>
-#include <logic/systemDiagnostics.hpp>
-#include <logic/structure.hpp>
-#include <embedded/digitalData.hpp>
+#include <model/sensors.hpp>
+#include <model/systemDiagnostics.hpp>
+#include <model/structure.hpp>
+#include <model/digitalData.hpp>
 
 struct SystemData {
     InternalLogics internalLogics;
@@ -14,5 +14,4 @@ struct SystemData {
     Mission mission{MANUAL};
 
     bool ready2Drive{false}, missionFinished{false};
-    bool sdcState_OPEN{false};
 };

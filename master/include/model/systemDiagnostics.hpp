@@ -41,8 +41,7 @@ struct FailureDetection {
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     bool emergencySignal{false};
-    double bamocarTension{0.0}; // Add default member initializer
-    bool bamocarReady{true};
+    bool ts_on{false};
     double radio_quality{0};
 
     [[nodiscard]] bool hasAnyComponentTimedOut() {
