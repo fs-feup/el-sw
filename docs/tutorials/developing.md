@@ -10,7 +10,7 @@ By default, the tests defined with unity only fetch files from the include folde
 ## Compiling and Running
 You can use the platformio functions both through the VSCode gui or the terminal. I prefer the terminal as it is easier to set some options. To upload the project into the board, simply run:
 ```sh
-pio run
+pio run # Compiles and runs
 ```
 To select a certain environment:
 ```sh

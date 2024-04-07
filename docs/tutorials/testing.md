@@ -10,6 +10,11 @@ Firstly, check the rules on Unit Testing in [Notion](https://www.notion.so/Codin
 ### Test Framework
 The test framework used is **unity**. It was chosen due to having support with platformio out of the box and being able to run tests both in native environment and embedded. To get more information on the framework, visit [this website](https://docs.platformio.org/en/latest/advanced/unit-testing/frameworks/unity.html#unit-testing-frameworks-unity). More information in pio testing can be found [here](https://docs.platformio.org/en/latest/advanced/unit-testing/index.html).
 
+Some important things:
+- it considers the folders the tests, meaning if you want to run test independently you should put them in different folders. Due to this, the directory mirror rule does not apply here;
+- because if considers the folders the tests, you can only have one main per folder and subfolders are not interpreted well, so you will have to have all folders as a subfolder of the test folder;
+- the framework is very simple and does not have any mocking functionality, increasing the importance of creating the most amount of tests possible for a pc environment, which allows the usage of other frameworks such as gtest.
+
 
 ## Testing Environments and Test types
 
@@ -19,7 +24,7 @@ Apart from the environment, the tests can also vary in the **type of test**, bet
 
 ### Environments
 
-Tests in the **native environment** should be always in the test_logic_native. These tests can be ran in automated workflows and in your own pc. When creating a test (or any type of software), try to as much as possible have it be testable in computer (native) environment.
+Tests in the **native environment** should be always in a separate folder. All the other folders should be filtered out for this environment in the platformio.ini like so ```test_ignore = test_embedded```. When creating a test (or any type of software), try to as much as possible have it be testable in computer (native) environment.
 
 **Embedded tests** will be performed with the aid of a breadboard, which was configured to be able to simulate almost any behaviour of the goal PCB. 
 As the connection to the microcontroller's pin out are not the same, embedded tests also need to redefine the constants that define the values of the pins.
@@ -49,9 +54,9 @@ These tests are different, as they depend on user input. These tests are always 
  * Simply here to show the execution of 
  * CAN communication in desktop
  * PROTOCOL:
- * 1. Click A1
- * 2. Click A2
- * 3. Verify LED2 Green
+ * 1. Act - Click A1
+ * 2. Act - Click A2
+ * 3. Assert - Verify LED2 Green
 */
 void test_x(void) {
     // Logic of the test
