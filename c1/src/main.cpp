@@ -2,6 +2,7 @@
 #include <FlexCAN_T4.h>
 #include <elapsedMillis.h>
 #include <logging.h>
+#include <math.h>
 
 #define AVG_SAMPLES 20
 
@@ -15,10 +16,9 @@
 #define CURRENT_SENSOR_PIN A4
 #define RIGHT_WHEEL_ENCODER_PIN A3 // FIX PIN NUMBER
 
-#define RWS_SAMPLE_PERIOD 50          // ms
-#define RWS_PULSES_PER_ROTATION 11    // Number of pulses per one rotation of the wheel
-#define SENSOR_SAMPLE_PERIOD 20       // ms
-volatile unsigned int pulseCount = 0; // Count of sensor pulses
+#define RR_RPM_PUBLISH_PERIOD 1000 // micro secs
+#define WPS_PULSES_PER_ROTATION 48 // Number of pulses per one rotation of the wheel
+#define SENSOR_SAMPLE_PERIOD 20    // ms
 
 #define CAN_BAUD_RATE 500000
 #define CAN_TRANSMISSION_PERIOD 100 // ms
@@ -26,15 +26,15 @@ volatile unsigned int pulseCount = 0; // Count of sensor pulses
 #define C1_ID 0x123
 
 #define BRAKE_MSG_1ST_BYTE 0x90
-#define RWP_MSG_1ST_BYTE 0x11
+#define RR_RPM_MSG_1ST_BYTE 0x11
 
 #define LOGGING_PERIOD 10
 
 uint16_t brake_val = 0;
 
+elapsedMicros rr_rpm_publisher_timer; // Right Wheel Sensor Timer
 elapsedMillis canTimer;
 elapsedMillis brake_sensor_timer;
-elapsedMillis rws_sensor_timer; // Right Wheel Sensor Timer
 elapsedMillis brake_light_active_timer;
 elapsedMillis writeTIMER;
 elapsedMillis CURRENTtimer;
@@ -43,7 +43,7 @@ Logging loggingInstance;
 
 union
 {
-    float input;
+    int input;
     char output[4];
 } data;
 
@@ -68,10 +68,13 @@ int torque = 0;
 int motor_voltage = 0;
 int battery_voltage = 0;
 
+float rr_rpm;
+unsigned long last_wheel_pulse_ts;
+
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 CAN_message_t brake_sensor_c3;
-CAN_message_t rwp_sensor;
+CAN_message_t rr_rpm_msg;
 CAN_message_t current_controll;
 
 int8_t current_byte1; // MSB
@@ -92,22 +95,13 @@ int average(int *buffer, int n)
     return sum / n;
 }
 
-float calculateRPM()
+// Interrupt service routine to update RPM
+void calculateRPM()
 {
-    noInterrupts(); // Disable interrupts to read pulseCount safely
-    unsigned int pulses = pulseCount;
-    pulseCount = 0; // Reset pulse count
-    interrupts();   // Re-enable interrupts
-
-    rws_sensor_timer = 0; // Reset timer
-    // Calculate RPM
-    return (float)pulses / RWS_PULSES_PER_ROTATION * (60000 / RWS_SAMPLE_PERIOD);
-}
-
-// Interrupt service routine for counting pulses
-void countPulse()
-{
-    pulseCount++;
+    // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
+    unsigned long time_interval_s = (micros() - last_wheel_pulse_ts) * 1e-6;
+    rr_rpm = 1 / (time_interval_s * WPS_PULSES_PER_ROTATION) * 60;
+    last_wheel_pulse_ts = micros(); // refresh timestamp
 }
 
 void bufferInsert(int *buffer, int n, int value)
@@ -129,9 +123,9 @@ void initMessages()
     brake_sensor_c3.len = 3;
     brake_sensor_c3.buf[0] = BRAKE_MSG_1ST_BYTE;
 
-    rwp_sensor.id = C1_ID;
-    rwp_sensor.len = 5;
-    rwp_sensor.buf[0] = RWP_MSG_1ST_BYTE;
+    rr_rpm_msg.id = C1_ID;
+    rr_rpm_msg.len = 5;
+    rr_rpm_msg.buf[0] = RR_RPM_MSG_1ST_BYTE;
 }
 
 void canbusSniffer(const CAN_message_t &msg)
@@ -226,22 +220,25 @@ void sendBrakeVal(uint16_t brake_value)
     can1.write(brake_sensor_c3);
 }
 
-void sendRPM(float rpm)
+void sendRPM()
 {
-    data.input = rpm;
-
+    /*
+    1st we multiply rpm by 100 to get a 2 decimal place value.
+    The roundf() function rounds rpm to the nearest integer value.
+    */
+    data.input = roundf(rr_rpm * 100);
     /*
     The order of the bytes in the output array depends on the endianness the system.
     -> little-endian system, the least significant byte will be at output[0],
     and the most significant byte will be at output[3].
     -> big-endian system, it's the other way around.
     */
-    rwp_sensor.buf[4] = data.output[0];
-    rwp_sensor.buf[3] = data.output[1];
-    rwp_sensor.buf[2] = data.output[2];
-    rwp_sensor.buf[1] = data.output[3];
+    rr_rpm_msg.buf[4] = data.output[0];
+    rr_rpm_msg.buf[3] = data.output[1];
+    rr_rpm_msg.buf[2] = data.output[2];
+    rr_rpm_msg.buf[1] = data.output[3];
 
-    can1.write(rwp_sensor);
+    can1.write(rr_rpm_msg);
 }
 
 bool brakeLightControl(int brake_val)
@@ -264,14 +261,14 @@ void setup()
 {
     Logging loggingInstance;
 
-    rws_sensor_timer = 0;
+    rr_rpm_publisher_timer = 0;
 
     canbusSetup();
     loggingInstance.setup_log();
     pinMode(BRAKE_SENSOR_PIN, INPUT);
     pinMode(BRAKE_LIGHT, OUTPUT);
 
-    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), countPulse, RISING);
+    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), calculateRPM, RISING);
 }
 
 void loop()
@@ -296,11 +293,8 @@ void loop()
         }
     }
 
-    if (rws_sensor_timer > RWS_SAMPLE_PERIOD)
-    {
-        float rpm = calculateRPM();
-        sendRPM(rpm);
-    }
+    if (rr_rpm_publisher_timer > RR_RPM_PUBLISH_PERIOD)
+        sendRPM();
 
     if (writeTIMER > LOGGING_PERIOD)
     {
