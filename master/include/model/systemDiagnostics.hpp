@@ -8,11 +8,11 @@ constexpr unsigned long READY_TIMEOUT_MS = 5000;
 
 struct InternalLogics {
     Metro readyTimestamp{READY_TIMEOUT_MS};
-    bool goSignal{false};
+    bool r2d{false};
 
     void enterReadyState() {
         readyTimestamp.reset();
-        goSignal = false;
+        r2d = false;
     }
 
     /**
@@ -25,13 +25,13 @@ struct InternalLogics {
      */
 
     bool processGoSignal() {
-        // If goSignal is not received or received before 5 seconds, return false
-        if (goSignal && readyTimestamp.check()) {
-            goSignal = true;
+        // If r2d is not received or received before 5 seconds, return false
+        if (readyTimestamp.check()) {
+            r2d = true;
             return EXIT_SUCCESS;
         }
-        // If goSignal is received after the timeout duration, return true
-        goSignal = false;
+        // If r2d is received after the timeout duration, return true
+        r2d = false;
         return EXIT_FAILURE;
     }
 };
