@@ -40,10 +40,15 @@ void tearDown(void) {
     // This is run after EACH test
 }
 
-// Test Completion:
-// Observe than pin 1 and 2 turn on for 3 seconds then turn off
+
+/**
+ * @attention PROTOCOL TEST
+ * @brief Test the SDC Functions
+ * PROTOCOL:
+ * 1. ASSERT - Observe that pin 1 and 2 turn on for 3 seconds then turn off
+*/
 void test_openSDC_then_closeSDC(void) {
-    Metro test{3000};
+    Metro test{5000};
     DigitalSender::openSDC();
     while (!test.check()) {
     }
@@ -53,10 +58,14 @@ void test_openSDC_then_closeSDC(void) {
     TEST_PASS();
 }
 
-// Test Completion:
-// Observe that after only LEDS 2, 3 rturn on
+/**
+ * @attention PROTOCOL TEST
+ * @brief Test the enterEmergency state function
+ * PROTOCOL:
+ * 1. ASSERT - Observe that after only LEDS 2, 3 return on
+*/
 void test_enterEmergencyState_and_turn_off_LEDS(void) {
-    Metro test{3000};
+    Metro test{5000};
     DigitalSender ds;
     ds.enterEmergencyState();
     while (!test.check()) {
@@ -64,12 +73,14 @@ void test_enterEmergencyState_and_turn_off_LEDS(void) {
     TEST_PASS();
 }
 
-
-// Test Completion:
-// Observer that LED correctly blinks at 1hz for 10 seconds
-//
-// The toggle watchdog is the same function as blink LED so we can afirm
-// that passing this test implies that the toggleWatchdog function works
+/**
+ * @attention PROTOCOL TEST
+ * @brief Test the blinkLED function
+ * The toggle watchdog is the same function as blink LED so we can afirm
+ * that passing this test implies that the toggleWatchdog function works
+ * PROTOCOL:
+ * 1. ASSERT - Observer that LED correctly blinks at 1hz for 10 seconds
+*/
 void test_blinkLED(void) {
     Metro test{10000};
     DigitalSender ds;
@@ -85,3 +96,4 @@ int main() {
     RUN_TEST(test_blinkLED);
     return UNITY_END();
 }
+

@@ -1,10 +1,12 @@
 #pragma once
 
-#include "comm/communicatorSettings.hpp"
-#include "model/systemData.hpp"
 #include <Arduino.h>
 #include <FlexCAN_T4.h>
 #include <string>
+
+#include "comm/communicatorSettings.hpp"
+#include "model/systemData.hpp"
+#include "comm/utils.hpp"
 
 inline Code fifoCodes[] = {
     {0, C1_ID},
@@ -178,14 +180,8 @@ inline int Communicator::publish_mission(int mission_id) {
 }
 
 inline int Communicator::publish_left_wheel_rpm(double value) {
-    value /= WHEEL_PRECISION; // take precision off to send interger value
-
     uint8_t msg[5];
-
-    msg[0] = LEFT_WHEEL_MSG;
-    // Copy the bytes of the double value to msg[1] to msg[4]
-    for (int i = 0; i < 4; i++) 
-        msg[i + 1] = static_cast<int>(value) >> (8*i); // shift 8(byte) to msb each time
+    create_left_wheel_msg(msg, value);
     
     send_message(5, msg, MASTER_ID);
     return 0;

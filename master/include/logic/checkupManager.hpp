@@ -71,7 +71,7 @@ public:
      * @brief Performs a ready to drive checkup.
      * @return 0 if success, else 1.
      */
-    [[nodiscard]] bool shouldStayR2D() const;
+    [[nodiscard]] bool shouldStayReady() const;
 
     /**
      * @brief Performs an emergency checkup.
@@ -113,7 +113,7 @@ inline bool CheckupManager::shouldStayManualDriving() const {
      */
 
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
-        || !_systemData->failureDetection.ts_on || _systemData->digitalData.sdcState_OPEN) {
+        || _systemData->digitalData.asms_on) {
         return false;
     }
     return true;
@@ -174,13 +174,13 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
         case CheckupState::CLOSE_SDC:
             // Close SDC
             DigitalSender::closeSDC();
-            checkupState = CheckupState::WAIT_FOR_TS;
+            checkupState = CheckupState::WAIT_FOR_AATS;
             break;
         case CheckupState::WAIT_FOR_AATS:
             digitalSender.toggleWatchdog();
         // AATS Activated?
             if (!_systemData->digitalData.sdcState_OPEN) {
-                checkupState = CheckupState::TOGGLE_VALVE;
+                checkupState = CheckupState::WAIT_FOR_TS;
             }
             break;
         case CheckupState::WAIT_FOR_TS:
@@ -226,13 +226,13 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 
 inline bool CheckupManager::shouldRevertToOffFromReady() const {
     if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
-        _hydraulic_line_pressure == 0) {
+        _hydraulic_line_pressure == 0 || _systemData->digitalData.sdcState_OPEN) {
         return true;
     }
     return false;
 }
 
-inline bool CheckupManager::shouldStayR2D() const {
+inline bool CheckupManager::shouldStayReady() const {
     if (!_systemData->internalLogics.r2d) {
         return true;
     }

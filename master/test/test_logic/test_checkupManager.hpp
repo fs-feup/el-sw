@@ -1,15 +1,13 @@
 #include "unity.h"
 #include "logic/checkupManager.hpp"
-#include "logic/systemData.hpp"
+#include "model/systemData.hpp"
 
 
 void test_shouldStayManualDriving_true() {
     SystemData systemData;
     systemData.mission = MANUAL;
     systemData.digitalData.pneumatic_line_pressure = false;
-    systemData.sensors._hydraulic_line_pressure = 0;
-    systemData.digitalData.aats_on = true;
-    systemData.sdcState_OPEN = false;
+    systemData.digitalData.asms_on = false;
 
     CheckupManager checkupManager(&systemData);
 
@@ -28,12 +26,11 @@ void test_shouldStayManualDriving_false() {
     TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
 
     systemData.digitalData.pneumatic_line_pressure = false;
-    systemData.digitalData.aats_on = false;
+    systemData.digitalData.asms_on = true;
     TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
 
-    systemData.digitalData.aats_on = true;
-    systemData.sdcState_OPEN = true;
-    TEST_ASSERT_FALSE(checkupManager.shouldStayManualDriving());
+    systemData.digitalData.asms_on = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldStayManualDriving());
 }
 
 //can only test false since we can't mock the initial sequence :(
@@ -76,11 +73,14 @@ void test_initialCheckupSequence_states() {
     cm.initialCheckupSequence(ds);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CLOSE_SDC, cm.checkupState);
 
-    sd.sdcState_OPEN = false;
+    cm.initialCheckupSequence(ds);
+    TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_AATS, cm.checkupState);
+
+    sd.digitalData.sdcState_OPEN = false;
     cm.initialCheckupSequence(ds);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::WAIT_FOR_TS, cm.checkupState);
 
-    sd.digitalData.aats_on = true;
+    sd.failureDetection.ts_on = true;
     cm.initialCheckupSequence(ds);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::TOGGLE_VALVE, cm.checkupState);
 
@@ -107,8 +107,9 @@ void test_initialCheckupSequence_states() {
 void test_shouldRevertToOffFromReady() {
     SystemData systemData;
     systemData.digitalData.asms_on = true;
-    systemData.digitalData.aats_on = true;
+    systemData.digitalData.sdcState_OPEN = false;
     systemData.sensors._hydraulic_line_pressure = 100;
+    systemData.failureDetection.ts_on = true;
 
     CheckupManager checkupManager(&systemData);
 
@@ -118,29 +119,33 @@ void test_shouldRevertToOffFromReady() {
     TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
 
     systemData.digitalData.asms_on = true;
-    systemData.digitalData.aats_on = false;
+    systemData.digitalData.sdcState_OPEN = true;
     TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
 
-    systemData.digitalData.aats_on = true;
+    systemData.digitalData.sdcState_OPEN = false;
     systemData.sensors._hydraulic_line_pressure = 0;
+    TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
+
+    systemData.sensors._hydraulic_line_pressure = 100;
+    systemData.failureDetection.ts_on = false;
     TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
 }
 
-void test_shouldStayR2D() {
+void test_shouldStayReady() {
     SystemData systemData;
     systemData.internalLogics.r2d = false;
 
     CheckupManager checkupManager(&systemData);
 
-    TEST_ASSERT_TRUE(checkupManager.shouldStayR2D());
+    TEST_ASSERT_TRUE(checkupManager.shouldStayReady());
 
     systemData.internalLogics.r2d = true;
-    TEST_ASSERT_FALSE(checkupManager.shouldStayR2D());
+    TEST_ASSERT_FALSE(checkupManager.shouldStayReady());
 }
 
 void test_shouldEnterEmergency() {
     SystemData sd;
-    sd.sdcState_OPEN = false;
+    sd.digitalData.sdcState_OPEN = false;
     sd.digitalData.pneumatic_line_pressure = true;
     sd.digitalData.asms_on = true;
     sd.failureDetection.inversorAliveTimestamp.reset();
@@ -153,10 +158,10 @@ void test_shouldEnterEmergency() {
 
     TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency());
 
-    sd.sdcState_OPEN = true;
+    sd.digitalData.sdcState_OPEN = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
 
-    sd.sdcState_OPEN = false;
+    sd.digitalData.sdcState_OPEN = false;
     sd.digitalData.pneumatic_line_pressure = false;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency());
 
@@ -240,7 +245,7 @@ void run_tests_checkupManager() {
     RUN_TEST(test_shouldStayManualDriving_false);
     RUN_TEST(test_shouldStayOff_whenInitialCheckupFails_false);
     RUN_TEST(test_shouldRevertToOffFromReady);
-    RUN_TEST(test_shouldStayR2D);
+    RUN_TEST(test_shouldStayReady);
     RUN_TEST(test_shouldEnterEmergency);
     RUN_TEST(test_shouldStayDriving);
     RUN_TEST(test_shouldStayMissionFinished);

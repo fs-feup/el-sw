@@ -59,7 +59,7 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.shouldStayR2D()) break;
+            if (_checkupManager.shouldStayReady()) break;
 
             _digitalSender.enterDrivingState();
             state = AS_DRIVING;

@@ -1,5 +1,8 @@
 #pragma once
 
+#include <Metro.h>
+#include "embedded/digitalSettings.hpp"
+
 struct DigitalData {
     // Rear Left Wheel Speed Encoder
     double _left_wheel_rpm = 0;

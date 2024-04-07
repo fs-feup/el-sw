@@ -37,7 +37,6 @@ private:
 
     Button newButton(uint8_t pin);
 
-    void readLwss();
     void readPneumaticLine();
     void readMission();
     void readAsmsSwitch();
@@ -46,7 +45,7 @@ private:
 
 };
 
-double DigitalReceiver::_current_left_wheel_rpm = 0;
+double DigitalReceiver::_current_left_wheel_rpm = 0.0;
 unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
 
 inline Button DigitalReceiver::newButton(uint8_t pin) {
@@ -60,9 +59,10 @@ inline Button DigitalReceiver::newButton(uint8_t pin) {
 
 inline void DigitalReceiver::updateLeftWheelRpm() {
     // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
-    unsigned long time_interval_s = (millis() - last_wheel_pulse_ts) * 1e-3;
-    _current_left_wheel_rpm = 1 / (time_interval_s * PULSES_PER_ROTATION) * 60;  
-    last_wheel_pulse_ts = millis(); // refresh timestamp
+    unsigned long now = micros();
+    unsigned long time_interval_s = (now - last_wheel_pulse_ts);
+    _current_left_wheel_rpm = 1 / (time_interval_s * 1e-6 * PULSES_PER_ROTATION) * 60;  
+    last_wheel_pulse_ts = now; // refresh timestamp
 }
 
 inline void DigitalReceiver::digitalReads() {
@@ -102,7 +102,7 @@ inline void DigitalReceiver::readAsmsSwitch() {
 }
 
 inline void DigitalReceiver::readAatsState() {
-    // TS is on if SDC is closed (SDC STATE PIN AS HIGH)
+    // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
     digitalData->sdcState_OPEN = !digitalRead(SDC_STATE_PIN);
 }
 
