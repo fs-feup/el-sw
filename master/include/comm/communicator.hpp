@@ -127,7 +127,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     bool go_button = (buf[0] >> 2) & 0x01;
 
     if (go_button || go_switch)
-        _systemData->internalLogics.processGoSignal();
+        _systemData->r2dLogics.processGoSignal();
     else if (emg_stop1 || emg_stop2)
         _systemData->failureDetection.emergencySignal = true;
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <model/systemData.hpp>
 #include <cstdlib>
 
+#include "model/systemData.hpp"
 #include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
 
@@ -119,8 +119,7 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
     if (initSequenceState != CheckupError::SUCCESS) {
         return true;
     }
-    _systemData->internalLogics.enterReadyState();
-    _systemData->digitalData.watchdogTimestamp.reset();
+    _systemData->r2dLogics.enterReadyState();
     return false;
 }
 
@@ -222,11 +221,10 @@ inline bool CheckupManager::shouldRevertToOffFromReady() const {
 }
 
 inline bool CheckupManager::shouldStayReady() const {
-    if (!_systemData->internalLogics.r2d) {
+    if (!_systemData->r2dLogics.r2d) {
         return true;
     }
 
-    _systemData->digitalData.watchdogTimestamp.reset();
     return false;
 }
 
@@ -240,7 +238,6 @@ inline bool CheckupManager::shouldEnterEmergency() const {
         return true;
     }
 
-    _systemData->digitalData.watchdogTimestamp.reset();
     return false;
 }
 

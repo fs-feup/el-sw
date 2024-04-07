@@ -2,7 +2,8 @@
 
 #include <cstdlib>
 #include <Metro.h>
-#include <embedded/digitalSettings.hpp>
+
+#include "embedded/digitalSettings.hpp"
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
 

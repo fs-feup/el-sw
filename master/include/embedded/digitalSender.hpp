@@ -169,5 +169,6 @@ inline void DigitalSender::toggleWatchdog() {
     if (_watchdogTimer.check()) {
         watchdogState = !watchdogState;
         digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, watchdogState);
+        _watchdogTimer.reset();
     }
 }

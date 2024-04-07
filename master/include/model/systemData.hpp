@@ -10,7 +10,7 @@
  * holds all the data necessary
 */
 struct SystemData {
-    R2DLogics internalLogics;
+    R2DLogics r2dLogics;
     FailureDetection failureDetection;
     Sensors sensors;
 
