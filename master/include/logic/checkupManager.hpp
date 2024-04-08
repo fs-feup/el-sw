@@ -232,8 +232,8 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
     if (current_state == AS_READY && (
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        _systemData->failureDetection.hasAnyComponentTimedOut()) ||
-        _systemData->digitalData.watchdogTimestamp.check()) {
+        _systemData->failureDetection.hasAnyComponentTimedOut() ||
+        _systemData->digitalData.watchdogTimestamp.check())) {
         return true;
     }
     if (current_state == AS_DRIVING && (

@@ -13,7 +13,7 @@
             "request": "launch",
             "name": "PIO Debug",
             "executable": "/home/marhcouto/Documents/FS/eletro/el-sw/master/.pio/build/teensy41/firmware.elf",
-            "projectEnvName": "teensy41-debug",
+            "projectEnvName": "teensy41",
             "toolchainBinDir": "/home/marhcouto/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": {
@@ -26,7 +26,7 @@
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
             "executable": "/home/marhcouto/Documents/FS/eletro/el-sw/master/.pio/build/teensy41/firmware.elf",
-            "projectEnvName": "teensy41-debug",
+            "projectEnvName": "teensy41",
             "toolchainBinDir": "/home/marhcouto/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart"
         },
@@ -35,7 +35,7 @@
             "request": "launch",
             "name": "PIO Debug (without uploading)",
             "executable": "/home/marhcouto/Documents/FS/eletro/el-sw/master/.pio/build/teensy41/firmware.elf",
-            "projectEnvName": "teensy41-debug",
+            "projectEnvName": "teensy41",
             "toolchainBinDir": "/home/marhcouto/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart",
             "loadMode": "manual"
