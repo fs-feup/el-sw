@@ -24,6 +24,7 @@ Before anything, go over the rules on programming and program design, present in
 - [Testing](./testing.md)
 - [Documentation](./documentation.md)
 - [Example Project (old project for testing)](../test_project/)
+- [Debugging](./debugging.md)
 
 
 ### Extra Turorials 
