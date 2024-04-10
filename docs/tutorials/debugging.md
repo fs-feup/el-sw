@@ -1,6 +1,6 @@
 # Debugging and Deployment
 
-Debugging is rephered to the step of indentifying the problems the program contains in runtime. It is an extremely important process for any type of program which most often occurs naturally. For embedded software, this step is most important and it has some differente implications than normal, as the code is running in a microcontroller and depends on external sources which are hard to simulate. More than this, this process is often linked with the deployment of the code in its destination environment, adding to the complexity of doing this process correctly. This guide goes over the possibilities and dos and don'ts of debugging for embedded software.
+Debugging is rephered to the step of indentifying the problems the program contains in runtime. It is an extremely important process for any type of program which most often occurs naturally. For embedded software, this step is most important and it has some differente implications than normal, as the code is running in a microcontroller and depends on external sources which are hard to simulate. This guide goes over the possibilities and dos and don'ts of debugging for embedded software.
 
 ## Tools and Teensy
 
