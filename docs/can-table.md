@@ -27,13 +27,12 @@
 | Bamocar| 0x181 | 4 | 0x8A | Motor Voltage LSB | Motor Voltage MSB | --- | | | | | Receive Motor Voltage|
 | Bamocar| 0x181 | 4 | 0xA0 | Torque LSB | Torque MSB | --- | | | | | Receive Torque |
 | BMS | 0x666 | 3 | Current LSB | Current MSB | | | | | | | Receive Current from BMS |
-| Teensy C1 | 0x123 | 3 | 0x90 | Brake Value LSB | Brake Value MSB | | | | | | Brake pressure value |
+| Teensy C1 | 0x123 | 3 | 0x90 | Brake Value LSB | Brake Value MSB | | | | | | Hydraulic Brake pressure value |
 | PC | 0x665 | 1 | --- | | | | | | | | This was used during debugging, to Test de R2D state withtout turn on the car |
 | PC | 0x400 | 1 | 0x41 | | | | | | | | PC Alive Signal |
 | PC | 0x400 | 1 | 0x42 | | | | | | | | Mission Finished Signal |
 | PC | 0x400 | 1 | 0x43 | | | | | | | | Autonomous System / Computational Unit Emergency Detection Signal |
 | Teensy C1 | 0x123 | 5 | 0x11 | Right Wheel RPM LSB | Right Wheel RPM | Right Wheel RPM | Right Wheel RPM MSB | | | | Right Wheel Current RPM Value, scaled by 1e2 in an integer value |
-| Teensy C1 | 0x123 | 3 | 0x12 | Brake Pressure LSB  | Brake Pressure MSB | | | | | | Hydraulic Line Brake Pressure, scaled by 1e1 in an integer value |
 | Steering Actuator | 0x700 | 4 | Steering Angle LSB | Steering Angle MSB | | | | | | | Steering Angle Value |
 | RES | 0x180 + 0x11 | 8 | PMO2000 | PMO2001 | PMO2002 | PMO2003 | PMO2004 | PMO2005 | PMO2006 | PMO2007 | Res State Message. 0x11 in ID refers to the 0x11 Node ID defined by FSG. PMO2000: emergency - bit 0, go signals - bit 1 & 2. PMO2003: emergency - bit 7. PMO2006: Radio Quality (0-100%). PMO2007: signal loss - bit 6 |
 | RES | 0x700 + 0x11 | 1 | 0x00 | | | | | | | | RES Ready Message Informs that the device is initialized. 0x11 in ID refers to the 0x11 Node ID defined by FSG |

@@ -6,11 +6,11 @@
 
 class ASState {
 private:
-    CheckupManager _checkupManager;
     DigitalSender *_digitalSender;
     Communicator *_communicator;
 
 public:
+    CheckupManager _checkupManager;
     State state{AS_OFF};
 
     explicit ASState(SystemData *system_data, Communicator *communicator, 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Arduino.h>
 #include <FlexCAN_T4.h>
+#include <Arduino.h>
 #include <string>
 
 #include "comm/communicatorSettings.hpp"
@@ -27,12 +27,12 @@ inline Code fifoCodes[] = {
  */
 class Communicator {
 private:
-    static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+    inline static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
 public:
     inline static SystemData *_systemData = nullptr;
 
-    Communicator();
+    Communicator(SystemData* systemdata);
 
     /**
      * @brief Parses the message received from the CAN bus
@@ -96,7 +96,9 @@ public:
     static int publish_left_wheel_rpm(double value);
 };
 
-inline Communicator::Communicator() {
+inline Communicator::Communicator(SystemData* systemData) {
+    _systemData = systemData;
+
     can1.begin();
     can1.setBaudRate(500000);
     can1.enableFIFO();
@@ -105,18 +107,17 @@ inline Communicator::Communicator() {
     for (auto &fifoCode: fifoCodes)
         can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
-  can1.onReceive(parse_message);
+    can1.onReceive(parse_message);
 }
 
 inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
-    double break_pressure = (buf[2] << 8) | buf[1];
-    break_pressure *= HYDRAULIC_LINE_PRECISION; // convert back adding decimal part
-    _systemData->sensors._hydraulic_line_pressure = break_pressure;
-  } else if (buf[0] == RIGHT_WHEEL) {
+    _systemData->sensors._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
+  }
+  else if (buf[0] == RIGHT_WHEEL) {
     double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
-    _systemData->sensors._rl_wheel_rpm = right_wheel_rpm;
+    _systemData->sensors._right_wheel_rpm = right_wheel_rpm;
   }
 }
 
@@ -148,11 +149,13 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
+
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
             _systemData->failureDetection.ts_on = false;
      
     } else if (buf[0] == VDC_BUS) {
+        
         int dc_voltage = (buf[2] << 8) | buf[1];
 
         if (dc_voltage < DC_THRESHOLD)

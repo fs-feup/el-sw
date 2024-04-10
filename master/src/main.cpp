@@ -6,7 +6,7 @@
 #include "timings.hpp"
 
 SystemData systemData; // Model
-Communicator communicator = Communicator(); // CAN
+Communicator communicator = Communicator(&systemData); // CAN
 DigitalReceiver digitalReceiver = DigitalReceiver(&systemData.digitalData, &systemData.mission); // Digital inputs
 DigitalSender digitalSender = DigitalSender(); // Digital outputs
 ASState as_state = ASState(&systemData, &communicator, &digitalSender);
@@ -18,8 +18,6 @@ Metro state_timer = Metro(STATE_PUBLISH_INTERVAL);
 IntervalTimer state_calculation_timer;
 
 void setup() {
-    Communicator::_systemData = &systemData;
-
     state_calculation_timer.begin([]() {
         noInterrupts();
         digitalReceiver.digitalReads();
@@ -33,9 +31,6 @@ void setup() {
 }
 
 void loop() {
-    digitalReceiver.digitalReads();
-    as_state.calculateState();
-    
     if (rl_rpm_timer.check()) {
         Communicator::publish_left_wheel_rpm(systemData.mission);
         rl_rpm_timer.reset();

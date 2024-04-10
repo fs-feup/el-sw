@@ -192,7 +192,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
             }
-            if (_systemData->sensors._hydraulic_line_pressure > 0 && _systemData->digitalData.
+            if (_systemData->sensors._hydraulic_line_pressure > HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
                 pneumatic_line_pressure) {
                 checkupState = CheckupState::CHECK_TIMESTAMPS;
             }
@@ -251,7 +251,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
 }
 
 inline bool CheckupManager::shouldStayDriving() const {
-    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->missionFinished) {
+    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->sensors._right_wheel_rpm && _systemData->missionFinished) {
         return false;
     }
     return true;

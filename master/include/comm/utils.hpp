@@ -1,5 +1,5 @@
-#include <Arduino.h>
 
+#include <Arduino.h>
 #include "comm/communicatorSettings.hpp"
 
 /**
@@ -7,7 +7,7 @@
  * extracted for unit testing
 */
 void create_left_wheel_msg(uint8_t *msg, double value) {
-    value /= WHEEL_PRECISION; // take precision off to send interger value
+    value /= WHEEL_PRECISION; // take precision off to send integer value
     if (value < 0) value = 0;
 
     msg[0] = LEFT_WHEEL_MSG;
