@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-10T17:59:52.922Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="ieOPaMjAx6QS0s6f_g5g" version="24.2.3" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-10T18:02:32.686Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="ltyB2wcRTrudMFit3J4Q" version="24.2.3" type="github">
   <diagram name="Page-1" id="lU4HYY9iMri2MdEy_FQ0">
     <mxGraphModel dx="4503" dy="2306" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -417,7 +417,7 @@
           <mxGeometry y="201" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-73" value="&lt;div&gt;&amp;lt;&amp;lt;struct&amp;gt;&amp;gt;&lt;/div&gt;SystemData" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-2090" y="20" width="220" height="74" as="geometry" />
+          <mxGeometry x="-2010" y="-108" width="220" height="74" as="geometry" />
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-75" value="+ missionFinished: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="IuLUCpIUxPLPs_VLMMa8-73">
           <mxGeometry y="40" width="220" height="26" as="geometry" />
@@ -464,13 +464,14 @@
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-175" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IuLUCpIUxPLPs_VLMMa8-95" target="IuLUCpIUxPLPs_VLMMa8-73">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-1920" y="-40" />
+              <mxPoint x="-1740" y="-80" />
+              <mxPoint x="-1740" y="-80" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-232" value="Updates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="IuLUCpIUxPLPs_VLMMa8-175">
           <mxGeometry x="-0.5699" y="1" relative="1" as="geometry">
-            <mxPoint x="21" y="-1" as="offset" />
+            <mxPoint x="-21" y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-95" value="Communicator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -641,7 +642,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-176" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Main Loop&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Owns Global Variables&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ setup(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ loop(): void&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="-2060" y="147" width="160" height="93" as="geometry" />
+          <mxGeometry x="-2010" y="39" width="160" height="93" as="geometry" />
         </mxCell>
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-195" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IuLUCpIUxPLPs_VLMMa8-113" target="IuLUCpIUxPLPs_VLMMa8-63">
           <mxGeometry relative="1" as="geometry">
@@ -763,7 +764,7 @@
             <mxPoint x="-2130" y="330" as="sourcePoint" />
             <mxPoint x="-1970" y="330" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1980" y="310" />
+              <mxPoint x="-1930" y="310" />
               <mxPoint x="-2200" y="310" />
             </Array>
           </mxGeometry>
@@ -773,7 +774,8 @@
             <mxPoint x="-1830" y="210" as="sourcePoint" />
             <mxPoint x="-1670" y="210" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1540" y="200" />
+              <mxPoint x="-1740" y="60" />
+              <mxPoint x="-1740" y="60" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -782,8 +784,8 @@
             <mxPoint x="-1990" y="340" as="sourcePoint" />
             <mxPoint x="-1830" y="340" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1980" y="370" />
-              <mxPoint x="-1980" y="370" />
+              <mxPoint x="-1930" y="310" />
+              <mxPoint x="-1980" y="310" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -792,8 +794,8 @@
             <mxPoint x="-2200" y="280" as="sourcePoint" />
             <mxPoint x="-2040" y="280" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1980" y="110" />
-              <mxPoint x="-1980" y="110" />
+              <mxPoint x="-1960" y="50" />
+              <mxPoint x="-1960" y="50" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -802,7 +804,7 @@
             <mxPoint x="-1690" y="280" as="sourcePoint" />
             <mxPoint x="-1530" y="280" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1980" y="310" />
+              <mxPoint x="-1930" y="310" />
               <mxPoint x="-1610" y="310" />
             </Array>
           </mxGeometry>
@@ -810,8 +812,7 @@
         <mxCell id="IuLUCpIUxPLPs_VLMMa8-173" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;jumpStyle=line;" edge="1" parent="1" source="cd8bKz7wEy6PBZtArWkd-43" target="IuLUCpIUxPLPs_VLMMa8-73">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-1800" y="600" />
-              <mxPoint x="-1800" y="70" />
+              <mxPoint x="-1810" y="600" />
             </Array>
           </mxGeometry>
         </mxCell>
