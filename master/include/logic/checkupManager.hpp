@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 #include "model/systemData.hpp"
+#include "comm/communicatorSettings.hpp"
 #include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
 
@@ -55,6 +56,8 @@ public:
     explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
     };
 
+    void resetCheckupState();
+
     /**
      * @brief Performs a manual driving checkup.
      */
@@ -103,6 +106,10 @@ public:
      */
     [[nodiscard]] bool resTriggered() const;
 };
+
+inline void CheckupManager::resetCheckupState() {
+    checkupState = CheckupState::WAIT_FOR_ASMS;
+}
 
 inline bool CheckupManager::shouldStayManualDriving() const {
 
@@ -186,18 +193,18 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             initialCheckupTimestamp.reset();
             checkupState = CheckupState::CHECK_PRESSURE;
             break;
-        case CheckupState::CHECK_PRESSURE: {
+        case CheckupState::CHECK_PRESSURE:
             digitalSender->toggleWatchdog();
-            // Check hyraulic line pressure and pneumatic line pressure
+            // Check hydraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
             }
-            if (_systemData->sensors._hydraulic_line_pressure > HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
+            if (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
                 pneumatic_line_pressure) {
                 checkupState = CheckupState::CHECK_TIMESTAMPS;
             }
             break;
-        }
+        
         case CheckupState::CHECK_TIMESTAMPS:
             digitalSender->toggleWatchdog();
         // Check if all components have responded and no emergency signal has been sent
@@ -214,7 +221,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 
 inline bool CheckupManager::shouldRevertToOffFromReady() const {
     if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
-        _hydraulic_line_pressure == 0 || _systemData->digitalData.sdcState_OPEN) {
+        _hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD || _systemData->digitalData.sdcState_OPEN) {
         return true;
     }
     return false;
@@ -224,7 +231,6 @@ inline bool CheckupManager::shouldStayReady() const {
     if (!_systemData->r2dLogics.r2d) {
         return true;
     }
-
     return false;
 }
 
@@ -241,7 +247,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.sdcState_OPEN ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        _systemData->sensors._hydraulic_line_pressure > HYDRAULIC_LINE_ACTIVE_PRESSURE ||
+        _systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD ||
         _systemData->digitalData.asms_on == 0 ||
         _systemData->digitalData.watchdogTimestamp.check())) {
         return true;
@@ -251,7 +257,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
 }
 
 inline bool CheckupManager::shouldStayDriving() const {
-    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->sensors._right_wheel_rpm && _systemData->missionFinished) {
+    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->sensors._right_wheel_rpm == 0 && _systemData->missionFinished) {
         return false;
     }
     return true;

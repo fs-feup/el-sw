@@ -1,7 +1,7 @@
 #include "unity.h"
 #include "logic/checkupManager.hpp"
 #include "model/systemData.hpp"
-
+#include "comm/communicatorSettings.hpp"
 
 void test_shouldStayManualDriving_true() {
     SystemData systemData;
@@ -85,8 +85,7 @@ void test_initialCheckupSequence_states() {
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::TOGGLE_VALVE, cm.checkupState);
 
     sd.digitalData.pneumatic_line_pressure = true;
-    //TODO Change code and test to reflect real brake pressure
-    sd.sensors._hydraulic_line_pressure = HYDRAULIC_LINE_ACTIVE_PRESSURE;
+    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
     cm.initialCheckupSequence(&digitalSender);
     TEST_ASSERT_EQUAL(CheckupManager::CheckupState::CHECK_PRESSURE, cm.checkupState);
 
@@ -108,7 +107,7 @@ void test_shouldRevertToOffFromReady() {
     SystemData systemData;
     systemData.digitalData.asms_on = true;
     systemData.digitalData.sdcState_OPEN = false;
-    systemData.sensors._hydraulic_line_pressure = HYDRAULIC_LINE_ACTIVE_PRESSURE;
+    systemData.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
     systemData.failureDetection.ts_on = true;
 
     CheckupManager checkupManager(&systemData);
@@ -126,7 +125,7 @@ void test_shouldRevertToOffFromReady() {
     systemData.sensors._hydraulic_line_pressure = 0;
     TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
 
-    systemData.sensors._hydraulic_line_pressure = 100;
+    systemData.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
     systemData.failureDetection.ts_on = false;
     TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
 }
@@ -179,11 +178,11 @@ void test_shouldEnterEmergency() {
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
 
     sd.failureDetection.emergencySignal = false;
-    sd.sensors._hydraulic_line_pressure = HYDRAULIC_LINE_ACTIVE_PRESSURE + 1;
+    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
     TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_READY));
 
-    sd.sensors._hydraulic_line_pressure = HYDRAULIC_LINE_ACTIVE_PRESSURE - 1;
+    sd.sensors._hydraulic_line_pressure = 0;
     Metro wait{500};
     while (!wait.check()) {
     }

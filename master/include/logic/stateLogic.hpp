@@ -43,7 +43,8 @@ inline void ASState::calculateState() {
             }
 
             if (_checkupManager.shouldStayOff(_digitalSender)) break;
-
+            if (_checkupManager.shouldRevertToOffFromReady()) break; // recheck all states
+            
             DigitalSender::enterReadyState();
             state = AS_READY;
             break;
@@ -53,6 +54,7 @@ inline void ASState::calculateState() {
 
             if (_checkupManager.shouldRevertToOffFromReady()) {
                 DigitalSender::enterOffState();
+                _checkupManager.resetCheckupState();
                 state = AS_OFF;
                 break;
             }
@@ -92,6 +94,7 @@ inline void ASState::calculateState() {
                 break;
 
             DigitalSender::enterOffState();
+            _checkupManager.resetCheckupState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
@@ -99,6 +102,7 @@ inline void ASState::calculateState() {
 
             if (_checkupManager.emergencySequenceComplete()) {
                 DigitalSender::enterOffState();
+                _checkupManager.resetCheckupState();
                 state = AS_OFF;
                 break;
             }
