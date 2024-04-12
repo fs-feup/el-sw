@@ -85,7 +85,7 @@ inline void ASState::calculateState() {
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                // Buazzer is automatically triggered by state
+                // Buzzer is automatically triggered by state
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;

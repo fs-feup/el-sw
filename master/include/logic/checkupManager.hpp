@@ -271,7 +271,7 @@ inline bool CheckupManager::shouldStayMissionFinished() const {
 }
 
 inline bool CheckupManager::emergencySequenceComplete() {
-    if (_ebsSoundTimestamp.check() && !_systemData->digitalData.asms_on) {
+    if (!_systemData->digitalData.asms_on && _ebsSoundTimestamp.check()) {
         return true;
     }
     return false;
