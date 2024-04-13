@@ -1,8 +1,10 @@
 #include <Arduino.h>
 #include <FlexCAN_T4.h>
+#include <math.h>
 #include <elapsedMillis.h>
 #include <logging.h>
-#include <math.h>
+//#include "rpm.h"
+
 
 #define AVG_SAMPLES 20
 
@@ -30,6 +32,15 @@
 
 #define LOGGING_PERIOD 10
 
+#define BAMO_SPEED 0x30
+#define BAMO_RPM_MOTOR 0xCE
+#define BAMO_ACTUAL_CURRENT 0x5f
+#define BAMO_MOTOR_TEMP 0x49
+#define BAMO_POWER_STAGE_TEMP 0x4A
+#define BAMO_MOTOR_VOLTAGE 0x8A
+#define BAMO_MOTOR_TORQUE 0xA0
+#define BAMO_DC_VOLTAGE 0xeb
+
 uint16_t brake_val = 0;
 
 elapsedMicros rr_rpm_publisher_timer; // Right Wheel Sensor Timer
@@ -41,11 +52,6 @@ elapsedMillis CURRENTtimer;
 
 Logging loggingInstance;
 
-union
-{
-    int input;
-    char output[4];
-} data;
 
 int current = 0;
 int voltage = 0;
@@ -69,7 +75,12 @@ int motor_voltage = 0;
 int battery_voltage = 0;
 
 float rr_rpm;
-unsigned long last_wheel_pulse_ts;
+unsigned long last_wheel_pulse;
+
+union{
+    int input;
+    char output[4];
+} data;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -98,10 +109,10 @@ int average(int *buffer, int n)
 // Interrupt service routine to update RPM
 void calculateRPM()
 {
-    // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
-    unsigned long time_interval_s = (micros() - last_wheel_pulse_ts) * 1e-6;
-    rr_rpm = 1 / (time_interval_s * WPS_PULSES_PER_ROTATION) * 60;
-    last_wheel_pulse_ts = micros(); // refresh timestamp
+    //rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
+    unsigned long time_interval = (micros() - last_wheel_pulse);
+    rr_rpm = 1 / (time_interval * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+    last_wheel_pulse = micros(); // refresh timestamp
 }
 
 void bufferInsert(int *buffer, int n, int value)
@@ -149,47 +160,35 @@ void canbusSniffer(const CAN_message_t &msg)
         break;
 
     case BAMO_RESPONSE_ID:
-        if (msg.buf[0] == 0x30)
+        if (msg.buf[0] == BAMO_SPEED)
         {
             speed = (msg.buf[2] << 8) | msg.buf[1];
-            // if(speed < 0) speed *= -1;
-            // if (rpm < 0)
-            // rpm *= -1;
-            // rpm = (rpm * 6500) / 32760;
         }
-        if (msg.buf[0] == 0xCE)
+        if (msg.buf[0] == BAMO_RPM_MOTOR)
         {
             rpm_max = (msg.buf[2] << 8) | msg.buf[1];
-            // speed = rpm_max * (speed/32767);
         }
-        if (msg.buf[0] == 0x5f)
+        if (msg.buf[0] == BAMO_ACTUAL_CURRENT)
         {
             I_actual = (msg.buf[2] << 8) | msg.buf[1];
         }
-        if (msg.buf[0] == 0x49)
+        if (msg.buf[0] == BAMO_MOTOR_TEMP)
         {
             motorTemp = (msg.buf[2] << 8) | msg.buf[1];
-            // motorTemp2 = (msg.buf[1] << 8) | msg.buf[2];
-            // if(motorTemp2 > motorTemp) motorTemp = motorTemp2;
-
-            // motorTemp = motorTemp * 0.0194 - 160;
         }
-        if (msg.buf[0] == 0x4A)
+        if (msg.buf[0] == BAMO_POWER_STAGE_TEMP)
         {
             powerStageTemp = (msg.buf[2] << 8) | msg.buf[1];
-            // powerStageTemp2 = (msg.buf[1] << 8) | msg.buf[2];
-            // if(powerStageTemp2 > powerStageTemp) powerStageTemp = powerStageTemp2;
-            // powerStageTemp = (int)(powerStageTemp / 103.969 - 158.29);
         }
-        if (msg.buf[0] == 0x8a)
+        if (msg.buf[0] == BAMO_MOTOR_VOLTAGE)
         {
             motor_voltage = (msg.buf[2] << 8) | msg.buf[1];
         }
-        if (msg.buf[0] == 0xa0)
+        if (msg.buf[0] == BAMO_MOTOR_TORQUE)
         {
             torque = (msg.buf[2] << 8) | msg.buf[1];
         }
-        if (msg.buf[0] == 0xeb)
+        if (msg.buf[0] == BAMO_DC_VOLTAGE)
         {
             battery_voltage = (msg.buf[2] << 8) | msg.buf[1];
         }
@@ -233,12 +232,10 @@ void sendRPM()
     and the most significant byte will be at output[3].
     -> big-endian system, it's the other way around.
     */
-    rr_rpm_msg.buf[4] = data.output[0];
-    rr_rpm_msg.buf[3] = data.output[1];
-    rr_rpm_msg.buf[2] = data.output[2];
-    rr_rpm_msg.buf[1] = data.output[3];
-
-    can1.write(rr_rpm_msg);
+    rr_rpm_msg.buf[4] = data.output[3];
+    rr_rpm_msg.buf[3] = data.output[2];
+    rr_rpm_msg.buf[2] = data.output[1];
+    rr_rpm_msg.buf[1] = data.output[0];
 }
 
 bool brakeLightControl(int brake_val)
@@ -293,8 +290,11 @@ void loop()
         }
     }
 
-    if (rr_rpm_publisher_timer > RR_RPM_PUBLISH_PERIOD)
+    if (rr_rpm_publisher_timer > RR_RPM_PUBLISH_PERIOD){
         sendRPM();
+        can1.write(rr_rpm_msg);
+    }
+        
 
     if (writeTIMER > LOGGING_PERIOD)
     {
