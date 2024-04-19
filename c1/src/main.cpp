@@ -3,7 +3,7 @@
 #include <math.h>
 #include <elapsedMillis.h>
 #include <logging.h>
-//#include "rpm.h"
+#include "rpm.h"
 
 
 #define AVG_SAMPLES 20
@@ -76,11 +76,6 @@ int battery_voltage = 0;
 
 float rr_rpm;
 unsigned long last_wheel_pulse;
-
-union{
-    int input;
-    char output[4];
-} data;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -219,25 +214,6 @@ void sendBrakeVal(uint16_t brake_value)
     can1.write(brake_sensor_c3);
 }
 
-void sendRPM()
-{
-    /*
-    1st we multiply rpm by 100 to get a 2 decimal place value.
-    The roundf() function rounds rpm to the nearest integer value.
-    */
-    data.input = roundf(rr_rpm * 100);
-    /*
-    The order of the bytes in the output array depends on the endianness the system.
-    -> little-endian system, the least significant byte will be at output[0],
-    and the most significant byte will be at output[3].
-    -> big-endian system, it's the other way around.
-    */
-    rr_rpm_msg.buf[4] = data.output[3];
-    rr_rpm_msg.buf[3] = data.output[2];
-    rr_rpm_msg.buf[2] = data.output[1];
-    rr_rpm_msg.buf[1] = data.output[0];
-}
-
 bool brakeLightControl(int brake_val)
 {
     if (brake_val >= BRAKE_LIGHT_LOWER_THRESH and brake_val <= BRAKE_LIGHT_UPPER_THRESH)
@@ -291,7 +267,12 @@ void loop()
     }
 
     if (rr_rpm_publisher_timer > RR_RPM_PUBLISH_PERIOD){
-        sendRPM();
+        char *rr_rpm_byte;
+        rpm_2_byte(rr_rpm, rr_rpm_byte);
+        rr_rpm_msg.buf[4] = rr_rpm_byte[0];
+        rr_rpm_msg.buf[3] = rr_rpm_byte[1];
+        rr_rpm_msg.buf[2] = rr_rpm_byte[2];
+        rr_rpm_msg.buf[1] = rr_rpm_byte[3];
         can1.write(rr_rpm_msg);
     }
         

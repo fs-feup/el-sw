@@ -6,21 +6,8 @@
 #include "can.h"
 #include "debug.h"
 #include "display.h"
+#include "statemachine.hpp"
 
-#define buzzerPin 4 //! trocar para pino 2 no shield novo
-
-#define R2D_PIN 32
-#define R2D_TIMEOUT 500
-
-#define APPS_1_PIN 41
-#define APPS_2_PIN 40
-
-#define STARTUP_DELAY_MS 10000
-
-#define APPS_READ_PERIOD_MS 20
-#define BAMOCAR_ATTENUATION_FACTOR 1
-
-#define ASBuzzer 8000
 
 int current_BMS = 0;
 extern elapsedMillis ASEmergencyTimer;
@@ -31,6 +18,8 @@ volatile bool transmissionEnabled = false;
 
 volatile bool TSOn = false;
 volatile bool R2DOverride = false;
+
+volatile bool ASReady = false; // true if ASState = ASReady
 
 extern FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -47,13 +36,7 @@ uint8_t current_byte1; // MSB
 uint8_t current_byte2; // LSB
 CAN_message_t current_msg;
 
-enum status
-{
-    IDLE,   // waiting for r2d && ATS off
-    DRIVING // r2d pressed && ATS on
-};
-
-status R2DStatus;
+extern status R2DStatus;
 Bounce r2dButton = Bounce();
 
 elapsedMillis R2DTimer;
@@ -73,13 +56,6 @@ void sendMout(int value)
     msg.buf[1] = byte2;
     msg.buf[2] = byte1;
     can1.write(msg);
-}
-
-void playR2DSound()
-{
-    digitalWrite(buzzerPin, HIGH);
-    delay(1000);
-    digitalWrite(buzzerPin, LOW);
 }
 
 void checkASEmergencySound()
@@ -127,45 +103,7 @@ void loop()
 {
     if (mainLoopPeriod < 10)
         return;
-
-    switch (R2DStatus)
-    {
-    case IDLE:
-        r2dButton.update();
-        if ((r2dButton.fell() and TSOn and R2DTimer < R2D_TIMEOUT) or R2DOverride)
-        {
-            playR2DSound();
-            initBamocarD3();
-            request_dataLOG_messages();
-            R2DStatus = DRIVING;
-            break;
-        }
-        break;
-
-    case DRIVING:
-        if (not TSOn and not R2DOverride)
-        {
-            R2DStatus = IDLE;
-            can1.write(disable);
-            break;
-        }
-
-        if (APPSTimer > APPS_READ_PERIOD_MS)
-        {
-            APPSTimer = 0;
-            int apps_value = readApps();
-
-            if (apps_value >= 0)
-                sendTorqueVal(apps_value);
-            else
-                sendTorqueVal(0);
-            break;
-        }
-
-        break;
-    default:
-        ERROR("Invalid r2d_status");
-        break;
-    }
+    
+    statemachine();
     checkASEmergencySound();
 }
