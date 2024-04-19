@@ -1,13 +1,15 @@
 #include <math.h>
+#include <algorithm>
+#include <iterator>
 
 union float2bytes
 {
     int input;
     char output[4];
-}; 
+};
 float2bytes data;
 
-void rpm_2_byte(float rr_rpm, char * output)
+void rpm_2_byte(float rr_rpm, char *rr_rpm_byte)
 {
     /*
     1st we multiply rpm by 100 to get a 2 decimal place value.
@@ -20,10 +22,7 @@ void rpm_2_byte(float rr_rpm, char * output)
     and the most significant byte will be at output[3].
     -> big-endian system, it's the other way around.
     */
-    output[0] = data.output[0];
-    output[1] = data.output[1];
-    output[2] = data.output[2];
-    output[3] = data.output[3];
+    std::copy(std::begin(data.output), std::end(data.output), rr_rpm_byte);
 
     return;
 }

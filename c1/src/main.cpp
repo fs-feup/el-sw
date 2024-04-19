@@ -267,7 +267,7 @@ void loop()
     }
 
     if (rr_rpm_publisher_timer > RR_RPM_PUBLISH_PERIOD){
-        char *rr_rpm_byte;
+        char rr_rpm_byte[4];
         rpm_2_byte(rr_rpm, rr_rpm_byte);
         rr_rpm_msg.buf[4] = rr_rpm_byte[0];
         rr_rpm_msg.buf[3] = rr_rpm_byte[1];
