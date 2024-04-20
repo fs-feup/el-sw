@@ -7,6 +7,7 @@
 #include "comm/communicatorSettings.hpp"
 #include "model/systemData.hpp"
 #include "comm/utils.hpp"
+#include "debugUtils.hpp"
 
 inline Code fifoCodes[] = {
     {0, C1_ID},
@@ -118,6 +119,9 @@ inline void Communicator::c1Callback(const uint8_t *buf) {
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._rl_wheel_rpm = right_wheel_rpm;
   }
+
+  DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
+  DEBUG_PRINT_VAR(_systemData->sensors._rl_wheel_rpm);
 }
 
 inline void Communicator::resStateCallback(const uint8_t *buf) {
@@ -125,6 +129,11 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     bool emg_stop2 = buf[3] >> 7 & 0x01;
     bool go_switch = (buf[0] >> 1) & 0x01;
     bool go_button = (buf[0] >> 2) & 0x01;
+
+    DEBUG_PRINT_VAR(emg_stop1);
+    DEBUG_PRINT_VAR(emg_stop2);
+    DEBUG_PRINT_VAR(go_switch);
+    DEBUG_PRINT_VAR(go_button);
 
     if (go_button || go_switch)
         _systemData->r2dLogics.processGoSignal();
@@ -136,6 +145,10 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     if (signal_loss) {
         _systemData->failureDetection.emergencySignal = true;
     }
+
+    DEBUG_PRINT_VAR(_systemData->r2dLogics.r2d);
+    DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
+    DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
 }
 
 inline void Communicator::resReadyCallback() {
@@ -160,6 +173,8 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
         else 
             _systemData->failureDetection.ts_on = true;       
     }   
+
+    DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
@@ -170,6 +185,9 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
         _systemData->failureDetection.emergencySignal = true;
     }
+
+    DEBUG_PRINT_VAR(_systemData->missionFinished);
+    DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
 }
 
 inline void Communicator::steeringCallback() {
@@ -177,6 +195,7 @@ inline void Communicator::steeringCallback() {
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
+    DEBUG_PRINT_VAR(msg.id);
     switch(msg.id) {
         case PC_ID:
             pcCallback(msg.buf);
