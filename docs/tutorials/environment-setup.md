@@ -18,14 +18,14 @@ You can find tutorials for this [here](https://github.com/fs-feup/autonomous-sys
 4. Install python3-venv: ```sudo apt install python3-venv```
 5. Install gcc
 	```sh
-	sudo apt install gcc
-	sudo apt install g++
+	sudo apt install build-essential
 	```
 2. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
 6. Install platformio on pc (optional)
 	```sh
-	sudo apt install python3-pip
-	pip install -U platformio
+	curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+	python3 get-platformio.py
+	rm -rf get-platformio.py
 	```
 7. Open platformio extension in vscode
 
