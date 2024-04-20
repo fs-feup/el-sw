@@ -4,7 +4,7 @@ The Master PCB is responsible for calculating and publishing the AS state that t
 
 ![ASSFlow](./assets/master-overview/ASS-flow.png)
 
-Although the above diagram can determine the state, **it is only meant for externally determining the ASState**, it is **not** how the state is calculated.
+Although the above diagram can determine the state, **it is only meant for externally determining the ASState**, it is **not** how the state is calculated. This is mainly due to its ambiguity. It leaves a lot of gaps in how transitioning from one state to another is done, and there are a lot of undefined parameters, with few explained in the rules. Therefore, we have designed a state diagram to help us develop the Master's code.
 
 ## State Machine
 The PCB reads values from all the hardware connected to it, as well as CAN, to then calculate the state it needs to be in (change may or not be necessary), based on the state it currently is in. The "default" state is AS_OFF, and then each state onward is calculated by the following state machine:
@@ -23,7 +23,7 @@ In AS_Ready and AS_Driving, we need to continuously monitor the car in order to 
 ### Set-up
 Before calculating the state, we need to define some CAN callbacks. They are used to receive RES signals, brake pressure, TS state, wheel information, mission information, emergencies, and timestamps (the computing unit, inversor, and steering pcb all need to send "alive" signals at a fixed rate, to confirm they operational). Those  callbacks are asynchronous, which means that they will shortly interrupt the main loop when data from a topic the master node is subscribed to is received to update the relevant variables. We also need to define the operation modes of all the pins that we will be sending and receiving information from.
 ### Loop
-During the main loop, we first read all the values from the necessary components (Sensors, AMI, Switches, SDC Logic, EBS, ASSI). After this we calculate and update the state through a sequence of monitoring sequences, updating components' variables as depicted in the following diagram. After this, state and other variables are sent out to the rest of the system.
+During the main loop, we first read all the values from the necessary components (Sensors, Swiches SDC Logic, EBS). After this we calculate and update the state through a sequence of monitoring sequences, updating components' variables as depicted in the following diagram. After this, state and other variables are sent out to the rest of the system.
 
 ![AS Sequence](./assets/master-overview/Master%20Sequence.png)
 
