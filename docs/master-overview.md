@@ -1,6 +1,6 @@
 # Master PCB
 
-The Master PCB is responsible for calculating and publishing the AS state that the car should be in and performing all the necessary actions required to achieve it. The state is correctly identifiable by the following flowchart, as required by rule **T14.9.2**: "*The status of the AS must be determined according to the flowchart in Figure 17.*
+The Master PCB is responsible for calculating and publishing the AS state that the car should be in and performing all the necessary actions required to achieve it (i.e.: opening the shutdown circuit, activating the emergency braking system...). The state is correctly identifiable by the following flowchart, as required by rule **T14.9.2**: "*The status of the AS must be determined according to the flowchart in Figure 17.*
 
 ![ASSFlow](./assets/master-overview/ASS-flow.png)
 
