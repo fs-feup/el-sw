@@ -83,5 +83,5 @@ This should print something like that:
 ### Prints rules
 
 For better guidance when debugging, use the following rules for new macros you may wish to define:
-- **Basic Structure:** CURRENT_TIME: PRETTY_FUNCTION FILEPATH:LINE [MESSAGE] [#VARIABLE: VARIABLE]...
+- **Basic Structure:** `CURRENT_TIME: PRETTY_FUNCTION FILEPATH:LINE [MESSAGE] [#VARIABLE: VARIABLE]...`
 
