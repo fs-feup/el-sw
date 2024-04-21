@@ -5,6 +5,7 @@
 #include "model/systemData.hpp"
 #include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
+#include "debugUtils.hpp"
 
 // Also known as Orchestrator
 /**
@@ -124,6 +125,7 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
 }
 
 inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender *digitalSender) {
+    DEBUG_PRINT_VAR(static_cast<int>(checkupState));
     switch (checkupState) {
         case CheckupState::WAIT_FOR_ASMS:
             // ASMS Activated?
