@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-21T16:41:44.298Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="h08US_6KegpxPXVtY-Uw" version="24.2.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-21T16:44:04.895Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="KhVzoKnqRW6N-hvo_69c" version="24.2.7" type="github">
   <diagram name="AS-Electrical-Deployment" id="HhKDwpE1ps_H-06lBrID">
-    <mxGraphModel dx="1736" dy="927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1989" dy="1051" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1416,13 +1416,13 @@
           <mxGeometry y="156" width="125" height="25" as="geometry" />
         </mxCell>
         <mxCell id="sZuSeQ67okOJ5UxKlKqD-85" value="&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;EBS&lt;/font&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;" parent="sZuSeQ67okOJ5UxKlKqD-192" vertex="1">
-          <mxGeometry x="40" y="45.75" width="100" height="119.5" as="geometry" />
+          <mxGeometry x="20" y="40" width="120" height="119.5" as="geometry" />
         </mxCell>
-        <mxCell id="sZuSeQ67okOJ5UxKlKqD-87" value="&lt;b&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;EBS Solenoide&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/b&gt;" style="text;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;strokeWidth=1;" parent="sZuSeQ67okOJ5UxKlKqD-85" vertex="1">
-          <mxGeometry x="15" y="79" width="85" height="40" as="geometry" />
+        <mxCell id="sZuSeQ67okOJ5UxKlKqD-87" value="&lt;b&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;EBS Solenoide 1&amp;amp;2&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/b&gt;" style="text;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;strokeWidth=1;" parent="sZuSeQ67okOJ5UxKlKqD-85" vertex="1">
+          <mxGeometry x="15" y="79" width="95" height="40" as="geometry" />
         </mxCell>
         <mxCell id="sZuSeQ67okOJ5UxKlKqD-88" value="&lt;b&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Pneumatic Line Sensor&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/b&gt;" style="text;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;strokeWidth=1;" parent="sZuSeQ67okOJ5UxKlKqD-85" vertex="1">
-          <mxGeometry x="15" y="39" width="85" height="40" as="geometry" />
+          <mxGeometry x="15" y="39" width="95" height="40" as="geometry" />
         </mxCell>
         <mxCell id="sZuSeQ67okOJ5UxKlKqD-197" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;fillColor=#e1d5e7;strokeColor=#000000;startArrow=classic;startFill=1;shape=link;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.582;entryY=-0.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="sZuSeQ67okOJ5UxKlKqD-85" target="aZmOVXOk3B2EYtA5Geev-26" edge="1">
           <mxGeometry relative="1" as="geometry">
