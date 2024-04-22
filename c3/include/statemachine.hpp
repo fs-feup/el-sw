@@ -27,8 +27,9 @@ extern volatile bool R2DOverride;
 extern Bounce r2dButton;
 extern volatile bool ASReady;
 extern elapsedMillis R2DTimer;
-extern elapsedMillis APPSTimer;
+elapsedMillis APPSTimer;
 extern CAN_message_t disable;
+extern volatile bool R2DOverride;
 
 extern FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 

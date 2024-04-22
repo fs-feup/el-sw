@@ -35,33 +35,9 @@
 volatile bool TSOn;
 
 
-void Setup(){
-    Serial.begin(9600);
-
-    //pinMode(BK_SENSOR_PIN, INPUT);
-    pinMode(R2D_PIN, INPUT);
-    //pinMode(TSON_PIN, INPUT);
-    //pinMode(AS_READY_PIN, INPUT);
-    //pinMode(STOP_PIN, INPUT);
-    //pinMode(STATE_IDLE_GREEN_LED_1_PIN, OUTPUT);
-    //pinMode(STATE_IDLE_GREEN_LED_2_PIN, OUTPUT);
-    //pinMode(STATE_IDLE_GREEN_LED_3_PIN, OUTPUT);
-    //pinMode(STATE_DRIVING_RED_LED_1_PIN, OUTPUT);
-    //pinMode(STATE_DRIVING_RED_LED_2_PIN, OUTPUT);
-    //pinMode(STATE_ASDRIVING_YELLOW_LED_1_PIN, OUTPUT);
-    //pinMode(STATE_ASDRIVING_YELLOW_LED_2_PIN, OUTPUT);
-
-    //attachInterrupt(digitalPinToInterrupt(BK_SENSOR_PIN),brakeValueUpdate,CHANGE);
-    //attachInterrupt(digitalPinToInterrupt(TSON_PIN),updateTS,CHANGE);
-    //attachInterrupt(digitalPinToInterrupt(AS_READY_PIN),updateASReady,CHANGE);
-    //attachInterrupt(digitalPinToInterrupt(STOP_PIN),stopTest,CHANGE);
 
 
-    r2dButton.attach(R2D_PIN, INPUT);
-    r2dButton.interval(0.1);
-}
-
-/*void brakeValueUpdate(){
+void brakeValueUpdate(){
     uint16_t brakeValue = analogRead(BK_SENSOR_PIN);
     if (brakeValue > 165)
                 R2DTimer = 0;
@@ -79,7 +55,7 @@ void stopTest(){
     if (not digitalRead(STOP_PIN))
         TEST_ASSERT(1 == 1);
 
-}*/
+}
 
 void test_state_machine() {
     while(1){
@@ -119,13 +95,38 @@ void test_DRIVING_2_IDLE() {
     TEST_ASSERT_EQUAL(IDLE, R2DStatus);
 }
 
+void Setup(){
+    Serial.begin(9600);
+
+    pinMode(BK_SENSOR_PIN, INPUT);
+    pinMode(R2D_PIN, INPUT);
+    pinMode(TSON_PIN, INPUT);
+    pinMode(AS_READY_PIN, INPUT);
+    pinMode(STOP_PIN, INPUT);
+    pinMode(STATE_IDLE_GREEN_LED_1_PIN, OUTPUT);
+    pinMode(STATE_IDLE_GREEN_LED_2_PIN, OUTPUT);
+    pinMode(STATE_IDLE_GREEN_LED_3_PIN, OUTPUT);
+    pinMode(STATE_DRIVING_RED_LED_1_PIN, OUTPUT);
+    pinMode(STATE_DRIVING_RED_LED_2_PIN, OUTPUT);
+    pinMode(STATE_ASDRIVING_YELLOW_LED_1_PIN, OUTPUT);
+    pinMode(STATE_ASDRIVING_YELLOW_LED_2_PIN, OUTPUT);
+
+    attachInterrupt(digitalPinToInterrupt(BK_SENSOR_PIN),brakeValueUpdate,CHANGE);
+    attachInterrupt(digitalPinToInterrupt(TSON_PIN),updateTS,CHANGE);
+    attachInterrupt(digitalPinToInterrupt(AS_READY_PIN),updateASReady,CHANGE);
+    attachInterrupt(digitalPinToInterrupt(STOP_PIN),stopTest,CHANGE);
+
+
+    r2dButton.attach(R2D_PIN, INPUT);
+    r2dButton.interval(0.1);
+}
 
 int main(int argc, char **argv) {
     UNITY_BEGIN();
-    RUN_TEST(test_IDLE_2_DRIVING);
-    RUN_TEST(test_DRIVING_2_IDLE);
-    RUN_TEST(test_IDLE_2_ASDRIVING);
-    RUN_TEST(test_ASDRIVING_2_IDLE);
+    RUN_TEST(test_state_machine);
+    //RUN_TEST(test_DRIVING_2_IDLE);
+    //RUN_TEST(test_IDLE_2_ASDRIVING);
+    //RUN_TEST(test_ASDRIVING_2_IDLE);
     UNITY_END();
 
     return 0;

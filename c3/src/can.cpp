@@ -311,7 +311,7 @@ void canSniffer(const CAN_message_t& msg) {
         case MASTER_ID:
             if (msg.buf[0] == 0x31) {
                 if (msg.buf[1] == 2) // ASState = ASReady 
-                    ASReady==true;
+                    ASReady=true;
                 else if (msg.buf[1] == 5) { // ASState = ASEmergency
                     ASEmergencyTimer=0;
                 }

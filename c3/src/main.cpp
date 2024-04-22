@@ -7,6 +7,7 @@
 #include "debug.h"
 #include "display.h"
 #include "statemachine.hpp"
+#include "integration_test.hpp"
 
 
 int current_BMS = 0;
@@ -32,6 +33,8 @@ extern CAN_message_t actualSpeedRequest;
 
 extern int speed;
 
+extern status R2DStatus;
+
 uint8_t current_byte1; // MSB
 uint8_t current_byte2; // LSB
 CAN_message_t current_msg;
@@ -40,7 +43,7 @@ extern status R2DStatus;
 Bounce r2dButton = Bounce();
 
 elapsedMillis R2DTimer;
-elapsedMillis APPSTimer;
+extern elapsedMillis APPSTimer;
 elapsedMillis CURRENTtimer;
 elapsedMicros mainLoopPeriod;
 
@@ -97,13 +100,17 @@ void setup()
 #ifdef MAIN_DEBUG
     LOG("Setup complete, Waiting for R2D\n");
 #endif
+
+    //Uncomment this to run the integration test on the Testing Board
+    //testing_setup();
 }
 
 void loop()
 {
     if (mainLoopPeriod < 10)
         return;
-    
     statemachine();
     checkASEmergencySound();
+    //Uncomment this to run the integration test on the Testing Board
+    //integrationtest(R2DStatus);
 }
