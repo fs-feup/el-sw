@@ -219,15 +219,3 @@ This image is just an example to show the meaning of the variables used in the c
 ![APPS Graph Example](./assets/c1-c3-overview/graph-apps2.jpg)
 
 This has been removed in the 2024 FSG Rules but this code implements this feature.
-
-CAN BUS ID TABLE
-
-| ID  | Description |
-| --- | --- |
-| 0x123 | C1_ID (message with brake sensor value) |
-| 0x665 | R2D_ID (this is just for debugging and override R2D logic aka setting R2D status to Driving) |
-| 0x675 | BMS_ID |
-| 0x201 | BAMO_COMMAND_ID |
-| 0x181 | BAMO_RESPONSE_ID |
-| 0x666 | BMS_ID (message for C1 with logging info) |
-| 0x111 | C3_ID (message with APPS value) |

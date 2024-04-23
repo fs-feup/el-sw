@@ -44,6 +44,10 @@
 | Master | 0x500 | 8 | Speed Actual | Speed Target | Steering Angle Actual | Steering Angle Target | Hydraulic Brake Actual | Hydraulic Brake Target | Motor Moment Actual | Motor Moment Target | Logging Message with Vehicle's Current Driving Mechanics States as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
 | Master | 0x501 | 6 | Acceleration Longitudinal LSB | Acceleration Longitudinal MSB | Acceleration Lateral LSB | Acceleration Lateral MSB | Yaw Rate LSB | Yaw Rate MSB | | | Logging Message with Vehicle's Current Vehicle Driving Mechanics Controls as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
 | Master | 0x502 | 5 | AS + EBS + AMI States | Steering + Service Brake States + Lap Counter + Cones Count Actual | Cones Count Actual + Cones Count All | Cones Count All | Cones Count All | | | |  Logging Message with Vehicle's Current System Status as defined by competition in ([FSG Handbook 2023](https://www.formulastudent.de/fileadmin/user_upload/all/2023/important_docs/FSG23_Competition_Handbook_v1.0.pdf)) |
-
-
+| IMU | 0x174 | 7 | Yaw rate LSB | Yaw rate MSB | Reserved | Reserved | Acc Y-axis LSB | Acc Y-axis MSB | Reserved | |Quantization Yaw Rate 0.005 [°/s/digit] and Quantization Acc Y-axis 0.0001274 [g/digit] |
+| IMU | 0x178 | 7 | Roll rate LSB | Roll rate MSB | Reserved | Reserved | Acc X-axis LSB | Acc X-axis MSB | Reserved | |Quantization Roll Rate 0.005 [°/s/digit] and Quantization Acc X-axis 0.0001274 [g/digit] | 
+| IMU | 0x17C | 7 | Pitch rate LSB | Pitch rate MSB | Reserved | Reserved | Acc Z-axis LSB | Acc Z-axis MSB | Reserved | |Quantization Pitch Rate 0.005 [°/s/digit] and Quantization Acc Z-axis 0.0001274 [g/digit] |       
+| Bosch Steering Wheel Angle Sensor | 0x2B0 | 4 | Angle LSB | Angle MSB | Speed | 0b-X-X-X-X-X-Trim-Cal-OK | Reserved | |
+| External Device | 0x7C0 | 2 | 0b-X-X-X-X-X-CCW | Reserved | | | | | | | A zero adjustment is needed before using the sensor for the first time. To do so, reset the calibration with CCW = 0x5. After reseting the calibration, a new calibration needs to be started with CCW = 0x3 |
+| External Device | 0x665 | | | | | | | | | | This ID is used to up the car in R2D state, without the need to turn on the TS. We need to be careful to not use this ID anywhere else|
 Last updated in 26/03/24.
