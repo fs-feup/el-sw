@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <Metro.h>
+#include "Arduino.h"
 
 #include "embedded/digitalSettings.hpp"
 

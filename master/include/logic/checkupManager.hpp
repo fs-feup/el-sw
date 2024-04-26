@@ -73,7 +73,10 @@ public:
      */
     CheckupError initialCheckupSequence(DigitalSender *digitalSender);
 
-    [[nodiscard]] bool shouldRevertToOffFromReady() const;
+    /**
+     * @brief Performs a last re-check for off to ready transition.
+    */
+    [[nodiscard]] bool shouldGoReadyFromOff() const;
 
     /**
      * @brief Performs a ready to drive checkup.
@@ -219,6 +222,14 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
     return CheckupError::WAITING_FOR_RESPONSE;
 }
 
+inline bool CheckupManager::shouldGoReadyFromOff() const {
+    if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
+        _hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD || _systemData->digitalData.sdcState_OPEN) {
+        return false;
+    }
+    return true;
+}
+
 inline bool CheckupManager::shouldStayReady() const {
     if (!_systemData->r2dLogics.r2d) {
         return true;
@@ -277,8 +288,8 @@ inline bool CheckupManager::emergencySequenceComplete() {
 
 inline bool CheckupManager::resTriggered() const {
     if (_systemData->failureDetection.emergencySignal) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 

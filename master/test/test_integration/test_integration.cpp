@@ -82,6 +82,7 @@ void test_off_to_ready_recheck() {
     
     sd.digitalData.watchdog_state = false;
     sd.digitalData.asms_on = false; // switch previously checked condition
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
     // Wait for wd timeout
 
     Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
@@ -183,7 +184,28 @@ void test_ready_to_driving_to_emg() {
     communicator.resStateCallback(msg);
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
-    // if brake pressure not updated, immediatly to emergency
+
+    // brake pressure has a threshold to be updated, otherwise emergency
+    Metro time3{RELEASE_EBS_TIMEOUT_MS / 2};
+    while (!time3.check()){
+        sd.failureDetection.inversorAliveTimestamp.reset();
+        sd.failureDetection.pcAliveTimestamp.reset();
+        sd.failureDetection.steerAliveTimestamp.reset();
+        sd.digitalData.watchdogTimestamp.reset();
+        as_state.calculateState();
+    }
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state); // still within threshold, okay
+
+    Metro time4{RELEASE_EBS_TIMEOUT_MS / 2 + 10};
+    while (!time4.check()){
+        sd.failureDetection.inversorAliveTimestamp.reset();
+        sd.failureDetection.pcAliveTimestamp.reset();
+        sd.failureDetection.steerAliveTimestamp.reset();
+        sd.digitalData.watchdogTimestamp.reset();
+        as_state.calculateState();
+    }
+    // threshold over, still with brake pressure, emergency
+
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
@@ -219,6 +241,56 @@ void test_ready_to_driving_to_emg2() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+void test_driving_to_finished_to_off() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    to_ready();
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    sd.r2dLogics.r2d = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+
+    uint8_t pc_msg[] = {MISSION_FINISHED};
+    communicator.pcCallback(pc_msg);
+
+    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x01, 0x00, 0x00};
+    communicator.c1Callback(c1_msg); // right wheel = msg
+    sd.digitalData._left_wheel_rpm = 0;
+
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+
+    uint8_t c1_msg2[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    communicator.c1Callback(c1_msg2); // right wheel = msg
+
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
+
+    sd.digitalData.asms_on = false;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+}
+
+
+
+void test_finished_to_emg() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    to_ready();
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    sd.r2dLogics.r2d = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+    sd.digitalData._left_wheel_rpm = 0;
+    sd.sensors._right_wheel_rpm = 0;
+    sd.missionFinished = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
+    sd.failureDetection.emergencySignal = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
+}
+
 void setUp() {
     
 }
@@ -231,5 +303,7 @@ int main() {
     RUN_TEST(test_ready_to_driving_to_emg);
     RUN_TEST(test_ready_to_driving_to_emg2);
     RUN_TEST(test_ready_to_emg_to_off);
+    RUN_TEST(test_driving_to_finished_to_off);
+    RUN_TEST(test_finished_to_emg);
     return UNITY_END();
 }
