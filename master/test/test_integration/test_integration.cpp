@@ -101,6 +101,7 @@ void test_off_to_ready_recheck() {
 }
 
 void test_off_to_ready_wayback() {
+    bool reverted_to_off = false;
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
     to_ready();
@@ -113,13 +114,12 @@ void test_off_to_ready_wayback() {
     Metro time3{1};
     while (!time3.check()) {
         as_state.calculateState();
+        if (as_state.state == AS_OFF)
+            reverted_to_off = true;
     }
-    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 
-    // Procedure to go back to AS_READY state
-    to_ready();
-
-    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    TEST_ASSERT_EQUAL(false, reverted_to_off);
+    TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
 void test_ready_to_emg_to_off() {

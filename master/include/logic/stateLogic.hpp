@@ -52,13 +52,6 @@ inline void ASState::calculateState() {
         case AS_READY:
             _digitalSender->toggleWatchdog();
 
-            if (_checkupManager.shouldRevertToOffFromReady()) {
-                DigitalSender::enterOffState();
-                _checkupManager.resetCheckupState();
-                state = AS_OFF;
-                break;
-            }
-
             if (_checkupManager.shouldEnterEmergency(state)) {
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;

@@ -219,14 +219,6 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
     return CheckupError::WAITING_FOR_RESPONSE;
 }
 
-inline bool CheckupManager::shouldRevertToOffFromReady() const {
-    if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
-        _hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD || _systemData->digitalData.sdcState_OPEN) {
-        return true;
-    }
-    return false;
-}
-
 inline bool CheckupManager::shouldStayReady() const {
     if (!_systemData->r2dLogics.r2d) {
         return true;
@@ -239,7 +231,12 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
         _systemData->failureDetection.hasAnyComponentTimedOut() ||
-        _systemData->digitalData.watchdogTimestamp.check())) {
+        _systemData->digitalData.watchdogTimestamp.check() ||
+        !_systemData->digitalData.asms_on ||
+        !_systemData->failureDetection.ts_on ||
+        _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
+        _systemData->digitalData.sdcState_OPEN
+        )) {
         return true;
     }
     if (current_state == AS_DRIVING && (
@@ -247,7 +244,8 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.sdcState_OPEN ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        _systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD ||
+        (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
+            && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
         _systemData->digitalData.asms_on == 0 ||
         _systemData->digitalData.watchdogTimestamp.check())) {
         return true;

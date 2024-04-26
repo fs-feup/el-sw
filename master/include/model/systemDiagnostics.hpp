@@ -6,9 +6,11 @@
 #include "embedded/digitalSettings.hpp"
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
+constexpr unsigned long RELEASE_EBS_TIMEOUT_MS = 1000;
 
 struct R2DLogics {
     Metro readyTimestamp{READY_TIMEOUT_MS};
+    unsigned long releaseEbsTimestamp = millis();
     bool r2d{false};
 
     void enterReadyState() {
@@ -29,6 +31,7 @@ struct R2DLogics {
         // If r2d is not received or received before 5 seconds, return false
         if (readyTimestamp.check()) {
             r2d = true;
+            releaseEbsTimestamp = millis(); // starts ebs timeout to release when going as driving
             return EXIT_SUCCESS;
         }
         // If r2d is received after the timeout duration, return true
