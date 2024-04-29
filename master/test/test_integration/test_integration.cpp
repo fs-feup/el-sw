@@ -271,8 +271,6 @@ void test_driving_to_finished_to_off() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 }
 
-
-
 void test_finished_to_emg() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -286,6 +284,154 @@ void test_finished_to_emg() {
     sd.missionFinished = true;
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
+    sd.failureDetection.emergencySignal = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
+}
+
+void test_off_to_manual_wayback() {
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    uint8_t bamo_msg[] = {VDC_BUS, 0x00, 0x00};
+    communicator.bamocarCallback(bamo_msg);
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+
+    sd.mission = Mission::MANUAL;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+
+    sd.digitalData.pneumatic_line_pressure = false;
+    as_state.calculateState();
+
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0x01, 0x00};
+    communicator.c1Callback(hydraulic_msg);
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+
+    sd.digitalData.sdcState_OPEN = false;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_MANUAL, as_state.state);
+
+    sd.digitalData.pneumatic_line_pressure = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+}
+
+// TODO(andre): adapt manual logic
+
+void test_flow_driving() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
+    communicator.c1Callback(hydraulic_msg);
+    as_state.calculateState();
+    
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    sd.r2dLogics.r2d = true;
+
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    to_ready();
+    as_state.calculateState();
+
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    as_state.calculateState();
+
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+}
+
+void test_flow_ready() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    
+    sd.digitalData.asms_on = true;
+    sd.digitalData.watchdog_state = true;
+    sd.digitalData.sdcState_OPEN = false;
+
+    uint8_t bamo_msg[] = {VDC_BUS, 0x94, 0x11}; // VDC_BUS fill
+    communicator.bamocarCallback(bamo_msg);
+   
+    sd.digitalData.pneumatic_line_pressure = true;
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
+    uint8_t hydraulic_msg2[] = {HYDRAULIC_LINE, 0x10, 0x00}; // loose brake activation
+    communicator.c1Callback(hydraulic_msg);
+
+    // Iterate a few times to go to check wd
+    Metro time{1};
+    while (!time.check()) {
+        as_state.calculateState();
+    }
+    
+    sd.digitalData.watchdog_state = false;
+    // Wait for wd timeout
+    Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
+    while (!time2.check()) {
+        communicator.c1Callback(hydraulic_msg2);
+        as_state.calculateState();
+        sd.failureDetection.inversorAliveTimestamp.reset();
+        sd.failureDetection.pcAliveTimestamp.reset();
+        sd.failureDetection.steerAliveTimestamp.reset();
+        sd.digitalData.watchdogTimestamp.reset();
+    }
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+
+    Metro time3{INITIAL_CHECKUP_STEP_TIMEOUT};
+    while (!time3.check()) {
+        communicator.c1Callback(hydraulic_msg);
+        as_state.calculateState();
+        sd.failureDetection.inversorAliveTimestamp.reset();
+        sd.failureDetection.pcAliveTimestamp.reset();
+        sd.failureDetection.steerAliveTimestamp.reset();
+        sd.digitalData.watchdogTimestamp.reset();
+    }
+
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+}
+
+void test_flow_emergency() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    to_ready();
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    sd.r2dLogics.r2d = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+
+    sd.digitalData.sdcState_OPEN = true; // ebs before finished checks
+
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
+
+    uint8_t pc_msg[] = {MISSION_FINISHED};
+    communicator.pcCallback(pc_msg);
+    sd.digitalData._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    communicator.c1Callback(c1_msg); // right wheel = msg
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
+}
+
+void test_flow_finished() {
+    reset();
+    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    to_ready();
+    TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
+    sd.r2dLogics.r2d = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
+
+    uint8_t pc_msg[] = {MISSION_FINISHED};
+    communicator.pcCallback(pc_msg);
+    sd.digitalData._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    communicator.c1Callback(c1_msg); // right wheel = msg
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
+
+    sd.digitalData.sdcState_OPEN = true;
+    as_state.calculateState();
+    TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
+
     sd.failureDetection.emergencySignal = true;
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
@@ -305,5 +451,10 @@ int main() {
     RUN_TEST(test_ready_to_emg_to_off);
     RUN_TEST(test_driving_to_finished_to_off);
     RUN_TEST(test_finished_to_emg);
+    RUN_TEST(test_off_to_manual_wayback);
+    RUN_TEST(test_flow_driving);
+    RUN_TEST(test_flow_ready);
+    RUN_TEST(test_flow_emergency);
+    RUN_TEST(test_flow_finished);
     return UNITY_END();
 }

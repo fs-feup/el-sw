@@ -44,7 +44,8 @@ inline void ASState::calculateState() {
 
             if (_checkupManager.shouldStayOff(_digitalSender)) break;
             if (!_checkupManager.shouldGoReadyFromOff()) break; // recheck all states
-            
+
+            systemData.r2dLogics.enterReadyState();
             DigitalSender::enterReadyState();
             state = AS_READY;
             break;

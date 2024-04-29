@@ -129,7 +129,6 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
     if (initSequenceState != CheckupError::SUCCESS) {
         return true;
     }
-    _systemData->r2dLogics.enterReadyState();
     return false;
 }
 
