@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-12T17:26:37.128Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="4wrsiuKnGZwQF2jI489k" version="24.2.3" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-29T13:56:36.141Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="64yrbnqbzx9l_JiVKq12" version="24.3.0" type="github">
   <diagram name="Page-1" id="lU4HYY9iMri2MdEy_FQ0">
-    <mxGraphModel dx="4781" dy="2479" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3914" dy="1895" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -25,7 +25,7 @@
         <mxCell id="cd8bKz7wEy6PBZtArWkd-52" value="+ initialCheckupSequence(DigitalSender* &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;digitalSender): CheckupError" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cd8bKz7wEy6PBZtArWkd-43" vertex="1">
           <mxGeometry y="150" width="230" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="cd8bKz7wEy6PBZtArWkd-126" value="+ shouldRevertToOffFromReady(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cd8bKz7wEy6PBZtArWkd-43" vertex="1">
+        <mxCell id="cd8bKz7wEy6PBZtArWkd-126" value="+ shouldGoReadyFromOff(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cd8bKz7wEy6PBZtArWkd-43" vertex="1">
           <mxGeometry y="200" width="230" height="28" as="geometry" />
         </mxCell>
         <mxCell id="SpG1soqtBWokwoHgifJK-73" value="+ shouldStayReady(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="cd8bKz7wEy6PBZtArWkd-43" vertex="1">
