@@ -9,11 +9,17 @@ Communicator communicator = Communicator(&sd); // CAN
 DigitalSender digitalSender = DigitalSender(); // Digital outputs
 ASState as_state = ASState(&sd, &communicator, &digitalSender);
 
+/**
+ * @brief Auxiliary function to reset data values 
+*/
 void reset() {
     sd = SystemData();
     as_state = ASState(&sd, &communicator, &digitalSender);
 }
 
+/**
+ * @brief Auxiliary function to set state as ready
+*/
 void to_ready() {
     sd.digitalData.asms_on = true;
     sd.digitalData.watchdog_state = true;
@@ -44,6 +50,9 @@ void to_ready() {
     }
 }
 
+/**
+ * @brief Test function to validate AS_OFF to AS_Ready transition 
+*/
 void test_off_to_ready_success(void){
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -57,6 +66,10 @@ void test_off_to_ready_success(void){
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_OFF to AS_Ready transition
+ * with checks reverting to invalid mid transition 
+*/
 void test_off_to_ready_recheck() {
     reset();
 
@@ -101,6 +114,9 @@ void test_off_to_ready_recheck() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_READY doesn't revert to AS_Ready 
+*/
 void test_off_to_ready_wayback() {
     bool reverted_to_off = false;
     reset();
@@ -123,6 +139,10 @@ void test_off_to_ready_wayback() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_READY to AS_Emergency
+ * and the AS_EMERGENCY to AS_OFF transition 
+*/
 void test_ready_to_emg_to_off() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -152,6 +172,10 @@ void test_ready_to_emg_to_off() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_READY to AS_Driving transition
+ * and AS_DRIVING to AS_EMERGENCY if brakes still active after timeout
+*/
 void test_ready_to_driving_to_emg() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -210,6 +234,10 @@ void test_ready_to_driving_to_emg() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_READY to AS_Driving transition
+ * and AS_DRIVING to AS_EMERGENCY if failure occurs
+*/
 void test_ready_to_driving_to_emg2() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -241,6 +269,10 @@ void test_ready_to_driving_to_emg2() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_DRIVING to AS_FINISHED transition
+ * and AS_FINISHED to AS_OFF after
+*/
 void test_driving_to_finished_to_off() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -271,6 +303,10 @@ void test_driving_to_finished_to_off() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_FINISHED to AS_EMERGENCY transition
+ * if RES is activated after mission finished
+*/
 void test_finished_to_emg() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -289,6 +325,10 @@ void test_finished_to_emg() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate AS_OFF to AS_Manual transition
+ * and the other way around
+*/
 void test_off_to_manual_wayback() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -309,6 +349,9 @@ void test_off_to_manual_wayback() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 }
 
+/**
+ * @brief Test function to validate flow diagram conditions to go AS_DRIVING
+*/
 void test_flow_driving() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -333,6 +376,9 @@ void test_flow_driving() {
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
 }
 
+/**
+ * @brief Test function to validate flow diagram conditions to go AS_READY
+*/
 void test_flow_ready() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -381,6 +427,9 @@ void test_flow_ready() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate flow diagram conditions to go AS_EMERGENCY
+*/
 void test_flow_emergency() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -404,6 +453,9 @@ void test_flow_emergency() {
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
 
+/**
+ * @brief Test function to validate flow diagram conditions to go AS_FINISHED
+*/
 void test_flow_finished() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
