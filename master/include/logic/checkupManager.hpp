@@ -115,11 +115,11 @@ inline void CheckupManager::resetCheckupState() {
 }
 
 inline bool CheckupManager::shouldStayManualDriving() const {
-
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
         || _systemData->digitalData.asms_on) {
         return false;
     }
+
     return true;
 }
 
@@ -226,6 +226,7 @@ inline bool CheckupManager::shouldGoReadyFromOff() const {
         _hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD || _systemData->digitalData.sdcState_OPEN) {
         return false;
     }
+    _systemData->r2dLogics.enterReadyState();
     return true;
 }
 
@@ -257,6 +258,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
             && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
         _systemData->digitalData.asms_on == 0 ||
+        !_systemData->failureDetection.ts_on ||
         _systemData->digitalData.watchdogTimestamp.check())) {
         return true;
     }

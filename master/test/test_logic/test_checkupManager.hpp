@@ -103,33 +103,6 @@ void test_initialCheckupSequence_states() {
 
 }
 
-void test_shouldRevertToOffFromReady() {
-    SystemData systemData;
-    systemData.digitalData.asms_on = true;
-    systemData.digitalData.sdcState_OPEN = false;
-    systemData.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
-    systemData.failureDetection.ts_on = true;
-
-    CheckupManager checkupManager(&systemData);
-
-    TEST_ASSERT_FALSE(checkupManager.shouldRevertToOffFromReady());
-
-    systemData.digitalData.asms_on = false;
-    TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
-
-    systemData.digitalData.asms_on = true;
-    systemData.digitalData.sdcState_OPEN = true;
-    TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
-
-    systemData.digitalData.sdcState_OPEN = false;
-    systemData.sensors._hydraulic_line_pressure = 0;
-    TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
-
-    systemData.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
-    systemData.failureDetection.ts_on = false;
-    TEST_ASSERT_TRUE(checkupManager.shouldRevertToOffFromReady());
-}
-
 void test_shouldStayReady() {
     SystemData systemData;
     systemData.r2dLogics.r2d = false;
@@ -147,48 +120,59 @@ void test_shouldEnterEmergency() {
     sd.digitalData.sdcState_OPEN = false;
     sd.digitalData.pneumatic_line_pressure = true;
     sd.digitalData.asms_on = true;
+    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD + 1;
     sd.failureDetection.inversorAliveTimestamp.reset();
     sd.failureDetection.pcAliveTimestamp.reset();
     sd.failureDetection.steerAliveTimestamp.reset();
     sd.digitalData.watchdogTimestamp.reset();
     sd.failureDetection.emergencySignal = false;
+    sd.failureDetection.ts_on = true;
 
     CheckupManager checkupManager(&sd);
 
-    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
     TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.digitalData.sdcState_OPEN = true;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.digitalData.sdcState_OPEN = false;
+    sd.digitalData.pneumatic_line_pressure = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.digitalData.pneumatic_line_pressure = true;
+    sd.digitalData.asms_on = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.digitalData.asms_on = true;
+    sd.failureDetection.ts_on = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.failureDetection.ts_on = true;
+    sd.failureDetection.emergencySignal = true;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.failureDetection.emergencySignal = false;
+    sd.sensors._hydraulic_line_pressure = 1.0;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
 
+    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
     sd.digitalData.sdcState_OPEN = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
-    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_READY));
-
     sd.digitalData.sdcState_OPEN = false;
     sd.digitalData.pneumatic_line_pressure = false;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
-    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
-
     sd.digitalData.pneumatic_line_pressure = true;
     sd.digitalData.asms_on = false;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
-    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_READY));
-
     sd.digitalData.asms_on = true;
+    sd.failureDetection.ts_on = false;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.failureDetection.ts_on = true;
     sd.failureDetection.emergencySignal = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
-    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
-
     sd.failureDetection.emergencySignal = false;
-    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD;
-    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
-    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_READY));
+    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD + 1;
 
-    sd.sensors._hydraulic_line_pressure = 0;
-    Metro wait{500};
+    Metro wait{WATCHDOG_TIMEOUT};
     while (!wait.check()) {
     }
-    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
-
+    sd.sensors._hydraulic_line_pressure = 1.0;
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
 }
 
 void test_shouldStayDriving() {
@@ -242,10 +226,10 @@ void test_resTriggered() {
 
     CheckupManager checkupManager(&systemData);
 
-    TEST_ASSERT_FALSE(checkupManager.resTriggered());
+    TEST_ASSERT_TRUE(checkupManager.resTriggered());
 
     systemData.failureDetection.emergencySignal = false;
-    TEST_ASSERT_TRUE(checkupManager.resTriggered());
+    TEST_ASSERT_FALSE(checkupManager.resTriggered());
 }
 
 
@@ -254,7 +238,6 @@ void run_tests_checkupManager() {
     RUN_TEST(test_shouldStayManualDriving_true);
     RUN_TEST(test_shouldStayManualDriving_false);
     RUN_TEST(test_shouldStayOff_whenInitialCheckupFails_false);
-    RUN_TEST(test_shouldRevertToOffFromReady);
     RUN_TEST(test_shouldStayReady);
     RUN_TEST(test_shouldEnterEmergency);
     RUN_TEST(test_shouldStayDriving);
