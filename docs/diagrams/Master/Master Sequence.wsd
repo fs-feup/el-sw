@@ -1,0 +1,59 @@
+@startuml Master Sequence
+box "Digital"
+participant "Sensors" as S
+participant "AMI PCB" as AMI
+participant "Switches" as SW
+participant "SDC Logic" as SDC
+participant "EBS" as EBS
+participant "ASSI" as ASSI
+end box
+participant "Teensy Master" as TM
+box "CAN"
+participant "C1 PCB" as C1
+participant "C3 PCB" as C3
+participant "Processing Unit" as PC
+participant "Inversor" as INV
+participant "Steer PCB" as STEER
+participant "RES" as RES
+end box
+== Asynchronous ==
+group CAN Callbacks [by interrupt]
+    activate C1
+    activate PC
+    activate INV
+    activate STEER
+    activate RES
+    C1 -> TM: right_wheel_rpm, hydraulic_line_pressure
+    deactivate C1
+    PC -> TM: emergencySignal, mission_finished, pc_alive
+    deactivate PC
+    INV -> TM: ts_on, inversor_alive
+    deactivate INV
+    STEER -> TM: steer_alive
+    deactivate STEER
+    RES -> TM: r2d, radio_quality, emergencySignal
+    deactivate RES
+    hnote right of TM: May be called at any time during the execution of the section below
+end
+== Main Loop ==
+loop
+    group Digital Reads [pin reading]
+        S -> TM: left_wheel_rpm
+        AMI -> TM: mission
+        SW -> TM: asms_on
+        SDC -> TM: sdcState_OPEN, watchdog_state
+        EBS -> TM: pneumatic_line_pressure
+    end
+    group Calculate State [all monitoring sequences done here]
+        TM -> ASSI: yellow_led, blue_led
+        TM -> EBS: ebs_valve_1, ebs_valve_2
+        TM -> SDC: sdc_logic_close_sdc, sdc_logic_watchdog_out
+        TM <- TM: master_sdc_out
+
+    end
+    group Publish
+        TM -> C3: left_wheel_rpm, state
+        TM -> PC: mission, state
+        TM -> ASSI: state
+    end
+end
