@@ -4,6 +4,7 @@
 #include "embedded/digitalSender.hpp"
 #include "logic/stateLogic.hpp"
 #include "timings.hpp"
+#include "debugUtils.hpp"
 
 SystemData systemData; // Model
 Communicator communicator = Communicator(&systemData); // CAN
@@ -18,6 +19,10 @@ Metro state_timer = Metro(STATE_PUBLISH_INTERVAL);
 IntervalTimer state_calculation_timer;
 
 void setup() {
+    Serial.begin(9600);
+    DEBUG_PRINT("Starting up...");
+    Communicator::_systemData = &systemData;
+  
     state_calculation_timer.begin([]() {
         noInterrupts();
         digitalReceiver.digitalReads();
@@ -31,6 +36,11 @@ void setup() {
 }
 
 void loop() {
+    // DEBUG_PRINT("Looping...");
+    // DEBUG_PRINT_VAR("variavel atoa", 29);
+    // digitalReceiver.digitalReads();
+    // as_state.calculateState();
+    
     if (rl_rpm_timer.check()) {
         Communicator::publish_left_wheel_rpm(systemData.mission);
         rl_rpm_timer.reset();

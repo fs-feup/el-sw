@@ -2,10 +2,12 @@
 #define _CAN_H_
 
 #include <FlexCAN_T4.h>
+#include <elapsedMillis.h>
 
 #define C3_ID 0x123
 #define R2D_ID 0x665
 #define BMS_ID 0x675
+#define MASTER_ID 1
 
 #define BAMO_COMMAND_ID 0x201
 #define BAMO_RESPONSE_ID 0x181
@@ -28,6 +30,7 @@
 
 #define MAX_I 250
 #define ADC_MAX 65536
+
 
 void canSetup();
 void sendTorqueVal(int value_bamo);

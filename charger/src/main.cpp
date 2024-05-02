@@ -295,15 +295,6 @@ void readInputs() {
     request = digitalRead(CH_SAFETY_PIN);
     shutdownStatus = digitalRead(SHUTDOWN_PIN);
     latchingStatus = digitalRead(LATCHING_ERROR_PIN);
-
-    // Serial.print("requet: ");
-    // Serial.println(request);
-    
-    // Serial.print("shutdown: ");
-    // Serial.println(shutdownStatus);
-
-    // Serial.print("latch: ");
-    // Serial.println(latchingStatus);
 }
 
 void powerOnModule(bool OnOff) {

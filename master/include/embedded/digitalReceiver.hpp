@@ -6,6 +6,7 @@
 #include <model/structure.hpp>
 
 #include "digitalSettings.hpp"
+#include "debugUtils.hpp"
 
 #define DEBOUNCE_INTERVAL 10
 #define PRESSED_STATE LOW
@@ -77,6 +78,7 @@ inline void DigitalReceiver::updateLeftWheelRpm() {
     unsigned long time_interval_s = (now - last_wheel_pulse_ts);
     _current_left_wheel_rpm = 1 / (time_interval_s * 1e-6 * PULSES_PER_ROTATION) * 60;  
     last_wheel_pulse_ts = now; // refresh timestamp
+    DEBUG_PRINT_VAR(_current_left_wheel_rpm);
 }
 
 inline void DigitalReceiver::digitalReads() {
@@ -93,6 +95,8 @@ inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
 
     digitalData->pneumatic_line_pressure = pneumatic1 && pneumatic2; // both need to be True
+    DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
+
 }
 
 inline void DigitalReceiver::readMission() {
@@ -105,6 +109,9 @@ inline void DigitalReceiver::readMission() {
         digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
         digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
         digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
+
+    DEBUG_PRINT_VAR(*mission);
+    
 }
 
 inline void DigitalReceiver::readAsmsSwitch() {
@@ -113,11 +120,13 @@ inline void DigitalReceiver::readAsmsSwitch() {
         digitalData->asms_on = true;
     else
         digitalData->asms_on = false;
+    DEBUG_PRINT_VAR(digitalData->asms_on);
 }
 
 inline void DigitalReceiver::readAatsState() {
     // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
     digitalData->sdcState_OPEN = !digitalRead(SDC_STATE_PIN);
+    DEBUG_PRINT_VAR(digitalData->sdcState_OPEN);
 }
 
 inline void DigitalReceiver::readWatchdog() {
@@ -125,4 +134,5 @@ inline void DigitalReceiver::readWatchdog() {
     if (digitalData->watchdog_state) {
         digitalData->watchdogTimestamp.reset();
     }
+    DEBUG_PRINT_VAR(digitalData->watchdog_state);
 }
