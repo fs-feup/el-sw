@@ -24,6 +24,7 @@ public:
 };
 
 inline void ASState::calculateState() {
+    DEBUG_PRINT_VAR(state);
     switch (state) {
         case AS_MANUAL:
             if (_checkupManager.shouldStayManualDriving()) break;
