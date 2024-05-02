@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['param_0',['param',['../de/d53/charger_2src_2main_8cpp.html#a439a02652a34fbc9788daf229f1d4c7e',1,'main.cpp']]]
+  ['nx_5fch_5fstatus_0',['NX_CH_Status',['../de/d53/charger_2src_2main_8cpp.html#a180ef2c1c10b423699666f5bc203bbdc',1,'main.cpp']]]
 ];

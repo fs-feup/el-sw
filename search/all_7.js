@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['n_5fadc_5fchannels_0',['N_ADC_CHANNELS',['../d1/d91/temp-acq_2src_2main_8cpp.html#aa63b81a7669146464a606e90ce8aafe8',1,'main.cpp']]],
-  ['n_5fadcs_1',['N_ADCs',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab52d92e5c36eefdf42f18b9b4bff6379',1,'main.cpp']]],
-  ['nx_5fch_5fstatus_2',['NX_CH_Status',['../de/d53/charger_2src_2main_8cpp.html#a180ef2c1c10b423699666f5bc203bbdc',1,'main.cpp']]]
+  ['main_2ecpp_0',['main.cpp',['../de/d53/charger_2src_2main_8cpp.html',1,'(Global Namespace)'],['../d1/d91/temp-acq_2src_2main_8cpp.html',1,'(Global Namespace)']]],
+  ['max_5fcurrent_1',['MAX_CURRENT',['../de/d53/charger_2src_2main_8cpp.html#a2989837a37d6d63b59c6dd541b785435',1,'main.cpp']]],
+  ['max_5fvoltage_2',['MAX_VOLTAGE',['../de/d53/charger_2src_2main_8cpp.html#a0637861f9419cef73e2e7e6210280e4e',1,'main.cpp']]],
+  ['maxtemp_3',['maxTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a5bfe99639bd14bc2d6dc4acb76fff092',1,'main.cpp']]],
+  ['mintemp_4',['minTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b12333be2129eb4f00fc67d344a22a0',1,'main.cpp']]],
+  ['msg_5f1_5',['msg_1',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b3f8939747bf0e94e8110a65a07771c',1,'main.cpp']]]
 ];
