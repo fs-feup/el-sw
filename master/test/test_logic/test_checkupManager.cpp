@@ -146,7 +146,7 @@ void test_shouldEnterEmergency() {
     sd.failureDetection.emergencySignal = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
     sd.failureDetection.emergencySignal = false;
-    sd.sensors._hydraulic_line_pressure = 1.0;
+    sd.sensors._hydraulic_line_pressure = 1;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
 
     TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
@@ -171,8 +171,41 @@ void test_shouldEnterEmergency() {
     while (!wait.check()) {
     }
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
-    sd.sensors._hydraulic_line_pressure = 1.0;
+    sd.sensors._hydraulic_line_pressure = 1;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
+}
+
+void test_shouldEnterEmergencyAsDrivingEBSValves() {
+    SystemData sd;
+    sd.digitalData.sdcState_OPEN = false;
+    sd.digitalData.pneumatic_line_pressure = true;
+    sd.digitalData.asms_on = true;
+    sd.sensors._hydraulic_line_pressure = 1;
+    sd.failureDetection.inversorAliveTimestamp.reset();
+    sd.failureDetection.pcAliveTimestamp.reset();
+    sd.failureDetection.steerAliveTimestamp.reset();
+    sd.digitalData.watchdogTimestamp.reset();
+    sd.r2dLogics.releaseEbsTimestamp = millis();
+    sd.failureDetection.emergencySignal = false;
+    sd.failureDetection.ts_on = true;
+
+    CheckupManager checkupManager(&sd);
+
+    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
+    sd.sensors._hydraulic_line_pressure = HYDRAULIC_BRAKE_THRESHOLD + 1;
+    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
+
+    Metro time3{RELEASE_EBS_TIMEOUT_MS + 10};
+    while (!time3.check()){
+        sd.failureDetection.inversorAliveTimestamp.reset();
+        sd.failureDetection.pcAliveTimestamp.reset();
+        sd.failureDetection.steerAliveTimestamp.reset();
+        sd.digitalData.watchdogTimestamp.reset();
+    }
+
+    TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
+    sd.sensors._hydraulic_line_pressure = 1;
+    TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
 }
 
 void test_shouldStayDriving() {
@@ -232,8 +265,15 @@ void test_resTriggered() {
     TEST_ASSERT_FALSE(checkupManager.resTriggered());
 }
 
+void setUp(void) {
+}
 
-void run_tests_checkupManager() {
+void tearDown(void) {
+}
+
+int main() {
+    UNITY_BEGIN();
+    RUN_TEST(test_shouldEnterEmergencyAsDrivingEBSValves);
     RUN_TEST(test_initialCheckupSequence_states);
     RUN_TEST(test_shouldStayManualDriving_true);
     RUN_TEST(test_shouldStayManualDriving_false);
@@ -244,4 +284,5 @@ void run_tests_checkupManager() {
     RUN_TEST(test_shouldStayMissionFinished);
     RUN_TEST(test_emergencySequenceComplete);
     RUN_TEST(test_resTriggered);
+    return UNITY_END();
 }

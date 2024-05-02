@@ -2,6 +2,14 @@
 #include "comm/communicator.hpp"
 #include "model/systemDiagnostics.hpp"
 
+#define BAMOCAR_VDC_HIGH 0x11
+#define BAMOCAR_VDC_LOW 0x01
+#define RES_READY_TRUE 0x01
+#define RADIO_QUALITY_0 0x00
+#define RADIO_QUALITY_100 0x64
+#define RES_EMG_0 0x01
+#define RES_EMG_3 0x80
+
 SystemData sd;
 Communicator communicator(&sd);
 CAN_message_t msg;
@@ -62,7 +70,10 @@ void wss_message_small_rpm(void) {
     TEST_ASSERT_EQUAL_HEX8(0x00, msg[4]);
 }
 
-// TODO(andre): check lengths and bytes
+/**
+ * @brief Tests if the messages from C1 are correctly
+ * parsed for Hydraulic Brake Pressure and Right Wheel Rpm's
+*/
 void test_c1(void) {
     msg.id = C1_ID;
     msg.len = 5;
@@ -85,7 +96,10 @@ void test_c1(void) {
         TEST_FAIL();
 }
 
-// TODO(andre): check lengths and bytes
+/**
+ * @brief Tests if the messages from Bamocar are correctly
+ * parsed and the Tractive System State is matching received info
+*/
 void test_bamocar(void) {
     sd = SystemData(); // reset ready timestamp
     sd.failureDetection.ts_on = true;
@@ -99,22 +113,26 @@ void test_bamocar(void) {
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(false, sd.failureDetection.ts_on);
 
-    msg.buf[1] = 0x01;
+    msg.buf[1] = RES_READY_TRUE;
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(false, sd.failureDetection.ts_on);
 
     msg.buf[0] = VDC_BUS;
-    msg.buf[2] = 0xf0;
+    msg.buf[2] = BAMOCAR_VDC_HIGH;
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(true, sd.failureDetection.ts_on);
 
-    msg.buf[2] = 0x00;
+    msg.buf[2] = BAMOCAR_VDC_LOW;
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(false, sd.failureDetection.ts_on);
 }
-// You can similarly write tests for other callback functions
 
-void test_resState(void) {
+/**
+ * @brief Tests if the messages from RES are correctly
+ * parsed for R2D and Emergency activations, aswell as
+ * for the radio quality indicator
+*/
+void test_res_state(void) {
 
     msg.id = RES_STATE;
     msg.len = 8;
@@ -124,7 +142,7 @@ void test_resState(void) {
     msg.buf[3] = 0x80;
     msg.buf[4] = 0x00;
     msg.buf[5] = 0x00;
-    msg.buf[6] = 0x00;
+    msg.buf[6] = RADIO_QUALITY_0; // radio quality
     msg.buf[7] = 0x00;
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(false, sd.r2dLogics.r2d);
@@ -135,16 +153,15 @@ void test_resState(void) {
     while (!time.check()){
     }
 
-    msg.buf[6] = 0x64; // def radio quality 100
+    msg.buf[6] = RADIO_QUALITY_100; // def radio quality 100
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(true, sd.r2dLogics.r2d);
     TEST_ASSERT_EQUAL(100, sd.failureDetection.radio_quality);
 
-    msg.buf[0] = 0x01;
-    msg.buf[3] = 0x80; // def emg bits
+    msg.buf[0] = RES_EMG_0;
+    msg.buf[3] = RES_EMG_3; // def emg bits
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(true, sd.failureDetection.emergencySignal);
-    // switch order emg after
 }
 
 
@@ -160,6 +177,6 @@ int main(void) {
     RUN_TEST(wss_message_small_rpm);
     RUN_TEST(test_c1);
     RUN_TEST(test_bamocar);
-    RUN_TEST(test_resState);
+    RUN_TEST(test_res_state);
     return UNITY_END();
 }

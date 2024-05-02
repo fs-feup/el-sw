@@ -4,6 +4,11 @@
 #include "logic/stateLogic.hpp"
 #include "unity.h"
 
+#define HYDRAULIC_PRESSURE_HIGH 0xf8
+#define HYDRAULIC_PRESSURE_LOW 0x01
+#define BAMOCAR_VDC_HIGH 0x11
+#define RES_GO 0x02
+
 SystemData sd;
 Communicator communicator = Communicator(&sd); // CAN
 DigitalSender digitalSender = DigitalSender(); // Digital outputs
@@ -25,11 +30,11 @@ void to_ready() {
     sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
-    uint8_t bamo_msg[] = {VDC_BUS, 0x94, 0x11}; // VDC_BUS fill
+    uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH}; // VDC_BUS fill
     communicator.bamocarCallback(bamo_msg);
    
     sd.digitalData.pneumatic_line_pressure = true;
-    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
     communicator.c1Callback(hydraulic_msg);
 
     // Iterate a few times to go to check wd
@@ -51,7 +56,8 @@ void to_ready() {
 }
 
 /**
- * @brief Test function to validate AS_OFF to AS_Ready transition 
+ * @brief Test function to validate AS_OFF to AS_Ready transition
+ * normal and successful transition 
 */
 void test_off_to_ready_success(void){
     reset();
@@ -80,11 +86,11 @@ void test_off_to_ready_recheck() {
     sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
-    uint8_t bamo_msg[] = {VDC_BUS, 0x94, 0x11}; // VDC_BUS fill
+    uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH}; // VDC_BUS fill
     communicator.bamocarCallback(bamo_msg);
    
     sd.digitalData.pneumatic_line_pressure = true;
-    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
     communicator.c1Callback(hydraulic_msg);
 
     // Iterate a few times to go to check wd
@@ -117,7 +123,7 @@ void test_off_to_ready_recheck() {
 /**
  * @brief Test function to validate AS_READY doesn't revert to AS_Ready 
 */
-void test_off_to_ready_wayback() {
+void test_off_to_ready_wayback_impossible() {
     bool reverted_to_off = false;
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
@@ -125,7 +131,7 @@ void test_off_to_ready_wayback() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 
     // Procedure to go back to AS_OFF state
-    uint8_t bamo_msg2[] = {VDC_BUS, 0x23, 0x00}; // cd voltage set to below threshold
+    uint8_t bamo_msg2[] = {VDC_BUS, 0x00, 0x00}; // cd voltage set to below threshold
     communicator.bamocarCallback(bamo_msg2);
 
     Metro time3{1};
@@ -191,7 +197,7 @@ void test_ready_to_driving_to_emg() {
         sd.digitalData.watchdogTimestamp.reset();
     }
 
-    uint8_t msg[8] = {0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    uint8_t msg[8] = {RES_GO, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     communicator.resStateCallback(msg);
 
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
@@ -253,13 +259,13 @@ void test_ready_to_driving_to_emg2() {
         sd.digitalData.watchdogTimestamp.reset();
     }
 
-    uint8_t msg[8] = {0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    uint8_t msg[8] = {RES_GO, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     communicator.resStateCallback(msg);
     as_state.calculateState();
 
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
     
-    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0x10, 0x00}; // loose brake activation
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_LOW, 0x00}; // loose brake activation
     communicator.c1Callback(hydraulic_msg);
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
@@ -285,7 +291,7 @@ void test_driving_to_finished_to_off() {
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
 
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x01, 0x00, 0x00};
+    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x01, 0x00, 0x00}; // value not 0
     communicator.c1Callback(c1_msg); // right wheel = msg
     sd.digitalData._left_wheel_rpm = 0;
 
@@ -355,7 +361,7 @@ void test_off_to_manual_wayback() {
 void test_flow_driving() {
     reset();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
-    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
     communicator.c1Callback(hydraulic_msg);
     as_state.calculateState();
     
@@ -364,7 +370,7 @@ void test_flow_driving() {
 
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
-    to_ready();
+    to_ready(); // will validate asms is on and ts is active
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 
@@ -387,12 +393,12 @@ void test_flow_ready() {
     sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
-    uint8_t bamo_msg[] = {VDC_BUS, 0x94, 0x11};
+    uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH};
     communicator.bamocarCallback(bamo_msg);
    
     sd.digitalData.pneumatic_line_pressure = true;
-    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, 0xf8, 0x00};
-    uint8_t hydraulic_msg2[] = {HYDRAULIC_LINE, 0x10, 0x00}; // loose brake activation
+    uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
+    uint8_t hydraulic_msg2[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_LOW, 0x00}; // loose brake activation
     communicator.c1Callback(hydraulic_msg);
 
     // Iterate a few times to go to check wd
@@ -490,7 +496,7 @@ int main() {
     UNITY_BEGIN();
     RUN_TEST(test_off_to_ready_success);
     RUN_TEST(test_off_to_ready_recheck);
-    RUN_TEST(test_off_to_ready_wayback);
+    RUN_TEST(test_off_to_ready_wayback_impossible);
     RUN_TEST(test_ready_to_driving_to_emg);
     RUN_TEST(test_ready_to_driving_to_emg2);
     RUN_TEST(test_ready_to_emg_to_off);
