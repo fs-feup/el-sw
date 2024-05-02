@@ -2,6 +2,7 @@
 #include <FlexCAN_T4.h>
 #include <Wire.h>
 #include <elapsedMillis.h>
+#include <iostream>
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -17,7 +18,9 @@ Adafruit_MCP3008 ADCs[8];
 // #define BROADCAST_PERIOD 250
 #define BROADCAST_ID 0x301
 
-elapsedMillis tempErrorTimer;
+elapsedMicros tempErrorTimer;
+
+bool flagErrorTimerOn = 0;
 
 CAN_message_t BMSInfoMsg;
 CAN_message_t BMSErrorFlag;
@@ -84,9 +87,9 @@ void readRawADCData() {
                 continue;
             int tempID = adc * 8 + channel;
             switch (tempID) {
-                case 18:
+                case 20:
                 case 29:
-                case 33:
+                case 27:
                     ADCRaw[adc][channel] = ADCRaw[1][1];
                     break;
                 default:
@@ -206,11 +209,17 @@ void CAN_msg() {
 }
 
 void sendTempsToBMS() {
-    if (minTemp > 0 or maxTemp < 58)
-        tempErrorTimer = 0;
-
-    if (tempErrorTimer >= 700)
-        tempErr = 1;
+    if (minTemp < 0 or maxTemp > 58){
+        if(flagErrorTimerOn == 0){
+            tempErrorTimer = 0;
+            flagErrorTimerOn = 1;
+        }
+        if (tempErrorTimer >= 700){
+            tempErr = 1;
+        }
+    }
+    else
+        tempErr = 0;
 
     BMSInfoMsg.id = 0x1839F380;
     BMSInfoMsg.flags.extended = 1;
@@ -228,17 +237,11 @@ void sendTempsToBMS() {
     BMSErrorFlag.id = 0x306;
     BMSErrorFlag.flags.extended = 1;
     BMSErrorFlag.len = 1;
-    BMSErrorFlag.buf[0] = (BMSErr || tempErr);
+    BMSErrorFlag.buf[0] = tempErr;
     can1.write(BMSErrorFlag);
 }
 
 void canbusSniffer(const CAN_message_t& msg) {
-    // if (Serial) {
-    //     Serial.println("CAN message received");
-    //     Serial.print("Message ID: ");
-    //     Serial.println(msg.id, HEX);
-    // }
-
     if (msg.id == 0x300)
         broadcastEnabled = 1;
 
@@ -259,9 +262,12 @@ void setup() {
 
     can1.enableFIFO();
     can1.enableFIFOInterrupt();
-    can1.onReceive(canbusSniffer);
     can1.setFIFOFilter(REJECT_ALL);
     (void)can1.setFIFOFilter(0, 0x111, STD);
+    can1.setFIFOFilter(0, 0x300, STD);
+    //can1.setFIFOFilter(1, 0x270, STD);
+    can1.setFIFOFilter(2, 0x306, STD);
+    can1.onReceive(canbusSniffer);
 
     (void)ADCs[0].begin(13, 11, 12, 18);
     (void)ADCs[1].begin(13, 11, 12, 19);
@@ -284,17 +290,17 @@ void printTemp() {
 }
 
 void loop() {
-    // reset measurements
+    // reset measurement
     tempSum = 0;
     maxTemp = 0;
-    minTemp = 999;
+    minTemp = 999;;
 
     readRawADCData();
     // broadcastRawData();
     CAN_msg();
     sendTempsToBMS();
     if (Serial)
-        printTemp();
+      printTemp();
 
     delay(50);
 }
