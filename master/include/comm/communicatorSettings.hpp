@@ -8,7 +8,7 @@ constexpr auto BAMO_RESPONSE_ID = 0x181;
 constexpr auto C1_ID = 0x123;
 constexpr auto C3_ID = 0x111;
 constexpr auto PC_ID = 0x400;
-constexpr auto STEERING_ID = 0x700; // TODO(andre): change or confirm code
+constexpr auto STEERING_ID = 0x295d;
 
 // PC
 constexpr auto AS_CU_EMERGENCY_SIGNAL = 0x43; // TODO(andre): change or confirm code
