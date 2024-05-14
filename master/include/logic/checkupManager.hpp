@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 #include "model/systemData.hpp"
+#include "comm/communicatorSettings.hpp"
 #include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
 #include "debugUtils.hpp"
@@ -56,6 +57,8 @@ public:
     explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
     };
 
+    void resetCheckupState();
+
     /**
      * @brief Performs a manual driving checkup.
      */
@@ -71,7 +74,10 @@ public:
      */
     CheckupError initialCheckupSequence(DigitalSender *digitalSender);
 
-    [[nodiscard]] bool shouldRevertToOffFromReady() const;
+    /**
+     * @brief Performs a last re-check for off to ready transition.
+    */
+    [[nodiscard]] bool shouldGoReadyFromOff() const;
 
     /**
      * @brief Performs a ready to drive checkup.
@@ -105,12 +111,16 @@ public:
     [[nodiscard]] bool resTriggered() const;
 };
 
-inline bool CheckupManager::shouldStayManualDriving() const {
+inline void CheckupManager::resetCheckupState() {
+    checkupState = CheckupState::WAIT_FOR_ASMS;
+}
 
+inline bool CheckupManager::shouldStayManualDriving() const {
     if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
         || _systemData->digitalData.asms_on) {
         return false;
     }
+
     return true;
 }
 
@@ -120,7 +130,6 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
     if (initSequenceState != CheckupError::SUCCESS) {
         return true;
     }
-    _systemData->r2dLogics.enterReadyState();
     return false;
 }
 
@@ -188,18 +197,18 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             initialCheckupTimestamp.reset();
             checkupState = CheckupState::CHECK_PRESSURE;
             break;
-        case CheckupState::CHECK_PRESSURE: {
+        case CheckupState::CHECK_PRESSURE:
             digitalSender->toggleWatchdog();
-            // Check hyraulic line pressure and pneumatic line pressure
+            // Check hydraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
             }
-            if (_systemData->sensors._hydraulic_line_pressure > 0 && _systemData->digitalData.
+            if (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
                 pneumatic_line_pressure) {
                 checkupState = CheckupState::CHECK_TIMESTAMPS;
             }
             break;
-        }
+        
         case CheckupState::CHECK_TIMESTAMPS:
             digitalSender->toggleWatchdog();
         // Check if all components have responded and no emergency signal has been sent
@@ -214,19 +223,19 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
     return CheckupError::WAITING_FOR_RESPONSE;
 }
 
-inline bool CheckupManager::shouldRevertToOffFromReady() const {
+inline bool CheckupManager::shouldGoReadyFromOff() const {
     if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->sensors.
-        _hydraulic_line_pressure == 0 || _systemData->digitalData.sdcState_OPEN) {
-        return true;
+        _hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD || _systemData->digitalData.sdcState_OPEN) {
+        return false;
     }
-    return false;
+    _systemData->r2dLogics.enterReadyState();
+    return true;
 }
 
 inline bool CheckupManager::shouldStayReady() const {
     if (!_systemData->r2dLogics.r2d) {
         return true;
     }
-
     return false;
 }
 
@@ -235,7 +244,12 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
         _systemData->failureDetection.hasAnyComponentTimedOut() ||
-        _systemData->digitalData.watchdogTimestamp.check())) {
+        _systemData->digitalData.watchdogTimestamp.check() ||
+        !_systemData->digitalData.asms_on ||
+        !_systemData->failureDetection.ts_on ||
+        _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
+        _systemData->digitalData.sdcState_OPEN
+        )) {
         return true;
     }
     if (current_state == AS_DRIVING && (
@@ -243,8 +257,10 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.sdcState_OPEN ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        _systemData->sensors._hydraulic_line_pressure > HYDRAULIC_LINE_ACTIVE_PRESSURE ||
+        (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
+            && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
         _systemData->digitalData.asms_on == 0 ||
+        !_systemData->failureDetection.ts_on ||
         _systemData->digitalData.watchdogTimestamp.check())) {
         return true;
     }
@@ -253,7 +269,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
 }
 
 inline bool CheckupManager::shouldStayDriving() const {
-    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->missionFinished) {
+    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->sensors._right_wheel_rpm == 0 && _systemData->missionFinished) {
         return false;
     }
     return true;
@@ -267,7 +283,7 @@ inline bool CheckupManager::shouldStayMissionFinished() const {
 }
 
 inline bool CheckupManager::emergencySequenceComplete() {
-    if (_ebsSoundTimestamp.check() && !_systemData->digitalData.asms_on) {
+    if (!_systemData->digitalData.asms_on && _ebsSoundTimestamp.check()) {
         return true;
     }
     return false;
@@ -275,8 +291,8 @@ inline bool CheckupManager::emergencySequenceComplete() {
 
 inline bool CheckupManager::resTriggered() const {
     if (_systemData->failureDetection.emergencySignal) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 

@@ -26,6 +26,6 @@
   Serial.print(" = ");                                                         \
   Serial.println(var);
 #else
-#define DEBUG_PRINT_VAR(name, var)
+#define DEBUG_PRINT_VAR(var)
 #define DEBUG_PRINT(str)
 #endif

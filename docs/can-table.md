@@ -28,7 +28,6 @@
 | Bamocar| 0x181 | 4 | 0xA0 | Torque LSB | Torque MSB | --- | | | | | Receive Torque |
 | BMS | 0x666 | 3 | Current LSB | Current MSB | | | | | | | Receive Current from BMS |
 | Teensy C1 | 0x123 | 3 | 0x90 | Brake Value LSB | Brake Value MSB | | | | | | Brake pressure value |
-| AS CU | 0x665 | 1 | --- | | | | | | | | This was used during debugging, to Test de R2D state withtout turn on the car |
 | AS CU | 0x400 | 1 | 0x41 | | | | | | | | PC Alive Signal |
 | AS CU | 0x400 | 1 | 0x42 | | | | | | | | Mission Finished Signal |
 | AS CU | 0x400 | 1 | 0x43 | | | | | | | | Autonomous System / Computational Unit Emergency Detection Signal |

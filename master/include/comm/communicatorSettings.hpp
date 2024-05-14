@@ -8,7 +8,7 @@ constexpr auto BAMO_RESPONSE_ID = 0x181;
 constexpr auto C1_ID = 0x123;
 constexpr auto C3_ID = 0x111;
 constexpr auto PC_ID = 0x400;
-constexpr auto STEERING_ID = 0x700; // TODO(andre): change or confirm code
+constexpr auto STEERING_ID = 0x295d;
 
 // PC
 constexpr auto AS_CU_EMERGENCY_SIGNAL = 0x43; // TODO(andre): change or confirm code
@@ -17,10 +17,10 @@ constexpr auto PC_ALIVE = 0x41;               // TODO(andre): change or confirm 
 
 // Sensors
 constexpr auto RIGHT_WHEEL = 0x11;    // TODO(andre): change or confirm code
-constexpr auto HYDRAULIC_LINE = 0x12; // TODO(andre): change or confirm code
+constexpr auto HYDRAULIC_LINE = 0x90; // TODO(andre): change or confirm code
+constexpr auto HYDRAULIC_BRAKE_THRESHOLD = 165; // 0 to 1024, 165 considered braking
 
 constexpr auto WHEEL_PRECISION = 1e-2;          // TODO(andre): change or confirm value
-constexpr auto HYDRAULIC_LINE_PRECISION = 1e-1; // TODO(andre): change or confirm value
 
 // Logging Status
 constexpr auto DRIVING_STATE = 0x500;

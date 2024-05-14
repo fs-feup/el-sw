@@ -6,11 +6,11 @@
 
 class ASState {
 private:
-    CheckupManager _checkupManager;
     DigitalSender *_digitalSender;
     Communicator *_communicator;
 
 public:
+    CheckupManager _checkupManager;
     State state{AS_OFF};
 
     explicit ASState(SystemData *system_data, Communicator *communicator, 
@@ -46,6 +46,7 @@ inline void ASState::calculateState() {
             }
 
             if (_checkupManager.shouldStayOff(_digitalSender)) break;
+            if (!_checkupManager.shouldGoReadyFromOff()) break; // recheck all states
 
             DEBUG_PRINT("Entering READY state from OFF");
             DigitalSender::enterReadyState();
@@ -54,13 +55,6 @@ inline void ASState::calculateState() {
 
         case AS_READY:
             _digitalSender->toggleWatchdog();
-
-            if (_checkupManager.shouldRevertToOffFromReady()) {
-                DEBUG_PRINT("Entering OFF state from READY");
-                DigitalSender::enterOffState();
-                state = AS_OFF;
-                break;
-            }
 
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from READY");
@@ -94,8 +88,8 @@ inline void ASState::calculateState() {
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                // Buazzer is automatically triggered by state
                 DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
+              
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
@@ -106,6 +100,7 @@ inline void ASState::calculateState() {
 
             DEBUG_PRINT("Entering OFF state from FINISHED");
             DigitalSender::enterOffState();
+            _checkupManager.resetCheckupState();
             state = AS_OFF;
             break;
         case AS_EMERGENCY:
@@ -114,6 +109,7 @@ inline void ASState::calculateState() {
             if (_checkupManager.emergencySequenceComplete()) {
                 DEBUG_PRINT("Entering OFF state from EMERGENCY");
                 DigitalSender::enterOffState();
+                _checkupManager.resetCheckupState();
                 state = AS_OFF;
                 break;
             }

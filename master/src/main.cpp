@@ -7,7 +7,7 @@
 #include "debugUtils.hpp"
 
 SystemData systemData; // Model
-Communicator communicator = Communicator(); // CAN
+Communicator communicator = Communicator(&systemData); // CAN
 DigitalReceiver digitalReceiver = DigitalReceiver(&systemData.digitalData, &systemData.mission); // Digital inputs
 DigitalSender digitalSender = DigitalSender(); // Digital outputs
 ASState as_state = ASState(&systemData, &communicator, &digitalSender);
@@ -22,7 +22,7 @@ void setup() {
     Serial.begin(9600);
     DEBUG_PRINT("Starting up...");
     Communicator::_systemData = &systemData;
-
+  
     state_calculation_timer.begin([]() {
         noInterrupts();
         digitalReceiver.digitalReads();
