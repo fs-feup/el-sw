@@ -2,7 +2,7 @@ var searchData=
 [
   ['can_2eh_0',['can.h',['../d7/da8/can_8h.html',1,'']]],
   ['can1_1',['can1',['../de/d53/charger_2src_2main_8cpp.html#af491bc470adef8b258c75dafed0077b9',1,'can1:&#160;main.cpp'],['../d1/d91/temp-acq_2src_2main_8cpp.html#af491bc470adef8b258c75dafed0077b9',1,'can1:&#160;main.cpp']]],
-  ['can_5fmsg_2',['can_msg',['../d1/d91/temp-acq_2src_2main_8cpp.html#a7ab8b55a50349de739bae2f8f64ea1e1',1,'CAN_msg():&#160;main.cpp'],['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md5',1,'CAN_msg()']]],
+  ['can_5fmsg_2',['can_msg',['../d1/d91/temp-acq_2src_2main_8cpp.html#a7ab8b55a50349de739bae2f8f64ea1e1',1,'CAN_msg():&#160;main.cpp'],['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md8',1,'CAN_msg()']]],
   ['canbussniffer_3',['canbusSniffer',['../d1/d91/temp-acq_2src_2main_8cpp.html#a54af66b2a0697fa5c35763e5c362c3d2',1,'main.cpp']]],
   ['canint_4',['canint',['../de/d53/charger_2src_2main_8cpp.html#a6fdf480f1d8b29f9375318ba52c65585',1,'main.cpp']]],
   ['ccl_5',['ccl',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a328f3ef7cce5698326e71f90b445109f',1,'PARAMETERS']]],
@@ -13,7 +13,8 @@ var searchData=
   ['charge_10',['charge',['../de/d53/charger_2src_2main_8cpp.html#a19afc905fc69a9d4d28353cebd6a6173',1,'main.cpp']]],
   ['chargermachine_11',['chargerMachine',['../de/d53/charger_2src_2main_8cpp.html#a14a93d894b75df01bff24a0d564a070f',1,'main.cpp']]],
   ['charging_12',['charging',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959aa707227d80cb0c008442aa00d00daa97',1,'main.cpp']]],
-  ['count_13',['count',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad43c3812e6d13e0518d9f8b8f463ffcf',1,'main.cpp']]],
-  ['currcurrent_14',['currCurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0fd2b04f573a8044769d33f27aaee48e',1,'PARAMETERS']]],
-  ['currvoltage_15',['currVoltage',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a2ddaad63fb82d3176478a5d4f099b305',1,'PARAMETERS']]]
+  ['contributing_13',['Contributing',['../index.html#autotoc_md2',1,'']]],
+  ['count_14',['count',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad43c3812e6d13e0518d9f8b8f463ffcf',1,'main.cpp']]],
+  ['currcurrent_15',['currCurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0fd2b04f573a8044769d33f27aaee48e',1,'PARAMETERS']]],
+  ['currvoltage_16',['currVoltage',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a2ddaad63fb82d3176478a5d4f099b305',1,'PARAMETERS']]]
 ];

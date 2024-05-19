@@ -25,12 +25,12 @@
 var NAVTREE =
 [
   [ "Formula Student Electronics & Software", "index.html", [
-    [ "Eletronics and Software Repository", "index.html", "index" ],
+    [ "Embedded Software Repository", "index.html", "index" ],
     [ "Temperature Acquisition", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html", [
-      [ "Teensy TempAcq", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md3", [
-        [ "ReadRawADCData()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md4", null ],
-        [ "CAN_msg()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "sendTempsToBMS()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6", null ]
+      [ "Teensy TempAcq", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6", [
+        [ "ReadRawADCData()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md7", null ],
+        [ "CAN_msg()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md8", null ],
+        [ "sendTempsToBMS()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md9", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [

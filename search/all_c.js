@@ -1,14 +1,16 @@
 var searchData=
 [
-  ['ta_5fid_0',['TA_ID',['../d7/da8/can_8h.html#a9979eeafd068727f265ccb6c8c71d750',1,'can.h']]],
-  ['teensy_20tempacq_1',['Teensy TempAcq',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md3',1,'']]],
-  ['temp_2',['temp',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a4e3d52993a6fe37c8d4e7ed6efe14252',1,'PARAMETERS::temp'],['../de/d53/charger_2src_2main_8cpp.html#a813c382ea67b33dc90f802f3bf17bc5f',1,'temp:&#160;main.cpp']]],
-  ['tempacq_3',['Teensy TempAcq',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md3',1,'']]],
-  ['tempbroadcast_4',['tempBroadcast',['../d1/d91/temp-acq_2src_2main_8cpp.html#a9fdad824abd589bc143483efc6aac296',1,'main.cpp']]],
-  ['temperature_5',['temperature',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab4b11c8d9c758430960896bc3fe82ead',1,'main.cpp']]],
-  ['temperature_20acquisition_6',['Temperature Acquisition',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html',1,'']]],
-  ['temperr_7',['tempErr',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad3f733671651600197cc99bd90e70a8b',1,'main.cpp']]],
-  ['temperrortimer_8',['tempErrorTimer',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae998325850650f4b2e677c435bbbd961',1,'main.cpp']]],
-  ['temps_9',['Temps',['../d1/d91/temp-acq_2src_2main_8cpp.html#a2d2fa21c3563eaafd55a33ad647e8081',1,'main.cpp']]],
-  ['tempsum_10',['tempSum',['../d1/d91/temp-acq_2src_2main_8cpp.html#a82c63f65b5e9702f431ccd4c91f33c69',1,'main.cpp']]]
+  ['sendtempstobms_0',['sendtempstobms',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae5455474ac198d04f0cafc26f926da43',1,'sendTempsToBMS():&#160;main.cpp'],['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md9',1,'sendTempsToBMS()']]],
+  ['setcurrent_1',['setcurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a91baecd3e523773b9107eadf4c091f46',1,'PARAMETERS::setCurrent'],['../de/d53/charger_2src_2main_8cpp.html#a6626d45851a7ceec2d3459ce05c19173',1,'setCurrent(uint32_t current):&#160;main.cpp']]],
+  ['setlow_2',['setLOW',['../de/d53/charger_2src_2main_8cpp.html#ab59d380a02cf9f9278b9d7766ed1565a',1,'main.cpp']]],
+  ['setup_3',['setup',['../de/d53/charger_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp'],['../d1/d91/temp-acq_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp']]],
+  ['setvoltage_4',['setvoltage',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0bda9fcdef6fe1e2bd23939b61037021',1,'PARAMETERS::setVoltage'],['../de/d53/charger_2src_2main_8cpp.html#ac10b87d144d760686fc923b2639ff33e',1,'setVoltage(uint32_t voltage):&#160;main.cpp']]],
+  ['shutdown_5',['shutdown',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959a806a2e610a79f2c33cb4d122a0f0f877',1,'main.cpp']]],
+  ['shutdown_5fpin_6',['SHUTDOWN_PIN',['../de/d53/charger_2src_2main_8cpp.html#aa0eccb352651e5c430624a1aa6f76c16',1,'main.cpp']]],
+  ['shutdownstatus_7',['shutdownStatus',['../de/d53/charger_2src_2main_8cpp.html#a0ffdb62ae4f809f7f65c968783c167d7',1,'main.cpp']]],
+  ['software_20repository_8',['Embedded Software Repository',['../index.html',1,'']]],
+  ['starting_20to_20develop_9',['Starting to Develop',['../index.html#autotoc_md1',1,'']]],
+  ['status_10',['status',['../de/d53/charger_2src_2main_8cpp.html#a015eb90e0de9f16e87bd149d4b9ce959',1,'main.cpp']]],
+  ['step_11',['step',['../de/d53/charger_2src_2main_8cpp.html#a696e5f800880fb998c90e82d4921da90',1,'main.cpp']]],
+  ['structure_12',['Structure',['../index.html#autotoc_md4',1,'']]]
 ];
