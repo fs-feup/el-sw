@@ -26,7 +26,13 @@ var NAVTREE =
 [
   [ "Formula Student Electronics & Software", "index.html", [
     [ "Eletronics and Software Repository", "index.html", "index" ],
-    [ "teensyTemp", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html", null ],
+    [ "Temperature Acquisition", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html", [
+      [ "Teensy TempAcq", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md3", [
+        [ "ReadRawADCData()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "CAN_msg()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "sendTempsToBMS()", "d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

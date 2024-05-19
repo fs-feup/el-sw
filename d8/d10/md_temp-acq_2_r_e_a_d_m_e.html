@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Formula Student Electronics &amp; Software: teensyTemp</title>
+<title>Formula Student Electronics &amp; Software: Temperature Acquisition</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -91,10 +91,48 @@ $(document).ready(function(){initNavTree('d8/d10/md_temp-acq_2_r_e_a_d_m_e.html'
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">teensyTemp</div></div>
+  <div class="headertitle"><div class="title">Temperature Acquisition</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md2"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md2"></a> The Temperature Acquisition is a PCB inside the TSA, Tractive System Accumulator. This PCB has three main functions:</p><ul>
+<li>Acquiring temperatures of at least 30% of the cells</li>
+<li>Monitoring those temperatures<ul>
+<li>if &gt;60ºC</li>
+<li>Detect short-to-supply</li>
+<li>Detect short-to-ground</li>
+</ul>
+</li>
+<li>Monitoring errors from the BMS (second CAN BUS)</li>
+</ul>
+<p>Sequence to open the Shutdown Circuit in case of a BMS error:</p><ol type="1">
+<li>BMS - Detects an error;</li>
+<li>BMS - Sets the Multi-Purpose Output 2 to low;</li>
+<li>Latching - Open the Shutdown Circuit.</li>
+</ol>
+<p>Sequence to open the Shutdown Circuit in case of a TempAcq error:</p><ol type="1">
+<li>TempAcq - Detects an error;</li>
+<li>TempAcq - Sends CAN msg;</li>
+<li>BMS - Reads the TempAcq msg;</li>
+<li>BMS - Sets the Multi-Purpose Output 2 to low;</li>
+<li>Latching - Open the Shutdown Circuit.</li>
+</ol>
+<p>The system we've implemented isn't flawless, but it's the best solution we could devise within the constraints of the competition rules. The main issue is that if CAN Communication is lost for any reason, the BMS cannot set the Multi-Purpose Output 2 to a low state. If this had been discovered during an inspection, our car would not have passed. We need to address this problem in the next prototype.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Teensy TempAcq</h1>
+<p>This diagram represents the main loop:</p>
+<p><img src="../../../docs/assets/TempAcq/MainLoop.png" alt="TempAcqLoop" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+ReadRawADCData()</h2>
+<p><img src="../../../docs/assets/TempAcq/readRawADCData.png" alt="readRawADCData" class="inline"/></p>
+<p>This function retrieves the ADC value using the Adafruit_MCP3008.h library. However, some readings consistently show errors, and the exact cause has not been identified yet—it could be due to the ADC itself, a PCB defect, a misconnection, etc... Currently, these inaccurate readings are disregarded, and we substitute them with the temperature from the first sensor, though this approach does not comply with the rules. The problematic readings are from TempIDs: 18, 29, 33. The ADCraw values are later converted to a temperature in degrees Celsius by <a class="el" href="../../d1/d91/temp-acq_2src_2main_8cpp.html#a290bd861e02d80e74c7c574bae51d7c2">ADCconversion()</a>. <img src="../../../docs/assets/TempAcq/ADCconversion.png" alt="ADCconversion" class="inline"/> This is a 4th-degree polynomial curve to model the sensor output curve.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+CAN_msg()</h2>
+<p><img src="../../../docs/assets/TempAcq/CAN_msg.png" alt="CAN_msg" class="inline"/> This code snippet creates and writes a CAN message to the Charger Teensy. This message is displayed during scrutineering and the charging process.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+sendTempsToBMS()</h2>
+<p><img src="../../../docs/assets/TempAcq/sendTempsToBMS.png" alt="sendTempsToBMS" class="inline"/> The initial part of this function checks for any anomalies in temperature readings. If a temperature falls outside the defined interval, the temperature error timer is reset. If this condition persists for more than 700 milliseconds, the shutdown circuit must be activated.</p>
+<p>The BMSInfoMsg is utilized by the BMS to monitor key temperature data, including maximum, minimum, and average values. This message simulates the operation of the orion thermistor expansion module.</p>
+<p>The BMSErrorFlag is a message defined in the Orion Software to manage the Multi-Purpose Output 2. This output is set to "1" if there is a Temperature Monitoring Error (tempErr = 1). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

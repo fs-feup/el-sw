@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sendtempstobms_0',['sendTempsToBMS',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae5455474ac198d04f0cafc26f926da43',1,'main.cpp']]],
+  ['sendtempstobms_0',['sendtempstobms',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae5455474ac198d04f0cafc26f926da43',1,'sendTempsToBMS():&#160;main.cpp'],['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6',1,'sendTempsToBMS()']]],
   ['setcurrent_1',['setcurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a91baecd3e523773b9107eadf4c091f46',1,'PARAMETERS::setCurrent'],['../de/d53/charger_2src_2main_8cpp.html#a6626d45851a7ceec2d3459ce05c19173',1,'setCurrent(uint32_t current):&#160;main.cpp']]],
   ['setlow_2',['setLOW',['../de/d53/charger_2src_2main_8cpp.html#ab59d380a02cf9f9278b9d7766ed1565a',1,'main.cpp']]],
   ['setup_3',['setup',['../de/d53/charger_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp'],['../d1/d91/temp-acq_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;main.cpp']]],
