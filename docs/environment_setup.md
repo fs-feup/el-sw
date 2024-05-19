@@ -1,17 +1,10 @@
-# New Project Setup
-
-## Prerequisites
-
-- Git set up with GitHub and ssh
-- VSCode
-
-You can find tutorials for this [here](https://github.com/fs-feup/autonomous-systems/blob/main/docs/tutorials/environment_setup/coding_environment.md).
-
-
+# Environment Setup
 
 ## Links
 - [Platformio documentation](https://docs.platformio.org/en/latest/)
 - [VSCode](https://code.visualstudio.com/Download)
+- [Platformio ini file](https://docs.platformio.org/en/latest/projectconf/index.html)
+
 
 ## Git
 
@@ -56,7 +49,8 @@ git config user.email "useremail"
 	or on windows:
 
 	```sh
-	Get-Service -Name ssh-agent | Set-Service -StartupType Manual Start-Service ssh-agent
+	Set-Service -StartupType Automatic
+    Start-Service ssh-agent
 	```
 1. Add the ssh key to the agent:
     In Ubuntu:
@@ -64,17 +58,26 @@ git config user.email "useremail"
     ssh-add ~/.ssh/id_ed25519
     ```
     In Windows:
-
+    ```sh
+    ssh-add c:/Users/<user>/.ssh/id_ed25519
+    ```
 1. Copy the SSH public key to your clipboard:
     ```sh
     cat ~/.ssh/id_ed25519.pub
     # Then select and copy the contents of the id_ed25519.pub file
     # displayed in the terminal to your clipboard
     ```
+
+    in windows:
+    ```sh
+    cat c:/Users/<user>/.ssh/id_ed25519.pub
+    # Then select and copy the contents of the id_ed25519.pub file
+    # displayed in the terminal to your clipboard
+    ```
     **Tip:** Alternatively, you can locate the hidden .ssh folder, open the file in your favorite text editor, and copy it to your clipboard.
 1. In the upper-right corner of any page, click your profile photo, then click Settings.
 
-    ![Screenshot of GitHub's account menu showing options for users to view and edit their profile, content, and settings. The menu item "Settings" is outlined in dark orange.](../assets/coding_environment/ssh-github.png)
+    ![Screenshot of GitHub's account menu showing options for users to view and edit their profile, content, and settings. The menu item "Settings" is outlined in dark orange.](./assets/environment_setup/ssh-github.png)
 
     Screenshot of GitHub's account menu showing options for users to view and edit their profile, content, and settings. The menu item "Settings" is outlined in dark orange.
     In the "Access" section of the sidebar, click  SSH and GPG keys.
@@ -96,38 +99,13 @@ git clone git@github.com:fs-feup/el-sw.git
 
 ## Project Structure
 
-This project is divided into multiple folders inside **src** folder. Each of these folders contain a ROS2 package. Essentially, the project is composed of multiple ROS2 packages whose nodes interact with each other in runtime. More details on the system's architecture can be found in [here](../project-specification.md).
+The project is divided into multiple Platform.io projects, each corresponding to a Teensy.
 
 ## IDE
 
-In order to properly contribute to this project, a code editor or IDE is suggested. In this tutorial, some **suggestions** for an environment will be presented.
 
+Visual Studio Code is a general purpose IDE very widely used. VSCode is our choice due to the great quantity of extensions available, especially the Platform.io Extension.
 
-### VSCode
-
-Visual Studio Code is a general purpose IDE very widely used. VSCode is our choice due to the great quantity of extensions available, namely:
-- extensions for ROS environment and ROS2 syntax
-- extensions for C++ and Python syntax check
-- overall simplicity and great array of tools
-
-**Steps:**
-
-- Install [VSCode](https://code.visualstudio.com/Download)
-- (Optional but suggested) Install VSCode Extensions
-    - [C++ extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) (highly suggested)
-    - [ROS extension](https://marketplace.visualstudio.com/items?itemName=ms-iot.vscode-ros) (suggested)
-    - [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) (mandatory for docker environment)
-
-Some other extensions are important, which are already included in the docker dev environment.
-
-#### VSCode in WSL
-
-To get VSCode inside wsl, simply run ```code``` inside WSL and it will install the dependencies necessary and connect to the existing installation of vscode on the Windows system.
-
-The rest of the tutorial should be followed using the WSL environment through the terminal. Only perform one of the alternatives.
-
-
-## Set Up
 
 ### Platformio Manual Installation
 1. Install vscode
@@ -193,7 +171,3 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="013*", MODE:="066
 ```
 
 The instructions for the installation of the file are in the file's comments.
-
-
-## Links
-- [Platformio ini file](https://docs.platformio.org/en/latest/projectconf/index.html)
