@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "*.tpp": "cpp"
-    },
-    "platformio-ide.pioHomeServerHttpPort": 8008
-}

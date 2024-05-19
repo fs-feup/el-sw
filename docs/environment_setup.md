@@ -116,12 +116,17 @@ Visual Studio Code is a general purpose IDE very widely used. VSCode is our choi
 	sudo apt install build-essential
 	```
 2. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
-6. Install platformio on pc (optional)
+6. Install platformio on pc (optional but advisable)
 	```sh
 	curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
 	python3 get-platformio.py
 	rm -rf get-platformio.py
 	```
+    and then add the platformio bin folder to PATH
+    ![Platformio Message](./assets/environment_setup/platformio-message.png)
+    **LINUX:** add similar line to your .bashrc or .zshrc: ```export PATH="/home/<user>/.platformio/penv/bin:$PATH"```
+
+    **WINDOWS:** [link](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
 7. Open platformio extension in vscode
 
 ### Configuring system for uploads

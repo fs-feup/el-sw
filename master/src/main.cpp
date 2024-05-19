@@ -11,7 +11,6 @@ Communicator communicator = Communicator(&systemData); // CAN
 DigitalReceiver digitalReceiver = DigitalReceiver(&systemData.digitalData, &systemData.mission); // Digital inputs
 DigitalSender digitalSender = DigitalSender(); // Digital outputs
 ASState as_state = ASState(&systemData, &communicator, &digitalSender);
-FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> Communicator::can1;
 
 Metro rl_rpm_timer = Metro{LEFT_WHEEL_PUBLISH_INTERVAL};
 Metro mission_timer = Metro(MISSION_PUBLISH_INTERVAL);
