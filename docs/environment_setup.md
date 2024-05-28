@@ -5,7 +5,6 @@
 - [VSCode](https://code.visualstudio.com/Download)
 - [Platformio ini file](https://docs.platformio.org/en/latest/projectconf/index.html)
 
-
 ## Git
 
 If you already use git and github, you can skip this step. If you use windows, make sure to be inside your wsl for this.
@@ -109,27 +108,21 @@ Visual Studio Code is a general purpose IDE very widely used. VSCode is our choi
 
 ### Platformio Manual Installation
 1. Install vscode
-3. Make sure you have python3 installed
-4. Install python3-venv: ```sudo apt install python3-venv```
-5. Install gcc
+2. Make sure you have python3 installed
+3. Install python3-venv: ```sudo apt install python3-venv```
+4. Install gcc
 	```sh
 	sudo apt install build-essential
 	```
-2. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
-6. Install platformio on pc (optional but advisable)
-	```sh
-	curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
-	python3 get-platformio.py
-	rm -rf get-platformio.py
-	```
-    and then add the platformio bin folder to PATH
-    ![Platformio Message](./assets/environment_setup/platformio-message.png)
-    **LINUX:** add similar line to your .bashrc or .zshrc: ```export PATH="/home/<user>/.platformio/penv/bin:$PATH"```
+5. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
+6. Open platformio extension in vscode
 
-    **WINDOWS:** [link](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
-7. Open platformio extension in vscode
+Suggested extensions
+- [Github Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+- [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
-### Configuring system for uploads
+### Configuring system for uploads (Linux)
 
 Lastly, you need to update/create a file in a certain location to allow uploads to the teensy via USB port. The file is the following:
 
