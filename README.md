@@ -22,4 +22,6 @@ Check [this guide](./CONTRIBUTING.md).
 - [C3](./c3/) - Teensy Caixa 3 project
 - [charger](./charger/) - Charger code project
 - [temp-acq](./temp-acq/) - BMS temperature acquisition project
+- [master](./master/) - master AS PCB Teensy Code - AS Status and Supervision
+- [ami](./ami/) - Autonomous mission indicator code 01
 - [bread-board-test](./bread-board-test/) - Test project for breadboard, to check breadboard health
