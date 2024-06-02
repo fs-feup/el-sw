@@ -54,7 +54,7 @@ inline void ASState::calculateState() {
             break;
 
         case AS_READY:
-            _digitalSender->toggleWatchdog();
+            // _digitalSender->toggleWatchdog();
 
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from READY");
@@ -70,7 +70,7 @@ inline void ASState::calculateState() {
             state = AS_DRIVING;
             break;
         case AS_DRIVING:
-            _digitalSender->toggleWatchdog();
+            // _digitalSender->toggleWatchdog();
             _digitalSender->blinkLED(ASSI_YELLOW_PIN);
 
             if (_checkupManager.shouldEnterEmergency(state)) {

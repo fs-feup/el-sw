@@ -1,3 +1,8 @@
 {
-    "platformio-ide.pioHomeServerHttpPort": 8008
+    "platformio-ide.pioHomeServerHttpPort": 8008,
+    "files.associations": {
+        "memory": "cpp",
+        "random": "cpp",
+        "optional": "cpp"
+    }
 }

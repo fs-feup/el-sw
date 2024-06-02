@@ -31,10 +31,10 @@ public:
     */
     enum class CheckupState {
         WAIT_FOR_ASMS,
-        START_TOGGLING_WATCHDOG,
-        WAIT_FOR_WATCHDOG,
-        STOP_TOGGLING_WATCHDOG,
-        CHECK_WATCHDOG,
+        // START_TOGGLING_WATCHDOG,
+        // WAIT_FOR_WATCHDOG,
+        // STOP_TOGGLING_WATCHDOG,
+        // CHECK_WATCHDOG,
         CLOSE_SDC,
         WAIT_FOR_AATS,
         WAIT_FOR_TS,
@@ -139,58 +139,59 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
         case CheckupState::WAIT_FOR_ASMS:
             // ASMS Activated?
             if (_systemData->digitalData.asms_on) {
-                checkupState = CheckupState::START_TOGGLING_WATCHDOG;
-            }
-            break;
-        case CheckupState::START_TOGGLING_WATCHDOG:
-            // Start toggling watchdog
-            digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
-            initialCheckupTimestamp.reset();
-            checkupState = CheckupState::WAIT_FOR_WATCHDOG;
-            break;
-        case CheckupState::WAIT_FOR_WATCHDOG:
-            // Watchdog_is_ready == 1
-            if (initialCheckupTimestamp.check()) {
-                return CheckupError::ERROR;
-            }
-            if (_systemData->digitalData.watchdog_state) {
-                checkupState = CheckupState::STOP_TOGGLING_WATCHDOG;
-            }
-            break;
-        case CheckupState::STOP_TOGGLING_WATCHDOG:
-            // Stop toggling watchdog
-            digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
-            initialCheckupTimestamp.reset();
-            checkupState = CheckupState::CHECK_WATCHDOG;
-            break;
-        case CheckupState::CHECK_WATCHDOG:
-            // Watchdog_is_ready == 0
-            if (initialCheckupTimestamp.check() && !_systemData->digitalData.watchdog_state) {
+                // checkupState = CheckupState::START_TOGGLING_WATCHDOG;
                 checkupState = CheckupState::CLOSE_SDC;
-                //Start toggling watchdog again
             }
             break;
+        // case CheckupState::START_TOGGLING_WATCHDOG:
+        //     // Start toggling watchdog
+        //     digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
+        //     initialCheckupTimestamp.reset();
+        //     checkupState = CheckupState::WAIT_FOR_WATCHDOG;
+        //     break;
+        // case CheckupState::WAIT_FOR_WATCHDOG:
+        //     // Watchdog_is_ready == 1
+        //     if (initialCheckupTimestamp.check()) {
+        //         return CheckupError::ERROR;
+        //     }
+        //     if (_systemData->digitalData.watchdog_state) {
+        //         checkupState = CheckupState::STOP_TOGGLING_WATCHDOG;
+        //     }
+        //     break;
+        // case CheckupState::STOP_TOGGLING_WATCHDOG:
+        //     // Stop toggling watchdog
+        //     digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
+        //     initialCheckupTimestamp.reset();
+        //     checkupState = CheckupState::CHECK_WATCHDOG;
+        //     break;
+        // case CheckupState::CHECK_WATCHDOG:
+        //     // Watchdog_is_ready == 0
+        //     if (initialCheckupTimestamp.check() && !_systemData->digitalData.watchdog_state) {
+        //         checkupState = CheckupState::CLOSE_SDC;
+        //         //Start toggling watchdog again
+        //     }
+        //     break;
         case CheckupState::CLOSE_SDC:
             // Close SDC
             DigitalSender::closeSDC();
             checkupState = CheckupState::WAIT_FOR_AATS;
             break;
         case CheckupState::WAIT_FOR_AATS:
-            digitalSender->toggleWatchdog();
+            // digitalSender->toggleWatchdog();
         // AATS Activated?
             if (!_systemData->digitalData.sdcState_OPEN) {
                 checkupState = CheckupState::WAIT_FOR_TS;
             }
             break;
         case CheckupState::WAIT_FOR_TS:
-            digitalSender->toggleWatchdog();
+            // digitalSender->toggleWatchdog();
         // TS Activated?
             if (_systemData->failureDetection.ts_on) {
                 checkupState = CheckupState::TOGGLE_VALVE;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
-            digitalSender->toggleWatchdog();
+            // digitalSender->toggleWatchdog();
         // Toggle EBS Valves
             DigitalSender::activateEBS();
 
@@ -198,7 +199,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             checkupState = CheckupState::CHECK_PRESSURE;
             break;
         case CheckupState::CHECK_PRESSURE:
-            digitalSender->toggleWatchdog();
+            // digitalSender->toggleWatchdog();
             // Check hydraulic line pressure and pneumatic line pressure
             if (initialCheckupTimestamp.check()) {
                 return CheckupError::ERROR;
@@ -210,7 +211,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             break;
         
         case CheckupState::CHECK_TIMESTAMPS:
-            digitalSender->toggleWatchdog();
+            // digitalSender->toggleWatchdog();
         // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {
@@ -244,7 +245,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         _systemData->failureDetection.emergencySignal ||
         _systemData->digitalData.pneumatic_line_pressure == 0 ||
         _systemData->failureDetection.hasAnyComponentTimedOut() ||
-        _systemData->digitalData.watchdogTimestamp.check() ||
+        // _systemData->digitalData.watchdogTimestamp.check() ||
         !_systemData->digitalData.asms_on ||
         !_systemData->failureDetection.ts_on ||
         _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
@@ -260,8 +261,8 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
             && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
         _systemData->digitalData.asms_on == 0 ||
-        !_systemData->failureDetection.ts_on ||
-        _systemData->digitalData.watchdogTimestamp.check())) {
+        // _systemData->digitalData.watchdogTimestamp.check() ||
+        !_systemData->failureDetection.ts_on)) {
         return true;
     }
 
