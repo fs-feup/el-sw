@@ -85,7 +85,7 @@ void test_c1(void) {
     communicator.parse_message(msg);
     TEST_ASSERT_EQUAL(257, sd.sensors._hydraulic_line_pressure);
 
-    msg.buf[0] = RIGHT_WHEEL;
+    msg.buf[0] = RIGHT_WHEEL_CODE;
     msg.buf[1] = 0x00;
     msg.buf[2] = 0x08;
     communicator.parse_message(msg);

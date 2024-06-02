@@ -210,17 +210,17 @@ void test_shouldEnterEmergencyAsDrivingEBSValves() {
 
 void test_shouldStayDriving() {
     SystemData systemData;
-    systemData.digitalData._left_wheel_rpm = 0;
+    systemData.sensors._left_wheel_rpm = 0;
     systemData.missionFinished = true;
 
     CheckupManager checkupManager(&systemData);
 
     TEST_ASSERT_FALSE(checkupManager.shouldStayDriving());
 
-    systemData.digitalData._left_wheel_rpm = 1;
+    systemData.sensors._left_wheel_rpm = 1;
     TEST_ASSERT_TRUE(checkupManager.shouldStayDriving());
 
-    systemData.digitalData._left_wheel_rpm = 0;
+    systemData.sensors._left_wheel_rpm = 0;
     systemData.missionFinished = false;
     TEST_ASSERT_TRUE(checkupManager.shouldStayDriving());
 }

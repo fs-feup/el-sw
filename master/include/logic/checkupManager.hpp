@@ -269,7 +269,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
 }
 
 inline bool CheckupManager::shouldStayDriving() const {
-    if (_systemData->digitalData._left_wheel_rpm == 0 && _systemData->sensors._right_wheel_rpm == 0 && _systemData->missionFinished) {
+    if (abs(_systemData->sensors._left_wheel_rpm) < 0.1 && abs(_systemData->sensors._right_wheel_rpm) < 0.1 && _systemData->missionFinished) {
         return false;
     }
     return true;

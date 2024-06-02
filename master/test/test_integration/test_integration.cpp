@@ -291,14 +291,14 @@ void test_driving_to_finished_to_off() {
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
 
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x01, 0x00, 0x00}; // value not 0
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x01, 0x00, 0x00}; // value not 0
     communicator.c1Callback(c1_msg); // right wheel = msg
-    sd.digitalData._left_wheel_rpm = 0;
+    sd.sensors._left_wheel_rpm = 0;
 
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
 
-    uint8_t c1_msg2[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    uint8_t c1_msg2[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg2); // right wheel = msg
 
     as_state.calculateState();
@@ -321,7 +321,7 @@ void test_finished_to_emg() {
     sd.r2dLogics.r2d = true;
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
-    sd.digitalData._left_wheel_rpm = 0;
+    sd.sensors._left_wheel_rpm = 0;
     sd.sensors._right_wheel_rpm = 0;
     sd.missionFinished = true;
     as_state.calculateState();
@@ -452,8 +452,8 @@ void test_flow_emergency() {
 
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
-    sd.digitalData._left_wheel_rpm = 0;
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    sd.sensors._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg); // right wheel = msg
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
@@ -473,8 +473,8 @@ void test_flow_finished() {
 
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
-    sd.digitalData._left_wheel_rpm = 0;
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    sd.sensors._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg); // right wheel = msg
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
