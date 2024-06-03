@@ -41,7 +41,7 @@ public:
 
         asms_switch = newButton(ASMS_IN_PIN);
 
-        attachInterrupt(digitalPinToInterrupt(LWSS_PIN), DigitalReceiver::updateLeftWheelRpm, RISING);
+        // attachInterrupt(digitalPinToInterrupt(LWSS_PIN), DigitalReceiver::updateLeftWheelRpm, RISING);
     }
 
 private:
@@ -60,8 +60,8 @@ private:
 
 };
 
-double DigitalReceiver::_current_left_wheel_rpm = 0.0;
-unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
+// double DigitalReceiver::_current_left_wheel_rpm = 0.0;
+// unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
 
 inline Button DigitalReceiver::newButton(uint8_t pin) {
     Button button;
@@ -72,14 +72,14 @@ inline Button DigitalReceiver::newButton(uint8_t pin) {
     return button;
 }
 
-inline void DigitalReceiver::updateLeftWheelRpm() {
-    // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
-    unsigned long now = micros();
-    unsigned long time_interval_s = (now - last_wheel_pulse_ts);
-    _current_left_wheel_rpm = 1 / (time_interval_s * 1e-6 * PULSES_PER_ROTATION) * 60;  
-    last_wheel_pulse_ts = now; // refresh timestamp
-    DEBUG_PRINT_VAR(_current_left_wheel_rpm);
-}
+// inline void DigitalReceiver::updateLeftWheelRpm() {
+//     // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
+//     unsigned long now = micros();
+//     unsigned long time_interval_s = (now - last_wheel_pulse_ts);
+//     _current_left_wheel_rpm = 1 / (time_interval_s * 1e-6 * PULSES_PER_ROTATION) * 60;  
+//     last_wheel_pulse_ts = now; // refresh timestamp
+//     DEBUG_PRINT_VAR(_current_left_wheel_rpm);
+// }
 
 inline void DigitalReceiver::digitalReads() {
     readPneumaticLine();
@@ -87,7 +87,7 @@ inline void DigitalReceiver::digitalReads() {
     readAsmsSwitch();
     readAatsState();
     readWatchdog();
-    digitalData->_left_wheel_rpm = _current_left_wheel_rpm;
+    // digitalData->_left_wheel_rpm = _current_left_wheel_rpm;
 }
 
 inline void DigitalReceiver::readPneumaticLine() {

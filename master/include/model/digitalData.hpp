@@ -6,7 +6,7 @@
 
 struct DigitalData {
     // Rear Left Wheel Speed Encoder
-    double _left_wheel_rpm = 0;
+    // double _left_wheel_rpm = 0;
 
     // Watchdog
     Metro watchdogTimestamp{WATCHDOG_TIMEOUT};

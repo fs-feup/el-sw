@@ -27,7 +27,7 @@ void reset() {
 */
 void to_ready() {
     sd.digitalData.asms_on = true;
-    sd.digitalData.watchdog_state = true;
+    // sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
     uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH}; // VDC_BUS fill
@@ -43,7 +43,7 @@ void to_ready() {
         as_state.calculateState();
     }
     
-    sd.digitalData.watchdog_state = false;
+    // sd.digitalData.watchdog_state = false;
     // Wait for wd timeout
     Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
     while (!time2.check()) {  
@@ -51,7 +51,7 @@ void to_ready() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
 }
 
@@ -83,7 +83,7 @@ void test_off_to_ready_recheck() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
     
     sd.digitalData.asms_on = true;
-    sd.digitalData.watchdog_state = true;
+    // sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
     uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH}; // VDC_BUS fill
@@ -99,7 +99,7 @@ void test_off_to_ready_recheck() {
         as_state.calculateState();
     }
     
-    sd.digitalData.watchdog_state = false;
+    // sd.digitalData.watchdog_state = false;
     sd.digitalData.asms_on = false; // switch previously checked condition
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
     // Wait for wd timeout
@@ -113,7 +113,7 @@ void test_off_to_ready_recheck() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset(); // todo check
+        // sd.digitalData.watchdogTimestamp.reset(); // todo check
     }
 
     TEST_ASSERT_EQUAL(false, went_ready);
@@ -194,7 +194,7 @@ void test_ready_to_driving_to_emg() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
 
     uint8_t msg[8] = {RES_GO, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -208,7 +208,7 @@ void test_ready_to_driving_to_emg() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
     
     communicator.resStateCallback(msg);
@@ -221,7 +221,7 @@ void test_ready_to_driving_to_emg() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
         as_state.calculateState();
     }
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state); // still within threshold, okay
@@ -231,7 +231,7 @@ void test_ready_to_driving_to_emg() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
         as_state.calculateState();
     }
     // threshold over, still with brake pressure, emergency
@@ -256,7 +256,7 @@ void test_ready_to_driving_to_emg2() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
 
     uint8_t msg[8] = {RES_GO, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -291,14 +291,14 @@ void test_driving_to_finished_to_off() {
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
 
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x01, 0x00, 0x00}; // value not 0
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x01, 0x00, 0x00}; // value not 0
     communicator.c1Callback(c1_msg); // right wheel = msg
-    sd.digitalData._left_wheel_rpm = 0;
+    sd.sensors._left_wheel_rpm = 0;
 
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
 
-    uint8_t c1_msg2[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    uint8_t c1_msg2[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg2); // right wheel = msg
 
     as_state.calculateState();
@@ -321,7 +321,7 @@ void test_finished_to_emg() {
     sd.r2dLogics.r2d = true;
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state);
-    sd.digitalData._left_wheel_rpm = 0;
+    sd.sensors._left_wheel_rpm = 0;
     sd.sensors._right_wheel_rpm = 0;
     sd.missionFinished = true;
     as_state.calculateState();
@@ -390,7 +390,7 @@ void test_flow_ready() {
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
     
     sd.digitalData.asms_on = true;
-    sd.digitalData.watchdog_state = true;
+    // sd.digitalData.watchdog_state = true;
     sd.digitalData.sdcState_OPEN = false;
 
     uint8_t bamo_msg[] = {VDC_BUS, 0x00, BAMOCAR_VDC_HIGH};
@@ -407,7 +407,7 @@ void test_flow_ready() {
         as_state.calculateState();
     }
     
-    sd.digitalData.watchdog_state = false;
+    // sd.digitalData.watchdog_state = false;
     // Wait for wd timeout
     Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
     while (!time2.check()) {
@@ -416,7 +416,7 @@ void test_flow_ready() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
     TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 
@@ -427,7 +427,7 @@ void test_flow_ready() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        sd.digitalData.watchdogTimestamp.reset();
+        // sd.digitalData.watchdogTimestamp.reset();
     }
 
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
@@ -452,8 +452,8 @@ void test_flow_emergency() {
 
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
-    sd.digitalData._left_wheel_rpm = 0;
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    sd.sensors._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg); // right wheel = msg
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
@@ -473,8 +473,8 @@ void test_flow_finished() {
 
     uint8_t pc_msg[] = {MISSION_FINISHED};
     communicator.pcCallback(pc_msg);
-    sd.digitalData._left_wheel_rpm = 0;
-    uint8_t c1_msg[] = {RIGHT_WHEEL, 0x00, 0x00, 0x00, 0x00};
+    sd.sensors._left_wheel_rpm = 0;
+    uint8_t c1_msg[] = {RIGHT_WHEEL_CODE, 0x00, 0x00, 0x00, 0x00};
     communicator.c1Callback(c1_msg); // right wheel = msg
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_FINISHED, as_state.state);
