@@ -16,10 +16,10 @@
 
 #define BRAKE_SENSOR_PIN A5
 #define CURRENT_SENSOR_PIN A4
-#define RIGHT_WHEEL_ENCODER_PIN A3 // FIX PIN NUMBER
-#define LEFT_WHEEL_ENCODER_PIN A7 // FIX PIN NUMBER TODO: waiting for GUI to say what is the pin number
+#define RIGHT_WHEEL_ENCODER_PIN 30
+#define LEFT_WHEEL_ENCODER_PIN 28 
 
-#define RR_RPM_PUBLISH_PERIOD 1000 // micro secs
+#define RPM_PUBLISH_PERIOD 1000 // micro secs
 #define WPS_PULSES_PER_ROTATION 48 // Number of pulses per one rotation of the wheel
 #define SENSOR_SAMPLE_PERIOD 20    // ms
 
