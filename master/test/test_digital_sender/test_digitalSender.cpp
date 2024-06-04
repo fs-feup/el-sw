@@ -2,21 +2,11 @@
 #include "embedded/digitalSettings.hpp"
 
 //undefine before all the pins defined after
-#undef ASSI_DRIVING_PIN
-#undef ASSI_READY_PIN
-#undef ASSI_FINISH_PIN
-#undef ASSI_EMERGENCY_PIN
 #undef SDC_LOGIC_CLOSE_SDC_PIN
 #undef SDC_LOGIC_WATCHDOG_OUT_PIN
 #undef EBS_VALVE_1_PIN
 #undef EBS_VALVE_2_PIN
 #undef MASTER_SDC_OUT_PIN
-
-
-#define ASSI_EMERGENCY_PIN 0
-#define ASSI_DRIVING_PIN 1
-#define ASSI_READY_PIN 2
-#define ASSI_FINISH_PIN 3
 
 #define SDC_LOGIC_CLOSE_SDC_PIN 2
 #define MASTER_SDC_OUT_PIN 3

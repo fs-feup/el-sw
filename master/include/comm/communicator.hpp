@@ -114,18 +114,19 @@ inline Communicator::Communicator(SystemData* systemData) {
 inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     _systemData->sensors._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
+    DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
   } else if (buf[0] == RIGHT_WHEEL_CODE) {
     double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._right_wheel_rpm = right_wheel_rpm;
+    DEBUG_PRINT_VAR(_systemData->sensors._right_wheel_rpm);
   } else if (buf[0] == LEFT_WHEEL_CODE) {
     double left_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     left_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
+    DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
   }
 
-  DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
-  DEBUG_PRINT_VAR(_systemData->sensors._rl_wheel_rpm);
 }
 
 inline void Communicator::resStateCallback(const uint8_t *buf) {
@@ -165,6 +166,7 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
+    DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
@@ -178,26 +180,28 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
             _systemData->failureDetection.ts_on = false;
         else 
             _systemData->failureDetection.ts_on = true;       
+        DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
     }   
 
-    DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
         _systemData->failureDetection.pcAliveTimestamp.reset();
+        DEBUG_PRINT("Received AS CU Alive");
     } else if (buf[0] == MISSION_FINISHED) {
         _systemData->missionFinished = true;
+        DEBUG_PRINT_VAR(_systemData->missionFinished);
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
         _systemData->failureDetection.emergencySignal = true;
+        DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
     }
-
-    DEBUG_PRINT_VAR(_systemData->missionFinished);
-    DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
+    
 }
 
 inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.reset();
+    DEBUG_PRINT("Received Steering Alive");
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {

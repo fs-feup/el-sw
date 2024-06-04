@@ -113,6 +113,10 @@ void calculate_rr_rpm()
     unsigned long time_interval = (micros() - last_wheel_pulse_rr);
     rr_rpm = 1 / (time_interval * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
     last_wheel_pulse_rr = micros(); // refresh timestamp
+    #ifdef DEBUG
+    Serial.print("Reading RR RPM: ");
+    Serial.println(rr_rpm);
+    #endif 
 }
 
 void calculate_rl_rpm()
@@ -121,6 +125,10 @@ void calculate_rl_rpm()
     unsigned long time_interval = (micros() - last_wheel_pulse_rl);
     rl_rpm = 1 / (time_interval * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
     last_wheel_pulse_rl = micros(); // refresh timestamp
+    #ifdef DEBUG
+    Serial.print("Reading RL RPM: ");
+    Serial.println(rl_rpm);
+    #endif 
 }
 
 void bufferInsert(int *buffer, int n, int value)
@@ -251,6 +259,10 @@ void setup()
     Logging loggingInstance;
 
     rpm_publisher_timer = 0;
+    brake_sensor_timer = 0;
+    #ifdef DEBUG
+    Serial.begin(9600);
+    #endif
 
     canbusSetup();
     loggingInstance.setup_log();
@@ -271,6 +283,10 @@ void loop()
         brake_val = average(avgBuffer1, AVG_SAMPLES);
         brake = brake_val;
         // Serial.println(brake_val);
+        #ifdef DEBUG
+        Serial.print("Reading Brake line:");
+        Serial.println(brake_val);
+        #endif 
         if (brakeLightControl(brake_val))
         {
             // Serial.println("Brake Light ON");
@@ -284,6 +300,12 @@ void loop()
     }
 
     if (rpm_publisher_timer > RPM_PUBLISH_PERIOD){
+        #ifdef DEBUG
+        Serial.print("Publishing RR RPM: ");
+        Serial.println(rr_rpm);
+        Serial.print("Publishing RL RPM: ");
+        Serial.println(rl_rpm);
+        #endif 
         char rr_rpm_byte[4];
         char rl_rpm_byte[4];
         rpm_2_byte(rr_rpm, rr_rpm_byte);

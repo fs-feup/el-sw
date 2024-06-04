@@ -20,8 +20,8 @@
  * ===========
  */
 
-#define ASSI_BLUE_PIN 5
-#define ASSI_YELLOW_PIN 7
+#define ASSI_BLUE_PIN 7
+#define ASSI_YELLOW_PIN 4
 
 
 #define SDC_LOGIC_CLOSE_SDC_PIN 8
