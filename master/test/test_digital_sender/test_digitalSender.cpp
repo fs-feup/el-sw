@@ -85,7 +85,9 @@ void test_blinkLED(void) {
     Metro test{10000};
     DigitalSender ds;
 
-    while (!test.check()) { ds.blinkLED(1); }
+    while (!test.check()) { 
+        ds.blinkLED(1);
+    }
     TEST_PASS();
 }
 

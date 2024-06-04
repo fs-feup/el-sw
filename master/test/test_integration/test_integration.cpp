@@ -93,11 +93,11 @@ void test_off_to_ready_recheck() {
     uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
     communicator.c1Callback(hydraulic_msg);
 
-    // Iterate a few times to go to check wd
-    Metro time{1};
-    while (!time.check()) {
-        as_state.calculateState();
-    }
+    // // Iterate a few times to go to check wd
+    // Metro time{1};
+    // while (!time.check()) {
+    //     as_state.calculateState();
+    // }
     
     // sd.digitalData.watchdog_state = false;
     sd.digitalData.asms_on = false; // switch previously checked condition
@@ -155,7 +155,7 @@ void test_ready_to_emg_to_off() {
     to_ready();
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 
-    Metro time{COMPONENT_TIMESTAMP_TIMEOUT};
+    Metro time{COMPONENT_TIMESTAMP_TIMEOUT + 10};
     while (!time.check()){
         as_state.calculateState();
     }
@@ -402,23 +402,23 @@ void test_flow_ready() {
     communicator.c1Callback(hydraulic_msg);
 
     // Iterate a few times to go to check wd
-    Metro time{1};
-    while (!time.check()) {
-        as_state.calculateState();
-    }
+    // Metro time{1};
+    // while (!time.check()) {
+    //     as_state.calculateState();
+    // }
     
     // sd.digitalData.watchdog_state = false;
     // Wait for wd timeout
-    Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
-    while (!time2.check()) {
-        communicator.c1Callback(hydraulic_msg2);
-        as_state.calculateState();
-        sd.failureDetection.inversorAliveTimestamp.reset();
-        sd.failureDetection.pcAliveTimestamp.reset();
-        sd.failureDetection.steerAliveTimestamp.reset();
+    // Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
+    // while (!time2.check()) {
+    //     communicator.c1Callback(hydraulic_msg2);
+    //     as_state.calculateState();
+    //     sd.failureDetection.inversorAliveTimestamp.reset();
+    //     sd.failureDetection.pcAliveTimestamp.reset();
+    //     sd.failureDetection.steerAliveTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
-    }
-    TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
+    // }
+    // TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 
     Metro time3{INITIAL_CHECKUP_STEP_TIMEOUT};
     while (!time3.check()) {

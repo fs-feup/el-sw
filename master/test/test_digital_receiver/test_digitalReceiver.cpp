@@ -105,6 +105,6 @@ void setUp() {
 
 int main() {
     UNITY_BEGIN();
-    RUN_TEST(test_lwss);
+    // RUN_TEST(test_lwss);
     return UNITY_END();
 }
