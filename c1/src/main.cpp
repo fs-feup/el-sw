@@ -19,7 +19,7 @@
 #define RIGHT_WHEEL_ENCODER_PIN 30
 #define LEFT_WHEEL_ENCODER_PIN 28 
 
-#define RPM_PUBLISH_PERIOD 1000 // micro secs
+#define RPM_PUBLISH_PERIOD 5000 // micro secs
 #define WPS_PULSES_PER_ROTATION 48 // Number of pulses per one rotation of the wheel
 #define SENSOR_SAMPLE_PERIOD 20    // ms
 
@@ -324,6 +324,7 @@ void loop()
         rl_rpm_msg.buf[1] = rl_rpm_byte[3];
         can1.write(rr_rpm_msg);
         can1.write(rl_rpm_msg);
+        rpm_publisher_timer = 0;
     }
         
 
