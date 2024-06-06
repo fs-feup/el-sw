@@ -1,0 +1,818 @@
+[
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\AudioStream.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\AudioStream.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\AudioStream.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\AudioStream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\CrashReport.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\CrashReport.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\CrashReport.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\CrashReport.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\DMAChannel.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\DMAChannel.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\DMAChannel.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\DMAChannel.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\EventResponder.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\EventResponder.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\EventResponder.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\EventResponder.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial1.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial1.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial1.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial1.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial2.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial2.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial2.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial2.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial3.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial3.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial3.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial3.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial4.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial4.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial4.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial4.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial5.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial5.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial5.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial5.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial6.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial6.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial6.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial6.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial7.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial7.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial7.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial7.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial8.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial8.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\HardwareSerial8.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\HardwareSerial8.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\IPAddress.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\IPAddress.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\IPAddress.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\IPAddress.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\IntervalTimer.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\IntervalTimer.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\IntervalTimer.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\IntervalTimer.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\Print.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Print.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Print.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\Print.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\Stream.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Stream.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Stream.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\Stream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\Time.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Time.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Time.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\Time.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\Tone.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Tone.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\Tone.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\Tone.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\WMath.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\WMath.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\WMath.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\WMath.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\WString.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\WString.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\WString.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\WString.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\analog.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\analog.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\analog.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\analog.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\bootdata.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\bootdata.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\bootdata.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\bootdata.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\clockspeed.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\clockspeed.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\clockspeed.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\clockspeed.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\debugprintf.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\debugprintf.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\debugprintf.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\debugprintf.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\delay.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\delay.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\delay.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\delay.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\digital.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\digital.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\digital.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\digital.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\eeprom.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\eeprom.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\eeprom.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\eeprom.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\extmem.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\extmem.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\extmem.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\extmem.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\fuse.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\fuse.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\fuse.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\fuse.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\interrupt.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\interrupt.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\interrupt.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\interrupt.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\keylayouts.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\keylayouts.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\keylayouts.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\keylayouts.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\libc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\libc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\libc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\libc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\main.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\main.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\main.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\main.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -x assembler-with-cpp -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 -c -o .pio\\build\\teensy41-debug\\FrameworkArduino\\memcpy-armv7m.S.o C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\memcpy-armv7m.S",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\memcpy-armv7m.S",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\memcpy-armv7m.S.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -x assembler-with-cpp -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 -c -o .pio\\build\\teensy41-debug\\FrameworkArduino\\memset.S.o C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\memset.S",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\memset.S",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\memset.S.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\new.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\new.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\new.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\new.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\nonstd.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\nonstd.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\nonstd.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\nonstd.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\pwm.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\pwm.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\pwm.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\pwm.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\rtc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\rtc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\rtc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\rtc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent1.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent1.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent1.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent1.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent2.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent2.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent2.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent2.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent3.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent3.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent3.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent3.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent4.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent4.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent4.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent4.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent5.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent5.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent5.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent5.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent6.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent6.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent6.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent6.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent7.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent7.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent7.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent7.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent8.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent8.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEvent8.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEvent8.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEventUSB1.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEventUSB1.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEventUSB1.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEventUSB1.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\serialEventUSB2.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEventUSB2.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\serialEventUSB2.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\serialEventUSB2.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_alloc_valid.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_alloc_valid.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_alloc_valid.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_alloc_valid.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_calloc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_calloc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_calloc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_calloc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_free.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_free.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_free.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_free.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_hash.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_hash.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_hash.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_hash.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_malloc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_malloc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_malloc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_malloc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_malloc_stats.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_malloc_stats.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_malloc_stats.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_malloc_stats.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_pool.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_pool.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_pool.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_pool.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc_i.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc_i.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc_i.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc_i.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc_move.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc_move.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_realloc_move.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_realloc_move.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_szalloc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_szalloc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_szalloc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_szalloc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_util.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_util.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_util.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_util.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\sm_zalloc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_zalloc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\sm_zalloc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\sm_zalloc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\startup.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\startup.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\startup.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\startup.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\tempmon.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\tempmon.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\tempmon.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\tempmon.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_audio.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_audio.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_audio.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_audio.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_desc.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_desc.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_desc.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_desc.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_flightsim.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_flightsim.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_flightsim.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_flightsim.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_inst.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_inst.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_inst.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_inst.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_joystick.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_joystick.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_joystick.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_joystick.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_keyboard.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_keyboard.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_keyboard.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_keyboard.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_midi.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_midi.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_midi.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_midi.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_mouse.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_mouse.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_mouse.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_mouse.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_mtp.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_mtp.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_mtp.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_mtp.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_rawhid.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_rawhid.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_rawhid.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_rawhid.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_seremu.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_seremu.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_seremu.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_seremu.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial2.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial2.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial2.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial2.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial3.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial3.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_serial3.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_serial3.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-gcc.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\usb_touch.c.o -c -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_touch.c",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\usb_touch.c",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\usb_touch.c.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\FrameworkArduino\\yield.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\yield.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4\\yield.cpp",
+        "output": ".pio\\build\\teensy41-debug\\FrameworkArduino\\yield.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o \".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\EasyNextionLibrary.cpp.o\" -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH \"-I.pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\" -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 \".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\EasyNextionLibrary.cpp\"",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": ".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\EasyNextionLibrary.cpp",
+        "output": ".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\EasyNextionLibrary.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o \".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\callTriggers.cpp.o\" -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH \"-I.pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\" -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 \".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\callTriggers.cpp\"",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": ".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\callTriggers.cpp",
+        "output": ".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\callTriggers.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o \".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\readCustomCommands.cpp.o\" -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH \"-I.pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\" -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 \".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\readCustomCommands.cpp\"",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": ".pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\\readCustomCommands.cpp",
+        "output": ".pio\\build\\teensy41-debug\\libc15\\Easy Nextion Library\\readCustomCommands.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\libc63\\SPI\\SPI.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI\\SPI.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI\\SPI.cpp",
+        "output": ".pio\\build\\teensy41-debug\\libc63\\SPI\\SPI.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatDbg.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatDbg.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatDbg.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatDbg.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFile.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFile.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFile.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFile.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFilePrint.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFilePrint.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFilePrint.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFilePrint.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFileWrite.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFileWrite.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFileWrite.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFileWrite.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFormatter.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFormatter.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatFormatter.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatFormatter.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatName.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatName.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatName.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatName.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatPartition.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatPartition.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatPartition.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatPartition.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatVolume.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatVolume.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\ExFatVolume.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\ExFatVolume.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\upcase.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\upcase.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\ExFatLib\\upcase.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\ExFatLib\\upcase.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatDbg.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatDbg.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatDbg.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatDbg.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFile.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFile.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFile.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFile.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFileLFN.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFileLFN.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFileLFN.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFileLFN.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFilePrint.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFilePrint.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFilePrint.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFilePrint.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFileSFN.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFileSFN.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFileSFN.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFileSFN.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFormatter.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFormatter.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatFormatter.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatFormatter.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatName.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatName.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatName.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatName.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatPartition.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatPartition.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatPartition.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatPartition.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatVolume.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatVolume.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FatLib\\FatVolume.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FatLib\\FatVolume.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FreeStack.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FreeStack.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FreeStack.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FreeStack.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsFile.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsFile.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsFile.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsFile.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsNew.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsNew.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsNew.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsNew.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsVolume.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsVolume.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\FsLib\\FsVolume.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\FsLib\\FsVolume.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\MinimumSerial.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\MinimumSerial.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\MinimumSerial.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\MinimumSerial.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdCardInfo.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdCardInfo.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdCardInfo.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdCardInfo.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdSpiCard.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdSpiCard.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdSpiCard.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdSpiCard.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdioTeensy.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdioTeensy.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SdCard\\SdioTeensy.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SdCard\\SdioTeensy.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiArtemis.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiArtemis.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiArtemis.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiArtemis.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiChipSelect.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiChipSelect.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiChipSelect.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiChipSelect.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiDue.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiDue.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiDue.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiDue.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiESP.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiESP.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiESP.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiESP.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiParticle.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiParticle.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiParticle.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiParticle.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiSTM32.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiSTM32.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiSTM32.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiSTM32.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiSTM32Core.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiSTM32Core.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiSTM32Core.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiSTM32Core.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiTeensy3.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiTeensy3.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\SpiDriver\\SdSpiTeensy3.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\SpiDriver\\SdSpiTeensy3.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FmtNumber.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FmtNumber.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FmtNumber.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FmtNumber.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsCache.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsCache.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsCache.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsCache.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsDateTime.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsDateTime.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsDateTime.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsDateTime.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsName.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsName.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsName.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsName.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsStructs.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsStructs.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsStructs.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsStructs.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsUtf.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsUtf.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\FsUtf.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\FsUtf.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\PrintBasic.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\PrintBasic.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\PrintBasic.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\PrintBasic.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\upcase.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\upcase.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\common\\upcase.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\common\\upcase.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\StdioStream.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\StdioStream.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\StdioStream.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\StdioStream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\StreamBaseClass.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\StreamBaseClass.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\StreamBaseClass.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\StreamBaseClass.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\istream.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\istream.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\istream.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\istream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\ostream.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\ostream.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src\\iostream\\ostream.cpp",
+        "output": ".pio\\build\\teensy41-debug\\lib48a\\SdFat\\iostream\\ostream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\libcfa\\SD\\SD.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SD\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SD\\src\\SD.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "C:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SD\\src\\SD.cpp",
+        "output": ".pio\\build\\teensy41-debug\\libcfa\\SD\\SD.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\src\\logging.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -Iinclude -Isrc -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SD\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\FlexCAN_T4 \"-I.pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\" -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 src\\logging.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "src\\logging.cpp",
+        "output": ".pio\\build\\teensy41-debug\\src\\logging.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\marhc\\.platformio\\packages\\toolchain-gccarmnoneeabi-teensy\\bin\\arm-none-eabi-g++.exe -o .pio\\build\\teensy41-debug\\src\\main.cpp.o -c -fno-exceptions -felide-constructors -fno-rtti -std=gnu++17 -Wno-error=narrowing -fpermissive -fno-threadsafe-statics -Wall -ffunction-sections -fdata-sections -mthumb -mcpu=cortex-m7 -nostdlib -mfloat-abi=hard -mfpu=fpv5-d16 -O2 -DPLATFORMIO=60115 -D__IMXRT1062__ -DARDUINO_TEENSY41 -DDEBUG -DUSB_SERIAL -DARDUINO=10805 -DTEENSYDUINO=159 -DCORE_TEENSY -DF_CPU=600000000 -DLAYOUT_US_ENGLISH -Iinclude -Isrc -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SD\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SdFat\\src -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\SPI -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\libraries\\FlexCAN_T4 \"-I.pio\\libdeps\\teensy41-debug\\Easy Nextion Library\\src\" -IC:\\Users\\marhc\\.platformio\\packages\\framework-arduinoteensy\\cores\\teensy4 src\\main.cpp",
+        "directory": "C:\\Users\\marhc\\Documents\\FS\\el-sw\\c1",
+        "file": "src\\main.cpp",
+        "output": ".pio\\build\\teensy41-debug\\src\\main.cpp.o"
+    }
+]
