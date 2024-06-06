@@ -38,6 +38,13 @@ public:
         pinMode(SDC_STATE_PIN, INPUT);
         pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
         pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
+        pinMode(MISSION_ACCELERATION_PIN, INPUT);
+        pinMode(MISSION_AUTOCROSS_PIN, INPUT);
+        pinMode(MISSION_EBSTEST_PIN, INPUT);
+        pinMode(MISSION_INSPECTION_PIN, INPUT);
+        pinMode(MISSION_MANUAL_PIN, INPUT);
+        pinMode(MISSION_SKIDPAD_PIN, INPUT);
+        pinMode(MISSION_TRACKDRIVE_PIN, INPUT);
 
         asms_switch = newButton(ASMS_IN_PIN);
 
@@ -101,17 +108,31 @@ inline void DigitalReceiver::readPneumaticLine() {
 
 inline void DigitalReceiver::readMission() {
     // Enum value attributed considering the True Boolean Value
-    *mission = static_cast<Mission>(
-        digitalRead(MISSION_MANUAL_PIN) * MANUAL |
-        digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
-        digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
-        digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
-        digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
-        digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
-        digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
+    // *mission = static_cast<Mission>(
+    //     digitalRead(MISSION_MANUAL_PIN) * MANUAL |
+    //     digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
+    //     digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
+    //     digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
+    //     digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
+    //     digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
+    //     digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
+    if (digitalRead(MISSION_ACCELERATION_PIN)) {
+        *mission = ACCELERATION;
+    } else if (digitalRead(MISSION_SKIDPAD_PIN)) {
+        *mission = SKIDPAD;
+    } else if (digitalRead(MISSION_AUTOCROSS_PIN)) {
+        *mission = AUTOCROSS;
+    } else if (digitalRead(MISSION_TRACKDRIVE_PIN)) {
+        *mission = TRACKDRIVE;
+    } else if (digitalRead(MISSION_EBSTEST_PIN)) {
+        *mission = EBS_TEST;
+    } else if (digitalRead(MISSION_INSPECTION_PIN)) {
+        *mission = INSPECTION;
+    } else {
+        *mission = MANUAL;
+    }
 
     DEBUG_PRINT_VAR(*mission);
-    
 }
 
 inline void DigitalReceiver::readAsmsSwitch() {

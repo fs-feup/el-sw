@@ -104,7 +104,7 @@ inline Communicator::Communicator(SystemData* systemData) {
     can1.setBaudRate(500000);
     can1.enableFIFO();
     can1.enableFIFOInterrupt();
-    can1.setFIFOFilter(REJECT_ALL);
+    // can1.setFIFOFilter(REJECT_ALL);
     for (auto &fifoCode: fifoCodes)
         can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
@@ -126,6 +126,7 @@ inline void Communicator::c1Callback(const uint8_t *buf) {
     _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
     DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
   }
+  DEBUG_PRINT("RECEIVED SOMETHING");
 
 }
 

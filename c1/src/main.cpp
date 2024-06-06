@@ -163,6 +163,10 @@ void canbusSniffer(const CAN_message_t &msg)
     // Serial.println("CAN message received");
     // Serial.print("Message ID: ");
     // Serial.println(msg.id, HEX);
+
+    #ifdef DEBUG
+    Serial.println("Received a message");
+    #endif
     switch (msg.id)
     {
     case BMS_ID:

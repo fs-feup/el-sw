@@ -22,12 +22,12 @@ void setup() {
     DEBUG_PRINT("Starting up...");
     Communicator::_systemData = &systemData;
   
-    state_calculation_timer.begin([]() {
-        noInterrupts();
-        digitalReceiver.digitalReads();
-        as_state.calculateState();
-        interrupts();
-    }, STATE_CALCULATION_INTERVAL); // Ensuring 50ms intervals beween state calculations
+    // state_calculation_timer.begin([]() {
+    //     noInterrupts();
+    //     digitalReceiver.digitalReads();
+    //     as_state.calculateState();
+    //     interrupts();
+    // }, STATE_CALCULATION_INTERVAL); // Ensuring 50ms intervals beween state calculations
 
     rl_rpm_timer.reset();
     mission_timer.reset();
@@ -37,8 +37,8 @@ void setup() {
 void loop() {
     // DEBUG_PRINT("Looping...");
     // DEBUG_PRINT_VAR("variavel atoa", 29);
-    // digitalReceiver.digitalReads();
-    // as_state.calculateState();
+    digitalReceiver.digitalReads();
+    as_state.calculateState();
     
     if (rl_rpm_timer.check()) {
         Communicator::publish_left_wheel_rpm(systemData.mission);
