@@ -45,8 +45,7 @@ public:
         pinMode(MISSION_MANUAL_PIN, INPUT);
         pinMode(MISSION_SKIDPAD_PIN, INPUT);
         pinMode(MISSION_TRACKDRIVE_PIN, INPUT);
-
-        asms_switch = newButton(ASMS_IN_PIN);
+        pinMode(ASMS_IN_PIN, INPUT);
 
         // attachInterrupt(digitalPinToInterrupt(LWSS_PIN), DigitalReceiver::updateLeftWheelRpm, RISING);
     }
@@ -108,39 +107,20 @@ inline void DigitalReceiver::readPneumaticLine() {
 
 inline void DigitalReceiver::readMission() {
     // Enum value attributed considering the True Boolean Value
-    // *mission = static_cast<Mission>(
-    //     digitalRead(MISSION_MANUAL_PIN) * MANUAL |
-    //     digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
-    //     digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
-    //     digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
-    //     digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
-    //     digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
-    //     digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
-    if (digitalRead(MISSION_ACCELERATION_PIN)) {
-        *mission = ACCELERATION;
-    } else if (digitalRead(MISSION_SKIDPAD_PIN)) {
-        *mission = SKIDPAD;
-    } else if (digitalRead(MISSION_AUTOCROSS_PIN)) {
-        *mission = AUTOCROSS;
-    } else if (digitalRead(MISSION_TRACKDRIVE_PIN)) {
-        *mission = TRACKDRIVE;
-    } else if (digitalRead(MISSION_EBSTEST_PIN)) {
-        *mission = EBS_TEST;
-    } else if (digitalRead(MISSION_INSPECTION_PIN)) {
-        *mission = INSPECTION;
-    } else {
-        *mission = MANUAL;
-    }
+    *mission = static_cast<Mission>(
+        digitalRead(MISSION_MANUAL_PIN) * MANUAL |
+        digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
+        digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
+        digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
+        digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
+        digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
+        digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
 
     DEBUG_PRINT_VAR(*mission);
 }
 
 inline void DigitalReceiver::readAsmsSwitch() {
-    asms_switch.update();
-    if (asms_switch.pressed())
-        digitalData->asms_on = true;
-    else
-        digitalData->asms_on = false;
+    digitalData->asms_on = digitalRead(ASMS_IN_PIN);
     DEBUG_PRINT_VAR(digitalData->asms_on);
 }
 
