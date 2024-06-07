@@ -20,7 +20,8 @@
 #define LEFT_WHEEL_ENCODER_PIN 28 
 
 #define RPM_PUBLISH_PERIOD 5000 // micro secs
-#define WPS_PULSES_PER_ROTATION 48 // Number of pulses per one rotation of the wheel
+#define WPS_PULSES_PER_ROTATION 36 // Number of pulses per one rotation of the wheel
+#define LIMIT_RPM_INTERVAL 500000 // Time limit, in micros, after which rpms go to zero
 #define SENSOR_SAMPLE_PERIOD 20    // ms
 
 #define CAN_BAUD_RATE 500000
@@ -106,31 +107,6 @@ int average(int *buffer, int n)
     return sum / n;
 }
 
-// Interrupt service routine to update RPM
-void calculate_rr_rpm()
-{
-    //rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
-    unsigned long time_interval = (micros() - last_wheel_pulse_rr);
-    rr_rpm = 1 / (time_interval * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
-    last_wheel_pulse_rr = micros(); // refresh timestamp
-    #ifdef DEBUG
-    Serial.print("Reading RR RPM: ");
-    Serial.println(rr_rpm);
-    #endif 
-}
-
-void calculate_rl_rpm()
-{
-    //rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
-    unsigned long time_interval = (micros() - last_wheel_pulse_rl);
-    rl_rpm = 1 / (time_interval * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
-    last_wheel_pulse_rl = micros(); // refresh timestamp
-    #ifdef DEBUG
-    Serial.print("Reading RL RPM: ");
-    Serial.println(rl_rpm);
-    #endif 
-}
-
 void bufferInsert(int *buffer, int n, int value)
 {
     for (int i = 0; i < n - 1; i++)
@@ -160,12 +136,10 @@ void initMessages()
 
 void canbusSniffer(const CAN_message_t &msg)
 {
-    // Serial.println("CAN message received");
-    // Serial.print("Message ID: ");
-    // Serial.println(msg.id, HEX);
-
     #ifdef DEBUG
-    Serial.println("Received a message");
+    Serial.println("CAN message received");
+    Serial.print("Message ID: ");
+    Serial.println(msg.id, HEX);
     #endif
     switch (msg.id)
     {
@@ -273,8 +247,8 @@ void setup()
     pinMode(BRAKE_SENSOR_PIN, INPUT);
     pinMode(BRAKE_LIGHT, OUTPUT);
 
-    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), calculate_rr_rpm, RISING);
-    attachInterrupt(digitalPinToInterrupt(LEFT_WHEEL_ENCODER_PIN), calculate_rl_rpm, RISING);
+    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), [](){ last_wheel_pulse_rr = micros(); }, RISING);
+    attachInterrupt(digitalPinToInterrupt(LEFT_WHEEL_ENCODER_PIN), [](){ last_wheel_pulse_rl = micros(); }, RISING);
 }
 
 void loop()
@@ -286,14 +260,15 @@ void loop()
         bufferInsert(avgBuffer1, AVG_SAMPLES, brake_val);
         brake_val = average(avgBuffer1, AVG_SAMPLES);
         brake = brake_val;
-        // Serial.println(brake_val);
         #ifdef DEBUG
         Serial.print("Reading Brake line:");
         Serial.println(brake_val);
         #endif 
         if (brakeLightControl(brake_val))
         {
-            // Serial.println("Brake Light ON");
+            #ifdef DEBUG
+            Serial.println("Brake Light ON");
+            #endif 
             if (canTimer > CAN_TRANSMISSION_PERIOD)
             {
                 // Serial.println("Message sent");
@@ -310,18 +285,22 @@ void loop()
         Serial.print("Publishing RL RPM: ");
         Serial.println(rl_rpm);
         #endif 
+        unsigned long time_interval_rr = (micros() - last_wheel_pulse_rr);
+        unsigned long time_interval_rl = (micros() - last_wheel_pulse_rl);
+        rr_rpm = 1 / (time_interval_rr * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+        rl_rpm = 1 / (time_interval_rl * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
         char rr_rpm_byte[4];
         char rl_rpm_byte[4];
         rpm_2_byte(rr_rpm, rr_rpm_byte);
         rpm_2_byte(rl_rpm, rl_rpm_byte);
-        rr_rpm_msg.buf[4] = rr_rpm_byte[0];
-        rr_rpm_msg.buf[3] = rr_rpm_byte[1];
-        rr_rpm_msg.buf[2] = rr_rpm_byte[2];
-        rr_rpm_msg.buf[1] = rr_rpm_byte[3];
-        rl_rpm_msg.buf[4] = rl_rpm_byte[0];
-        rl_rpm_msg.buf[3] = rl_rpm_byte[1];
-        rl_rpm_msg.buf[2] = rl_rpm_byte[2];
-        rl_rpm_msg.buf[1] = rl_rpm_byte[3];
+        rr_rpm_msg.buf[1] = rr_rpm_byte[0];
+        rr_rpm_msg.buf[2] = rr_rpm_byte[1];
+        rr_rpm_msg.buf[3] = rr_rpm_byte[2];
+        rr_rpm_msg.buf[4] = rr_rpm_byte[3];
+        rl_rpm_msg.buf[1] = rl_rpm_byte[0];
+        rl_rpm_msg.buf[2] = rl_rpm_byte[1];
+        rl_rpm_msg.buf[3] = rl_rpm_byte[2];
+        rl_rpm_msg.buf[4] = rl_rpm_byte[3];
         can1.write(rr_rpm_msg);
         can1.write(rl_rpm_msg);
         rpm_publisher_timer = 0;
