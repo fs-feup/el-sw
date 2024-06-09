@@ -287,8 +287,8 @@ void loop()
         #endif 
         unsigned long time_interval_rr = (micros() - last_wheel_pulse_rr);
         unsigned long time_interval_rl = (micros() - last_wheel_pulse_rl);
-        rr_rpm = 1 / (time_interval_rr * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
-        rl_rpm = 1 / (time_interval_rl * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+        rr_rpm = time_interval_rr > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rr * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+        rl_rpm = time_interval_rl > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rl * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
         char rr_rpm_byte[4];
         char rl_rpm_byte[4];
         rpm_2_byte(rr_rpm, rr_rpm_byte);
