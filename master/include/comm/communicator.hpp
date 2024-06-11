@@ -137,8 +137,6 @@ inline void Communicator::c1Callback(const uint8_t *buf) {
     _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
     DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
   }
-  DEBUG_PRINT("RECEIVED SOMETHING");
-
 }
 
 inline void Communicator::resStateCallback(const uint8_t *buf) {
@@ -217,24 +215,24 @@ inline void Communicator::steeringCallback() {
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
-    // DEBUG_PRINT_VAR(msg.id);
+    DEBUG_PRINT_VAR(msg.id);
     switch(msg.id) {
         case PC_ID:
-            // pcCallback(msg.buf);
+            pcCallback(msg.buf);
         case RES_STATE:
-            // resStateCallback(msg.buf);
+            resStateCallback(msg.buf);
             break;
         case RES_READY:
-            // resReadyCallback();
+            resReadyCallback();
             break;
         case C1_ID:
             c1Callback(msg.buf); // rwheel and hydraulic line
             break;
         case BAMO_RESPONSE_ID:
-            // bamocarCallback(msg.buf);
+            bamocarCallback(msg.buf);
             break;
         case STEERING_ID:
-            // steeringCallback();
+            steeringCallback();
             break;
         default:
             break;

@@ -24,12 +24,12 @@ public:
 };
 
 inline void ASState::calculateState() {
-    // DEBUG_PRINT_VAR(state);
+    DEBUG_PRINT_VAR(state);
     switch (state) {
         case AS_MANUAL:
             if (_checkupManager.shouldStayManualDriving()) break;
 
-            // DEBUG_PRINT("Entering OFF state from MANUAL");
+            DEBUG_PRINT("Entering OFF state from MANUAL");
             DigitalSender::enterOffState();
 
             state = AS_OFF;
@@ -39,7 +39,7 @@ inline void ASState::calculateState() {
 
             // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
             if (_checkupManager.shouldStayManualDriving()) {
-                // DEBUG_PRINT("Entering MANUAL state from OFF");
+                DEBUG_PRINT("Entering MANUAL state from OFF");
                 DigitalSender::enterManualState();
                 state = AS_MANUAL;
                 break;
@@ -48,7 +48,7 @@ inline void ASState::calculateState() {
             if (_checkupManager.shouldStayOff(_digitalSender)) break;
             if (!_checkupManager.shouldGoReadyFromOff()) break; // recheck all states
 
-            // DEBUG_PRINT("Entering READY state from OFF");
+            DEBUG_PRINT("Entering READY state from OFF");
             DigitalSender::enterReadyState();
             state = AS_READY;
             break;
@@ -57,7 +57,7 @@ inline void ASState::calculateState() {
             // _digitalSender->toggleWatchdog();
 
             if (_checkupManager.shouldEnterEmergency(state)) {
-                // DEBUG_PRINT("Entering EMERGENCY state from READY");
+                DEBUG_PRINT("Entering EMERGENCY state from READY");
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
@@ -65,7 +65,7 @@ inline void ASState::calculateState() {
             if (_checkupManager.shouldStayReady()) break;
 
 
-            // DEBUG_PRINT("Entering DRIVING state from READY");
+            DEBUG_PRINT("Entering DRIVING state from READY");
             _digitalSender->enterDrivingState();
             state = AS_DRIVING;
             break;
@@ -74,7 +74,7 @@ inline void ASState::calculateState() {
             _digitalSender->blinkLED(ASSI_YELLOW_PIN);
 
             if (_checkupManager.shouldEnterEmergency(state)) {
-                // DEBUG_PRINT("Entering EMERGENCY state from DRIVING");
+                DEBUG_PRINT("Entering EMERGENCY state from DRIVING");
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
                 break;
@@ -82,13 +82,13 @@ inline void ASState::calculateState() {
             if (_checkupManager.shouldStayDriving()) break;
 
 
-            // DEBUG_PRINT("Entering FINISHED state from DRIVING");
+            DEBUG_PRINT("Entering FINISHED state from DRIVING");
             DigitalSender::enterFinishState();
             state = AS_FINISHED;
             break;
         case AS_FINISHED:
             if (_checkupManager.resTriggered()) {
-                // DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
+                DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
               
                 _digitalSender->enterEmergencyState();
                 state = AS_EMERGENCY;
@@ -98,7 +98,7 @@ inline void ASState::calculateState() {
                 break;
 
 
-            // DEBUG_PRINT("Entering OFF state from FINISHED");
+            DEBUG_PRINT("Entering OFF state from FINISHED");
             DigitalSender::enterOffState();
             _checkupManager.resetCheckupState();
             state = AS_OFF;
@@ -107,7 +107,7 @@ inline void ASState::calculateState() {
             _digitalSender->blinkLED(ASSI_BLUE_PIN);
 
             if (_checkupManager.emergencySequenceComplete()) {
-                // DEBUG_PRINT("Entering OFF state from EMERGENCY");
+                DEBUG_PRINT("Entering OFF state from EMERGENCY");
                 DigitalSender::enterOffState();
                 _checkupManager.resetCheckupState();
                 state = AS_OFF;

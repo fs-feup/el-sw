@@ -98,7 +98,7 @@ inline void DigitalSender::openSDC() {
 
 inline void DigitalSender::closeSDC() {
     digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, HIGH);
-    digitalWrite(MASTER_SDC_OUT_PIN, LOW);
+    digitalWrite(MASTER_SDC_OUT_PIN, HIGH);
 }
 
 inline void DigitalSender::activateEBS() {
