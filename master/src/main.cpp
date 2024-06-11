@@ -18,11 +18,14 @@ Metro state_timer = Metro(STATE_PUBLISH_INTERVAL);
 IntervalTimer state_calculation_timer;
 
 void setup() {
-    Serial.begin(9600);
-    DEBUG_PRINT("Starting up...");
-    Communicator::_systemData = &systemData;
-  
-    // state_calculation_timer.begin([]() {
+   Serial.begin(9600);
+   DEBUG_PRINT("Starting up...");
+   communicator.init();
+   // digitalReceiver = DigitalReceiver(&systemData.digitalData, &systemData.mission);
+   // digitalSender = DigitalSender();
+   // as_state = ASState(&systemData, &communicator, &digitalSender);
+
+   // state_calculation_timer.begin([]() {
     //     noInterrupts();
     //     digitalReceiver.digitalReads();
     //     as_state.calculateState();

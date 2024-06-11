@@ -21,6 +21,8 @@ inline Code fifoCodes[] = {
     {8, RES_READY}
 };
 
+// FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
+
 /**
  * @brief Class that contains definitions of typical messages to send via CAN
  * It serves only as an example of the usage of the strategy pattern,
@@ -28,12 +30,17 @@ inline Code fifoCodes[] = {
  */
 class Communicator {
 private:
-    inline static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+    inline static FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 public:
     inline static SystemData *_systemData = nullptr;
 
     Communicator(SystemData* systemdata);
+
+    /**
+     * @brief Initializes the CAN bus
+    */
+    void init();
 
     /**
      * @brief Parses the message received from the CAN bus
@@ -99,16 +106,20 @@ public:
 
 inline Communicator::Communicator(SystemData* systemData) {
     _systemData = systemData;
+}
 
-    can1.begin();
-    can1.setBaudRate(500000);
-    can1.enableFIFO();
-    can1.enableFIFOInterrupt();
-    // can1.setFIFOFilter(REJECT_ALL);
+void Communicator::init() {
+    can2.begin();
+    can2.setBaudRate(500000);
+    can2.enableFIFO();
+    can2.enableFIFOInterrupt();
+    can2.setFIFOFilter(REJECT_ALL);
     for (auto &fifoCode: fifoCodes)
-        can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
+        can2.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
-    can1.onReceive(parse_message);
+    can2.onReceive(parse_message);
+
+    DEBUG_PRINT("CAN2 started");
 }
 
 inline void Communicator::c1Callback(const uint8_t *buf) {
@@ -206,24 +217,24 @@ inline void Communicator::steeringCallback() {
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
-    DEBUG_PRINT_VAR(msg.id);
+    // DEBUG_PRINT_VAR(msg.id);
     switch(msg.id) {
         case PC_ID:
-            pcCallback(msg.buf);
+            // pcCallback(msg.buf);
         case RES_STATE:
-            resStateCallback(msg.buf);
+            // resStateCallback(msg.buf);
             break;
         case RES_READY:
-            resReadyCallback();
+            // resReadyCallback();
             break;
         case C1_ID:
             c1Callback(msg.buf); // rwheel and hydraulic line
             break;
         case BAMO_RESPONSE_ID:
-            bamocarCallback(msg.buf);
+            // bamocarCallback(msg.buf);
             break;
         case STEERING_ID:
-            steeringCallback();
+            // steeringCallback();
             break;
         default:
             break;
@@ -259,8 +270,7 @@ inline int Communicator::send_message(const unsigned len, const unsigned char* b
     for (unsigned i = 0; i < len; i++) {
         can_message.buf[i] = buffer[i];
     }
-    can1.begin();
-    can1.write(can_message);
+    can2.write(can_message);
 
     return 0;
 }
