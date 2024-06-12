@@ -16,9 +16,12 @@ inline Code fifoCodes[] = {
     {3, AS_CU_EMERGENCY_SIGNAL},
     {4, MISSION_FINISHED},
     {5, PC_ALIVE},
-    {6, STEERING_ID},
-    {7, RES_STATE},
-    {8, RES_READY}
+    {6, RES_STATE},
+    {7, RES_READY}
+};
+
+inline Code mailboxCodes[] = {
+    {0, STEERING_ID},
 };
 
 // FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
@@ -46,6 +49,11 @@ public:
      * @brief Parses the message received from the CAN bus
     */
     static void parse_message(const CAN_message_t& msg);
+
+    /**
+     * @brief Parses the extended message received from the CAN bus (MB2)
+     */
+    static void parse_extended_message(const CAN_message_t& msg);
 
     /**
      * @brief Sends a message to the CAN bus
@@ -109,15 +117,29 @@ inline Communicator::Communicator(SystemData* systemData) {
 }
 
 void Communicator::init() {
+    
+    // Library initialization
     can2.begin();
     can2.setBaudRate(500000);
-    can2.enableFIFO();
+
+    // Enable FIFO and Mailboxes interrupts
+    can2.enableMBInterrupt(MB2); // For extended ID messages
+    can2.enableFIFO(); // FIFO is a special mailbox, assigned to mailbox 1
     can2.enableFIFOInterrupt();
+    
+    // Set filters
+    can2.setMBFilter(REJECT_ALL);
     can2.setFIFOFilter(REJECT_ALL);
     for (auto &fifoCode: fifoCodes)
         can2.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
-    can2.onReceive(parse_message);
+    // Set filters for mailboxes
+    for (auto &mailboxCode: mailboxCodes)
+        can2.setMBFilter(MB2, mailboxCode.key, mailboxCode.code, EXT);
+    
+    // Set callback
+    can2.onReceive(FIFO, parse_message);
+    can2.onReceive(MB2, parse_extended_message);
 
     DEBUG_PRINT("CAN2 started");
 }
@@ -231,6 +253,13 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
         case BAMO_RESPONSE_ID:
             bamocarCallback(msg.buf);
             break;
+        default:
+            break;
+    }
+}
+
+inline void Communicator::parse_extended_message(const CAN_message_t& msg) {
+    switch(msg.id) {
         case STEERING_ID:
             steeringCallback();
             break;
