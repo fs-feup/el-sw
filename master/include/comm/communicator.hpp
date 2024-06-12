@@ -123,23 +123,23 @@ void Communicator::init() {
     can2.setBaudRate(500000);
 
     // Enable FIFO and Mailboxes interrupts
-    can2.enableMBInterrupt(MB2); // For extended ID messages
+    // can2.enableMBInterrupt(MB2); // For extended ID messages
     can2.enableFIFO(); // FIFO is a special mailbox, assigned to mailbox 1
     can2.enableFIFOInterrupt();
     
     // Set filters
-    can2.setMBFilter(REJECT_ALL);
+    // can2.setMBFilter(REJECT_ALL);
     can2.setFIFOFilter(REJECT_ALL);
     for (auto &fifoCode: fifoCodes)
         can2.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
     // Set filters for mailboxes
-    for (auto &mailboxCode: mailboxCodes)
-        can2.setMBFilter(MB2, mailboxCode.key, mailboxCode.code, EXT);
+    // for (auto &mailboxCode: mailboxCodes)
+    //     can2.setMBFilter(MB2, mailboxCode.key, mailboxCode.code, EXT);
     
     // Set callback
     can2.onReceive(FIFO, parse_message);
-    can2.onReceive(MB2, parse_extended_message);
+    // can2.onReceive(MB2, parse_extended_message);
 
     DEBUG_PRINT("CAN2 started");
 }
@@ -198,7 +198,7 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
-    DEBUG_PRINT("Received Bamocar Alive");
+    // DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
@@ -212,7 +212,7 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
             _systemData->failureDetection.ts_on = false;
         else 
             _systemData->failureDetection.ts_on = true;       
-        DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
+        // DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
     }   
 
 }

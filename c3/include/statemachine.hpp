@@ -58,7 +58,7 @@ void statemachine(){
         #ifdef CAN_DEBUG
         Serial.print("TSOn:");
         Serial.println(TSOn);
-        Serial.print("R2D Button Fell:")
+        Serial.print("R2D Button Fell:");
         Serial.println(r2dButton.fell());
         Serial.print("R2DTimer:");
         Serial.println(R2DTimer);

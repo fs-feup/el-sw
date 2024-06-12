@@ -21,7 +21,7 @@ void setup() {
     Serial.begin(9600);
     DEBUG_PRINT("Starting up...");
     Communicator::_systemData = &systemData;
-  
+    communicator.init();
     // state_calculation_timer.begin([]() {
     //     noInterrupts();
     //     digitalReceiver.digitalReads();
