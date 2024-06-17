@@ -35,8 +35,6 @@ void setup() {
 }
 
 void loop() {
-    // DEBUG_PRINT("Looping...");
-    // DEBUG_PRINT_VAR("variavel atoa", 29);
     digitalReceiver.digitalReads();
     as_state.calculateState();
     
