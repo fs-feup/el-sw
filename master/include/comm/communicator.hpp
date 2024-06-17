@@ -21,7 +21,7 @@ inline Code fifoCodes[] = {
 };
 
 inline Code fifoExtendedCodes[] = {
-    {0, STEERING_ID},
+    {8, STEERING_ID},
 };
 
 // FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
@@ -169,8 +169,9 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
     if (go_button || go_switch)
         _systemData->r2dLogics.processGoSignal();
-    else if (emg_stop1 || emg_stop2)
+    else if (!emg_stop1 || !emg_stop2) {
         _systemData->failureDetection.emergencySignal = true;
+    }
 
     _systemData->failureDetection.radio_quality =  buf[6];
     bool signal_loss = (buf[7] >> 6) & 0x01;
@@ -185,6 +186,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
 inline void Communicator::resReadyCallback() {
     // If res sends boot message, activate it
+    DEBUG_PRINT("Received RES Ready");
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
@@ -258,6 +260,7 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
 inline int Communicator::publish_state(const int state_id) {
     const uint8_t msg[] = {STATE_MSG, static_cast<uint8_t>(state_id)};
 
+    DEBUG_PRINT_VAR(state_id);
     send_message(2, msg, MASTER_ID);
     return 0;
 }
