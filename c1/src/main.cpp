@@ -269,12 +269,12 @@ void loop()
             #ifdef DEBUG
             Serial.println("Brake Light ON");
             #endif 
-            if (canTimer > CAN_TRANSMISSION_PERIOD)
-            {
-                // Serial.println("Message sent");
-                sendBrakeVal(brake_val);
-                canTimer = 0;
-            }
+        }
+        if (canTimer > CAN_TRANSMISSION_PERIOD)
+        {
+            // Serial.println("Message sent");
+            sendBrakeVal(brake_val);
+            canTimer = 0;
         }
     }
 
