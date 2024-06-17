@@ -39,8 +39,8 @@
 #define LWSS_PIN 32
 
 // When pressure on the line passes the threshold defined, pin is set to HIGH
-#define SENSOR_PRESSURE_2_PIN 4
-#define SENSOR_PRESSURE_1_PIN 7
+#define SENSOR_PRESSURE_2_PIN 6
+#define SENSOR_PRESSURE_1_PIN 5
 
 // Mission pins
 
