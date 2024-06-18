@@ -101,11 +101,11 @@ inline void DigitalReceiver::digitalReads() {
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
-    DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_1_PIN));
-    DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_2_PIN));
+    // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_1_PIN));
+    // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_2_PIN));
 
     digitalData->pneumatic_line_pressure = pneumatic1 && pneumatic2; // both need to be True
-    DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
+    // DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
 
 }
 

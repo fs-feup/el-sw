@@ -45,6 +45,7 @@ struct FailureDetection {
     Metro pcAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
+    Metro resSignalLossTimestamp{RES_TIMESTAMP_TIMEOUT};
     bool emergencySignal{false};
     bool ts_on{false};
     double radio_quality{0};
@@ -52,6 +53,7 @@ struct FailureDetection {
     [[nodiscard]] bool hasAnyComponentTimedOut() {
         return pcAliveTimestamp.check() ||
                steerAliveTimestamp.check() ||
-               inversorAliveTimestamp.check();
+               inversorAliveTimestamp.check() || 
+               resSignalLossTimestamp.check();
     }
 };
