@@ -56,9 +56,9 @@ private:
     DigitalData *digitalData;
     Mission *mission;
 
-    Button asms_switch;
-
-    Button newButton(uint8_t pin);
+    unsigned int asms_change_counter = 0;
+    unsigned int aats_change_counter = 0;
+    unsigned int pneumatic_change_counter = 0;
 
     void readPneumaticLine();
     void readMission();
@@ -70,15 +70,6 @@ private:
 
 // double DigitalReceiver::_current_left_wheel_rpm = 0.0;
 // unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
-
-inline Button DigitalReceiver::newButton(uint8_t pin) {
-    Button button;
-    button.attach(pin, INPUT_PULLUP);
-    button.interval(DEBOUNCE_INTERVAL);
-    button.setPressedState(PRESSED_STATE);
-
-    return button;
-}
 
 // inline void DigitalReceiver::updateLeftWheelRpm() {
 //     // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
@@ -103,8 +94,14 @@ inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
     // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_1_PIN));
     // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_2_PIN));
+    bool temp_res = pneumatic1 && pneumatic2;
 
-    digitalData->pneumatic_line_pressure = pneumatic1 && pneumatic2; // both need to be True
+    // Only change the value if it has been different 5 times in a row
+    pneumatic_change_counter = temp_res == digitalData->pneumatic_line_pressure ? 0 : pneumatic_change_counter + 1;
+    if (pneumatic_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->pneumatic_line_pressure = temp_res; // both need to be True
+        pneumatic_change_counter = 0;
+    }
     // DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
 
 }
@@ -124,13 +121,25 @@ inline void DigitalReceiver::readMission() {
 }
 
 inline void DigitalReceiver::readAsmsSwitch() {
-    digitalData->asms_on = digitalRead(ASMS_IN_PIN);
-    // DEBUG_PRINT_VAR(digitalData->asms_on);
+    bool temp_res = digitalRead(ASMS_IN_PIN);
+
+    // Only change the value if it has been different 5 times in a row
+    asms_change_counter = temp_res == digitalData->asms_on ? 0 : asms_change_counter + 1;
+    if (asms_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->asms_on = temp_res;
+        asms_change_counter = 0;
+    }
 }
 
 inline void DigitalReceiver::readAatsState() {
     // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
-    digitalData->sdcState_OPEN = !digitalRead(SDC_STATE_PIN);
+    bool temp_res = !digitalRead(SDC_STATE_PIN);
+    // Only change the value if it has been different 5 times in a row
+    aats_change_counter = temp_res == digitalData->sdcState_OPEN ? 0 : aats_change_counter + 1;
+    if (aats_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->sdcState_OPEN = temp_res; // both need to be True
+        aats_change_counter = 0;
+    }
     // DEBUG_PRINT_VAR(digitalData->sdcState_OPEN);
 }
 

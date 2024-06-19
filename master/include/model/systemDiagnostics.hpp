@@ -5,6 +5,7 @@
 #include "Arduino.h"
 
 #include "embedded/digitalSettings.hpp"
+#include "debugUtils.hpp"
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
 constexpr unsigned long RELEASE_EBS_TIMEOUT_MS = 1000;
@@ -51,9 +52,26 @@ struct FailureDetection {
     double radio_quality{0};
 
     [[nodiscard]] bool hasAnyComponentTimedOut() {
-        return pcAliveTimestamp.check() ||
-               steerAliveTimestamp.check() ||
-               inversorAliveTimestamp.check() || 
-               resSignalLossTimestamp.check();
+        // bool steer_dead = static_cast<bool>(steerAliveTimestamp.check());
+        bool pc_dead = static_cast<bool>(pcAliveTimestamp.check());
+        bool inversor_dead = static_cast<bool>(inversorAliveTimestamp.check());
+        bool res_dead = static_cast<bool>(resSignalLossTimestamp.check());
+        // if (steer_dead) {
+        //     DEBUG_PRINT_VAR(steer_dead);
+        // }
+        if (pc_dead) {
+            DEBUG_PRINT_VAR(pc_dead);
+        }
+        if (inversor_dead) {
+            DEBUG_PRINT_VAR(inversor_dead);
+        }
+        if (res_dead) {
+            DEBUG_PRINT_VAR(res_dead);
+        }
+        return /* steer_dead || */ pc_dead || inversor_dead || res_dead;
+            // pcAliveTimestamp.check() ||
+            //    steerAliveTimestamp.check();
+            //    inversorAliveTimestamp.check();
+            //    resSignalLossTimestamp.check();
     }
 };

@@ -240,30 +240,46 @@ inline bool CheckupManager::shouldStayReady() const {
 }
 
 inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
-    bool ready_failure = 
-        _systemData->failureDetection.emergencySignal ||
-        // _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        _systemData->failureDetection.hasAnyComponentTimedOut() ||
-        // _systemData->digitalData.watchdogTimestamp.check() ||
-        !_systemData->digitalData.asms_on ||
-        !_systemData->failureDetection.ts_on ||
-        // _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
-        _systemData->digitalData.sdcState_OPEN
-        ;
-    bool driving_failure = _systemData->failureDetection.hasAnyComponentTimedOut() ||
-        _systemData->failureDetection.emergencySignal ||
-        _systemData->digitalData.sdcState_OPEN ||
-        // _systemData->digitalData.pneumatic_line_pressure == 0 ||
-        // (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-            // && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
-        _systemData->digitalData.asms_on == 0 ||
-        // _systemData->digitalData.watchdogTimestamp.check() ||
-        !_systemData->failureDetection.ts_on;
     if (current_state == AS_READY) {
-        return ready_failure;
-    }
-    if (current_state == AS_DRIVING) {
-        return driving_failure;
+        auto emergencySignal = _systemData->failureDetection.emergencySignal;
+        auto component_timeout = _systemData->failureDetection.hasAnyComponentTimedOut();
+        auto asms = !_systemData->digitalData.asms_on;
+        auto ts = !_systemData->failureDetection.ts_on;
+        auto sdc =  _systemData->digitalData.sdcState_OPEN;
+        if (emergencySignal) {
+            DEBUG_PRINT_VAR(emergencySignal);
+        }
+        if (component_timeout) {
+            DEBUG_PRINT_VAR(component_timeout);
+        }
+        if (asms) {
+            DEBUG_PRINT_VAR(asms);
+        }
+        if (ts) {
+            DEBUG_PRINT_VAR(ts);
+        }
+        if (sdc) {
+            DEBUG_PRINT_VAR(sdc);
+        }
+        return emergencySignal ||
+            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            component_timeout ||
+            // _systemData->digitalData.watchdogTimestamp.check() ||
+            asms ||
+            ts ||
+            // _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
+            sdc
+            ;
+    } else if (current_state == AS_DRIVING) {
+        return _systemData->failureDetection.hasAnyComponentTimedOut() ||
+            _systemData->failureDetection.emergencySignal ||
+            _systemData->digitalData.sdcState_OPEN ||
+            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            // (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
+                // && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
+            _systemData->digitalData.asms_on == 0 ||
+            // _systemData->digitalData.watchdogTimestamp.check() ||
+            !_systemData->failureDetection.ts_on;
     }
 
     return false;

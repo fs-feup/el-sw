@@ -177,9 +177,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     _systemData->failureDetection.radio_quality = buf[6];
     // DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
     bool signal_loss = (buf[7] >> 6) & 0x01;
-    if (signal_loss) {
-        DEBUG_PRINT("RES Signal Loss");
-    } else {
+    if (!signal_loss) {
         _systemData->failureDetection.resSignalLossTimestamp.reset();
     }
 
