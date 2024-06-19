@@ -8,9 +8,6 @@
 #include "digitalSettings.hpp"
 #include "debugUtils.hpp"
 
-#define DEBOUNCE_INTERVAL 10
-#define PRESSED_STATE LOW
-
 /**
  * @brief Class responsible for the reading of the digital
  * inputs into the Master teensy 
@@ -56,9 +53,11 @@ private:
     DigitalData *digitalData;
     Mission *mission;
 
-    unsigned int asms_change_counter = 0;
-    unsigned int aats_change_counter = 0;
-    unsigned int pneumatic_change_counter = 0;
+    unsigned int asms_change_counter = 0; // counter to avoid noise
+    unsigned int aats_change_counter = 0; // counter to avoid noise
+    unsigned int pneumatic_change_counter = 0; // counter to avoid noise
+    unsigned int mission_change_counter = 0; // counter to avoid noise
+    Mission last_tried_mission_ = MANUAL;
 
     void readPneumaticLine();
     void readMission();
@@ -108,7 +107,8 @@ inline void DigitalReceiver::readPneumaticLine() {
 
 inline void DigitalReceiver::readMission() {
     // Enum value attributed considering the True Boolean Value
-    *mission = static_cast<Mission>(
+
+    Mission temp_res = static_cast<Mission>(
         digitalRead(MISSION_MANUAL_PIN) * MANUAL |
         digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
         digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
@@ -117,6 +117,14 @@ inline void DigitalReceiver::readMission() {
         digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
         digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
 
+    mission_change_counter = (temp_res == *mission) && 
+                                (temp_res == last_tried_mission_) ? 
+                                0 : mission_change_counter + 1;
+    this->last_tried_mission_ = temp_res;
+    if (mission_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        *mission = temp_res;
+        mission_change_counter = 0;
+    }
     // DEBUG_PRINT_VAR(*mission);
 }
 

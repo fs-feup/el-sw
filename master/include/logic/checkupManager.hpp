@@ -210,14 +210,16 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             }
             break;
         
-        case CheckupState::CHECK_TIMESTAMPS:
+        case CheckupState::CHECK_TIMESTAMPS: {
+
             // digitalSender->toggleWatchdog();
-        // Check if all components have responded and no emergency signal has been sent
+            // Check if all components have responded and no emergency signal has been sent
             if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
                 emergencySignal) {
                 return CheckupError::ERROR;
             }
             return CheckupError::SUCCESS;
+        }
         default:
             break;
     }
@@ -241,43 +243,38 @@ inline bool CheckupManager::shouldStayReady() const {
 
 inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
     if (current_state == AS_READY) {
-        auto emergencySignal = _systemData->failureDetection.emergencySignal;
-        auto component_timeout = _systemData->failureDetection.hasAnyComponentTimedOut();
-        auto asms = !_systemData->digitalData.asms_on;
-        auto ts = !_systemData->failureDetection.ts_on;
-        auto sdc =  _systemData->digitalData.sdcState_OPEN;
-        if (emergencySignal) {
-            DEBUG_PRINT_VAR(emergencySignal);
-        }
-        if (component_timeout) {
-            DEBUG_PRINT_VAR(component_timeout);
-        }
-        if (asms) {
-            DEBUG_PRINT_VAR(asms);
-        }
-        if (ts) {
-            DEBUG_PRINT_VAR(ts);
-        }
-        if (sdc) {
-            DEBUG_PRINT_VAR(sdc);
-        }
-        return emergencySignal ||
+        return _systemData->failureDetection.emergencySignal ||
             // _systemData->digitalData.pneumatic_line_pressure == 0 ||
-            component_timeout ||
+            _systemData->failureDetection.hasAnyComponentTimedOut() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
-            asms ||
-            ts ||
+            !_systemData->digitalData.asms_on ||
+            !_systemData->failureDetection.ts_on ||
             // _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
-            sdc
+            _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
+        if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
+            DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
+        }
+        if (_systemData->failureDetection.emergencySignal) {
+            DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
+        }
+        if (_systemData->digitalData.sdcState_OPEN) {
+            DEBUG_PRINT_VAR(_systemData->digitalData.sdcState_OPEN);
+        }
+        if (!_systemData->digitalData.asms_on) {
+            DEBUG_PRINT_VAR(_systemData->digitalData.asms_on);
+        }
+        if (!_systemData->failureDetection.ts_on) {
+            DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
+        }
         return _systemData->failureDetection.hasAnyComponentTimedOut() ||
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
             // _systemData->digitalData.pneumatic_line_pressure == 0 ||
             // (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
                 // && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
-            _systemData->digitalData.asms_on == 0 ||
+            !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;
     }

@@ -16,7 +16,7 @@
 
 #define UNALLOWED_PIN 0
 
-#include <Metro.h>
+#include "metro.h"
 #include "embedded/digitalSender.hpp"
 
 void setUp(void) {

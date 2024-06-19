@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdlib>
-#include <Metro.h>
+#include "metro.h"
 #include "Arduino.h"
 
 #include "embedded/digitalSettings.hpp"
@@ -52,23 +52,23 @@ struct FailureDetection {
     double radio_quality{0};
 
     [[nodiscard]] bool hasAnyComponentTimedOut() {
-        // bool steer_dead = static_cast<bool>(steerAliveTimestamp.check());
-        bool pc_dead = static_cast<bool>(pcAliveTimestamp.check());
-        bool inversor_dead = static_cast<bool>(inversorAliveTimestamp.check());
-        bool res_dead = static_cast<bool>(resSignalLossTimestamp.check());
+        bool steer_dead = steerAliveTimestamp.checkWithoutReset();
+        bool pc_dead = pcAliveTimestamp.checkWithoutReset();
+        bool inversor_dead = inversorAliveTimestamp.checkWithoutReset();
+        bool res_dead = resSignalLossTimestamp.checkWithoutReset();
         // if (steer_dead) {
         //     DEBUG_PRINT_VAR(steer_dead);
         // }
-        if (pc_dead) {
-            DEBUG_PRINT_VAR(pc_dead);
-        }
-        if (inversor_dead) {
-            DEBUG_PRINT_VAR(inversor_dead);
-        }
-        if (res_dead) {
-            DEBUG_PRINT_VAR(res_dead);
-        }
-        return /* steer_dead || */ pc_dead || inversor_dead || res_dead;
+        // if (pc_dead) {
+        //     DEBUG_PRINT_VAR(pc_dead);
+        // }
+        // if (inversor_dead) {
+        //     DEBUG_PRINT_VAR(inversor_dead);
+        // }
+        // if (res_dead) {
+        //     DEBUG_PRINT_VAR(res_dead);
+        // }
+        return steer_dead || pc_dead || inversor_dead || res_dead;
             // pcAliveTimestamp.check() ||
             //    steerAliveTimestamp.check();
             //    inversorAliveTimestamp.check();

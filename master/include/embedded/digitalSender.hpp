@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Metro.h>
+#include "metro.h"
 #include <Arduino.h>
 #include "digitalSettings.hpp"
 
@@ -112,8 +112,8 @@ inline void DigitalSender::deactivateEBS() {
 }
 
 inline void DigitalSender::turnOffASSI() {
-    digitalWrite(ASSI_YELLOW_PIN, LOW);
-    digitalWrite(ASSI_BLUE_PIN, LOW);
+    analogWrite(ASSI_YELLOW_PIN, LOW);
+    analogWrite(ASSI_BLUE_PIN, LOW);
 }
 
 inline void DigitalSender::enterEmergencyState() {
@@ -137,7 +137,7 @@ inline void DigitalSender::enterOffState() {
 
 inline void DigitalSender::enterReadyState() {
     turnOffASSI();
-    digitalWrite(ASSI_YELLOW_PIN, HIGH);
+    analogWrite(ASSI_YELLOW_PIN, 1023); // Analog works better
     activateEBS(); ///  these 2 should be redundant since we do it during initial checkup
     closeSDC(); ///
 }
@@ -151,7 +151,7 @@ inline void DigitalSender::enterDrivingState() {
 
 inline void DigitalSender::enterFinishState() {
     turnOffASSI();
-    digitalWrite(ASSI_BLUE_PIN, HIGH);
+    analogWrite(ASSI_BLUE_PIN, 1023); // Analog works better
     activateEBS();
     openSDC();
 }
@@ -160,7 +160,7 @@ inline void DigitalSender::blinkLED(const int pin) {
     static bool blinkState = false;
     if (_blinkTimer.check()) {
         blinkState = !blinkState;
-        digitalWrite(pin, blinkState);
+        analogWrite(pin, blinkState * 1023); // Analog works better
     }
 }
 

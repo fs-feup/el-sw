@@ -11,17 +11,16 @@
 
 inline Code fifoCodes[] = {
     {0, C1_ID},
-    {1, BMS_ID},
-    {2, BAMO_RESPONSE_ID},
-    {3, AS_CU_EMERGENCY_SIGNAL},
-    {4, MISSION_FINISHED},
-    {5, AS_CU_ID},
-    {6, RES_STATE},
-    {7, RES_READY}
+    {1, BAMO_RESPONSE_ID},
+    {2, AS_CU_EMERGENCY_SIGNAL},
+    {3, MISSION_FINISHED},
+    {4, AS_CU_ID},
+    {5, RES_STATE},
+    {6, RES_READY}
 };
 
 inline Code fifoExtendedCodes[] = {
-    {8, STEERING_ID},
+    {7, STEERING_ID},
 };
 
 // FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
