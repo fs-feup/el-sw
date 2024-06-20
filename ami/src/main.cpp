@@ -30,12 +30,4 @@ void loop() {
       currentButtonPressed = i;
     }
   }
-
-  if (currentButtonPressed != -1) {
-    for (int i = 0; i < NUM_PINS; i++) {
-      digitalWrite(outputPins[i], LOW);
-    }
-
-    digitalWrite(outputPins[currentButtonPressed], HIGH);
-  }
 } 
