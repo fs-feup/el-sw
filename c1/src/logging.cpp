@@ -89,48 +89,4 @@ void Logging::setup_log() {
 }
 void Logging::write_to_file(int current, int voltage, int mintmp, int maxtmp, int avgtmp, int apps1, int apps2, int brake, int rpm, int I_actual, int powerStageTmp, int motorTmp, int Torque, int motor_voltage, int battery_voltage) {
     
-    //Serial.print("Starting to write...");
-
-        myFile = SD.open(file, FILE_WRITE);
-
-        //getTimeStamp(entry);
-
-        //myFile.printf("%d-%02d-%02d %02d:%02d:%02d.%03u \n", entry->year, entry->month, entry->day, entry->hour, entry->minute, entry->second, entry->millisecond);
-
-        
-        myFile.printf("%d, ", t);
-
-        myFile.printf("%d, ",current);
-
-        myFile.printf("%d, ",voltage);
-
-        myFile.printf("%d, ",mintmp);
-
-        myFile.printf("%d, ",maxtmp);
-
-        myFile.printf("%d, ",avgtmp);
-
-        myFile.printf("%d, ",apps1);
-        
-        myFile.printf("%d, ",apps2);
-
-        myFile.printf("%d, ",brake);
-
-        myFile.printf("%d, ",rpm);
-
-        myFile.printf("%d, ",I_actual);
-
-        myFile.printf("%d, ",powerStageTmp);
-
-        myFile.printf("%d, ",motorTmp);
-
-        myFile.printf("%d, ",Torque);
-
-        myFile.printf("%d, ",motor_voltage);
-
-        myFile.printf("%d \n", battery_voltage);
-
-        myFile.close();
-
-        t+=LOGGING_PERIOD;  
 }
