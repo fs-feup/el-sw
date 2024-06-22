@@ -178,8 +178,14 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             break;
         case CheckupState::WAIT_FOR_AATS:
             // digitalSender->toggleWatchdog();
+
         // AATS Activated?
             if (!_systemData->digitalData.sdcState_OPEN) {
+            // At this point, the emergency signal should be set to false, since it is
+            // expected that the RES has already sent all initial emergency signals,
+            // and if RES unexpectedly sends another emergency signal, it will be
+            // set after the AATS button is pressed.
+            _systemData->failureDetection.emergencySignal = false;
                 checkupState = CheckupState::WAIT_FOR_TS;
             }
             break;
