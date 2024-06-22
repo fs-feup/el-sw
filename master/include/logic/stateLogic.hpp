@@ -58,6 +58,7 @@ inline void ASState::calculateState() {
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from READY");
                 _digitalSender->enterEmergencyState();
+                _checkupManager._ebsSoundTimestamp.reset();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -75,6 +76,7 @@ inline void ASState::calculateState() {
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from DRIVING");
                 _digitalSender->enterEmergencyState();
+                _checkupManager._ebsSoundTimestamp.reset();
                 state = AS_EMERGENCY;
                 break;
             }
@@ -90,6 +92,7 @@ inline void ASState::calculateState() {
                 DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
               
                 _digitalSender->enterEmergencyState();
+                _checkupManager._ebsSoundTimestamp.reset();
                 state = AS_EMERGENCY;
                 break;
             }

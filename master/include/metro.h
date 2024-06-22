@@ -17,7 +17,7 @@ public:
     Metro(unsigned long interval_millis, uint8_t autoreset);
     void interval(unsigned long interval_millis);
     bool check();
-    bool checkWithoutReset();
+    bool checkWithoutReset() const;
     void reset();
 
 private:
@@ -99,7 +99,7 @@ inline bool Metro::check()
  * 
  * @return true if the interval has passed, false otherwise
  */
-inline bool Metro::checkWithoutReset()
+inline bool Metro::checkWithoutReset() const
 {
     if (millis() - this->previous_millis >= this->interval_millis)
     {

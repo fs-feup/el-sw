@@ -15,10 +15,11 @@
 class CheckupManager {
 private:
     SystemData *_systemData;
-    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT};
     Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT};
 
 public:
+    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT};
+
     [[nodiscard]] Metro &getInitialCheckupTimestamp() {
         return initialCheckupTimestamp;
     }
@@ -100,7 +101,7 @@ public:
      * @brief Checks if the emergency sequence is complete and the vehicle can
      * transition to AS_OFF.
      */
-    [[nodiscard]] bool emergencySequenceComplete();
+    [[nodiscard]] bool emergencySequenceComplete() const;
 
     /**
      * @brief Checks if the RES has been triggered.
@@ -193,7 +194,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             // digitalSender->toggleWatchdog();
         // TS Activated?
             if (_systemData->failureDetection.ts_on) {
-                checkupState = CheckupState::CHECK_TIMESTAMPS;
+                checkupState = CheckupState::TOGGLE_VALVE;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
@@ -250,12 +251,12 @@ inline bool CheckupManager::shouldStayReady() const {
 inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
     if (current_state == AS_READY) {
         return _systemData->failureDetection.emergencySignal ||
-            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            _systemData->digitalData.pneumatic_line_pressure == 0 ||
             _systemData->failureDetection.hasAnyComponentTimedOut() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->digitalData.asms_on ||
             !_systemData->failureDetection.ts_on ||
-            // _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
+            _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
             _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
@@ -277,9 +278,9 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         return _systemData->failureDetection.hasAnyComponentTimedOut() ||
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
-            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
-            // (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-                // && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
+            _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
+                && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
             !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;
@@ -302,8 +303,8 @@ inline bool CheckupManager::shouldStayMissionFinished() const {
     return false;
 }
 
-inline bool CheckupManager::emergencySequenceComplete() {
-    if (!_systemData->digitalData.asms_on && _ebsSoundTimestamp.check()) {
+inline bool CheckupManager::emergencySequenceComplete() const {
+    if (!_systemData->digitalData.asms_on && _ebsSoundTimestamp.checkWithoutReset()) {
         return true;
     }
     return false;
