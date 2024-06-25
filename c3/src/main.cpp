@@ -7,7 +7,6 @@
 #include "debug.h"
 #include "display.h"
 #include "statemachine.hpp"
-#include "integration_test.hpp"
 
 
 int current_BMS = 0;

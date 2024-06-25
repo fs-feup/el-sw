@@ -20,8 +20,8 @@
  * ===========
  */
 
-#define ASSI_BLUE_PIN 5
-#define ASSI_YELLOW_PIN 7
+#define ASSI_BLUE_PIN 7
+#define ASSI_YELLOW_PIN 4
 
 
 #define SDC_LOGIC_CLOSE_SDC_PIN 8
@@ -39,18 +39,18 @@
 #define LWSS_PIN 32
 
 // When pressure on the line passes the threshold defined, pin is set to HIGH
-#define SENSOR_PRESSURE_2_PIN 22
-#define SENSOR_PRESSURE_1_PIN 23
+#define SENSOR_PRESSURE_2_PIN 6
+#define SENSOR_PRESSURE_1_PIN 5
 
 // Mission pins
 
 #define MISSION_MANUAL_PIN 39
-#define MISSION_ACCELERATION_PIN 41
-#define MISSION_SKIDPAD_PIN 14
-#define MISSION_AUTOCROSS_PIN 16
-#define MISSION_TRACKDRIVE_PIN 18
-#define MISSION_EBSTEST_PIN 20
-#define MISSION_INSPECTION_PIN 21
+#define MISSION_AUTOCROSS_PIN 41
+#define MISSION_TRACKDRIVE_PIN 14
+#define MISSION_SKIDPAD_PIN 16
+#define MISSION_INSPECTION_PIN 18
+#define MISSION_ACCELERATION_PIN 20
+#define MISSION_EBSTEST_PIN 21
 
 
 #define SDC_STATE_PIN 37

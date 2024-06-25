@@ -333,7 +333,7 @@ void canSetup() {
     can1.setFIFOFilter(1, R2D_ID, STD);
     can1.setFIFOFilter(2, BMS_ID, STD);
     can1.setFIFOFilter(3, BAMO_RESPONSE_ID, STD);
-    can1.setFIFOFilter(3, MASTER_ID, STD);
+    can1.setFIFOFilter(4, MASTER_ID, STD);
     can1.onReceive(canSniffer);
 
     initCanMessages();

@@ -55,6 +55,14 @@ void statemachine(){
     {
     case IDLE:
         r2dButton.update();
+        #ifdef CAN_DEBUG
+        Serial.print("TSOn:");
+        Serial.println(TSOn);
+        Serial.print("R2D Button Fell:");
+        Serial.println(r2dButton.fell());
+        Serial.print("R2DTimer:");
+        Serial.println(R2DTimer);
+        #endif
         if ((r2dButton.fell() and TSOn and R2DTimer < R2D_TIMEOUT) or R2DOverride)
         {
             playR2DSound();

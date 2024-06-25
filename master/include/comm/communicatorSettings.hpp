@@ -7,7 +7,7 @@ constexpr auto BMS_ID = 0x666;
 constexpr auto BAMO_RESPONSE_ID = 0x181;
 constexpr auto C1_ID = 0x123;
 constexpr auto C3_ID = 0x111;
-constexpr auto PC_ID = 0x400;
+constexpr auto AS_CU_ID = 0x400;
 constexpr auto STEERING_ID = 0x295d;
 
 // PC

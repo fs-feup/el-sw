@@ -15,7 +15,7 @@ public:
 
     explicit ASState(SystemData *system_data, Communicator *communicator, 
     DigitalSender *digital_sender) : 
-    _checkupManager(system_data), _digitalSender(digital_sender), _communicator(communicator) {}
+    _digitalSender(digital_sender), _communicator(communicator), _checkupManager(system_data) {}
 
     /**
      * @brief Calculates the state of the vehicle.
