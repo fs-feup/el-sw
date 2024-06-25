@@ -93,7 +93,7 @@ public:
 
 inline void DigitalSender::openSDC() {
     digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
-    digitalWrite(MASTER_SDC_OUT_PIN, HIGH);
+    digitalWrite(MASTER_SDC_OUT_PIN, LOW);
 }
 
 inline void DigitalSender::closeSDC() {

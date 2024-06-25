@@ -42,4 +42,4 @@ constexpr auto LEFT_WHEEL_MSG = 0x33;
 // Bamocar
 constexpr auto BTB_READY = 0xE2;
 constexpr auto VDC_BUS = 0xEB;
-constexpr auto DC_THRESHOLD = 4328; // same as 60 volts
+constexpr auto DC_THRESHOLD = 3300; // same as 60 volts
