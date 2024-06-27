@@ -91,8 +91,12 @@ inline void DigitalReceiver::digitalReads() {
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
-    // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_1_PIN));
-    // DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_2_PIN));
+    // if (pneumatic1 == 0) {
+    //     DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_1_PIN));
+    // }
+    // if (pneumatic2 == 0) {
+    //     DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_2_PIN));
+    // }
     bool temp_res = pneumatic1 && pneumatic2;
 
     // Only change the value if it has been different 5 times in a row

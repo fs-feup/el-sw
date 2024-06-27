@@ -19,7 +19,7 @@ constexpr auto PC_ALIVE = 0x41;               // TODO(andre): change or confirm 
 constexpr auto RIGHT_WHEEL_CODE = 0x11;    // TODO(andre): change or confirm code
 constexpr auto LEFT_WHEEL_CODE = 0x12;    // TODO(andre): change or confirm code
 constexpr auto HYDRAULIC_LINE = 0x90; // TODO(andre): change or confirm code
-constexpr auto HYDRAULIC_BRAKE_THRESHOLD = 165; // 0 to 1024, 165 considered braking
+constexpr auto HYDRAULIC_BRAKE_THRESHOLD = 140; // 0 to 1024, 165 considered braking, for margin
 
 constexpr auto WHEEL_PRECISION = 1e-2;          // TODO(andre): change or confirm value
 

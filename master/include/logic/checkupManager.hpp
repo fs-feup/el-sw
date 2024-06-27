@@ -135,7 +135,7 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
 }
 
 inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender *digitalSender) {
-    DEBUG_PRINT_VAR(static_cast<int>(checkupState));
+    // DEBUG_PRINT_VAR(static_cast<int>(checkupState));
     switch (checkupState) {
         case CheckupState::WAIT_FOR_ASMS:
             // ASMS Activated?
@@ -199,7 +199,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             break;
         case CheckupState::TOGGLE_VALVE:
             // digitalSender->toggleWatchdog();
-        // Toggle EBS Valves
+            // Toggle EBS Valves
             DigitalSender::activateEBS();
 
             initialCheckupTimestamp.reset();
@@ -208,9 +208,6 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
         case CheckupState::CHECK_PRESSURE:
             // digitalSender->toggleWatchdog();
             // Check hydraulic line pressure and pneumatic line pressure
-            if (initialCheckupTimestamp.check()) {
-                return CheckupError::ERROR;
-            }
             if (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
                 pneumatic_line_pressure) {
                 checkupState = CheckupState::CHECK_TIMESTAMPS;
@@ -267,6 +264,12 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         }
         if (!_systemData->failureDetection.ts_on) {
             DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
+        }
+        if (_systemData->digitalData.pneumatic_line_pressure == 0) {
+            DEBUG_PRINT_VAR(_systemData->digitalData.pneumatic_line_pressure);
+        }
+        if (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD) {
+            DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
         }
         return _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.pneumatic_line_pressure == 0 ||
