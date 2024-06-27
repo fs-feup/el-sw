@@ -56,18 +56,18 @@ struct FailureDetection {
         bool pc_dead = pcAliveTimestamp.checkWithoutReset();
         bool inversor_dead = inversorAliveTimestamp.checkWithoutReset();
         bool res_dead = resSignalLossTimestamp.checkWithoutReset();
-        // if (steer_dead) {
-        //     DEBUG_PRINT_VAR(steer_dead);
-        // }
-        // if (pc_dead) {
-        //     DEBUG_PRINT_VAR(pc_dead);
-        // }
-        // if (inversor_dead) {
-        //     DEBUG_PRINT_VAR(inversor_dead);
-        // }
-        // if (res_dead) {
-        //     DEBUG_PRINT_VAR(res_dead);
-        // }
+        if (steer_dead) {
+            DEBUG_PRINT_VAR(steer_dead);
+        }
+        if (pc_dead) {
+            DEBUG_PRINT_VAR(pc_dead);
+        }
+        if (inversor_dead) {
+            DEBUG_PRINT_VAR(inversor_dead);
+        }
+        if (res_dead) {
+            DEBUG_PRINT_VAR(res_dead);
+        }
         return steer_dead || pc_dead || inversor_dead || res_dead;
             // pcAliveTimestamp.check() ||
             //    steerAliveTimestamp.check();
