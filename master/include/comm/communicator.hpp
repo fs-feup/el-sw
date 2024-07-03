@@ -15,11 +15,16 @@ inline Code fifoCodes[] = {
     {2, BAMO_RESPONSE_ID},
     {3, AS_CU_EMERGENCY_SIGNAL},
     {4, MISSION_FINISHED},
-    {5, PC_ALIVE},
-    {6, STEERING_ID},
-    {7, RES_STATE},
-    {8, RES_READY}
+    {5, AS_CU_ID},
+    {6, RES_STATE},
+    {7, RES_READY}
 };
+
+inline Code fifoExtendedCodes[] = {
+    {8, STEERING_ID},
+};
+
+// FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 /**
  * @brief Class that contains definitions of typical messages to send via CAN
@@ -28,12 +33,17 @@ inline Code fifoCodes[] = {
  */
 class Communicator {
 private:
-    inline static FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+    inline static FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 public:
     inline static SystemData *_systemData = nullptr;
 
     Communicator(SystemData* systemdata);
+
+    /**
+     * @brief Initializes the CAN bus
+    */
+    void init();
 
     /**
      * @brief Parses the message received from the CAN bus
@@ -99,33 +109,49 @@ public:
 
 inline Communicator::Communicator(SystemData* systemData) {
     _systemData = systemData;
+}
 
-    can1.begin();
-    can1.setBaudRate(500000);
-    can1.enableFIFO();
-    can1.enableFIFOInterrupt();
-    can1.setFIFOFilter(REJECT_ALL);
+void Communicator::init() {
+    
+    // Library initialization
+    can2.begin();
+    can2.setBaudRate(500000);
+
+    // Enable FIFO
+    can2.enableFIFO();
+    can2.enableFIFOInterrupt();
+    
+    // Set filters
+    can2.setFIFOFilter(REJECT_ALL);
     for (auto &fifoCode: fifoCodes)
-        can1.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
+        can2.setFIFOFilter(fifoCode.key, fifoCode.code, STD);
 
-    can1.onReceive(parse_message);
+    // Set filters for extended
+    for (auto &fifoExtendedCode: fifoExtendedCodes)
+        can2.setFIFOFilter(fifoExtendedCode.key, fifoExtendedCode.code, EXT);
+    
+    // Set callback
+    can2.onReceive(FIFO, parse_message);
+
+    DEBUG_PRINT("CAN2 started");
+    can2.mailboxStatus(); // Prints CAN mailbox info
 }
 
 inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     _systemData->sensors._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
+    DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
   } else if (buf[0] == RIGHT_WHEEL_CODE) {
     double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._right_wheel_rpm = right_wheel_rpm;
+    DEBUG_PRINT_VAR(_systemData->sensors._right_wheel_rpm);
   } else if (buf[0] == LEFT_WHEEL_CODE) {
     double left_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     left_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
+    DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
   }
-
-  DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
-  DEBUG_PRINT_VAR(_systemData->sensors._rl_wheel_rpm);
 }
 
 inline void Communicator::resStateCallback(const uint8_t *buf) {
@@ -134,6 +160,8 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     bool go_switch = (buf[0] >> 1) & 0x01;
     bool go_button = (buf[0] >> 2) & 0x01;
 
+    DEBUG_PRINT("Received message from RES");
+
     DEBUG_PRINT_VAR(emg_stop1);
     DEBUG_PRINT_VAR(emg_stop2);
     DEBUG_PRINT_VAR(go_switch);
@@ -141,8 +169,9 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
     if (go_button || go_switch)
         _systemData->r2dLogics.processGoSignal();
-    else if (emg_stop1 || emg_stop2)
+    else if (!emg_stop1 || !emg_stop2) {
         _systemData->failureDetection.emergencySignal = true;
+    }
 
     _systemData->failureDetection.radio_quality =  buf[6];
     bool signal_loss = (buf[7] >> 6) & 0x01;
@@ -157,6 +186,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
 inline void Communicator::resReadyCallback() {
     // If res sends boot message, activate it
+    DEBUG_PRINT("Received RES Ready");
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
@@ -165,6 +195,7 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
+    DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false)
@@ -178,32 +209,33 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
             _systemData->failureDetection.ts_on = false;
         else 
             _systemData->failureDetection.ts_on = true;       
+        DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
     }   
 
-    DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
         _systemData->failureDetection.pcAliveTimestamp.reset();
+        DEBUG_PRINT("Received AS CU Alive");
     } else if (buf[0] == MISSION_FINISHED) {
         _systemData->missionFinished = true;
+        DEBUG_PRINT_VAR(_systemData->missionFinished);
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
         _systemData->failureDetection.emergencySignal = true;
+        DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
     }
-
-    DEBUG_PRINT_VAR(_systemData->missionFinished);
-    DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
+    
 }
 
 inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.reset();
+    DEBUG_PRINT("Received Steering Alive");
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
-    DEBUG_PRINT_VAR(msg.id);
     switch(msg.id) {
-        case PC_ID:
+        case AS_CU_ID:
             pcCallback(msg.buf);
         case RES_STATE:
             resStateCallback(msg.buf);
@@ -212,7 +244,7 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
             resReadyCallback();
             break;
         case C1_ID:
-            c1Callback(msg.buf); // rwheel and hydraulic line
+            c1Callback(msg.buf); // rwheel, lwheel and hydraulic line
             break;
         case BAMO_RESPONSE_ID:
             bamocarCallback(msg.buf);
@@ -228,6 +260,7 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
 inline int Communicator::publish_state(const int state_id) {
     const uint8_t msg[] = {STATE_MSG, static_cast<uint8_t>(state_id)};
 
+    DEBUG_PRINT_VAR(state_id);
     send_message(2, msg, MASTER_ID);
     return 0;
 }
@@ -254,8 +287,7 @@ inline int Communicator::send_message(const unsigned len, const unsigned char* b
     for (unsigned i = 0; i < len; i++) {
         can_message.buf[i] = buffer[i];
     }
-    can1.begin();
-    can1.write(can_message);
+    can2.write(can_message);
 
     return 0;
 }
