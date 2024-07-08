@@ -132,7 +132,7 @@ void Communicator::init() {
     // Set callback
     can2.onReceive(FIFO, parse_message);
 
-    // DEBUG_PRINT("CAN2 started");
+    DEBUG_PRINT("CAN2 started");
     can2.mailboxStatus(); // Prints CAN mailbox info
 }
 
@@ -158,7 +158,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     bool emg_stop2 = buf[3] >> 7 & 0x01;
     bool go_switch = (buf[0] >> 1) & 0x01;
     bool go_button = (buf[0] >> 2) & 0x01;
-
+  
     // DEBUG_PRINT("Received message from RES");
 
     // DEBUG_PRINT_VAR(emg_stop1);
