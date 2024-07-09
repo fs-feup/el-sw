@@ -194,7 +194,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             // digitalSender->toggleWatchdog();
         // TS Activated?
             if (_systemData->failureDetection.ts_on) {
-                checkupState = CheckupState::TOGGLE_VALVE;
+                checkupState = CheckupState::CHECK_TIMESTAMPS;
             }
             break;
         case CheckupState::TOGGLE_VALVE:
@@ -272,12 +272,12 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
         }
         return _systemData->failureDetection.emergencySignal ||
-            _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
             _systemData->failureDetection.hasAnyComponentTimedOut() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->digitalData.asms_on ||
             !_systemData->failureDetection.ts_on ||
-            _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
+            // _systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD ||
             _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
@@ -299,9 +299,9 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         return _systemData->failureDetection.hasAnyComponentTimedOut() ||
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
-            _systemData->digitalData.pneumatic_line_pressure == 0 ||
-            (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-                && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
+            // _systemData->digitalData.pneumatic_line_pressure == 0 ||
+            // (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
+            //     && (millis() - _systemData->r2dLogics.releaseEbsTimestamp) > RELEASE_EBS_TIMEOUT_MS) ||
             !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;
