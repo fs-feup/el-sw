@@ -7,7 +7,7 @@
 
 ## Git
 
-If you already use git and github, you can skip this step. If you use windows, make sure to be inside your wsl for this.
+If you already use git and github, you can skip this step.
 
 ### Installation
 
@@ -26,13 +26,6 @@ git config --global user.name "username"
 git config --global user.email "useremail"
 ```
 
-To configure independently per project:
-
-```sh
-git config user.name "username"
-git config user.email "useremail"
-```
-
 ### SSH connection to Github
 
 1. Generate ssh key pair:
@@ -45,7 +38,7 @@ git config user.email "useremail"
     eval "$(ssh-agent -s)"
     ```
 
-	or on windows:
+	or on windows powershell:
 
 	```sh
 	Set-Service -StartupType Automatic
@@ -56,7 +49,7 @@ git config user.email "useremail"
     ```sh
     ssh-add ~/.ssh/id_ed25519
     ```
-    In Windows:
+    In Windows powershell:
     ```sh
     ssh-add c:/Users/<user>/.ssh/id_ed25519
     ```
@@ -67,14 +60,14 @@ git config user.email "useremail"
     # displayed in the terminal to your clipboard
     ```
 
-    in windows:
+    in windows powershell:
     ```sh
     cat c:/Users/<user>/.ssh/id_ed25519.pub
     # Then select and copy the contents of the id_ed25519.pub file
     # displayed in the terminal to your clipboard
     ```
     **Tip:** Alternatively, you can locate the hidden .ssh folder, open the file in your favorite text editor, and copy it to your clipboard.
-1. In the upper-right corner of any page, click your profile photo, then click Settings.
+1. In the upper-right corner of any page in Github, click your profile photo, then click Settings.
 
     ![Screenshot of GitHub's account menu showing options for users to view and edit their profile, content, and settings. The menu item "Settings" is outlined in dark orange.](./assets/environment_setup/ssh-github.png)
 
@@ -102,22 +95,11 @@ The project is divided into multiple Platform.io projects, each corresponding to
 
 ## IDE
 
-
 Visual Studio Code is a general purpose IDE very widely used. VSCode is our choice due to the great quantity of extensions available, especially the Platform.io Extension.
 
+First, install the [platformio extension](https://platformio.org/install/ide?install=vscode). 
 
-### Platformio Manual Installation
-1. Install vscode
-2. Make sure you have python3 installed
-3. Install python3-venv: ```sudo apt install python3-venv```
-4. Install gcc
-	```sh
-	sudo apt install build-essential
-	```
-5. Install [platformio extension](https://platformio.org/install/ide?install=vscode)
-6. Open platformio extension in vscode
-
-Suggested extensions
+Some more suggested extensions:
 - [Github Pull Requests](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 - [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
