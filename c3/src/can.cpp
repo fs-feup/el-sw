@@ -266,9 +266,6 @@ void REGIDHandler(const CAN_message_t& msg) {
         case REGID_DC_VOLTAGE: {
             long dc_voltage = 0;
             dc_voltage = (msg.buf[2] << 8) | msg.buf[1];
-#ifdef CAN_DEBUG
-            LOG("DC Voltage: %d\n", dc_voltage);
-#endif
             TSOn = (dc_voltage >= DC_THRESHOLD);
             break;
         }
