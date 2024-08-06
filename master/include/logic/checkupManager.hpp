@@ -114,6 +114,7 @@ public:
 
 inline void CheckupManager::resetCheckupState() {
     checkupState = CheckupState::WAIT_FOR_ASMS;
+    _systemData->missionFinished = false;
 }
 
 inline bool CheckupManager::shouldStayManualDriving() const {
@@ -135,7 +136,7 @@ inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
 }
 
 inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender *digitalSender) {
-    // DEBUG_PRINT_VAR(static_cast<int>(checkupState));
+    DEBUG_PRINT_VAR(static_cast<int>(checkupState));
     switch (checkupState) {
         case CheckupState::WAIT_FOR_ASMS:
             // ASMS Activated?
