@@ -9,16 +9,37 @@
 
 constexpr unsigned long READY_TIMEOUT_MS = 5000;
 constexpr unsigned long RELEASE_EBS_TIMEOUT_MS = 1000;
+constexpr unsigned long ENGAGE_EBS_TIMEOUT_MS = 5000;
 
 struct R2DLogics {
     Metro readyTimestamp{READY_TIMEOUT_MS};
-    unsigned long releaseEbsTimestamp = millis();
+
+    /// Timestamp from when EBS is released on r2d, 
+    /// used to tolerate a small delay before entering driving state
+    Metro releaseEbsTimestamp{RELEASE_EBS_TIMEOUT_MS}; 
+
+    /// Timestamp from when EBS is activate on entering ready state, 
+    /// used to tolerate a small delay in which pneumatic line pressure is low
+    Metro engageEbsTimestamp{ENGAGE_EBS_TIMEOUT_MS};
     bool r2d{false};
 
+    /**
+     * @brief resets timestamps for ready
+     */
     void enterReadyState() {
         readyTimestamp.reset();
+        engageEbsTimestamp.reset();
         r2d = false;
     }
+
+
+    /**
+     * @brief resets timestamps for driving
+     */
+    void enterDrivingState() {
+        releaseEbsTimestamp.reset();
+    }
+
 
     /**
      * @brief Processes the go signal.

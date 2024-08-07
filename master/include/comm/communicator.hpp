@@ -199,7 +199,7 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
-    DEBUG_PRINT("Received Bamocar Alive");
+    // DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false) {
@@ -209,7 +209,7 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
     } else if (buf[0] == VDC_BUS) {
         int dc_voltage = (buf[2] << 8) | buf[1];
 
-        DEBUG_PRINT_VAR(dc_voltage);
+        // DEBUG_PRINT_VAR(dc_voltage);
 
         if (dc_voltage < DC_THRESHOLD) {
             _systemData->failureDetection.ts_on = false;
