@@ -73,6 +73,7 @@ void statemachine(){
         }
         else if (TSOn and ASReady)
         {
+            delay(2000);
             initBamocarD3();
             request_dataLOG_messages();
             R2DStatus = ASDRIVING;

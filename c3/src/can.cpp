@@ -75,6 +75,8 @@ const int CANTimeoutMS = 100;
 
 elapsedMillis ASEmergencyTimer;
 
+bool entered_emergency = false;
+
 
 // Initialize CAN messages
 /**
@@ -264,9 +266,6 @@ void REGIDHandler(const CAN_message_t& msg) {
         case REGID_DC_VOLTAGE: {
             long dc_voltage = 0;
             dc_voltage = (msg.buf[2] << 8) | msg.buf[1];
-#ifdef CAN_DEBUG
-            LOG("DC Voltage: %d\n", dc_voltage);
-#endif
             TSOn = (dc_voltage >= DC_THRESHOLD);
             break;
         }
@@ -310,10 +309,18 @@ void canSniffer(const CAN_message_t& msg) {
             break;
         case MASTER_ID:
             if (msg.buf[0] == 0x31) {
-                if (msg.buf[1] == 2) // ASState = ASReady 
+                if (msg.buf[1] == 2) {
+                    // ASState = ASReady 
                     ASReady=true;
+                    entered_emergency = false;
+                }
                 else if (msg.buf[1] == 5) { // ASState = ASEmergency
-                    ASEmergencyTimer=0;
+                    if (!entered_emergency) {
+                        ASEmergencyTimer = 0;
+                        entered_emergency = true;
+                    }
+                } else {
+                    entered_emergency = false;
                 }
             }
 

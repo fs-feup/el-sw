@@ -81,6 +81,8 @@ float rr_rpm;
 float rl_rpm;
 unsigned long last_wheel_pulse_rr;
 unsigned long last_wheel_pulse_rl;
+unsigned long second_to_last_wheel_pulse_rr;
+unsigned long second_to_last_wheel_pulse_rl;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -247,8 +249,16 @@ void setup()
     pinMode(BRAKE_SENSOR_PIN, INPUT);
     pinMode(BRAKE_LIGHT, OUTPUT);
 
-    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), [](){ last_wheel_pulse_rr = micros(); }, RISING);
-    attachInterrupt(digitalPinToInterrupt(LEFT_WHEEL_ENCODER_PIN), [](){ last_wheel_pulse_rl = micros(); }, RISING);
+    attachInterrupt(digitalPinToInterrupt(RIGHT_WHEEL_ENCODER_PIN), []()
+        { 
+            second_to_last_wheel_pulse_rr = last_wheel_pulse_rr;
+            last_wheel_pulse_rr = micros(); 
+        }, RISING);
+    attachInterrupt(digitalPinToInterrupt(LEFT_WHEEL_ENCODER_PIN), []()
+        { 
+            second_to_last_wheel_pulse_rl = last_wheel_pulse_rl;
+            last_wheel_pulse_rl = micros(); 
+        }, RISING);
 }
 
 void loop()
@@ -285,10 +295,10 @@ void loop()
         Serial.print("Publishing RL RPM: ");
         Serial.println(rl_rpm);
         #endif 
-        unsigned long time_interval_rr = (micros() - last_wheel_pulse_rr);
-        unsigned long time_interval_rl = (micros() - last_wheel_pulse_rl);
-        rr_rpm = time_interval_rr > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rr * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
-        rl_rpm = time_interval_rl > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rl * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+        unsigned long time_interval_rr = (last_wheel_pulse_rr - second_to_last_wheel_pulse_rr);
+        unsigned long time_interval_rl = (last_wheel_pulse_rl - second_to_last_wheel_pulse_rl);
+        rr_rpm = micros() - last_wheel_pulse_rr > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rr * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
+        rl_rpm = micros() - last_wheel_pulse_rl > LIMIT_RPM_INTERVAL ? 0.0 : 1 / (time_interval_rl * 1e-6 * WPS_PULSES_PER_ROTATION  ) * 60;
         char rr_rpm_byte[4];
         char rl_rpm_byte[4];
         rpm_2_byte(rr_rpm, rr_rpm_byte);

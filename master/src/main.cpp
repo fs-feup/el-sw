@@ -38,10 +38,6 @@ void loop() {
     digitalReceiver.digitalReads();
     as_state.calculateState();
     
-    if (rl_rpm_timer.check()) {
-        Communicator::publish_left_wheel_rpm(systemData.mission);
-        rl_rpm_timer.reset();
-    }
     if (mission_timer.check()) {
         Communicator::publish_mission(systemData.mission);
         mission_timer.reset();
