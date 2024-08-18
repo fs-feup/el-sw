@@ -4,18 +4,31 @@
 #include <model/structure.hpp>
 #include <embedded/digitalSender.hpp>
 
+/**
+ * @brief The ASState class manages and transitions between different states of the vehicle system.
+ * 
+ * The ASState class uses the CheckupManager to perform system checks and determine the appropriate state transitions
+ * based on the vehicle's status and operational conditions. It interacts with hardware components via the DigitalSender
+ * and Communicator interfaces to update the system state and handle transitions.
+ */
 class ASState {
 private:
-    DigitalSender *_digitalSender;
-    Communicator *_communicator;
+    DigitalSender *_digitalSender; ///< Pointer to the DigitalSender object for hardware interactions.
+    Communicator *_communicator; ///< Pointer to the Communicator object for communication operations.
 
 public:
-    CheckupManager _checkupManager;
-    State state{AS_OFF};
+    CheckupManager _checkupManager; ///< CheckupManager object for handling various checkup operations.
+    State state{AS_OFF}; ///< Current state of the vehicle system, initialized to OFF.
 
+    /**
+     * @brief Constructor for the ASState class.
+     * @param system_data Pointer to the SystemData object containing system status and sensor information.
+     * @param communicator Pointer to the Communicator object.
+     * @param digital_sender Pointer to the DigitalSender object.
+     */
     explicit ASState(SystemData *system_data, Communicator *communicator, 
-    DigitalSender *digital_sender) : 
-    _digitalSender(digital_sender), _communicator(communicator), _checkupManager(system_data) {}
+        DigitalSender *digital_sender) : 
+        _digitalSender(digital_sender), _communicator(communicator), _checkupManager(system_data) {}
 
     /**
      * @brief Calculates the state of the vehicle.

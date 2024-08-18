@@ -4,15 +4,25 @@
 #include <Arduino.h>
 #include "digitalSettings.hpp"
 
+/**
+ * @brief Class responsible for controlling digital outputs in the Master Teensy.
+ * 
+ * The DigitalSender class handles various operations such as controlling LEDs,
+ * EBS valves, SDC state, and watchdog signals. It also manages different operational states
+ * such as emergency, manual, ready, driving, and finish.
+ */
 class DigitalSender {
 private:
-    Metro _blinkTimer{LED_BLINK_INTERVAL};
-    Metro _watchdogTimer{WD_PULSE_INTERVAL_MS};
+    Metro _blinkTimer{LED_BLINK_INTERVAL}; ///< Timer for blinking LED
+    Metro _watchdogTimer{WD_PULSE_INTERVAL_MS}; ///< Timer for toggling watchdog signal
 
-
+    /**
+     * @brief Turns off both ASSI LEDs (yellow and blue).
+     */
     static void turnOffASSI();
 
 public:
+    // Array of valid output pins
     static constexpr std::array<int, 9> validOutputPins = {
         ASSI_BLUE_PIN,
         ASSI_YELLOW_PIN,
@@ -23,6 +33,11 @@ public:
         SDC_LOGIC_WATCHDOG_OUT_PIN
     };
 
+    /**
+     * @brief Constructor for the DigitalSender class.
+     * 
+     * Initializes the pins for output as defined in validOutputPins.
+     */
     DigitalSender() {
         for (const auto pin: validOutputPins) {
             pinMode(pin, OUTPUT);

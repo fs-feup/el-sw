@@ -9,6 +9,10 @@
 #include "comm/utils.hpp"
 #include "debugUtils.hpp"
 
+/**
+ * @brief Array of standard CAN message codes to be used for FIFO filtering
+ * Each Code struct contains a key and a corresponding message ID.
+ */
 inline Code fifoCodes[] = {
     {0, C1_ID},
     {1, BAMO_RESPONSE_ID},
@@ -19,11 +23,14 @@ inline Code fifoCodes[] = {
     {6, RES_READY}
 };
 
+/**
+ * @brief Array of extended CAN message codes to be used for FIFO filtering
+ * Contains the key and corresponding message ID for extended messages.
+ */
 inline Code fifoExtendedCodes[] = {
     {7, STEERING_ID},
 };
 
-// FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 /**
  * @brief Class that contains definitions of typical messages to send via CAN
@@ -32,11 +39,18 @@ inline Code fifoExtendedCodes[] = {
  */
 class Communicator {
 private:
+    // Static FlexCAN_T4 object for CAN2 interface with RX and TX buffer sizes specified
     inline static FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 public:
+    // Pointer to SystemData instance for storing system-related data
     inline static SystemData *_systemData = nullptr;
 
+    /**
+     * @brief Constructor for the Communicator class
+     * Initializes the Communicator with the given system data instance.
+     * @param systemData Pointer to the SystemData instance.
+     */
     Communicator(SystemData* systemdata);
 
     /**
