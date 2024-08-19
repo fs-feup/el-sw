@@ -124,6 +124,7 @@ void test_shouldEnterEmergency() {
     sd.failureDetection.inversorAliveTimestamp.reset();
     sd.failureDetection.pcAliveTimestamp.reset();
     sd.failureDetection.steerAliveTimestamp.reset();
+    sd.failureDetection.resSignalLossTimestamp.reset();
     // sd.digitalData.watchdogTimestamp.reset();
     sd.failureDetection.emergencySignal = false;
     sd.failureDetection.ts_on = true;
@@ -135,6 +136,7 @@ void test_shouldEnterEmergency() {
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
     sd.digitalData.sdcState_OPEN = false;
     sd.digitalData.pneumatic_line_pressure = false;
+    while(!sd.r2dLogics.releaseEbsTimestamp.checkWithoutReset());
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
     sd.digitalData.pneumatic_line_pressure = true;
     sd.digitalData.asms_on = false;
@@ -149,6 +151,10 @@ void test_shouldEnterEmergency() {
     sd.sensors._hydraulic_line_pressure = 1;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_READY));
 
+    sd.failureDetection.inversorAliveTimestamp.reset();
+    sd.failureDetection.pcAliveTimestamp.reset();
+    sd.failureDetection.steerAliveTimestamp.reset();
+    sd.failureDetection.resSignalLossTimestamp.reset();
     TEST_ASSERT_FALSE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
     sd.digitalData.sdcState_OPEN = true;
     TEST_ASSERT_TRUE(checkupManager.shouldEnterEmergency(State::AS_DRIVING));
@@ -184,8 +190,9 @@ void test_shouldEnterEmergencyAsDrivingEBSValves() {
     sd.failureDetection.inversorAliveTimestamp.reset();
     sd.failureDetection.pcAliveTimestamp.reset();
     sd.failureDetection.steerAliveTimestamp.reset();
+    sd.failureDetection.resSignalLossTimestamp.checkWithoutReset();
     // sd.digitalData.watchdogTimestamp.reset();
-    sd.r2dLogics.releaseEbsTimestamp = millis();
+    sd.r2dLogics.releaseEbsTimestamp.reset();
     sd.failureDetection.emergencySignal = false;
     sd.failureDetection.ts_on = true;
 
@@ -200,6 +207,7 @@ void test_shouldEnterEmergencyAsDrivingEBSValves() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
 

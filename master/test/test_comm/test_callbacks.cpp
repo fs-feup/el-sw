@@ -7,8 +7,10 @@
 #define RES_READY_TRUE 0x01
 #define RADIO_QUALITY_0 0x00
 #define RADIO_QUALITY_100 0x64
-#define RES_EMG_0 0x01
-#define RES_EMG_3 0x80
+#define RES_EMG_0 0x00
+#define RES_EMG_3 0x00
+#define RES_OK_0 0x01
+#define RES_OK_3 0x80
 
 SystemData sd;
 Communicator communicator(&sd);
@@ -158,6 +160,13 @@ void test_res_state(void) {
     TEST_ASSERT_EQUAL(true, sd.r2dLogics.r2d);
     TEST_ASSERT_EQUAL(100, sd.failureDetection.radio_quality);
 
+    // RES ok
+    msg.buf[0] = RES_OK_0;
+    msg.buf[3] = RES_OK_3; // def emg bits
+    communicator.parse_message(msg);
+    TEST_ASSERT_EQUAL(false, sd.failureDetection.emergencySignal);
+    
+    // RES Emergency    
     msg.buf[0] = RES_EMG_0;
     msg.buf[3] = RES_EMG_3; // def emg bits
     communicator.parse_message(msg);

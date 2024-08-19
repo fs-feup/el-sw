@@ -54,7 +54,6 @@ struct R2DLogics {
         // If r2d is not received or received before 5 seconds, return false
         if (readyTimestamp.check()) {
             r2d = true;
-            releaseEbsTimestamp = millis(); // starts ebs timeout to release when going as driving
             return EXIT_SUCCESS;
         }
         // If r2d is received after the timeout duration, return true
