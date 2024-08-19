@@ -14,12 +14,16 @@
  */
 class CheckupManager {
 private:
-    SystemData *_systemData;
-    Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT};
+    SystemData *_systemData; ///< Pointer to the system data object containing system status and sensor information.
+    Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT}; ///< Timer for the initial checkup sequence.
 
 public:
-    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT};
+    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT}; ///< Timer for the EBS buzzer sound check.
 
+    /**
+     * @brief Provides access to the initial checkup timestamp timer.
+     * @return Reference to the initial checkup timestamp timer.
+     */
     [[nodiscard]] Metro &getInitialCheckupTimestamp() {
         return initialCheckupTimestamp;
     }
@@ -32,10 +36,10 @@ public:
     */
     enum class CheckupState {
         WAIT_FOR_ASMS,
-        // START_TOGGLING_WATCHDOG,
-        // WAIT_FOR_WATCHDOG,
-        // STOP_TOGGLING_WATCHDOG,
-        // CHECK_WATCHDOG,
+        START_TOGGLING_WATCHDOG,
+        WAIT_FOR_WATCHDOG,
+        STOP_TOGGLING_WATCHDOG,
+        CHECK_WATCHDOG,
         CLOSE_SDC,
         WAIT_FOR_AATS,
         WAIT_FOR_TS,
@@ -53,11 +57,18 @@ public:
         SUCCESS
     };
 
-    CheckupState checkupState{CheckupState::WAIT_FOR_ASMS};
+    CheckupState checkupState{CheckupState::WAIT_FOR_ASMS}; ///< Current state of the checkup process.
 
-    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) {
+    /**
+     * @brief Constructor for the CheckupManager class.
+     * @param systemData Pointer to the system data object.
+     */
+    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) { 
     };
 
+    /**
+     * @brief Resets the checkup state to the initial state.
+     */
     void resetCheckupState();
 
     /**
@@ -285,7 +296,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             !_systemData->digitalData.asms_on ||
             !_systemData->failureDetection.ts_on ||
             (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD
-                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
+               && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
             _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
@@ -316,9 +327,9 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
             (_systemData->digitalData.pneumatic_line_pressure == 0 
-                && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
+               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
             (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-                && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
+               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
             !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;

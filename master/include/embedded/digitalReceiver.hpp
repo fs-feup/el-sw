@@ -14,8 +14,8 @@
 */
 class DigitalReceiver {
 public:
-    static double _current_left_wheel_rpm; // class var to keep digital data non-static
-    static unsigned long last_wheel_pulse_ts; // micros since last pulse
+    static double _current_left_wheel_rpm; // Class variable to store the left wheel RPM (non-static)
+    static unsigned long last_wheel_pulse_ts; // Timestamp of the last pulse for RPM calculation
 
     /**
      * @brief read all digital inputs
@@ -50,19 +50,43 @@ public:
     }
 
 private:
-    DigitalData *digitalData;
-    Mission *mission;
+    DigitalData *digitalData; ///< Pointer to the digital data storage
+    Mission *mission; ///< Pointer to the current mission status
 
-    unsigned int asms_change_counter = 0; // counter to avoid noise
-    unsigned int aats_change_counter = 0; // counter to avoid noise
-    unsigned int pneumatic_change_counter = 0; // counter to avoid noise
-    unsigned int mission_change_counter = 0; // counter to avoid noise
-    Mission last_tried_mission_ = MANUAL;
+    unsigned int asms_change_counter = 0; ///< counter to avoid noise on asms
+    unsigned int aats_change_counter = 0; ///< counter to avoid noise on aats
+    unsigned int pneumatic_change_counter = 0; ///< counter to avoid noise on pneumatic line
+    unsigned int mission_change_counter = 0; ///< counter to avoid noise on mission change
+    Mission last_tried_mission_ = MANUAL; ///< Last attempted mission state
 
+    /**
+     * @brief Reads the pneumatic line pressure states and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readPneumaticLine();
+
+    /**
+     * @brief Reads the current mission state based on input pins and updates the mission object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readMission();
+
+    /**
+     * @brief Reads the ASMS switch state and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readAsmsSwitch();
+
+    /**
+     * @brief Reads the AATS state and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readAatsState();
+
+    /**
+     * @brief Reads the watchdog state and updates the DigitalData object.
+     * Resets the watchdog timer if the state is high.
+     */
     void readWatchdog();
 
 };
@@ -91,12 +115,12 @@ inline void DigitalReceiver::digitalReads() {
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
-    // if (pneumatic1 == 0) {
-    //     DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_1_PIN));
-    // }
-    // if (pneumatic2 == 0) {
-    //     DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_2_PIN));
-    // }
+    if (pneumatic1 == 0) {
+        // DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_1_PIN));
+    }
+    if (pneumatic2 == 0) {
+        // DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_2_PIN));
+    }
     bool temp_res = pneumatic1 && pneumatic2;
 
     // Only change the value if it has been different 5 times in a row
@@ -110,7 +134,6 @@ inline void DigitalReceiver::readPneumaticLine() {
 }
 
 inline void DigitalReceiver::readMission() {
-    // Enum value attributed considering the True Boolean Value
 
     Mission temp_res = static_cast<Mission>(
         digitalRead(MISSION_MANUAL_PIN) * MANUAL |
