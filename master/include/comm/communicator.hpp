@@ -9,22 +9,28 @@
 #include "comm/utils.hpp"
 #include "debugUtils.hpp"
 
+/**
+ * @brief Array of standard CAN message codes to be used for FIFO filtering
+ * Each Code struct contains a key and a corresponding message ID.
+ */
 inline Code fifoCodes[] = {
     {0, C1_ID},
-    {1, BMS_ID},
-    {2, BAMO_RESPONSE_ID},
-    {3, AS_CU_EMERGENCY_SIGNAL},
-    {4, MISSION_FINISHED},
-    {5, AS_CU_ID},
-    {6, RES_STATE},
-    {7, RES_READY}
+    {1, BAMO_RESPONSE_ID},
+    {2, AS_CU_EMERGENCY_SIGNAL},
+    {3, MISSION_FINISHED},
+    {4, AS_CU_ID},
+    {5, RES_STATE},
+    {6, RES_READY}
 };
 
+/**
+ * @brief Array of extended CAN message codes to be used for FIFO filtering
+ * Contains the key and corresponding message ID for extended messages.
+ */
 inline Code fifoExtendedCodes[] = {
-    {8, STEERING_ID},
+    {7, STEERING_ID},
 };
 
-// FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 /**
  * @brief Class that contains definitions of typical messages to send via CAN
@@ -33,11 +39,18 @@ inline Code fifoExtendedCodes[] = {
  */
 class Communicator {
 private:
+    // Static FlexCAN_T4 object for CAN2 interface with RX and TX buffer sizes specified
     inline static FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 public:
+    // Pointer to SystemData instance for storing system-related data
     inline static SystemData *_systemData = nullptr;
 
+    /**
+     * @brief Constructor for the Communicator class
+     * Initializes the Communicator with the given system data instance.
+     * @param systemData Pointer to the SystemData instance.
+     */
     Communicator(SystemData* systemdata);
 
     /**
@@ -140,17 +153,17 @@ void Communicator::init() {
 inline void Communicator::c1Callback(const uint8_t *buf) {
   if (buf[0] == HYDRAULIC_LINE) {
     _systemData->sensors._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
-    DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
+    // DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
   } else if (buf[0] == RIGHT_WHEEL_CODE) {
     double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._right_wheel_rpm = right_wheel_rpm;
-    DEBUG_PRINT_VAR(_systemData->sensors._right_wheel_rpm);
+    // DEBUG_PRINT_VAR(_systemData->sensors._right_wheel_rpm);
   } else if (buf[0] == LEFT_WHEEL_CODE) {
     double left_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
     left_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
     _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
-    DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
+    // DEBUG_PRINT_VAR(_systemData->sensors._left_wheel_rpm);
   }
 }
 
@@ -159,34 +172,39 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     bool emg_stop2 = buf[3] >> 7 & 0x01;
     bool go_switch = (buf[0] >> 1) & 0x01;
     bool go_button = (buf[0] >> 2) & 0x01;
+  
+    // DEBUG_PRINT("Received message from RES");
 
-    DEBUG_PRINT("Received message from RES");
-
-    DEBUG_PRINT_VAR(emg_stop1);
-    DEBUG_PRINT_VAR(emg_stop2);
-    DEBUG_PRINT_VAR(go_switch);
-    DEBUG_PRINT_VAR(go_button);
+    // DEBUG_PRINT_VAR(emg_stop1);
+    // DEBUG_PRINT_VAR(emg_stop2);
+    // DEBUG_PRINT_VAR(go_switch);
+    // DEBUG_PRINT_VAR(go_button);
 
     if (go_button || go_switch)
         _systemData->r2dLogics.processGoSignal();
-    else if (!emg_stop1 || !emg_stop2) {
+    else if (!emg_stop1 && !emg_stop2) {
+        DEBUG_PRINT("RES Emergency Signal");
         _systemData->failureDetection.emergencySignal = true;
     }
 
-    _systemData->failureDetection.radio_quality =  buf[6];
+    _systemData->failureDetection.radio_quality = buf[6];
+    // DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
     bool signal_loss = (buf[7] >> 6) & 0x01;
-    if (signal_loss) {
-        _systemData->failureDetection.emergencySignal = true;
+    if (!signal_loss) {
+        _systemData->failureDetection.resSignalLossTimestamp.reset();
+    } else {
+        // Too many will violate the disconnection time limit
+        DEBUG_PRINT("SIGNAL LOSS"); 
     }
 
-    DEBUG_PRINT_VAR(_systemData->r2dLogics.r2d);
-    DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
-    DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
+    // DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
+    // DEBUG_PRINT_VAR(_systemData->r2dLogics.r2d);
+    // DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
 }
 
 inline void Communicator::resReadyCallback() {
     // If res sends boot message, activate it
-    DEBUG_PRINT("Received RES Ready");
+    // DEBUG_PRINT("Received RES Ready");
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
@@ -195,32 +213,35 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
-    DEBUG_PRINT("Received Bamocar Alive");
+    // DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
-        if (buf[1] == false)
+        if (buf[1] == false) {
             _systemData->failureDetection.ts_on = false;
-     
+        }
+
     } else if (buf[0] == VDC_BUS) {
-        
         int dc_voltage = (buf[2] << 8) | buf[1];
 
-        if (dc_voltage < DC_THRESHOLD)
+        // DEBUG_PRINT_VAR(dc_voltage);
+
+        if (dc_voltage < DC_THRESHOLD) {
             _systemData->failureDetection.ts_on = false;
-        else 
+        } else {
             _systemData->failureDetection.ts_on = true;       
-        DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
+        }
     }   
+    // DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
 
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
     if (buf[0] == PC_ALIVE) {
         _systemData->failureDetection.pcAliveTimestamp.reset();
-        DEBUG_PRINT("Received AS CU Alive");
+        // DEBUG_PRINT("Received AS CU Alive");
     } else if (buf[0] == MISSION_FINISHED) {
         _systemData->missionFinished = true;
-        DEBUG_PRINT_VAR(_systemData->missionFinished);
+        // DEBUG_PRINT_VAR(_systemData->missionFinished);
     } else if (buf[0] == AS_CU_EMERGENCY_SIGNAL) {
         _systemData->failureDetection.emergencySignal = true;
         DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
@@ -230,7 +251,7 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
 
 inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.reset();
-    DEBUG_PRINT("Received Steering Alive");
+    // DEBUG_PRINT("Received Steering Alive");
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
@@ -260,7 +281,7 @@ inline void Communicator::parse_message(const CAN_message_t& msg) {
 inline int Communicator::publish_state(const int state_id) {
     const uint8_t msg[] = {STATE_MSG, static_cast<uint8_t>(state_id)};
 
-    DEBUG_PRINT_VAR(state_id);
+    // DEBUG_PRINT_VAR(state_id);
     send_message(2, msg, MASTER_ID);
     return 0;
 }

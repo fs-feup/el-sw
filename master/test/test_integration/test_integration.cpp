@@ -39,18 +39,19 @@ void to_ready() {
 
     // Iterate a few times to go to check wd
     Metro time{1};
-    while (!time.check()) {
+    while (!time.checkWithoutReset()) {
         as_state.calculateState();
     }
     
     // sd.digitalData.watchdog_state = false;
     // Wait for wd timeout
     Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
-    while (!time2.check()) {  
+    while (!time2.checkWithoutReset()) {  
         as_state.calculateState();
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
 }
@@ -95,7 +96,7 @@ void test_off_to_ready_recheck() {
 
     // // Iterate a few times to go to check wd
     // Metro time{1};
-    // while (!time.check()) {
+    // while (!time.checkWithoutReset()) {
     //     as_state.calculateState();
     // }
     
@@ -105,7 +106,7 @@ void test_off_to_ready_recheck() {
     // Wait for wd timeout
 
     Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
-    while (!time2.check()) {  
+    while (!time2.checkWithoutReset()) {  
         if (as_state.state == State::AS_READY)
             went_ready = true;
         
@@ -113,7 +114,7 @@ void test_off_to_ready_recheck() {
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
-        // sd.digitalData.watchdogTimestamp.reset(); // todo check
+        // sd.digitalData.watchdogTimestamp.reset(); // todo check 
     }
 
     TEST_ASSERT_EQUAL(false, went_ready);
@@ -135,7 +136,7 @@ void test_off_to_ready_wayback_impossible() {
     communicator.bamocarCallback(bamo_msg2);
 
     Metro time3{1};
-    while (!time3.check()) {
+    while (!time3.checkWithoutReset()) {
         as_state.calculateState();
         if (as_state.state == AS_OFF)
             reverted_to_off = true;
@@ -156,20 +157,20 @@ void test_ready_to_emg_to_off() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 
     Metro time{COMPONENT_TIMESTAMP_TIMEOUT + 10};
-    while (!time.check()){
+    while (!time.checkWithoutReset()){
         as_state.calculateState();
     }
 
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 
     Metro time2{EBS_BUZZER_TIMEOUT / 2};
-    while (!time2.check()){
+    while (!time2.checkWithoutReset()){
         as_state.calculateState();
     }
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 
     Metro time3{EBS_BUZZER_TIMEOUT / 2};
-    while (!time3.check()){
+    while (!time3.checkWithoutReset()){
         as_state.calculateState();
     }
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
@@ -189,11 +190,12 @@ void test_ready_to_driving_to_emg() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
     
     Metro time{READY_TIMEOUT_MS / 2};
-    while (!time.check()){
+    while (!time.checkWithoutReset()){
         as_state.calculateState();
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
 
@@ -203,11 +205,12 @@ void test_ready_to_driving_to_emg() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
 
     Metro time2{READY_TIMEOUT_MS / 2};
-    while (!time2.check()){
+    while (!time2.checkWithoutReset()){
         as_state.calculateState();
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
     
@@ -217,25 +220,28 @@ void test_ready_to_driving_to_emg() {
 
     // brake pressure has a threshold to be updated, otherwise emergency
     Metro time3{RELEASE_EBS_TIMEOUT_MS / 2};
-    while (!time3.check()){
+    while (!time3.checkWithoutReset()){
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
         as_state.calculateState();
     }
+
     TEST_ASSERT_EQUAL(State::AS_DRIVING, as_state.state); // still within threshold, okay
 
-    Metro time4{RELEASE_EBS_TIMEOUT_MS / 2 + 10};
-    while (!time4.check()){
+    Metro time4{RELEASE_EBS_TIMEOUT_MS + 10};
+    while (!sd.r2dLogics.releaseEbsTimestamp.checkWithoutReset()){
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
         as_state.calculateState();
     }
     // threshold over, still with brake pressure, emergency
-
+    TEST_ASSERT_TRUE(sd.r2dLogics.releaseEbsTimestamp.checkWithoutReset());
     as_state.calculateState();
     TEST_ASSERT_EQUAL(State::AS_EMERGENCY, as_state.state);
 }
@@ -251,11 +257,12 @@ void test_ready_to_driving_to_emg2() {
     TEST_ASSERT_EQUAL(State::AS_READY, as_state.state);
     
     Metro time{READY_TIMEOUT_MS};
-    while (!time.check()){
+    while (!time.checkWithoutReset()){
         as_state.calculateState();
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
 
@@ -398,19 +405,19 @@ void test_flow_ready() {
    
     sd.digitalData.pneumatic_line_pressure = true;
     uint8_t hydraulic_msg[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_HIGH, 0x00};
-    uint8_t hydraulic_msg2[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_LOW, 0x00}; // loose brake activation
+    // uint8_t hydraulic_msg2[] = {HYDRAULIC_LINE, HYDRAULIC_PRESSURE_LOW, 0x00}; // loose brake activation
     communicator.c1Callback(hydraulic_msg);
 
     // Iterate a few times to go to check wd
     // Metro time{1};
-    // while (!time.check()) {
+    // while (!time.checkWithoutReset()) {
     //     as_state.calculateState();
     // }
     
     // sd.digitalData.watchdog_state = false;
     // Wait for wd timeout
     // Metro time2{INITIAL_CHECKUP_STEP_TIMEOUT};
-    // while (!time2.check()) {
+    // while (!time2.checkWithoutReset()) {
     //     communicator.c1Callback(hydraulic_msg2);
     //     as_state.calculateState();
     //     sd.failureDetection.inversorAliveTimestamp.reset();
@@ -421,12 +428,13 @@ void test_flow_ready() {
     // TEST_ASSERT_EQUAL(State::AS_OFF, as_state.state);
 
     Metro time3{INITIAL_CHECKUP_STEP_TIMEOUT};
-    while (!time3.check()) {
+    while (!time3.checkWithoutReset()) {
         communicator.c1Callback(hydraulic_msg);
         as_state.calculateState();
         sd.failureDetection.inversorAliveTimestamp.reset();
         sd.failureDetection.pcAliveTimestamp.reset();
         sd.failureDetection.steerAliveTimestamp.reset();
+        sd.failureDetection.resSignalLossTimestamp.reset();
         // sd.digitalData.watchdogTimestamp.reset();
     }
 

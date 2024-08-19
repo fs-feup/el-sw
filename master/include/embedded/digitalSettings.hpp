@@ -1,6 +1,7 @@
 #pragma once
 
 #define COMPONENT_TIMESTAMP_TIMEOUT 500
+#define RES_TIMESTAMP_TIMEOUT 200
 #define EBS_BUZZER_TIMEOUT 8000
 #define LED_BLINK_INTERVAL 500
 #define INITIAL_CHECKUP_STEP_TIMEOUT 500
@@ -11,6 +12,9 @@
 #define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0)
 #define PULSES_PER_ROTATION 48
 
+// Number of consecutive different values of a digital input to consider change
+// (to avoid noise)
+#define DIGITAL_INPUT_COUNTER_LIMIT 5
 #define WD_PULSE_INTERVAL_MS 10
 // TODO(andre): confirm wd timer values
 

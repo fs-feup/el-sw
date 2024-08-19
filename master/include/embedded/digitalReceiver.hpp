@@ -8,17 +8,14 @@
 #include "digitalSettings.hpp"
 #include "debugUtils.hpp"
 
-#define DEBOUNCE_INTERVAL 10
-#define PRESSED_STATE LOW
-
 /**
  * @brief Class responsible for the reading of the digital
  * inputs into the Master teensy 
 */
 class DigitalReceiver {
 public:
-    static double _current_left_wheel_rpm; // class var to keep digital data non-static
-    static unsigned long last_wheel_pulse_ts; // micros since last pulse
+    static double _current_left_wheel_rpm; // Class variable to store the left wheel RPM (non-static)
+    static unsigned long last_wheel_pulse_ts; // Timestamp of the last pulse for RPM calculation
 
     /**
      * @brief read all digital inputs
@@ -53,32 +50,49 @@ public:
     }
 
 private:
-    DigitalData *digitalData;
-    Mission *mission;
+    DigitalData *digitalData; ///< Pointer to the digital data storage
+    Mission *mission; ///< Pointer to the current mission status
 
-    Button asms_switch;
+    unsigned int asms_change_counter = 0; ///< counter to avoid noise on asms
+    unsigned int aats_change_counter = 0; ///< counter to avoid noise on aats
+    unsigned int pneumatic_change_counter = 0; ///< counter to avoid noise on pneumatic line
+    unsigned int mission_change_counter = 0; ///< counter to avoid noise on mission change
+    Mission last_tried_mission_ = MANUAL; ///< Last attempted mission state
 
-    Button newButton(uint8_t pin);
-
+    /**
+     * @brief Reads the pneumatic line pressure states and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readPneumaticLine();
+
+    /**
+     * @brief Reads the current mission state based on input pins and updates the mission object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readMission();
+
+    /**
+     * @brief Reads the ASMS switch state and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readAsmsSwitch();
+
+    /**
+     * @brief Reads the AATS state and updates the DigitalData object.
+     * Debounces input changes to avoid spurious transitions.
+     */
     void readAatsState();
+
+    /**
+     * @brief Reads the watchdog state and updates the DigitalData object.
+     * Resets the watchdog timer if the state is high.
+     */
     void readWatchdog();
 
 };
 
 // double DigitalReceiver::_current_left_wheel_rpm = 0.0;
 // unsigned long DigitalReceiver::last_wheel_pulse_ts = millis();
-
-inline Button DigitalReceiver::newButton(uint8_t pin) {
-    Button button;
-    button.attach(pin, INPUT_PULLUP);
-    button.interval(DEBOUNCE_INTERVAL);
-    button.setPressedState(PRESSED_STATE);
-
-    return button;
-}
 
 // inline void DigitalReceiver::updateLeftWheelRpm() {
 //     // rpm = 1 / ([dT seconds] * No. Pulses in Rotation) * [60 seconds]
@@ -101,17 +115,27 @@ inline void DigitalReceiver::digitalReads() {
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
     bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
-    DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_1_PIN));
-    DEBUG_PRINT_VAR(analogRead(SENSOR_PRESSURE_2_PIN));
+    if (pneumatic1 == 0) {
+        // DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_1_PIN));
+    }
+    if (pneumatic2 == 0) {
+        // DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_2_PIN));
+    }
+    bool temp_res = pneumatic1 && pneumatic2;
 
-    digitalData->pneumatic_line_pressure = pneumatic1 && pneumatic2; // both need to be True
-    DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
+    // Only change the value if it has been different 5 times in a row
+    pneumatic_change_counter = temp_res == digitalData->pneumatic_line_pressure ? 0 : pneumatic_change_counter + 1;
+    if (pneumatic_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->pneumatic_line_pressure = temp_res; // both need to be True
+        pneumatic_change_counter = 0;
+    }
+    // DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
 
 }
 
 inline void DigitalReceiver::readMission() {
-    // Enum value attributed considering the True Boolean Value
-    *mission = static_cast<Mission>(
+
+    Mission temp_res = static_cast<Mission>(
         digitalRead(MISSION_MANUAL_PIN) * MANUAL |
         digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
         digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
@@ -120,17 +144,37 @@ inline void DigitalReceiver::readMission() {
         digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
         digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
 
+    mission_change_counter = (temp_res == *mission) && 
+                                (temp_res == last_tried_mission_) ? 
+                                0 : mission_change_counter + 1;
+    this->last_tried_mission_ = temp_res;
+    if (mission_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        *mission = temp_res;
+        mission_change_counter = 0;
+    }
     // DEBUG_PRINT_VAR(*mission);
 }
 
 inline void DigitalReceiver::readAsmsSwitch() {
-    digitalData->asms_on = digitalRead(ASMS_IN_PIN);
-    // DEBUG_PRINT_VAR(digitalData->asms_on);
+    bool temp_res = digitalRead(ASMS_IN_PIN);
+
+    // Only change the value if it has been different 5 times in a row
+    asms_change_counter = temp_res == digitalData->asms_on ? 0 : asms_change_counter + 1;
+    if (asms_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->asms_on = temp_res;
+        asms_change_counter = 0;
+    }
 }
 
 inline void DigitalReceiver::readAatsState() {
     // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
-    digitalData->sdcState_OPEN = !digitalRead(SDC_STATE_PIN);
+    bool temp_res = !digitalRead(SDC_STATE_PIN);
+    // Only change the value if it has been different 5 times in a row
+    aats_change_counter = temp_res == digitalData->sdcState_OPEN ? 0 : aats_change_counter + 1;
+    if (aats_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
+        digitalData->sdcState_OPEN = temp_res; // both need to be True
+        aats_change_counter = 0;
+    }
     // DEBUG_PRINT_VAR(digitalData->sdcState_OPEN);
 }
 
