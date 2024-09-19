@@ -1,0 +1,5 @@
+<map id="Communicator::bamocarCallback" name="Communicator::bamocarCallback">
+<area shape="rect" id="Node000001" title="Callback from inversor, for alive signal and data." alt="" coords="5,5,217,31"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="265,5,354,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,16,249,16,249,21,217,21"/>
+</map>

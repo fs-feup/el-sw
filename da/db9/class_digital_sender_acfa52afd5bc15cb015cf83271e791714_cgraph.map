@@ -1,0 +1,5 @@
+<map id="DigitalSender::blinkLED" name="DigitalSender::blinkLED">
+<area shape="rect" id="Node000001" title="Blinks the LED at the given pin." alt="" coords="5,5,162,31"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="210,5,305,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,16,194,16,194,21,162,21"/>
+</map>

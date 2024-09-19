@@ -1,0 +1,15 @@
+<map id="SystemData" name="SystemData">
+<area shape="rect" id="Node000001" title="The whole model of the system: holds all the data necessary." alt="" coords="305,447,422,552"/>
+<area shape="rect" id="Node000002" href="$d8/deb/struct_r2_d_logics.html" title=" " alt="" coords="5,269,137,374"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,372,151,382,222,424,291,461,288,466,219,429,149,386,134,376"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="189,5,333,151"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,115,151,142,117,176,97,213,84,253,79,251,92,211,113,173,148,138,187,111"/>
+<area shape="rect" id="Node000004" href="$d3/df6/struct_failure_detection.html" title=" " alt="" coords="162,269,359,374"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="263,150,263,251,258,251,258,150"/>
+<area shape="rect" id="Node000006" href="$d3/d93/struct_digital_data.html" title=" " alt="" coords="383,259,551,384"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="334,105,382,134,404,152,424,173,444,206,457,241,452,243,439,208,420,176,401,156,379,138,331,110"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,373,302,422,309,432,304,435,297,424,274,375"/>
+<area shape="rect" id="Node000005" href="$d0/df5/struct_sensors.html" title="Sensors from CAN." alt="" coords="575,269,741,374"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="581,376,565,386,438,460,435,456,562,382,578,372"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="434,385,405,434,400,431,429,382"/>
+</map>

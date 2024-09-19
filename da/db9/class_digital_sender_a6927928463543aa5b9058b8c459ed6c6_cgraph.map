@@ -1,0 +1,7 @@
+<map id="DigitalSender::enterOffState" name="DigitalSender::enterOffState">
+<area shape="rect" id="Node000001" title="Everything off, sdc open." alt="" coords="5,31,187,56"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#a319aba38661938acba65bc63f542f6d5" title="Deactivates the solenoid EBS valves." alt="" coords="235,5,425,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,31,219,28,219,33,187,36"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#ac05508d737d1a16851d65c9a3219bab0" title="Opens the SDC in Master and SDC Logic." alt="" coords="250,55,410,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,50,235,55,234,60,186,55"/>
+</map>

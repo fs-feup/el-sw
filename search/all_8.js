@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../de/d53/charger_2src_2main_8cpp.html',1,'(Global Namespace)'],['../d1/d91/temp-acq_2src_2main_8cpp.html',1,'(Global Namespace)']]],
-  ['max_5fcurrent_1',['MAX_CURRENT',['../de/d53/charger_2src_2main_8cpp.html#a2989837a37d6d63b59c6dd541b785435',1,'main.cpp']]],
-  ['max_5fvoltage_2',['MAX_VOLTAGE',['../de/d53/charger_2src_2main_8cpp.html#a0637861f9419cef73e2e7e6210280e4e',1,'main.cpp']]],
-  ['maxtemp_3',['maxTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a5bfe99639bd14bc2d6dc4acb76fff092',1,'main.cpp']]],
-  ['mintemp_4',['minTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b12333be2129eb4f00fc67d344a22a0',1,'main.cpp']]],
-  ['msg_5f1_5',['msg_1',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6b3f8939747bf0e94e8110a65a07771c',1,'main.cpp']]]
+  ['hasanycomponenttimedout_0',['hasAnyComponentTimedOut',['../d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb',1,'FailureDetection']]],
+  ['hightemp_1',['hightemp',['../db/dac/can_8cpp.html#a6712e82bf676eac3cd7a48c1d639c325',1,'highTemp:&#160;display.cpp'],['../db/d86/display_8cpp.html#a6712e82bf676eac3cd7a48c1d639c325',1,'highTemp:&#160;display.cpp']]],
+  ['hour_2',['hour',['../d2/d24/struct_log_entry.html#aef0cfcacb120c6ce877e4882bbaf9496',1,'LogEntry']]],
+  ['hydraulic_5fbrake_5fthreshold_3',['HYDRAULIC_BRAKE_THRESHOLD',['../d6/d25/communicator_settings_8hpp.html#ae65d064fbfdfcfabfde16864ad2ab077',1,'communicatorSettings.hpp']]],
+  ['hydraulic_5fline_4',['HYDRAULIC_LINE',['../d6/d25/communicator_settings_8hpp.html#a6ac22078761eddb56475786bebb3d472',1,'communicatorSettings.hpp']]],
+  ['hydraulic_5fpressure_5fhigh_5',['HYDRAULIC_PRESSURE_HIGH',['../da/dad/test__integration_8cpp.html#a9c3821768a8a11c41e79c7e8b63fcc93',1,'test_integration.cpp']]],
+  ['hydraulic_5fpressure_5flow_6',['HYDRAULIC_PRESSURE_LOW',['../da/dad/test__integration_8cpp.html#acb99787708d49f7ceb20e499bc1a48d6',1,'test_integration.cpp']]]
 ];

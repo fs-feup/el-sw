@@ -1,0 +1,18 @@
+<map id="test_initialCheckupSequence_states" name="test_initialCheckupSequence_states">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,105,195,145"/>
+<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html#a86d9a23af8d54ddeba2e48fd560a25c8" title="Provides access to the initial checkup timestamp timer." alt="" coords="259,39,436,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,101,252,82,254,87,180,106"/>
+<area shape="rect" id="Node000003" href="$d7/d1f/class_checkup_manager.html#aea13673f58405e59748d8baca61df4f3" title="Performs an initial checkup." alt="" coords="243,105,452,145"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,122,227,122,227,128,195,128"/>
+<area shape="rect" id="Node000008" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="544,169,633,195"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="185,143,243,154,397,171,528,178,528,183,397,176,242,159,184,148"/>
+<area shape="rect" id="Node000004" href="$da/db9/class_digital_sender.html#a961f314794ff5004e33d3d60cdd3c430" title="Activates the solenoid EBS valves." alt="" coords="500,5,676,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="426,102,451,89,465,77,474,65,483,52,499,40,508,35,510,40,501,44,487,56,478,68,469,81,453,94,428,106"/>
+<area shape="rect" id="Node000005" href="$da/db9/class_digital_sender.html#a4bacfe08c69bb34cca2617bc27f2f49b" title="Closes the SDC in Master and SDC Logic." alt="" coords="507,55,669,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="435,101,515,82,517,87,436,106"/>
+<area shape="rect" id="Node000006" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="506,105,670,145"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="452,122,491,122,491,128,452,128"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="436,143,529,166,528,171,435,148"/>
+<area shape="rect" id="Node000007" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="724,112,898,138"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="671,122,709,122,709,128,671,128"/>
+</map>

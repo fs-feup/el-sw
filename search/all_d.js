@@ -1,15 +1,18 @@
 var searchData=
 [
-  ['ta_5fid_0',['TA_ID',['../d7/da8/can_8h.html#a9979eeafd068727f265ccb6c8c71d750',1,'can.h']]],
-  ['teensy_20tempacq_1',['Teensy TempAcq',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['temp_2',['temp',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a4e3d52993a6fe37c8d4e7ed6efe14252',1,'PARAMETERS::temp'],['../de/d53/charger_2src_2main_8cpp.html#a813c382ea67b33dc90f802f3bf17bc5f',1,'temp:&#160;main.cpp']]],
-  ['tempacq_3',['Teensy TempAcq',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['tempbroadcast_4',['tempBroadcast',['../d1/d91/temp-acq_2src_2main_8cpp.html#a9fdad824abd589bc143483efc6aac296',1,'main.cpp']]],
-  ['temperature_5',['temperature',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab4b11c8d9c758430960896bc3fe82ead',1,'main.cpp']]],
-  ['temperature_20acquisition_6',['Temperature Acquisition',['../d8/d10/md_temp-acq_2_r_e_a_d_m_e.html',1,'']]],
-  ['temperr_7',['tempErr',['../d1/d91/temp-acq_2src_2main_8cpp.html#ad3f733671651600197cc99bd90e70a8b',1,'main.cpp']]],
-  ['temperrortimer_8',['tempErrorTimer',['../d1/d91/temp-acq_2src_2main_8cpp.html#ae998325850650f4b2e677c435bbbd961',1,'main.cpp']]],
-  ['temps_9',['Temps',['../d1/d91/temp-acq_2src_2main_8cpp.html#a2d2fa21c3563eaafd55a33ad647e8081',1,'main.cpp']]],
-  ['tempsum_10',['tempSum',['../d1/d91/temp-acq_2src_2main_8cpp.html#a82c63f65b5e9702f431ccd4c91f33c69',1,'main.cpp']]],
-  ['to_20develop_11',['Starting to Develop',['../index.html#autotoc_md1',1,'']]]
+  ['n_5fadc_5fchannels_0',['N_ADC_CHANNELS',['../d1/d91/temp-acq_2src_2main_8cpp.html#aa63b81a7669146464a606e90ce8aafe8',1,'main.cpp']]],
+  ['n_5fadcs_1',['N_ADCs',['../d1/d91/temp-acq_2src_2main_8cpp.html#ab52d92e5c36eefdf42f18b9b4bff6379',1,'main.cpp']]],
+  ['n_5fsaved_2',['n_saved',['../df/d1d/namespacecalibration.html#a534d8a29d3ed5612ea476e464d73651b',1,'calibration']]],
+  ['nact_3',['nact',['../db/dac/can_8cpp.html#a005921c14ab9df73bdefb353d86f3b50',1,'Nact:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a005921c14ab9df73bdefb353d86f3b50',1,'Nact:&#160;can.cpp']]],
+  ['nact_5ffiltered_4',['Nact_filtered',['../d1/d87/write__data_8cpp.html#aed8a91e2d15fce679a25abe0f2ad33e1',1,'write_data.cpp']]],
+  ['next_5fstate_5',['next_state',['../da/d81/r2d_8cpp.html#ad0e9c08a9ba21a8664ba797dcd696686',1,'r2d.cpp']]],
+  ['nextion_5fport_6',['NEXTION_PORT',['../db/d86/display_8cpp.html#a8afa69d1af1f627f349ce062c6268e5d',1,'display.cpp']]],
+  ['node_5fid_7',['NODE_ID',['../d6/d25/communicator_settings_8hpp.html#a61729fdc2e537afa213550eb893492a9',1,'communicatorSettings.hpp']]],
+  ['nodisable_8',['noDisable',['../db/dac/can_8cpp.html#aa3cff5e29bb6e2d599d0198b467ad8fd',1,'can.cpp']]],
+  ['notes_20about_20btbready_3a_9',['Notes about BTBReady:',['../d0/dbe/md_c3_2_r_e_a_d_m_e.html#autotoc_md21',1,'']]],
+  ['notes_3a_10',['notes:',['../d2/d3f/md_c1_2_r_e_a_d_m_e.html#autotoc_md6',1,'Initial notes:'],['../d0/dbe/md_c3_2_r_e_a_d_m_e.html#autotoc_md13',1,'Initial notes:']]],
+  ['now_11',['now',['../d8/d23/structteensy__clock.html#a777d9141b0f5e73eb44c9169c6c0dbc8',1,'teensy_clock']]],
+  ['num_5fpins_12',['NUM_PINS',['../d2/d5d/ami_2src_2main_8cpp.html#a5de279e378a1ea5a94ed91239a5ebfa3',1,'main.cpp']]],
+  ['numreadings_13',['numReadings',['../d8/d6a/message_8cpp.html#a6e87dc4f50c99331c8eea4a016d5b3c8',1,'message.cpp']]],
+  ['nx_5fch_5fstatus_14',['NX_CH_Status',['../de/d53/charger_2src_2main_8cpp.html#a180ef2c1c10b423699666f5bc203bbdc',1,'main.cpp']]]
 ];

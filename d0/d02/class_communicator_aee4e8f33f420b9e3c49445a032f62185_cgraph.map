@@ -1,0 +1,5 @@
+<map id="Communicator::publish_state" name="Communicator::publish_state">
+<area shape="rect" id="Node000001" title="Publish AS State to CAN." alt="" coords="5,5,158,46"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,23,190,23,190,28,158,28"/>
+</map>

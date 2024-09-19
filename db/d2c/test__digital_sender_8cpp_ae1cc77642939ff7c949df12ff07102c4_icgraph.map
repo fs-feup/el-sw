@@ -1,0 +1,5 @@
+<map id="test_enterEmergencyState_and_turn_off_LEDS" name="test_enterEmergencyState_and_turn_off_LEDS">
+<area shape="rect" id="Node000001" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="103,5,277,46"/>
+<area shape="rect" id="Node000002" href="$db/d2c/test__digital_sender_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,55,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,28,55,28,55,23,87,23"/>
+</map>

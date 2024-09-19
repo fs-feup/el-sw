@@ -1,0 +1,15 @@
+<map id="test_enterEmergencyState_and_turn_off_LEDS" name="test_enterEmergencyState_and_turn_off_LEDS">
+<area shape="rect" id="Node000001" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="5,49,180,89"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#acfa52afd5bc15cb015cf83271e791714" title="Blinks the LED at the given pin." alt="" coords="248,16,405,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,51,232,42,233,47,180,57"/>
+<area shape="rect" id="Node000004" href="$da/db9/class_digital_sender.html#a86a6fec2ee10f99426d6bdc2b7d94344" title="ASSI LEDs blue flashing, sdc open and buzzer ringing." alt="" coords="228,77,425,117"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,77,212,80,212,86,180,82"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="514,5,609,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="405,23,498,18,498,24,405,28"/>
+<area shape="rect" id="Node000005" href="$da/db9/class_digital_sender.html#a961f314794ff5004e33d3d60cdd3c430" title="Activates the solenoid EBS valves." alt="" coords="473,55,649,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="425,82,457,78,458,83,426,87"/>
+<area shape="rect" id="Node000006" href="$da/db9/class_digital_sender.html#ac05508d737d1a16851d65c9a3219bab0" title="Opens the SDC in Master and SDC Logic." alt="" coords="482,104,641,130"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="426,103,466,106,466,111,425,108"/>
+<area shape="rect" id="Node000007" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="517,153,606,179"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="394,115,474,140,502,148,501,153,472,145,393,120"/>
+</map>

@@ -1,0 +1,28 @@
+<map id="test_bamocar" name="test_bamocar">
+<area shape="rect" id="Node000001" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="5,129,106,155"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="154,122,297,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,140,138,140,138,145,106,145"/>
+<area shape="rect" id="Node000003" href="$d0/d02/class_communicator.html#aa3a46afd7d8b65ad4a2c914f6274cfd8" title="Callback from inversor, for alive signal and data." alt="" coords="347,5,558,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="243,120,286,79,314,58,344,40,357,34,359,39,346,45,317,62,290,83,247,124"/>
+<area shape="rect" id="Node000005" href="$d0/d02/class_communicator.html#a049d59831344d7a0999560e9fe9291ba" title="Callback for data from C1 Teensy." alt="" coords="365,55,540,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="269,119,344,89,368,82,370,87,346,94,271,124"/>
+<area shape="rect" id="Node000006" href="$d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca" title="Callback for message from AS CU." alt="" coords="365,104,540,130"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="297,132,349,126,350,131,297,137"/>
+<area shape="rect" id="Node000007" href="$d0/d02/class_communicator.html#a97f28d0b59b88e5b80f9a8d87f7ad18a" title="Callback for RES activation." alt="" coords="345,253,560,279"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="247,161,290,201,317,221,346,238,363,246,361,250,344,243,314,226,287,205,244,165"/>
+<area shape="rect" id="Node000009" href="$d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859" title="Callback RES default callback." alt="" coords="348,203,558,228"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="272,161,346,189,370,196,368,201,344,194,271,165"/>
+<area shape="rect" id="Node000012" href="$d0/d02/class_communicator.html#abfd5d2ea20261f952547b1d1900d12ab" title="Callback for steering actuator information." alt="" coords="349,153,556,179"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="297,147,334,151,333,156,297,152"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="659,128,748,154"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="531,29,561,40,626,76,677,116,674,120,623,81,559,45,529,34"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="541,123,643,132,643,138,541,128"/>
+<area shape="rect" id="Node000008" href="$d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="634,250,773,291"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="561,265,618,266,618,271,561,271"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="519,199,560,189,653,157,655,162,561,194,520,205"/>
+<area shape="rect" id="Node000010" href="$d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc" title="Processes the go signal." alt="" coords="608,200,799,226"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="558,212,593,211,593,217,558,217"/>
+<area shape="rect" id="Node000011" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="847,200,942,226"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="799,210,831,210,831,216,799,216"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="556,153,643,144,644,149,557,158"/>
+</map>

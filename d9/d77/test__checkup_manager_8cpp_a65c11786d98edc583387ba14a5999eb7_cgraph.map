@@ -1,0 +1,10 @@
+<map id="test_shouldEnterEmergency" name="test_shouldEnterEmergency">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,188,39"/>
+<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html#a43ff573e094af8253c78e0aa69529d3a" title="Performs an emergency checkup." alt="" coords="236,5,432,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,23,220,23,220,28,188,28"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="692,13,866,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="432,20,480,19,644,19,677,20,677,25,644,24,480,24,433,25"/>
+<area shape="rect" id="Node000004" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="480,33,644,74"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="433,35,465,39,464,44,432,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="644,40,676,36,677,42,645,46"/>
+</map>

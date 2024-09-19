@@ -1,0 +1,24 @@
+<map id="statemachine" name="statemachine">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,105,130"/>
+<area shape="rect" id="Node000002" href="$db/dac/can_8cpp.html#afd9d9d77ab4fdc82fa2ee2dba7409ecd" title=" " alt="" coords="195,5,302,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,102,104,71,151,40,179,29,181,34,154,45,107,75,71,106"/>
+<area shape="rect" id="Node000003" href="$df/d60/statemachine_8hpp.html#a388b09d5f5d7c42d55d936befbbc7bcd" title=" " alt="" coords="195,55,302,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,101,152,89,180,82,181,87,153,94,106,106"/>
+<area shape="rect" id="Node000004" href="$da/dd7/apps_8cpp.html#aa0b17a93999463751af07de85755aaa7" title=" " alt="" coords="210,104,287,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,114,195,114,195,120,105,120"/>
+<area shape="rect" id="Node000010" href="$db/dac/can_8cpp.html#a5ff52ed9d3a196631f7e926ce80e8252" title=" " alt="" coords="153,153,344,179"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="106,127,153,140,180,146,179,152,152,145,105,132"/>
+<area shape="rect" id="Node000011" href="$db/dac/can_8cpp.html#a57b07db127dcd19f98ec4926f8e09d6c" title=" " alt="" coords="194,203,303,228"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="71,128,107,159,154,189,180,199,178,204,151,194,104,163,68,132"/>
+<area shape="rect" id="Node000005" href="$da/dd7/apps_8cpp.html#a48895c890466328ce2ba0fcd454f9830" title=" " alt="" coords="431,31,517,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="286,107,343,90,367,78,391,65,415,56,417,61,393,70,369,83,345,95,288,112"/>
+<area shape="rect" id="Node000006" href="$da/dd7/apps_8cpp.html#ac668b4736f095061fee257ee5876bea7" title=" " alt="" coords="392,80,556,106"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="287,110,377,101,377,106,287,115"/>
+<area shape="rect" id="Node000008" href="$da/dd7/apps_8cpp.html#a01eb763bee6b8303572157f06e009a17" title=" " alt="" coords="434,129,515,155"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="287,118,419,133,418,139,287,124"/>
+<area shape="rect" id="Node000009" href="$db/dac/can_8cpp.html#a31f20a385437408a7f9c50d7b5e35c8f" title=" " alt="" coords="432,179,517,204"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="288,121,345,138,369,152,393,165,418,174,416,179,391,170,367,156,343,143,286,127"/>
+<area shape="rect" id="Node000007" href="$da/dd7/apps_8cpp.html#abe9a90932aeb9455a979f77143932821" title=" " alt="" coords="604,105,694,131"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="557,102,590,107,589,112,556,107"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="515,134,588,124,589,129,516,139"/>
+</map>

@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('d8/d10/md_temp-acq_2_r_e_a_d_m_e.html'
   <div class="headertitle"><div class="title">Temperature Acquisition</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md5"></a> The Temperature Acquisition is a PCB inside the TSA, Tractive System Accumulator. This PCB has three main functions:</p><ul>
+<div class="textblock"><p><a class="anchor" id="autotoc_md24"></a> The Temperature Acquisition is a PCB inside the TSA, Tractive System Accumulator. This PCB has three main functions:</p><ul>
 <li>Acquiring temperatures of at least 30% of the cells</li>
 <li>Monitoring those temperatures<ul>
 <li>if &gt;60ºC</li>
@@ -117,18 +117,18 @@ $(document).ready(function(){initNavTree('d8/d10/md_temp-acq_2_r_e_a_d_m_e.html'
 <li>Latching - Open the Shutdown Circuit.</li>
 </ol>
 <p>The system we've implemented isn't flawless, but it's the best solution we could devise within the constraints of the competition rules. The main issue is that if CAN Communication is lost for any reason, the BMS cannot set the Multi-Purpose Output 2 to a low state. If this had been discovered during an inspection, our car would not have passed. We need to address this problem in the next prototype.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 Teensy TempAcq</h1>
 <p>This diagram represents the main loop:</p>
 <p><img src="../../../docs/assets/TempAcq/MainLoop.png" alt="TempAcqLoop" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 ReadRawADCData()</h2>
 <p><img src="../../../docs/assets/TempAcq/readRawADCData.png" alt="readRawADCData" class="inline"/></p>
 <p>This function retrieves the ADC value using the Adafruit_MCP3008.h library. However, some readings consistently show errors, and the exact cause has not been identified yet—it could be due to the ADC itself, a PCB defect, a misconnection, etc... Currently, these inaccurate readings are disregarded, and we substitute them with the temperature from the first sensor, though this approach does not comply with the rules. The problematic readings are from TempIDs: 18, 29, 33. The ADCraw values are later converted to a temperature in degrees Celsius by <a class="el" href="../../d1/d91/temp-acq_2src_2main_8cpp.html#a290bd861e02d80e74c7c574bae51d7c2">ADCconversion()</a>. <img src="../../../docs/assets/TempAcq/ADCconversion.png" alt="ADCconversion" class="inline"/> This is a 4th-degree polynomial curve to model the sensor output curve.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 CAN_msg()</h2>
 <p><img src="../../../docs/assets/TempAcq/CAN_msg.png" alt="CAN_msg" class="inline"/> This code snippet creates and writes a CAN message to the Charger Teensy. This message is displayed during scrutineering and the charging process.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 sendTempsToBMS()</h2>
 <p><img src="../../../docs/assets/TempAcq/sendTempsToBMS.png" alt="sendTempsToBMS" class="inline"/> The initial part of this function checks for any anomalies in temperature readings. If a temperature falls outside the defined interval, the temperature error timer is reset. If this condition persists for more than 700 milliseconds, the shutdown circuit must be activated.</p>
 <p>The BMSInfoMsg is utilized by the BMS to monitor key temperature data, including maximum, minimum, and average values. This message simulates the operation of the orion thermistor expansion module.</p>

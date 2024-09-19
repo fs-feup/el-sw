@@ -1,0 +1,7 @@
+<map id="Communicator::publish_left_wheel_rpm" name="Communicator::publish_left_wheel_rpm">
+<area shape="rect" id="Node000001" title="Publish rl wheel rpm to CAN." alt="" coords="5,27,158,68"/>
+<area shape="rect" id="Node000002" href="$df/d93/utils_8hpp.html#a6253519ad1a2817283408a79e18afa98" title="Function to create left wheel msg." alt="" coords="206,5,361,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,34,190,29,191,34,159,39"/>
+<area shape="rect" id="Node000003" href="$d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="214,55,353,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,55,199,61,198,66,158,61"/>
+</map>

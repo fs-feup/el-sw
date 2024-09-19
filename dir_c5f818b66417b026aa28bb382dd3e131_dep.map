@@ -1,0 +1,13 @@
+<map id="master/include/logic" name="master/include/logic">
+<area shape="rect" id="node1" href="dir_9677b3712f89212edc0980b078ca6a94.html" title="model" alt="" coords="27,126,83,152"/>
+<area shape="rect" id="node2" href="dir_d700bccd337a0d5d8fb82ff79a6d0e5e.html" title="comm" alt="" coords="107,126,165,152"/>
+<area shape="rect" id="node3" href="dir_eb339892577169597c1a9c11090c424d.html" title="embedded" alt="" coords="189,126,270,152"/>
+<area shape="rect" id="node4" href="dir_c5f818b66417b026aa28bb382dd3e131.html" title="logic" alt="" coords="112,52,160,78"/>
+<area shape="poly" id="edge1" href="dir_000011_000013.html" alt="" coords="124,81,81,118,78,114,120,77"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000011_000013.html" title="2" alt="" coords="84,113,91,128"/>
+<area shape="poly" id="edge2" href="dir_000011_000005.html" alt="" coords="139,78,139,110,133,110,133,78"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000011_000005.html" title="1" alt="" coords="141,100,148,115"/>
+<area shape="poly" id="edge3" href="dir_000011_000006.html" alt="" coords="153,76,203,114,200,119,150,81"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000011_000006.html" title="3" alt="" coords="201,100,208,115"/>
+<area shape="rect" id="clust1" href="dir_cf3b26517b728321c0e4737e4bed6892.html" title="include" alt="" coords="16,16,281,162"/>
+</map>

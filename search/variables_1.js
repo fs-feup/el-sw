@@ -1,8 +1,27 @@
 var searchData=
 [
-  ['bmserr_0',['BMSErr',['../d1/d91/temp-acq_2src_2main_8cpp.html#a03a65c64d2f6e6e52b5302522c72c933',1,'main.cpp']]],
-  ['bmserrorflag_1',['BMSErrorFlag',['../d1/d91/temp-acq_2src_2main_8cpp.html#a307af96bb7370eccf65af0263e8cb28f',1,'main.cpp']]],
-  ['bmsinfomsg_2',['BMSInfoMsg',['../d1/d91/temp-acq_2src_2main_8cpp.html#a6910f55b1d740003aded49e19c04a9d5',1,'main.cpp']]],
-  ['broadcastenabled_3',['broadcastEnabled',['../d1/d91/temp-acq_2src_2main_8cpp.html#a98bf895f44d6b36c89578625a618b122',1,'main.cpp']]],
-  ['broadcastindex_4',['broadcastIndex',['../d1/d91/temp-acq_2src_2main_8cpp.html#a7c1358d190cefc36fb314087c792da38',1,'main.cpp']]]
+  ['accurrent_0',['accurrent',['../db/dac/can_8cpp.html#ac8521fb86f1e7059336b5a8e3877acb1',1,'ACCurrent:&#160;display.cpp'],['../db/d86/display_8cpp.html#ac8521fb86f1e7059336b5a8e3877acb1',1,'ACCurrent:&#160;display.cpp']]],
+  ['actualspeedrequest_1',['actualspeedrequest',['../db/dac/can_8cpp.html#aa39effac4a260252c417f26a84cfa826',1,'actualSpeedRequest:&#160;can.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#aa39effac4a260252c417f26a84cfa826',1,'actualSpeedRequest:&#160;can.cpp']]],
+  ['adcraw_2',['ADCRaw',['../d1/d91/temp-acq_2src_2main_8cpp.html#a661dd00182ba0bff14ccb061c16e0783',1,'main.cpp']]],
+  ['adcs_3',['ADCs',['../d1/d91/temp-acq_2src_2main_8cpp.html#ac5e77a25d46423eaf19332dac3bde4d5',1,'main.cpp']]],
+  ['aispin_4',['aisPin',['../d8/d6a/message_8cpp.html#aa7507ab0af64203d6c304b2bbc3c9f7d',1,'message.cpp']]],
+  ['allowedcurrent_5',['allowedCurrent',['../dd/d1e/struct_p_a_r_a_m_e_t_e_r_s.html#a0e1d6da13860e01a20fa9e3c448eed3c',1,'PARAMETERS']]],
+  ['apps1_6',['apps1',['../d1/dc2/c1_2src_2main_8cpp.html#ad708a7b9248a1aa1e61e47bc0260daf4',1,'main.cpp']]],
+  ['apps2_7',['apps2',['../d1/dc2/c1_2src_2main_8cpp.html#a1ce4f3b3a5da90e3172112f4b75e8a3c',1,'main.cpp']]],
+  ['appsbrakeplausibilitytimer_8',['appsBrakePlausibilityTimer',['../da/dd7/apps_8cpp.html#a29089b0fba38dfe81bd89282ca544f67',1,'apps.cpp']]],
+  ['appsimplausibilitytimer_9',['appsImplausibilityTimer',['../da/dd7/apps_8cpp.html#a77e48447bd1d46b83164e5792b541af8',1,'apps.cpp']]],
+  ['appstimeout_10',['APPsTimeout',['../da/dd7/apps_8cpp.html#aeaf50396794750d3e34177c159b8a7b5',1,'apps.cpp']]],
+  ['appstimer_11',['appstimer',['../df/d60/statemachine_8hpp.html#a9a30ca7efc265b3b029dda392fc27e6f',1,'APPSTimer:&#160;statemachine.hpp'],['../d1/d12/c3_2src_2main_8cpp.html#a9a30ca7efc265b3b029dda392fc27e6f',1,'APPSTimer:&#160;statemachine.hpp']]],
+  ['as_5fcu_5femergency_5fsignal_12',['AS_CU_EMERGENCY_SIGNAL',['../d6/d25/communicator_settings_8hpp.html#a1c7573e17872b41c2011f89f72311245',1,'communicatorSettings.hpp']]],
+  ['as_5fcu_5fid_13',['AS_CU_ID',['../d6/d25/communicator_settings_8hpp.html#a59b5dcf623b44583ac8b4465a6aab582',1,'communicatorSettings.hpp']]],
+  ['as_5fstate_14',['as_state',['../d0/d84/master_2src_2main_8cpp.html#a39aea26143b601c4c591d01356226729',1,'as_state:&#160;main.cpp'],['../da/dad/test__integration_8cpp.html#a39aea26143b601c4c591d01356226729',1,'as_state:&#160;test_integration.cpp']]],
+  ['asemergencytimer_15',['asemergencytimer',['../db/dac/can_8cpp.html#a39a28561692018c2d98d82fd7ac1dc6a',1,'ASEmergencyTimer:&#160;can.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#a39a28561692018c2d98d82fd7ac1dc6a',1,'ASEmergencyTimer:&#160;can.cpp']]],
+  ['asms_5fon_16',['asms_on',['../d3/d93/struct_digital_data.html#a458cfb2673bc5812205e23636798ef7a',1,'DigitalData']]],
+  ['asready_17',['asready',['../d1/dea/integration__test_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../df/d60/statemachine_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../db/dac/can_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp']]],
+  ['asstatus_18',['ASStatus',['../db/dac/can_8cpp.html#a5400e39da213eb883689a2a76f6ffb64',1,'can.cpp']]],
+  ['average_19',['average',['../d8/d6a/message_8cpp.html#a199a8601ca4427e27601aecdbed4c2ca',1,'message.cpp']]],
+  ['avgbuffer1_20',['avgbuffer1',['../d1/dc2/c1_2src_2main_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;main.cpp'],['../da/dd7/apps_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;apps.cpp']]],
+  ['avgbuffer2_21',['avgBuffer2',['../da/dd7/apps_8cpp.html#abf01a0e91d9f4e7632c1a1de337f5723',1,'apps.cpp']]],
+  ['avgtemp_22',['avgTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a76e9789db2776a2239445cf0299b5721',1,'main.cpp']]],
+  ['avgtmp_23',['avgtmp',['../d1/dc2/c1_2src_2main_8cpp.html#a1af37ad43df0882b80ae409eb8fc5926',1,'main.cpp']]]
 ];

@@ -1,5 +1,30 @@
 var searchData=
 [
-  ['ch_5fid_0',['CH_ID',['../d7/da8/can_8h.html#a77c6ee3a6df58055d4e960eaaab015b6',1,'can.h']]],
-  ['ch_5fsafety_5fpin_1',['CH_SAFETY_PIN',['../de/d53/charger_2src_2main_8cpp.html#a6d4bcd9cd462ad5960aeec88bfacfd5e',1,'main.cpp']]]
+  ['adc_5fmax_0',['ADC_MAX',['../dc/d82/c3_2include_2can_8h.html#a555a695bf58df062dc03f0e892d95cd7',1,'can.h']]],
+  ['alert_1',['ALERT',['../db/d16/debug_8h.html#adc9b28b1170577801889669216a90cd9',1,'debug.h']]],
+  ['apps1_5fdead_5fthreshold_2',['APPS1_DEAD_THRESHOLD',['../da/d81/apps_8h.html#afc4e38e50e28878a02f946564808ee71',1,'apps.h']]],
+  ['apps1_5fdeadzone_5fequivalent_3',['APPS1_DEADZONE_EQUIVALENT',['../da/d81/apps_8h.html#a9189d5dd1c3dbb5b1ef7839a2514faa1',1,'apps.h']]],
+  ['apps2_5fdead_5fthreshold_4',['APPS2_DEAD_THRESHOLD',['../da/d81/apps_8h.html#ad9bf2c8e4f011cbd1bb9b8dd7c441b96',1,'apps.h']]],
+  ['apps2_5fdeadzone_5fequivalent_5',['APPS2_DEADZONE_EQUIVALENT',['../da/d81/apps_8h.html#ab7d551ff63c6c4a6bfa4b3ada4e9a619',1,'apps.h']]],
+  ['apps_5f1_5flower_5fbound_6',['APPS_1_LOWER_BOUND',['../da/d81/apps_8h.html#a025a579ecbe77b60c6c90cd3a3b03bbb',1,'apps.h']]],
+  ['apps_5f1_5fpin_7',['apps_1_pin',['../da/d81/apps_8h.html#a3259333dc574a4ca0e9097f1bc955042',1,'APPS_1_PIN:&#160;apps.h'],['../df/d60/statemachine_8hpp.html#a3259333dc574a4ca0e9097f1bc955042',1,'APPS_1_PIN:&#160;statemachine.hpp']]],
+  ['apps_5f1_5fupper_5fbound_8',['APPS_1_UPPER_BOUND',['../da/d81/apps_8h.html#a7488cf4b35029db397e5483ed7cef068',1,'apps.h']]],
+  ['apps_5f2_5flower_5fbound_9',['APPS_2_LOWER_BOUND',['../da/d81/apps_8h.html#a7f6e8323e6cd4d5de6d0fdb11c1bb635',1,'apps.h']]],
+  ['apps_5f2_5fpin_10',['apps_2_pin',['../da/d81/apps_8h.html#afeaaf98c3cce1d346bd10c5b0c3043c1',1,'APPS_2_PIN:&#160;apps.h'],['../df/d60/statemachine_8hpp.html#afeaaf98c3cce1d346bd10c5b0c3043c1',1,'APPS_2_PIN:&#160;statemachine.hpp']]],
+  ['apps_5f2_5fupper_5fbound_11',['APPS_2_UPPER_BOUND',['../da/d81/apps_8h.html#a965b816f37e85de9f92b4b3b98d63791',1,'apps.h']]],
+  ['apps_5fblock_5fthreshold_12',['APPS_BLOCK_THRESHOLD',['../da/d81/apps_8h.html#a85bac57459a4547836dd9cf53aae1de1',1,'apps.h']]],
+  ['apps_5fbrake_5fplausibility_5ftimeout_5fms_13',['APPS_BRAKE_PLAUSIBILITY_TIMEOUT_MS',['../da/d81/apps_8h.html#aa5b521b4316e272a910c227ab5c6cfb2',1,'apps.h']]],
+  ['apps_5fimplausible_5ftimeout_5fms_14',['APPS_IMPLAUSIBLE_TIMEOUT_MS',['../da/d81/apps_8h.html#af25482c6831fde95a9c0ff23f06e4503',1,'apps.h']]],
+  ['apps_5flinear_5foffset_15',['APPS_LINEAR_OFFSET',['../da/d81/apps_8h.html#a46ea4a654428d67d898a56a30b9e7c7b',1,'apps.h']]],
+  ['apps_5fmax_16',['APPS_MAX',['../da/d81/apps_8h.html#a3e1ce4b671ebb9d21296995f5a68f7af',1,'apps.h']]],
+  ['apps_5fmax_5ferror_5fabs_17',['APPS_MAX_ERROR_ABS',['../da/d81/apps_8h.html#a36164f5f1a1feb3ecdaa887b889d8f88',1,'apps.h']]],
+  ['apps_5fmax_5ferror_5fpercent_18',['APPS_MAX_ERROR_PERCENT',['../da/d81/apps_8h.html#a76f652aa75e04fb3423abe7c972e0a37',1,'apps.h']]],
+  ['apps_5fmin_19',['APPS_MIN',['../da/d81/apps_8h.html#a673928d2ffc18f6ae45a896b0dc04546',1,'apps.h']]],
+  ['apps_5fread_5fperiod_5fms_20',['APPS_READ_PERIOD_MS',['../df/d60/statemachine_8hpp.html#a440488361fc9dad4d2c6f5fe149a8a4a',1,'statemachine.hpp']]],
+  ['as_5fready_5fpin_21',['as_ready_pin',['../d1/dea/integration__test_8hpp.html#afc1b60ca34640dec50a7bbc86efa18e0',1,'AS_READY_PIN:&#160;integration_test.hpp'],['../dd/d27/test___c3_8cpp.html#afc1b60ca34640dec50a7bbc86efa18e0',1,'AS_READY_PIN:&#160;test_C3.cpp']]],
+  ['asbuzzer_22',['ASBuzzer',['../df/d60/statemachine_8hpp.html#a9baf76e6e9759746d5afaf46f8cb10a5',1,'statemachine.hpp']]],
+  ['asms_5fin_5fpin_23',['asms_in_pin',['../d6/db3/digital_settings_8hpp.html#a0a16fa5264538aa2b4e20397aa609079',1,'ASMS_IN_PIN:&#160;digitalSettings.hpp'],['../dd/d46/test__digital_receiver_8cpp.html#a0a16fa5264538aa2b4e20397aa609079',1,'ASMS_IN_PIN:&#160;test_digitalReceiver.cpp']]],
+  ['assi_5fblue_5fpin_24',['ASSI_BLUE_PIN',['../d6/db3/digital_settings_8hpp.html#aac80174e905fb6ec19e3c2c7f23d2f31',1,'digitalSettings.hpp']]],
+  ['assi_5fyellow_5fpin_25',['ASSI_YELLOW_PIN',['../d6/db3/digital_settings_8hpp.html#af1b445f1153f495223e58a012da7982c',1,'digitalSettings.hpp']]],
+  ['avg_5fsamples_26',['avg_samples',['../d1/dc2/c1_2src_2main_8cpp.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;main.cpp'],['../da/d81/apps_8h.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;apps.h']]]
 ];

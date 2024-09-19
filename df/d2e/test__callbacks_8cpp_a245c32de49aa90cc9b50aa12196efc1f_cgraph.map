@@ -1,0 +1,5 @@
+<map id="wss_message_negative_rpm" name="wss_message_negative_rpm">
+<area shape="rect" id="Node000001" title="Test if the message wheel rpm message is created correctly for a negative rpm value." alt="" coords="5,5,196,31"/>
+<area shape="rect" id="Node000002" href="$df/d93/utils_8hpp.html#a6253519ad1a2817283408a79e18afa98" title="Function to create left wheel msg." alt="" coords="244,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,16,228,16,228,21,196,21"/>
+</map>

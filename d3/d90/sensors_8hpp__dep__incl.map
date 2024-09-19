@@ -1,0 +1,26 @@
+<map id="master/include/model/sensors.hpp" name="master/include/model/sensors.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="474,5,619,46"/>
+<area shape="rect" id="Node000002" href="$dd/d88/system_data_8hpp.html" title=" " alt="" coords="474,94,619,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="549,62,549,94,544,94,544,62"/>
+<area shape="rect" id="Node000003" href="$d4/d32/communicator_8hpp.html" title=" " alt="" coords="182,271,329,312"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="486,144,405,185,336,231,281,273,278,269,333,226,402,180,484,139"/>
+<area shape="rect" id="Node000004" href="$d0/d84/master_2src_2main_8cpp.html" title=" " alt="" coords="186,368,325,393"/>
+<area shape="poly" id="edge11_Node000002_Node000004" title=" " alt="" coords="459,126,384,140,304,167,265,187,229,210,198,239,173,273,166,291,173,311,184,328,199,343,231,365,228,369,195,347,180,331,168,313,161,291,168,270,194,235,226,206,262,182,302,163,383,135,458,121"/>
+<area shape="rect" id="Node000006" href="$da/dad/test__integration_8cpp.html" title=" " alt="" coords="349,360,530,401"/>
+<area shape="poly" id="edge13_Node000002_Node000006" title=" " alt="" coords="597,141,647,175,693,217,709,241,718,265,718,289,706,314,678,333,635,349,531,371,529,365,633,344,676,329,701,310,712,288,713,266,704,243,689,221,644,179,594,145"/>
+<area shape="rect" id="Node000007" href="$df/d6d/checkup_manager_8hpp.html" title=" " alt="" coords="416,183,564,223"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="527,149,505,184,501,181,523,147"/>
+<area shape="rect" id="Node000009" href="$d9/d77/test__checkup_manager_8cpp.html" title=" " alt="" coords="514,271,691,312"/>
+<area shape="poly" id="edge14_Node000002_Node000009" title=" " alt="" coords="565,148,579,182,593,229,601,270,596,271,588,231,574,184,560,150"/>
+<area shape="rect" id="Node000010" href="$dd/d46/test__digital_receiver_8cpp.html" title=" " alt="" coords="766,183,982,223"/>
+<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="634,136,800,180,799,185,633,141"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="258,328,258,367,253,367,253,328"/>
+<area shape="rect" id="Node000005" href="$df/d2e/test__callbacks_8cpp.html" title=" " alt="" coords="5,360,162,401"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="204,322,124,362,121,357,202,317"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="312,316,399,357,397,362,310,321"/>
+<area shape="rect" id="Node000008" href="$d4/d42/state_logic_8hpp.html" title=" " alt="" coords="352,271,490,312"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="467,237,439,273,434,269,463,234"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="529,231,578,269,575,273,526,235"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="371,322,280,369,277,365,369,317"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="431,327,438,359,433,360,426,328"/>
+</map>

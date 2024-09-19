@@ -1,0 +1,24 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,55,122"/>
+<area shape="rect" id="Node000002" href="$db/d2c/test__digital_sender_8cpp.html#a1a17630affcf8069f032e3de3d70d207" title="Test the blinkLED function The toggle watchdog is the same function as blink LED so we can afirm that..." alt="" coords="153,23,255,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,96,102,74,155,52,157,57,104,79,56,100"/>
+<area shape="rect" id="Node000005" href="$db/d2c/test__digital_sender_8cpp.html#ae1cc77642939ff7c949df12ff07102c4" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="117,89,291,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="55,106,101,106,101,112,55,112"/>
+<area shape="rect" id="Node000010" href="$db/d2c/test__digital_sender_8cpp.html#a3a63016e740bf9ae68f7467fb538eb93" title="Test the SDC Functions PROTOCOL:" alt="" coords="103,153,305,179"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="56,118,104,138,129,146,127,151,102,143,54,123"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#acfa52afd5bc15cb015cf83271e791714" title="Blinks the LED at the given pin." alt="" coords="374,13,530,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="255,31,358,27,358,32,255,36"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="639,5,734,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="530,21,623,18,623,23,530,26"/>
+<area shape="rect" id="Node000006" href="$da/db9/class_digital_sender.html#a86a6fec2ee10f99426d6bdc2b7d94344" title="ASSI LEDs blue flashing, sdc open and buzzer ringing." alt="" coords="353,89,550,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="292,106,337,106,337,112,292,112"/>
+<area shape="rect" id="Node000007" href="$da/db9/class_digital_sender.html#a961f314794ff5004e33d3d60cdd3c430" title="Activates the solenoid EBS valves." alt="" coords="598,55,775,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="550,89,594,81,595,86,551,94"/>
+<area shape="rect" id="Node000008" href="$da/db9/class_digital_sender.html#ac05508d737d1a16851d65c9a3219bab0" title="Opens the SDC in Master and SDC Logic." alt="" coords="607,153,766,179"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="538,127,617,146,615,152,537,132"/>
+<area shape="rect" id="Node000009" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="642,104,731,130"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="551,110,626,112,626,117,551,115"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="305,164,591,164,591,169,305,169"/>
+<area shape="rect" id="Node000011" href="$da/db9/class_digital_sender.html#a4bacfe08c69bb34cca2617bc27f2f49b" title="Closes the SDC in Master and SDC Logic." alt="" coords="371,204,533,230"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="271,177,371,198,370,203,270,182"/>
+</map>

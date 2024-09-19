@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['repository_0',['Embedded Software Repository',['../index.html',1,'']]]
+  ['embedded_20software_20repository_0',['Embedded Software Repository',['../index.html',1,'']]]
 ];

@@ -1,0 +1,9 @@
+<map id="test_enterReadyState_and_turn_off_LEDS" name="test_enterReadyState_and_turn_off_LEDS">
+<area shape="rect" id="Node000001" title="Test the enterReadyState function PROTOCOL:" alt="" coords="5,23,152,64"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#a13cfdbe483634f1326486b92e629d005" title="ASSI yellow LED on, ebs valves activated, sdc closed." alt="" coords="200,23,369,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,41,184,41,184,46,152,46"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#a961f314794ff5004e33d3d60cdd3c430" title="Activates the solenoid EBS valves." alt="" coords="417,5,593,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,31,401,27,402,33,370,36"/>
+<area shape="rect" id="Node000004" href="$da/db9/class_digital_sender.html#a4bacfe08c69bb34cca2617bc27f2f49b" title="Closes the SDC in Master and SDC Logic." alt="" coords="424,55,586,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="370,50,409,54,408,60,369,55"/>
+</map>

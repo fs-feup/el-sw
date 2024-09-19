@@ -1,0 +1,7 @@
+<map id="Metro::Metro" name="Metro::Metro">
+<area shape="rect" id="Node000001" title="Constructor to initialize the timer with a given interval and autoreset behavior." alt="" coords="5,31,99,56"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#af8a0e107255e5e4ab7c5ed7e9a2b2aec" title="Sets a new interval for the timer." alt="" coords="147,5,249,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,33,131,27,132,32,99,38"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="153,55,243,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="99,49,138,55,137,60,99,54"/>
+</map>

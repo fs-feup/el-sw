@@ -1,0 +1,8 @@
+<map id="CheckupManager::shouldEnterEmergency" name="CheckupManager::shouldEnterEmergency">
+<area shape="rect" id="Node000001" title="Performs an emergency checkup." alt="" coords="5,5,202,46"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="462,13,635,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,20,250,19,414,19,446,20,446,25,414,24,250,24,202,25"/>
+<area shape="rect" id="Node000003" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="250,33,414,74"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,35,235,39,234,44,202,40"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="414,40,446,36,447,42,414,46"/>
+</map>

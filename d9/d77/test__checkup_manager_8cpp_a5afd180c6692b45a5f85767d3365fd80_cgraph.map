@@ -1,0 +1,12 @@
+<map id="test_shouldEnterEmergencyAsDrivingEBSValves" name="test_shouldEnterEmergencyAsDrivingEBSValves">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,188,68"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="289,5,379,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,34,274,23,274,28,189,39"/>
+<area shape="rect" id="Node000003" href="$d7/d1f/class_checkup_manager.html#a43ff573e094af8253c78e0aa69529d3a" title="Performs an emergency checkup." alt="" coords="236,55,432,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,56,220,59,220,65,188,61"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="692,63,866,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="432,70,480,69,644,69,677,69,677,75,644,74,480,74,433,75"/>
+<area shape="rect" id="Node000005" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="480,83,644,124"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="433,85,465,89,464,94,432,90"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="644,90,676,86,677,91,645,96"/>
+</map>

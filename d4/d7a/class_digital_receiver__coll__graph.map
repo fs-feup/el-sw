@@ -1,0 +1,3 @@
+<map id="DigitalReceiver" name="DigitalReceiver">
+<area shape="rect" id="Node000001" title="Class responsible for the reading of the digital inputs into the Master teensy." alt="" coords="5,5,171,131"/>
+</map>
