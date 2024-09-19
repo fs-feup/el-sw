@@ -118,7 +118,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = ./README.md ./C1 ./C3APPS ./charger ./temp-acq
+INPUT                  = ./README.md ./c1 ./c3 ./charger ./temp-acq ./master ./ami ./bread-board-test
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
