@@ -290,7 +290,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         }
         return _systemData->failureDetection.emergencySignal ||
             (_systemData->digitalData.pneumatic_line_pressure == 0 
-                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
+                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
             _systemData->failureDetection.hasAnyComponentTimedOut() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->digitalData.asms_on ||
@@ -327,9 +327,9 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
             (_systemData->digitalData.pneumatic_line_pressure == 0 
-               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
+               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) || // car has one second to make pneumatic pressure 0
             (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
+               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) || // car has one second to make hydraulic pressure greater than pressure
             !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;

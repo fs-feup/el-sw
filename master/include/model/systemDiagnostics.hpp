@@ -51,7 +51,7 @@ struct R2DLogics {
      */
 
     bool processGoSignal() {
-        // If r2d is not received or received before 5 seconds, return false
+        // If r2d is not received or received before 5 seconds, return false (?_?)
         if (readyTimestamp.check()) {
             r2d = true;
             return EXIT_SUCCESS;
@@ -67,15 +67,19 @@ struct FailureDetection {
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro resSignalLossTimestamp{RES_TIMESTAMP_TIMEOUT};
+    bool steer_dead{false};
+    bool pc_dead{false};
+    bool inversor_dead{false};
+    bool res_dead{false};
     bool emergencySignal{false};
     bool ts_on{false};
     double radio_quality{0};
 
-    [[nodiscard]] bool hasAnyComponentTimedOut() {
-        bool steer_dead = steerAliveTimestamp.checkWithoutReset();
-        bool pc_dead = pcAliveTimestamp.checkWithoutReset();
-        bool inversor_dead = inversorAliveTimestamp.checkWithoutReset();
-        bool res_dead = resSignalLossTimestamp.checkWithoutReset();
+    [[nodiscard]] bool hasAnyComponentTimedOut() {//no discard makes return value non ignorable
+        steer_dead = steerAliveTimestamp.checkWithoutReset();
+        pc_dead = pcAliveTimestamp.checkWithoutReset();
+        inversor_dead = inversorAliveTimestamp.checkWithoutReset();
+        res_dead = resSignalLossTimestamp.checkWithoutReset();
         if (steer_dead) {
             DEBUG_PRINT_VAR(steer_dead);
         }

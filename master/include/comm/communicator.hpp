@@ -115,6 +115,11 @@ public:
     static int publish_mission(int mission_id);
 
     /**
+     * @brief Publish AS Mission to CAN
+    */
+    static int publish_debug_log(SystemData systemData);
+
+    /**
      * @brief Publish rl wheel rpm to CAN
     */
     static int publish_left_wheel_rpm(double value);
@@ -290,6 +295,38 @@ inline int Communicator::publish_mission(int mission_id) {
     const uint8_t msg[] = {MISSION_MSG, static_cast<uint8_t>(mission_id)};
 
     send_message(2, msg, MASTER_ID);
+    return 0;
+}
+
+inline int Communicator::publish_debug_log(SystemData systemData) {
+    
+    uint8_t msg[7] = {0}; // 8 bytes for the CAN message
+    uint32_t hydraulic_pressure = systemData.sensors._hydraulic_line_pressure; // 32-bit value
+
+    // TBD, consider extracting to a function in utils.hpp
+    uint8_t emergencySignalBit = systemData.failureDetection.emergencySignal;
+    uint8_t pneumaticLinePressureBit = systemData.digitalData.pneumatic_line_pressure;
+    uint8_t engageEbsCheckBit = systemData.r2dLogics.engageEbsTimestamp.check();
+    uint8_t realeaseEbsCheckBit = systemData.r2dLogics.releaseEbsTimestamp.check();
+    uint8_t steerDeadBit = systemData.failureDetection.steer_dead;
+    uint8_t pcDeadBit = systemData.failureDetection.pc_dead;
+    uint8_t inversorDeadBit = systemData.failureDetection.inversor_dead;
+    uint8_t resDeadBit = systemData.failureDetection.res_dead;
+    uint8_t asmsOnBit = systemData.digitalData.asms_on;
+    uint8_t tsOnBit = systemData.failureDetection.ts_on;
+    uint8_t sdcStateOpenBit = systemData.digitalData.sdcState_OPEN;
+
+    msg[0] = DBG_LOG_MSG;
+    msg[1] = (hydraulic_pressure >> 24) & 0xFF;
+    msg[2] = (hydraulic_pressure >> 16) & 0xFF;
+    msg[3] = (hydraulic_pressure >> 8) & 0xFF;
+    msg[4] = hydraulic_pressure & 0xFF;
+    msg[5] = (emergencySignalBit & 0x01) << 7 | (pneumaticLinePressureBit & 0x01) << 6 | (engageEbsCheckBit & 0x01) << 5 | (realeaseEbsCheckBit & 0x01) << 4 |
+             (steerDeadBit & 0x01) << 3 | (pcDeadBit & 0x01) << 2 | (inversorDeadBit & 0x01) << 1 | (resDeadBit & 0x01);
+    msg[6] = (asmsOnBit & 0x01) << 7 | (tsOnBit & 0x01) << 6 | (sdcStateOpenBit & 0x01) << 5;
+
+    send_message(7, msg, MASTER_ID);
+
     return 0;
 }
 

@@ -37,6 +37,7 @@ constexpr auto RES_ACTIVATE = 0x000;
 constexpr auto STATE_MSG = 0x31;
 constexpr auto MISSION_MSG = 0x32;
 constexpr auto LEFT_WHEEL_MSG = 0x33;
+constexpr auto DBG_LOG_MSG = 0x34;
 
 // Bamocar
 constexpr auto BTB_READY = 0xE2;

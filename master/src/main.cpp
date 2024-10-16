@@ -14,6 +14,7 @@ ASState as_state = ASState(&systemData, &communicator, &digitalSender);
 
 Metro rl_rpm_timer = Metro{LEFT_WHEEL_PUBLISH_INTERVAL};
 Metro mission_timer = Metro(MISSION_PUBLISH_INTERVAL);
+//Metro debug_logging_timer = Metro(DEBUG_LOGGING_TIMER);
 Metro state_timer = Metro(STATE_PUBLISH_INTERVAL);
 IntervalTimer state_calculation_timer;
 
@@ -31,13 +32,18 @@ void setup() {
 
     rl_rpm_timer.reset();
     mission_timer.reset();
+    //debug_logging_timer.reset();
     state_timer.reset();
 }
 
-void loop() {
+void loop() {   
     digitalReceiver.digitalReads();
     as_state.calculateState();
     
+    //if (debug_logging_timer.check()) {
+    Communicator::publish_debug_log(systemData);//mudar pointer se problemas de memória
+        //debug_logging_timer.reset();
+    //}
     if (mission_timer.check()) {
         Communicator::publish_mission(systemData.mission);
         mission_timer.reset();
