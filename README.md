@@ -5,9 +5,9 @@ This repository holds the code that runs in the embedded platforms of the FS FEU
 ## Starting to Develop
 
 Before starting, check out:
-- [Project Rules](https://www.notion.so/FS-FEUP-HUB-6873ab8de3b44fad990d264023fbce8b?pvs=4) in Notion (specifically check Software Development rules)
+- [Project Rules](https://www.notion.so/Software-Guides-and-Rules-965904e3913f4a39bfce24eaf47a1500?pvs=4) in Notion (specifically check Software Development rules)
 - [Environment Setup](./docs/environment_setup.md)
-- [Startup Guide](https://github.com/fs-feup/tutorials/blob/main/tutorials/startup_guide_el.md)
+- [Startup Guide](https://www.notion.so/Embedded-Software-Startup-Guide-18d98481c27840429fc60acd07f6e344?pvs=4)
 
 ## Contributing
 Check [this guide](./CONTRIBUTING.md).
