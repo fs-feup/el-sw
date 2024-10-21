@@ -67,32 +67,32 @@ struct FailureDetection {
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro resSignalLossTimestamp{RES_TIMESTAMP_TIMEOUT};
-    bool steer_dead{false};
-    bool pc_dead{false};
-    bool inversor_dead{false};
-    bool res_dead{false};
+    bool steer_dead_{false};
+    bool pc_dead_{false};
+    bool inversor_dead_{false};
+    bool res_dead_{false};
     bool emergencySignal{false};
     bool ts_on{false};
     double radio_quality{0};
 
-    [[nodiscard]] bool hasAnyComponentTimedOut() {//no discard makes return value non ignorable
-        steer_dead = steerAliveTimestamp.checkWithoutReset();
-        pc_dead = pcAliveTimestamp.checkWithoutReset();
-        inversor_dead = inversorAliveTimestamp.checkWithoutReset();
-        res_dead = resSignalLossTimestamp.checkWithoutReset();
-        if (steer_dead) {
-            DEBUG_PRINT_VAR(steer_dead);
+    [[nodiscard]] bool has_any_component_timed_out() {//no discard makes return value non ignorable
+        steer_dead_ = steerAliveTimestamp.checkWithoutReset();
+        pc_dead_ = pcAliveTimestamp.checkWithoutReset();
+        inversor_dead_ = inversorAliveTimestamp.checkWithoutReset();
+        res_dead_ = resSignalLossTimestamp.checkWithoutReset();
+        if (steer_dead_) {
+            DEBUG_PRINT_VAR(steer_dead_);
         }
-        if (pc_dead) {
-            DEBUG_PRINT_VAR(pc_dead);
+        if (pc_dead_) {
+            DEBUG_PRINT_VAR(pc_dead_);
         }
-        if (inversor_dead) {
-            DEBUG_PRINT_VAR(inversor_dead);
+        if (inversor_dead_) {
+            DEBUG_PRINT_VAR(inversor_dead_);
         }
-        if (res_dead) {
-            DEBUG_PRINT_VAR(res_dead);
+        if (res_dead_) {
+            DEBUG_PRINT_VAR(res_dead_);
         }
-        return steer_dead || pc_dead || inversor_dead || res_dead;
+        return steer_dead_ || pc_dead_ || inversor_dead_ || res_dead_;
             // pcAliveTimestamp.check() ||
             //    steerAliveTimestamp.check();
             //    inversorAliveTimestamp.check();

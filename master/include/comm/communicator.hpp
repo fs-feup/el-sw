@@ -298,32 +298,32 @@ inline int Communicator::publish_mission(int mission_id) {
     return 0;
 }
 
-inline int Communicator::publish_debug_log(SystemData systemData) {
+inline int Communicator::publish_debug_log(SystemData system_data) {
     
     uint8_t msg[7] = {0}; // 8 bytes for the CAN message
     uint32_t hydraulic_pressure = systemData.sensors._hydraulic_line_pressure; // 32-bit value
 
     // TBD, consider extracting to a function in utils.hpp
-    uint8_t emergencySignalBit = systemData.failureDetection.emergencySignal;
-    uint8_t pneumaticLinePressureBit = systemData.digitalData.pneumatic_line_pressure;
-    uint8_t engageEbsCheckBit = systemData.r2dLogics.engageEbsTimestamp.check();
-    uint8_t realeaseEbsCheckBit = systemData.r2dLogics.releaseEbsTimestamp.check();
-    uint8_t steerDeadBit = systemData.failureDetection.steer_dead;
-    uint8_t pcDeadBit = systemData.failureDetection.pc_dead;
-    uint8_t inversorDeadBit = systemData.failureDetection.inversor_dead;
-    uint8_t resDeadBit = systemData.failureDetection.res_dead;
-    uint8_t asmsOnBit = systemData.digitalData.asms_on;
-    uint8_t tsOnBit = systemData.failureDetection.ts_on;
-    uint8_t sdcStateOpenBit = systemData.digitalData.sdcState_OPEN;
+    uint8_t emergency_signal_bit = systemData.failureDetection.emergencySignal;
+    uint8_t pneumatic_line_pressure_bit = systemData.digitalData.pneumatic_line_pressure;
+    uint8_t engage_ebs_check_bit = systemData.r2dLogics.engageEbsTimestamp.check();
+    uint8_t release_ebs_check_bit = systemData.r2dLogics.releaseEbsTimestamp.check();
+    uint8_t steer_dead_bit = systemData.failureDetection.steer_dead_;
+    uint8_t pc_dead_bit = systemData.failureDetection.pc_dead_;
+    uint8_t inversor_dead_bit = systemData.failureDetection.inversor_dead_;
+    uint8_t res_dead_bit = systemData.failureDetection.res_dead_;
+    uint8_t asms_on_bit = systemData.digitalData.asms_on;
+    uint8_t ts_on_bit = systemData.failureDetection.ts_on;
+    uint8_t sdc_state_open_bit = systemData.digitalData.sdcState_OPEN;
 
     msg[0] = DBG_LOG_MSG;
     msg[1] = (hydraulic_pressure >> 24) & 0xFF;
     msg[2] = (hydraulic_pressure >> 16) & 0xFF;
     msg[3] = (hydraulic_pressure >> 8) & 0xFF;
     msg[4] = hydraulic_pressure & 0xFF;
-    msg[5] = (emergencySignalBit & 0x01) << 7 | (pneumaticLinePressureBit & 0x01) << 6 | (engageEbsCheckBit & 0x01) << 5 | (realeaseEbsCheckBit & 0x01) << 4 |
-             (steerDeadBit & 0x01) << 3 | (pcDeadBit & 0x01) << 2 | (inversorDeadBit & 0x01) << 1 | (resDeadBit & 0x01);
-    msg[6] = (asmsOnBit & 0x01) << 7 | (tsOnBit & 0x01) << 6 | (sdcStateOpenBit & 0x01) << 5;
+    msg[5] = (emergency_signal_bit & 0x01) << 7 | (pneumatic_line_pressure_bit & 0x01) << 6 | (engage_ebs_check_bit & 0x01) << 5 | (release_ebs_check_bit & 0x01) << 4 |
+             (steer_dead_bit & 0x01) << 3 | (pc_dead_bit & 0x01) << 2 | (inversor_dead_bit & 0x01) << 1 | (res_dead_bit & 0x01);
+    msg[6] = (asms_on_bit & 0x01) << 7 | (ts_on_bit & 0x01) << 6 | (sdc_state_open_bit & 0x01) << 5;
 
     send_message(7, msg, MASTER_ID);
 

@@ -232,10 +232,10 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 
             // digitalSender->toggleWatchdog();
             // Check if all components have responded and no emergency signal has been sent
-            if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-                DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
+            if (_systemData->failureDetection.has_any_component_timed_out()) {
+                DEBUG_PRINT_VAR(_systemData->failureDetection.has_any_component_timed_out());
             }
-            if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
+            if (_systemData->failureDetection.has_any_component_timed_out() || _systemData->failureDetection.
                 emergencySignal) {
                 return CheckupError::ERROR;
             }
@@ -265,8 +265,8 @@ inline bool CheckupManager::shouldStayReady() const {
 
 inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
     if (current_state == AS_READY) {
-        if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
+        if (_systemData->failureDetection.has_any_component_timed_out()) {
+            DEBUG_PRINT_VAR(_systemData->failureDetection.has_any_component_timed_out());
         }
         if (_systemData->failureDetection.emergencySignal) {
             DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
@@ -291,7 +291,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         return _systemData->failureDetection.emergencySignal ||
             (_systemData->digitalData.pneumatic_line_pressure == 0 
                 && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
-            _systemData->failureDetection.hasAnyComponentTimedOut() ||
+            _systemData->failureDetection.has_any_component_timed_out() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->digitalData.asms_on ||
             !_systemData->failureDetection.ts_on ||
@@ -300,8 +300,8 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
-        if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
+        if (_systemData->failureDetection.has_any_component_timed_out()) {
+            DEBUG_PRINT_VAR(_systemData->failureDetection.has_any_component_timed_out());
         }
         if (_systemData->failureDetection.emergencySignal) {
             DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
@@ -323,7 +323,7 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
             DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
             DEBUG_PRINT_VAR(_systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset());
         }
-        return _systemData->failureDetection.hasAnyComponentTimedOut() ||
+        return _systemData->failureDetection.has_any_component_timed_out() ||
             _systemData->failureDetection.emergencySignal ||
             _systemData->digitalData.sdcState_OPEN ||
             (_systemData->digitalData.pneumatic_line_pressure == 0 

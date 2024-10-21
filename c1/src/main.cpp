@@ -157,8 +157,6 @@ void canbusSniffer(const CAN_message_t &msg)
         apps1 = ((msg.buf[1] << 8) | msg.buf[0]);
         apps2 = ((msg.buf[3] << 8) | msg.buf[2]);
         break;
-    // case BAMO_PLACEHOLDER: //TO CHANGE
-    //     break; 
     case BAMO_RESPONSE_ID:
         if (msg.buf[0] == BAMO_SPEED)
         {
@@ -207,7 +205,6 @@ void canbusSetup()
     can1.setFIFOFilter(0, 0x111, STD);
     can1.setFIFOFilter(1, BMS_ID, STD);
     can1.setFIFOFilter(2, BAMO_RESPONSE_ID, STD);
-    //can1.setFIFOFilter(2, BAMO_PLACEHOLDER, STD); //TO CHANGE
     can1.onReceive(canbusSniffer);
     initMessages();
 }

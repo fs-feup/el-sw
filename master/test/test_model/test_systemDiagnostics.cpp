@@ -3,9 +3,9 @@
 
 void test_hasAnyComponentTimedOut(void) {
     FailureDetection fd;
-    TEST_ASSERT_FALSE(fd.hasAnyComponentTimedOut());
+    TEST_ASSERT_FALSE(fd.has_any_component_timed_out());
     delay(COMPONENT_TIMESTAMP_TIMEOUT + 1);
-    TEST_ASSERT_TRUE(fd.hasAnyComponentTimedOut());
+    TEST_ASSERT_TRUE(fd.has_any_component_timed_out());
 }
 
 void setUp(void) {
