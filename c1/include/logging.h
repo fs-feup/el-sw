@@ -20,7 +20,6 @@
 
 #define BMS_ID 0x666
 #define BAMO_RESPONSE_ID 0x181
-
 #define LOGGING_PERIOD 10
 
 

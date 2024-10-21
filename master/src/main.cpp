@@ -34,10 +34,11 @@ void setup() {
     state_timer.reset();
 }
 
-void loop() {
+void loop() {   
     digitalReceiver.digitalReads();
     as_state.calculateState();
     
+    Communicator::publish_debug_log(systemData);//mudar pointer se problemas de memória e incluir timer se demasiadas mensagens
     if (mission_timer.check()) {
         Communicator::publish_mission(systemData.mission);
         mission_timer.reset();
