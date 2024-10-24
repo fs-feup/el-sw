@@ -67,6 +67,8 @@ struct FailureDetection {
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro resSignalLossTimestamp{RES_TIMESTAMP_TIMEOUT};
+    Metro dcVoltageDropTimestamp{DC_VOLTAGE_TIMEOUT}; //timer to check if dc voltage drops below threshold for more than 150ms
+    Metro dcVoltageHoldTimestamp{DC_VOLTAGE_HOLD}; // timer for ts on, only after enough voltage for 1 sec
     bool steer_dead_{false};
     bool pc_dead_{false};
     bool inversor_dead_{false};
@@ -74,10 +76,11 @@ struct FailureDetection {
     bool emergencySignal{false};
     bool ts_on{false};
     double radio_quality{0};
+    unsigned dc_voltage{0};
 
     [[nodiscard]] bool has_any_component_timed_out() {//no discard makes return value non ignorable
         steer_dead_ = steerAliveTimestamp.checkWithoutReset();
-        pc_dead_ = pcAliveTimestamp.checkWithoutReset();
+        //pc_dead_ = pcAliveTimestamp.checkWithoutReset();
         inversor_dead_ = inversorAliveTimestamp.checkWithoutReset();
         res_dead_ = resSignalLossTimestamp.checkWithoutReset();
         if (steer_dead_) {

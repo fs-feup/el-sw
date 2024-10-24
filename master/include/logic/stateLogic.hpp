@@ -63,11 +63,12 @@ inline void ASState::calculateState() {
             DEBUG_PRINT("Entering READY state from OFF");
             DigitalSender::enterReadyState();
             state = AS_READY;
+            DEBUG_PRINT("READY state entered...");
             break;
 
         case AS_READY:
             // _digitalSender->toggleWatchdog();
-
+            DEBUG_PRINT("READY state...");
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from READY");
                 _digitalSender->enterEmergencyState();
@@ -75,7 +76,11 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            if (_checkupManager.shouldStayReady()) break;
+            DEBUG_PRINT("Checking if should stay ready...");
+            if (_checkupManager.shouldStayReady()) {
+                DEBUG_PRINT("Yes, staying ready...");
+                break;
+            }
 
 
             DEBUG_PRINT("Entering DRIVING state from READY");

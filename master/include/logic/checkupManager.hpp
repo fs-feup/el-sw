@@ -45,7 +45,8 @@ public:
         WAIT_FOR_TS,
         TOGGLE_VALVE,
         CHECK_PRESSURE,
-        CHECK_TIMESTAMPS
+        CHECK_TIMESTAMPS,
+        CHECKUP_COMPLETE
     };
 
     /**
@@ -215,7 +216,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             DigitalSender::activateEBS();
 
             initialCheckupTimestamp.reset();
-            checkupState = CheckupState::CHECK_PRESSURE;
+            checkupState = CheckupState::CHECK_TIMESTAMPS;
             break;
         case CheckupState::CHECK_PRESSURE:
             // digitalSender->toggleWatchdog();
@@ -239,6 +240,7 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
                 emergencySignal) {
                 return CheckupError::ERROR;
             }
+            checkupState = CheckupState::CHECKUP_COMPLETE;
             return CheckupError::SUCCESS;
         }
         default:
@@ -280,23 +282,23 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         if (!_systemData->failureDetection.ts_on) {
             DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
         }
-        if (_systemData->digitalData.pneumatic_line_pressure == 0) {
+/*         if (_systemData->digitalData.pneumatic_line_pressure == 0) {
             DEBUG_PRINT_VAR(_systemData->digitalData.pneumatic_line_pressure);
             DEBUG_PRINT_VAR(_systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset());
         }
         if (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD) {
             DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
             DEBUG_PRINT_VAR(_systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset());
-        }
+        } */
         return _systemData->failureDetection.emergencySignal ||
-            (_systemData->digitalData.pneumatic_line_pressure == 0 
-                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
-            _systemData->failureDetection.has_any_component_timed_out() ||
+            /* (_systemData->digitalData.pneumatic_line_pressure == 0 
+                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0 */
+                _systemData->failureDetection.has_any_component_timed_out() ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->digitalData.asms_on ||
             !_systemData->failureDetection.ts_on ||
-            (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD
-               && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
+            //(_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD
+               /* && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset() || */
             _systemData->digitalData.sdcState_OPEN
             ;
     } else if (current_state == AS_DRIVING) {
@@ -325,11 +327,11 @@ inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
         }
         return _systemData->failureDetection.has_any_component_timed_out() ||
             _systemData->failureDetection.emergencySignal ||
-            _systemData->digitalData.sdcState_OPEN ||
+            _systemData->digitalData.sdcState_OPEN ||/* 
             (_systemData->digitalData.pneumatic_line_pressure == 0 
                && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) || // car has one second to make pneumatic pressure 0
             (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) || // car has one second to make hydraulic pressure greater than pressure
+               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) */ /* || */ // car has one second to make hydraulic pressure greater than pressure
             !_systemData->digitalData.asms_on ||
             // _systemData->digitalData.watchdogTimestamp.check() ||
             !_systemData->failureDetection.ts_on;

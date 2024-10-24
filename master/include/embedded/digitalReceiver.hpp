@@ -168,11 +168,11 @@ inline void DigitalReceiver::readAsmsSwitch() {
 
 inline void DigitalReceiver::readAatsState() {
     // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
-    bool temp_res = !digitalRead(SDC_STATE_PIN);
+    bool is_sdc_closed = !digitalRead(SDC_STATE_PIN);
     // Only change the value if it has been different 5 times in a row
-    aats_change_counter = temp_res == digitalData->sdcState_OPEN ? 0 : aats_change_counter + 1;
+    aats_change_counter = is_sdc_closed == digitalData->sdcState_OPEN ? 0 : aats_change_counter + 1;
     if (aats_change_counter >= DIGITAL_INPUT_COUNTER_LIMIT) {
-        digitalData->sdcState_OPEN = temp_res; // both need to be True
+        digitalData->sdcState_OPEN = is_sdc_closed; // both need to be True
         aats_change_counter = 0;
     }
     // DEBUG_PRINT_VAR(digitalData->sdcState_OPEN);

@@ -49,7 +49,7 @@ public:
     /**
      * @brief Constructor for the Communicator class
      * Initializes the Communicator with the given system data instance.
-     * @param systemData Pointer to the SystemData instance.
+     * @param system_data Pointer to the SystemData instance.
      */
     Communicator(SystemData* systemdata);
 
@@ -117,7 +117,7 @@ public:
     /**
      * @brief Publish AS Mission to CAN
     */
-    static int publish_debug_log(SystemData systemData);
+    static int publish_debug_log(SystemData system_data, uint8_t sate, uint8_t state_checkup);
 
     /**
      * @brief Publish rl wheel rpm to CAN
@@ -125,8 +125,8 @@ public:
     static int publish_left_wheel_rpm(double value);
 };
 
-inline Communicator::Communicator(SystemData* systemData) {
-    _systemData = systemData;
+inline Communicator::Communicator(SystemData* system_data) {
+    _systemData = system_data;
 }
 
 void Communicator::init() {
@@ -196,10 +196,12 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
     // DEBUG_PRINT_VAR(_systemData->failureDetection.radio_quality);
     bool signal_loss = (buf[7] >> 6) & 0x01;
     if (!signal_loss) {
-        _systemData->failureDetection.resSignalLossTimestamp.reset();
+        _systemData->failureDetection.resSignalLossTimestamp.reset();//making ure we dont receive only ignal lo for the defined time interval
+        //DEBUG_PRINT("SIGNAL OKAY"); 
+
     } else {
         // Too many will violate the disconnection time limit
-        DEBUG_PRINT("SIGNAL LOSS"); 
+       // DEBUG_PRINT("SIGNAL LOSS"); 
     }
 
     // DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
@@ -209,7 +211,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf) {
 
 inline void Communicator::resReadyCallback() {
     // If res sends boot message, activate it
-    // DEBUG_PRINT("Received RES Ready");
+    DEBUG_PRINT("Received RES Ready");
     unsigned id = RES_ACTIVATE;
     uint8_t msg[] = {0x01, NODE_ID}; // 0x00 in byte 2 for all nodes
 
@@ -218,7 +220,7 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
-    // DEBUG_PRINT("Received Bamocar Alive");
+    DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false) {
@@ -226,21 +228,32 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
         }
 
     } else if (buf[0] == VDC_BUS) {
-        int dc_voltage = (buf[2] << 8) | buf[1];
+        unsigned dc_voltage = (buf[2] << 8) | buf[1];
+        _systemData->failureDetection.dc_voltage = dc_voltage;        
 
         // DEBUG_PRINT_VAR(dc_voltage);
 
         if (dc_voltage < DC_THRESHOLD) {
-            _systemData->failureDetection.ts_on = false;
+            _systemData->failureDetection.dcVoltageHoldTimestamp.reset();
+            if (_systemData->failureDetection.dcVoltageDropTimestamp.checkWithoutReset()) {
+                DEBUG_PRINT("DC Voltage Drop under defined value for more than 150ms");
+                
+                _systemData->failureDetection.ts_on = false;
+            }
         } else {
-            _systemData->failureDetection.ts_on = true;       
+            _systemData->failureDetection.dcVoltageDropTimestamp.reset();
+            if(_systemData->failureDetection.dcVoltageHoldTimestamp.checkWithoutReset()){
+             
+            _systemData->failureDetection.ts_on = true;    
+            }
+            DEBUG_PRINT("DC Voltage OK");      
         }
     }   
     // DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
-
 }
 
 inline void Communicator::pcCallback(const uint8_t *buf) {
+    DEBUG_PRINT("PC callback");
     if (buf[0] == PC_ALIVE) {
         _systemData->failureDetection.pcAliveTimestamp.reset();
         // DEBUG_PRINT("Received AS CU Alive");
@@ -256,7 +269,7 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
 
 inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.reset();
-    // DEBUG_PRINT("Received Steering Alive");
+    DEBUG_PRINT("Received Steering Alive");
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
@@ -298,23 +311,23 @@ inline int Communicator::publish_mission(int mission_id) {
     return 0;
 }
 
-inline int Communicator::publish_debug_log(SystemData system_data) {
+inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state, uint8_t state_checkup) {
     
-    uint8_t msg[7] = {0}; // 8 bytes for the CAN message
-    uint32_t hydraulic_pressure = systemData.sensors._hydraulic_line_pressure; // 32-bit value
-
+    uint8_t msg[8] = {0}; // 8 bytes for the CAN message
+    uint32_t hydraulic_pressure = system_data.sensors._hydraulic_line_pressure; // 32-bit value
     // TBD, consider extracting to a function in utils.hpp
-    uint8_t emergency_signal_bit = systemData.failureDetection.emergencySignal;
-    uint8_t pneumatic_line_pressure_bit = systemData.digitalData.pneumatic_line_pressure;
-    uint8_t engage_ebs_check_bit = systemData.r2dLogics.engageEbsTimestamp.check();
-    uint8_t release_ebs_check_bit = systemData.r2dLogics.releaseEbsTimestamp.check();
-    uint8_t steer_dead_bit = systemData.failureDetection.steer_dead_;
-    uint8_t pc_dead_bit = systemData.failureDetection.pc_dead_;
-    uint8_t inversor_dead_bit = systemData.failureDetection.inversor_dead_;
-    uint8_t res_dead_bit = systemData.failureDetection.res_dead_;
-    uint8_t asms_on_bit = systemData.digitalData.asms_on;
-    uint8_t ts_on_bit = systemData.failureDetection.ts_on;
-    uint8_t sdc_state_open_bit = systemData.digitalData.sdcState_OPEN;
+    uint8_t emergency_signal_bit = system_data.failureDetection.emergencySignal;
+    uint8_t pneumatic_line_pressure_bit = system_data.digitalData.pneumatic_line_pressure;
+    uint8_t engage_ebs_check_bit = system_data.r2dLogics.engageEbsTimestamp.checkWithoutReset();
+    uint8_t release_ebs_check_bit = system_data.r2dLogics.releaseEbsTimestamp.checkWithoutReset();
+    uint8_t steer_dead_bit = system_data.failureDetection.steer_dead_;
+    uint8_t pc_dead_bit = system_data.failureDetection.pc_dead_;
+    uint8_t inversor_dead_bit = system_data.failureDetection.inversor_dead_;
+    uint8_t res_dead_bit = system_data.failureDetection.res_dead_;
+    uint8_t asms_on_bit = system_data.digitalData.asms_on;
+    uint8_t ts_on_bit = system_data.failureDetection.ts_on;
+    uint8_t sdc_state_open_bit = system_data.digitalData.sdcState_OPEN;
+    uint8_t mission = system_data.mission;
 
     msg[0] = DBG_LOG_MSG;
     msg[1] = (hydraulic_pressure >> 24) & 0xFF;
@@ -323,10 +336,17 @@ inline int Communicator::publish_debug_log(SystemData system_data) {
     msg[4] = hydraulic_pressure & 0xFF;
     msg[5] = (emergency_signal_bit & 0x01) << 7 | (pneumatic_line_pressure_bit & 0x01) << 6 | (engage_ebs_check_bit & 0x01) << 5 | (release_ebs_check_bit & 0x01) << 4 |
              (steer_dead_bit & 0x01) << 3 | (pc_dead_bit & 0x01) << 2 | (inversor_dead_bit & 0x01) << 1 | (res_dead_bit & 0x01);
-    msg[6] = (asms_on_bit & 0x01) << 7 | (ts_on_bit & 0x01) << 6 | (sdc_state_open_bit & 0x01) << 5;
+    msg[6] = (asms_on_bit & 0x01) << 7 | (ts_on_bit & 0x01) << 6 | (sdc_state_open_bit & 0x01) << 5 | (state_checkup & 0x0F);
+    msg[7] = (mission & 0x0F) | ((state & 0x0F) << 4 ) ;
 
-    send_message(7, msg, MASTER_ID);
-
+    send_message(8, msg, MASTER_ID);
+    uint32_t dc_voltage = system_data.failureDetection.dc_voltage;
+    msg[0] = DBG_LOG_MSG_2;
+    msg[1] = (dc_voltage >> 24) & 0xFF;
+    msg[2] = (dc_voltage >> 16) & 0xFF;
+    msg[3] = (dc_voltage >> 8) & 0xFF;
+    msg[4] = dc_voltage & 0xFF;
+    send_message(4, msg, MASTER_ID); 
     return 0;
 }
 
