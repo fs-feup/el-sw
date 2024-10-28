@@ -1,11 +1,12 @@
-# Recruits Task - Week #2 
+# Recruits Task - Week #2
+- ## [git para noobs](https://hackmd.io/@PedroRomao/HJ0GJSae1x)
 - ## Add this file to your local git repository create a new branch and work on it, when you are done or as you complete the questions merge the branch into the main branch (remote main branch will have your final work, this means main branch on GitHub, please make the repository public for the next weeks).
 - ## Perform the following tasks to the best of your hability, sometimes, in the questions, there are multiple answers just tell us what you think, feel free to use the group to ask questions.
 
 ### 1
 **1.** Check out the [el-sw repository](https://github.com/fs-feup/el-sw/tree/main) code and documentation  and try to generally understand what the software does in each device (there is no need to understand all the little details).
 ### 2
-When we read values from the brake sensor (C1) and the apps (C3) we do not use only the most recent reading as the valid value and use instead a different approach. Explain the approach and why you think it is used.
+When we read values from the brake sensor (C1) and the apps (C3) we do not use the most recent reading and use instead a different approach. Explain the approach and why you think it is used.
 
 **Answer:** *Insert answer*
 
@@ -28,7 +29,7 @@ Check out the R2D(Ready To Drive) code on the C3 state machine. In the condition
 What is the ID of the can message sent to the bamocar to request torque?
 **Answer:** *Insert answer*
 ### 5 
-The code below is not amazing (although it would probably work), tell us some things you would change to improve it, you can write them down in text or correct the code:
+The code below is not amazing, tell us some things you would change to improve it, you can write them down in text or correct the code:
 ```c++
 // this is a class for my car
 class mycar {
