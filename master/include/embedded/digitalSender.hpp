@@ -14,7 +14,7 @@
 class DigitalSender {
 private:
     Metro _blinkTimer{LED_BLINK_INTERVAL}; ///< Timer for blinking LED
-    Metro _watchdogTimer{WD_PULSE_INTERVAL_MS}; ///< Timer for toggling watchdog signal
+    // Metro _watchdogTimer{WD_PULSE_INTERVAL_MS}; ///< Timer for toggling watchdog signal
 
     /**
      * @brief Turns off both ASSI LEDs (yellow and blue).
@@ -30,7 +30,7 @@ public:
         EBS_VALVE_2_PIN,
         MASTER_SDC_OUT_PIN,
         SDC_LOGIC_CLOSE_SDC_PIN,
-        SDC_LOGIC_WATCHDOG_OUT_PIN
+        // SDC_LOGIC_WATCHDOG_OUT_PIN
     };
 
     /**
@@ -100,10 +100,10 @@ public:
      */
     void blinkLED(int pin);
 
-    /**
-     * @brief Toggles the watchdog pin, to ensure certify of masters' liveness.
-     */
-    void toggleWatchdog();
+    // /**
+    //  * @brief Toggles the watchdog pin, to ensure certify of masters' liveness.
+    //  */
+    // void toggleWatchdog();
 };
 
 inline void DigitalSender::openSDC() {
@@ -117,6 +117,8 @@ inline void DigitalSender::closeSDC() {
 }
 
 inline void DigitalSender::activateEBS() {
+    // pinMode(EBS_VALVE_1_PIN, OUTPUT);
+    // pinMode(EBS_VALVE_2_PIN, OUTPUT);
     digitalWrite(EBS_VALVE_1_PIN, HIGH);
     digitalWrite(EBS_VALVE_2_PIN, HIGH);
 }
@@ -179,11 +181,11 @@ inline void DigitalSender::blinkLED(const int pin) {
     }
 }
 
-inline void DigitalSender::toggleWatchdog() {
-    static bool watchdogState = false;
-    if (_watchdogTimer.check()) {
-        watchdogState = !watchdogState;
-        digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, watchdogState);
-        _watchdogTimer.reset();
-    }
-}
+// inline void DigitalSender::toggleWatchdog() {
+//     static bool watchdogState = false;
+//     if (_watchdogTimer.check()) {
+//         watchdogState = !watchdogState;
+//         digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, watchdogState);
+//         _watchdogTimer.reset();
+//     }
+// }

@@ -33,8 +33,8 @@ public:
     DigitalReceiver(DigitalData *digitalData, Mission *mission)
         : digitalData(digitalData), mission(mission) {
         pinMode(SDC_STATE_PIN, INPUT);
-        pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
-        pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
+        // pinMode(SDC_LOGIC_WATCHDOG_IN_PIN, INPUT);
+        // pinMode(SDC_LOGIC_WATCHDOG_OUT_PIN, OUTPUT);
         pinMode(MISSION_ACCELERATION_PIN, INPUT);
         pinMode(MISSION_AUTOCROSS_PIN, INPUT);
         pinMode(MISSION_EBSTEST_PIN, INPUT);
@@ -83,11 +83,11 @@ private:
      */
     void readAatsState();
 
-    /**
-     * @brief Reads the watchdog state and updates the DigitalData object.
-     * Resets the watchdog timer if the state is high.
-     */
-    void readWatchdog();
+    // /**
+    //  * @brief Reads the watchdog state and updates the DigitalData object.
+    //  * Resets the watchdog timer if the state is high.
+    //  */
+    // void readWatchdog();
 
 };
 
@@ -108,13 +108,16 @@ inline void DigitalReceiver::digitalReads() {
     readMission();
     readAsmsSwitch();
     readAatsState();
-    readWatchdog();
+    // readWatchdog();
     // digitalData->_left_wheel_rpm = _current_left_wheel_rpm;
 }
 
 inline void DigitalReceiver::readPneumaticLine() {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
-    bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);
+    bool pneumatic2 = 1; /* digitalRead(SENSOR_PRESSURE_2_PIN) */
+
+    digitalData->pneumatic_line_pressure_1 = pneumatic1;
+    digitalData->pneumatic_line_pressure_2 = pneumatic2;
     if (pneumatic1 == 0) {
         // DEBUG_PRINT_VAR(digitalRead(SENSOR_PRESSURE_1_PIN));
     }
@@ -130,7 +133,6 @@ inline void DigitalReceiver::readPneumaticLine() {
         pneumatic_change_counter = 0;
     }
     // DEBUG_PRINT_VAR(digitalData->pneumatic_line_pressure);
-
 }
 
 inline void DigitalReceiver::readMission() {
@@ -178,10 +180,10 @@ inline void DigitalReceiver::readAatsState() {
     // DEBUG_PRINT_VAR(digitalData->sdcState_OPEN);
 }
 
-inline void DigitalReceiver::readWatchdog() {
-    digitalData->watchdog_state = digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN);
-    if (digitalData->watchdog_state) {
-        digitalData->watchdogTimestamp.reset();
-    }
-    // DEBUG_PRINT_VAR(digitalData->watchdog_state);
-}
+// inline void DigitalReceiver::readWatchdog() {
+//     digitalData->watchdog_state = digitalRead(SDC_LOGIC_WATCHDOG_IN_PIN);
+//     if (digitalData->watchdog_state) {
+//         digitalData->watchdogTimestamp.reset();
+//     }
+//     // DEBUG_PRINT_VAR(digitalData->watchdog_state);
+// }

@@ -68,7 +68,7 @@ inline void ASState::calculateState() {
 
         case AS_READY:
             // _digitalSender->toggleWatchdog();
-            DEBUG_PRINT("READY state...");
+            // DEBUG_PRINT("READY state...");
             if (_checkupManager.shouldEnterEmergency(state)) {
                 DEBUG_PRINT("Entering EMERGENCY state from READY");
                 _digitalSender->enterEmergencyState();
@@ -76,9 +76,9 @@ inline void ASState::calculateState() {
                 state = AS_EMERGENCY;
                 break;
             }
-            DEBUG_PRINT("Checking if should stay ready...");
+            // DEBUG_PRINT("Checking if should stay ready...");
             if (_checkupManager.shouldStayReady()) {
-                DEBUG_PRINT("Yes, staying ready...");
+                // DEBUG_PRINT("Yes, staying ready...");
                 break;
             }
 

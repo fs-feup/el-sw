@@ -15,18 +15,18 @@
 class CheckupManager {
 private:
     SystemData *_systemData; ///< Pointer to the system data object containing system status and sensor information.
-    Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT}; ///< Timer for the initial checkup sequence.
+    // Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT}; ///< Timer for the initial checkup sequence.
 
 public:
     Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT}; ///< Timer for the EBS buzzer sound check.
 
-    /**
-     * @brief Provides access to the initial checkup timestamp timer.
-     * @return Reference to the initial checkup timestamp timer.
-     */
-    [[nodiscard]] Metro &getInitialCheckupTimestamp() {
-        return initialCheckupTimestamp;
-    }
+    // /**
+    //  * @brief Provides access to the initial checkup timestamp timer.
+    //  * @return Reference to the initial checkup timestamp timer.
+    //  */
+    // [[nodiscard]] Metro &getInitialCheckupTimestamp() {
+    //     return initialCheckupTimestamp;
+    // }
 
     /**
      * @brief The CheckupState enum represents the different states of 
@@ -156,7 +156,9 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
                 // checkupState = CheckupState::START_TOGGLING_WATCHDOG;
                 checkupState = CheckupState::CLOSE_SDC;
             }
+            // DigitalSender::activateEBS();
             break;
+
         // case CheckupState::START_TOGGLING_WATCHDOG:
         //     // Start toggling watchdog
         //     digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
@@ -189,6 +191,8 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             // Close SDC
             DigitalSender::closeSDC();
             checkupState = CheckupState::WAIT_FOR_AATS;
+            // DigitalSender::activateEBS();
+
             break;
         case CheckupState::WAIT_FOR_AATS:
             // digitalSender->toggleWatchdog();
@@ -201,22 +205,33 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
             // set after the AATS button is pressed.
             _systemData->failureDetection.emergencySignal = false;
                 checkupState = CheckupState::WAIT_FOR_TS;
+                // DigitalSender::activateEBS();
             }
             break;
         case CheckupState::WAIT_FOR_TS:
             // digitalSender->toggleWatchdog();
         // TS Activated?
             if (_systemData->failureDetection.ts_on) {
+                DEBUG_PRINT("TS activated");
+                // DigitalSender::activateEBS();
+
                 checkupState = CheckupState::TOGGLE_VALVE;
+                _systemData->failureDetection.ebsPreActivationHoldTimestamp.reset();
             }
             break;
         case CheckupState::TOGGLE_VALVE:
             // digitalSender->toggleWatchdog();
             // Toggle EBS Valves
-            DigitalSender::activateEBS();
+            if (_systemData->failureDetection.ebsPreActivationHoldTimestamp.check()) {
+                checkupState = CheckupState::CHECK_TIMESTAMPS;
+                DEBUG_PRINT("EBS activated");
+                DigitalSender::activateEBS();
+                _systemData->failureDetection.timestampPreCheckHoldTimestamp.reset();
+            }
 
-            initialCheckupTimestamp.reset();
-            checkupState = CheckupState::CHECK_TIMESTAMPS;
+            // Wait for a while before changing state after activating EBS (debugging only)
+
+            // initialCheckupTimestamp.reset();
             break;
         case CheckupState::CHECK_PRESSURE:
             // digitalSender->toggleWatchdog();
@@ -233,15 +248,21 @@ inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(Digit
 
             // digitalSender->toggleWatchdog();
             // Check if all components have responded and no emergency signal has been sent
-            if (_systemData->failureDetection.has_any_component_timed_out()) {
-                DEBUG_PRINT_VAR(_systemData->failureDetection.has_any_component_timed_out());
+            if (_systemData->failureDetection.timestampPreCheckHoldTimestamp.checkWithoutReset()) {
+                checkupState = CheckupState::CHECK_TIMESTAMPS;
+                DEBUG_PRINT("Checking timestamps now");
+                if (_systemData->failureDetection.has_any_component_timed_out()) {
+                    DEBUG_PRINT_VAR(_systemData->failureDetection.has_any_component_timed_out());
+                }
+                if (_systemData->failureDetection.has_any_component_timed_out() || _systemData->failureDetection.
+                    emergencySignal) {
+                        DEBUG_PRINT("Returning ERROR from CHECK_TIMESTAMPS")
+                    return CheckupError::ERROR;
+                }
+                checkupState = CheckupState::CHECKUP_COMPLETE;
+                DEBUG_PRINT("Checkup complete and returning success");
+                return CheckupError::SUCCESS;
             }
-            if (_systemData->failureDetection.has_any_component_timed_out() || _systemData->failureDetection.
-                emergencySignal) {
-                return CheckupError::ERROR;
-            }
-            checkupState = CheckupState::CHECKUP_COMPLETE;
-            return CheckupError::SUCCESS;
         }
         default:
             break;

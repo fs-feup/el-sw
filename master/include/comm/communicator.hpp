@@ -220,11 +220,13 @@ inline void Communicator::resReadyCallback() {
 
 inline void Communicator::bamocarCallback(const uint8_t *buf) {
     _systemData->failureDetection.inversorAliveTimestamp.reset();
-    DEBUG_PRINT("Received Bamocar Alive");
+    // DEBUG_PRINT("Received Bamocar Alive");
 
     if (buf[0] == BTB_READY) {
         if (buf[1] == false) {
+            DEBUG_PRINT("BTB not ready");
             _systemData->failureDetection.ts_on = false;
+            DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
         }
 
     } else if (buf[0] == VDC_BUS) {
@@ -246,7 +248,7 @@ inline void Communicator::bamocarCallback(const uint8_t *buf) {
              
             _systemData->failureDetection.ts_on = true;    
             }
-            DEBUG_PRINT("DC Voltage OK");      
+            // DEBUG_PRINT("DC Voltage OK");      
         }
     }   
     // DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
@@ -269,7 +271,7 @@ inline void Communicator::pcCallback(const uint8_t *buf) {
 
 inline void Communicator::steeringCallback() {
     _systemData->failureDetection.steerAliveTimestamp.reset();
-    DEBUG_PRINT("Received Steering Alive");
+    // DEBUG_PRINT("Received Steering Alive");
 }
 
 inline void Communicator::parse_message(const CAN_message_t& msg) {
@@ -341,12 +343,17 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
 
     send_message(8, msg, MASTER_ID);
     uint32_t dc_voltage = system_data.failureDetection.dc_voltage;
+    uint8_t pneumatic_line_pressure_bit_1 = system_data.digitalData.pneumatic_line_pressure_1;
+    uint8_t pneumatic_line_pressure_bit_2 = system_data.digitalData.pneumatic_line_pressure_2;
+
     msg[0] = DBG_LOG_MSG_2;
     msg[1] = (dc_voltage >> 24) & 0xFF;
     msg[2] = (dc_voltage >> 16) & 0xFF;
     msg[3] = (dc_voltage >> 8) & 0xFF;
     msg[4] = dc_voltage & 0xFF;
-    send_message(4, msg, MASTER_ID); 
+    msg[5] = pneumatic_line_pressure_bit_1 & 0x01;
+    msg[6] = pneumatic_line_pressure_bit_2 & 0x01;
+    send_message(7, msg, MASTER_ID); 
     return 0;
 }
 
