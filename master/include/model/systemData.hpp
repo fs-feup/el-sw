@@ -11,13 +11,13 @@
  */
 struct SystemData
 {
-    R2DLogics r2d_logics;
-    FailureDetection failure_detection;
-    Sensors sensors;
+    R2DLogics r2d_logics_;
+    FailureDetection failure_detection_;
+    Sensors sensors_;
 
     DigitalData digital_data_;
-    Mission mission{Mission::MANUAL};
+    Mission mission_{Mission::MANUAL};
 
-    bool ready_2_drive{false};
-    bool mission_finished{false};
+    bool ready_2_drive_{false};
+    bool mission_finished_{false};
 };

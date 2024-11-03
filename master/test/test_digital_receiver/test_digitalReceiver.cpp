@@ -32,7 +32,7 @@
 
 
 SystemData system_data;
-auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.mission);
+auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.mission_);
 
 
 /**

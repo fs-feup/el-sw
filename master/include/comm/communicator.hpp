@@ -159,19 +159,19 @@ inline void Communicator::c1_callback(const uint8_t *buf)
 {
     if (buf[0] == HYDRAULIC_LINE)
     {
-        _systemData->sensors._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
+        _systemData->sensors_._hydraulic_line_pressure = (buf[2] << 8) | buf[1];
     }
     else if (buf[0] == RIGHT_WHEEL_CODE)
     {
         double right_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
         right_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
-        _systemData->sensors._right_wheel_rpm = right_wheel_rpm;
+        _systemData->sensors_._right_wheel_rpm = right_wheel_rpm;
     }
     else if (buf[0] == LEFT_WHEEL_CODE)
     {
         double left_wheel_rpm = (buf[4] << 24) | (buf[3] << 16) | (buf[2] << 8) | buf[1];
         left_wheel_rpm *= WHEEL_PRECISION; // convert back adding decimal part
-        _systemData->sensors._left_wheel_rpm = left_wheel_rpm;
+        _systemData->sensors_._left_wheel_rpm = left_wheel_rpm;
     }
 }
 
@@ -185,18 +185,18 @@ inline void Communicator::res_state_callback(const uint8_t *buf)
     // DEBUG_PRINT("Received message from RES");
 
     if (go_button || go_switch)
-        _systemData->r2d_logics.process_go_signal();
+        _systemData->r2d_logics_.process_go_signal();
     else if (!emg_stop1 && !emg_stop2)
     {
         DEBUG_PRINT("RES Emergency Signal");
-        _systemData->failure_detection.emergency_signal = true;
+        _systemData->failure_detection_.emergency_signal_ = true;
     }
 
-    _systemData->failure_detection.radio_quality = buf[6];
+    _systemData->failure_detection_.radio_quality_ = buf[6];
     bool signal_loss = (buf[7] >> 6) & 0x01;
     if (!signal_loss)
     {
-        _systemData->failure_detection.res_signal_loss_timestamp.reset(); // making ure we dont receive only ignal lo for the defined time interval
+        _systemData->failure_detection_.res_signal_loss_timestamp_.reset(); // making ure we dont receive only ignal lo for the defined time interval
         // DEBUG_PRINT("SIGNAL OKAY");
     }
     else
@@ -218,39 +218,39 @@ inline void Communicator::res_ready_callback()
 
 inline void Communicator::bamocar_callback(const uint8_t *buf)
 {
-    _systemData->failure_detection.inversor_alive_timestamp.reset();
+    _systemData->failure_detection_.inversor_alive_timestamp_.reset();
 
     if (buf[0] == BTB_READY)
     {
         if (buf[1] == false)
         {
             DEBUG_PRINT("BTB not ready");
-            _systemData->failure_detection.ts_on = false;
-            DEBUG_PRINT_VAR(_systemData->failure_detection.ts_on);
+            _systemData->failure_detection_.ts_on_ = false;
+            DEBUG_PRINT_VAR(_systemData->failure_detection_.ts_on_);
         }
     }
     else if (buf[0] == VDC_BUS)
     {
         unsigned dc_voltage = (buf[2] << 8) | buf[1];
-        _systemData->failure_detection.dc_voltage = dc_voltage;
+        _systemData->failure_detection_.dc_voltage_ = dc_voltage;
 
         if (dc_voltage < DC_THRESHOLD)
         {
-            _systemData->failure_detection.dc_voltage_hold_timestamp.reset();
-            if (_systemData->failure_detection.dc_voltage_drop_timestamp.checkWithoutReset())
+            _systemData->failure_detection_.dc_voltage_hold_timestamp_.reset();
+            if (_systemData->failure_detection_.dc_voltage_drop_timestamp_.checkWithoutReset())
             {
                 DEBUG_PRINT("DC Voltage Drop under defined value for more than 150ms");
 
-                _systemData->failure_detection.ts_on = false;
+                _systemData->failure_detection_.ts_on_ = false;
             }
         }
         else
         {
-            _systemData->failure_detection.dc_voltage_drop_timestamp.reset();
-            if (_systemData->failure_detection.dc_voltage_hold_timestamp.checkWithoutReset())
+            _systemData->failure_detection_.dc_voltage_drop_timestamp_.reset();
+            if (_systemData->failure_detection_.dc_voltage_hold_timestamp_.checkWithoutReset())
             {
 
-                _systemData->failure_detection.ts_on = true;
+                _systemData->failure_detection_.ts_on_ = true;
             }
         }
     }
@@ -261,23 +261,23 @@ inline void Communicator::pc_callback(const uint8_t *buf)
     DEBUG_PRINT("PC callback");
     if (buf[0] == PC_ALIVE)
     {
-        _systemData->failure_detection.pc_alive_timestamp.reset();
+        _systemData->failure_detection_.pc_alive_timestamp_.reset();
         // DEBUG_PRINT("Received AS CU Alive");
     }
     else if (buf[0] == MISSION_FINISHED)
     {
-        _systemData->mission_finished = true;
+        _systemData->mission_finished_ = true;
     }
     else if (buf[0] == AS_CU_EMERGENCY_SIGNAL)
     {
-        _systemData->failure_detection.emergency_signal = true;
-        DEBUG_PRINT_VAR(_systemData->failure_detection.emergency_signal);
+        _systemData->failure_detection_.emergency_signal_ = true;
+        DEBUG_PRINT_VAR(_systemData->failure_detection_.emergency_signal_);
     }
 }
 
 inline void Communicator::steering_callback()
 {
-    _systemData->failure_detection.steer_alive_timestamp.reset();
+    _systemData->failure_detection_.steer_alive_timestamp_.reset();
 }
 
 inline void Communicator::parse_message(const CAN_message_t &msg)
@@ -325,20 +325,20 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
 {
 
     // 8 bytes for the CAN message
-    uint32_t hydraulic_pressure = system_data.sensors._hydraulic_line_pressure; // 32-bit value
+    uint32_t hydraulic_pressure = system_data.sensors_._hydraulic_line_pressure; // 32-bit value
     // TBD, consider extracting to a function in utils.hpp
-    uint8_t emergency_signal_bit = system_data.failure_detection.emergency_signal;
+    uint8_t emergency_signal_bit = system_data.failure_detection_.emergency_signal_;
     uint8_t pneumatic_line_pressure_bit = system_data.digital_data_.pneumatic_line_pressure_;
-    uint8_t engage_ebs_check_bit = system_data.r2d_logics.engageEbsTimestamp.checkWithoutReset();
-    uint8_t release_ebs_check_bit = system_data.r2d_logics.releaseEbsTimestamp.checkWithoutReset();
-    uint8_t steer_dead_bit = system_data.failure_detection.steer_dead_;
-    uint8_t pc_dead_bit = system_data.failure_detection.pc_dead_;
-    uint8_t inversor_dead_bit = system_data.failure_detection.inversor_dead_;
-    uint8_t res_dead_bit = system_data.failure_detection.res_dead_;
+    uint8_t engage_ebs_check_bit = system_data.r2d_logics_.engageEbsTimestamp.checkWithoutReset();
+    uint8_t release_ebs_check_bit = system_data.r2d_logics_.releaseEbsTimestamp.checkWithoutReset();
+    uint8_t steer_dead_bit = system_data.failure_detection_.steer_dead_;
+    uint8_t pc_dead_bit = system_data.failure_detection_.pc_dead_;
+    uint8_t inversor_dead_bit = system_data.failure_detection_.inversor_dead_;
+    uint8_t res_dead_bit = system_data.failure_detection_.res_dead_;
     uint8_t asms_on_bit = system_data.digital_data_.asms_on_;
-    uint8_t ts_on_bit = system_data.failure_detection.ts_on;
+    uint8_t ts_on_bit = system_data.failure_detection_.ts_on_;
     uint8_t sdc_state_open_bit = system_data.digital_data_.sdc_open_;
-    uint8_t mission = to_underlying(system_data.mission);
+    uint8_t mission = to_underlying(system_data.mission_);
     const std::array<uint8_t, 8> msg = {
         DBG_LOG_MSG,
         (hydraulic_pressure >> 24) & 0xFF,
@@ -361,7 +361,7 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
 
     send_message(8, msg, MASTER_ID);
 
-    uint32_t dc_voltage = system_data.failure_detection.dc_voltage;
+    uint32_t dc_voltage = system_data.failure_detection_.dc_voltage_;
     uint8_t pneumatic_line_pressure_bit_1 = system_data.digital_data_.pneumatic_line_pressure_1_;
     uint8_t pneumatic_line_pressure_bit_2 = system_data.digital_data_.pneumatic_line_pressure_2_;
 

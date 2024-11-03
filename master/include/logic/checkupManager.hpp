@@ -122,12 +122,12 @@ public:
 inline void CheckupManager::reset_checkup_state()
 {
     checkup_state_ = CheckupState::WAIT_FOR_ASMS;
-    _system_data_->mission_finished = false;
+    _system_data_->mission_finished_ = false;
 }
 
 inline bool CheckupManager::should_stay_manual_driving() const
 {
-    if (_system_data_->mission != Mission::MANUAL || _system_data_->digital_data_.pneumatic_line_pressure_ != 0 || _system_data_->digital_data_.asms_on_)
+    if (_system_data_->mission_ != Mission::MANUAL || _system_data_->digital_data_.pneumatic_line_pressure_ != 0 || _system_data_->digital_data_.asms_on_)
     {
         return false;
     }
@@ -172,12 +172,12 @@ inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(Dig
             // expected that the RES has already sent all initial emergency signals,
             // and if RES unexpectedly sends another emergency signal, it will be
             // set after the AATS button is pressed.
-            _system_data_->failure_detection.emergency_signal = false;
+            _system_data_->failure_detection_.emergency_signal_ = false;
             checkup_state_ = CheckupState::WAIT_FOR_TS;
         }
         break;
     case CheckupState::WAIT_FOR_TS:
-        if (_system_data_->failure_detection.ts_on)
+        if (_system_data_->failure_detection_.ts_on_)
         {
             DEBUG_PRINT("TS activated");
 
@@ -193,7 +193,7 @@ inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(Dig
         break;
     case CheckupState::CHECK_PRESSURE:
         // Check hydraulic line pressure and pneumatic line pressure
-        if (_system_data_->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _system_data_->digital_data_.pneumatic_line_pressure_)
+        if (_system_data_->sensors_._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _system_data_->digital_data_.pneumatic_line_pressure_)
         {
             checkup_state_ = CheckupState::CHECK_TIMESTAMPS;
         }
@@ -204,7 +204,7 @@ inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(Dig
 
         // Check if all components have responded and no emergency signal has been sent
         checkup_state_ = CheckupState::CHECK_TIMESTAMPS;
-        if (_system_data_->failure_detection.has_any_component_timed_out() || _system_data_->failure_detection.emergency_signal)
+        if (_system_data_->failure_detection_.has_any_component_timed_out() || _system_data_->failure_detection_.emergency_signal_)
         {
             DEBUG_PRINT("Returning ERROR from CHECK_TIMESTAMPS")
             return CheckupError::ERROR;
@@ -221,21 +221,21 @@ inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(Dig
 
 inline bool CheckupManager::should_go_ready_from_off() const
 {
-    if (!_system_data_->digital_data_.asms_on_ || !_system_data_->failure_detection.ts_on || _system_data_->digital_data_.sdc_open_)
+    if (!_system_data_->digital_data_.asms_on_ || !_system_data_->failure_detection_.ts_on_ || _system_data_->digital_data_.sdc_open_)
     {
         return false;
     }
-    _system_data_->r2d_logics.enter_ready_state();
+    _system_data_->r2d_logics_.enter_ready_state();
     return true;
 }
 
 inline bool CheckupManager::should_stay_ready() const
 {
-    if (!_system_data_->r2d_logics.r2d)
+    if (!_system_data_->r2d_logics_.r2d)
     {
         return true;
     }
-    _system_data_->r2d_logics.enter_driving_state();
+    _system_data_->r2d_logics_.enter_driving_state();
     return false;
 }
 
@@ -243,23 +243,23 @@ inline bool CheckupManager::should_enter_emergency(State current_state) const
 {
     if (current_state == State::AS_READY)
     {
-        return _system_data_->failure_detection.emergency_signal ||
-               (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 && _system_data_->r2d_logics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
-               _system_data_->failure_detection.has_any_component_timed_out() ||
+        return _system_data_->failure_detection_.emergency_signal_ ||
+               (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 && _system_data_->r2d_logics_.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
+               _system_data_->failure_detection_.has_any_component_timed_out() ||
                !_system_data_->digital_data_.asms_on_ ||
-               !_system_data_->failure_detection.ts_on ||
-               (_system_data_->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD && _system_data_->r2d_logics.engageEbsTimestamp.checkWithoutReset()) ||
+               !_system_data_->failure_detection_.ts_on_ ||
+               (_system_data_->sensors_._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD && _system_data_->r2d_logics_.engageEbsTimestamp.checkWithoutReset()) ||
                _system_data_->digital_data_.sdc_open_;
     }
     else if (current_state == State::AS_DRIVING)
     {
-        return _system_data_->failure_detection.has_any_component_timed_out() ||
-               _system_data_->failure_detection.emergency_signal ||
+        return _system_data_->failure_detection_.has_any_component_timed_out() ||
+               _system_data_->failure_detection_.emergency_signal_ ||
                _system_data_->digital_data_.sdc_open_ ||
-               (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 && _system_data_->r2d_logics.releaseEbsTimestamp.checkWithoutReset()) ||                      // car has one second to make pneumatic pressure 1
-               (_system_data_->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _system_data_->r2d_logics.releaseEbsTimestamp.checkWithoutReset()) || // car has 1 second to reduce hydraulic pressure
+               (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 && _system_data_->r2d_logics_.releaseEbsTimestamp.checkWithoutReset()) ||                      // car has one second to make pneumatic pressure 1
+               (_system_data_->sensors_._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _system_data_->r2d_logics_.releaseEbsTimestamp.checkWithoutReset()) || // car has 1 second to reduce hydraulic pressure
                !_system_data_->digital_data_.asms_on_ ||
-               !_system_data_->failure_detection.ts_on;
+               !_system_data_->failure_detection_.ts_on_;
     }
 
     return false;
@@ -267,7 +267,7 @@ inline bool CheckupManager::should_enter_emergency(State current_state) const
 
 inline bool CheckupManager::should_stay_driving() const
 {
-    if (abs(_system_data_->sensors._left_wheel_rpm) < 0.1 && abs(_system_data_->sensors._right_wheel_rpm) < 0.1 && _system_data_->mission_finished)
+    if (abs(_system_data_->sensors_._left_wheel_rpm) < 0.1 && abs(_system_data_->sensors_._right_wheel_rpm) < 0.1 && _system_data_->mission_finished_)
     {
         return false;
     }
@@ -294,7 +294,7 @@ inline bool CheckupManager::emergency_sequence_complete() const
 
 inline bool CheckupManager::res_triggered() const
 {
-    if (_system_data_->failure_detection.emergency_signal)
+    if (_system_data_->failure_detection_.emergency_signal_)
     {
         return true;
     }

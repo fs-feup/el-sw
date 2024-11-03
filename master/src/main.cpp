@@ -9,7 +9,7 @@
 
 SystemData system_data;                                                                           // Model
 Communicator communicator = Communicator(&system_data);                                           // CAN
-DigitalReceiver digital_receiver = DigitalReceiver(&system_data.digital_data_, &system_data.mission); // Digital inputs
+DigitalReceiver digital_receiver = DigitalReceiver(&system_data.digital_data_, &system_data.mission_); // Digital inputs
 DigitalSender digital_sender = DigitalSender();                                                   // Digital outputs
 ASState as_state = ASState(&system_data, &communicator, &digital_sender);
 
@@ -37,16 +37,16 @@ void loop()
 {
     digital_receiver.digital_reads();
     as_state.calculate_state();
-    if (master_state_helper != to_underlying(as_state.state_) || checkup_state_helper != to_underlying(as_state._checkup_manager_.checkup_state_) || mission_helper != to_underlying(system_data.mission))
+    if (master_state_helper != to_underlying(as_state.state_) || checkup_state_helper != to_underlying(as_state._checkup_manager_.checkup_state_) || mission_helper != to_underlying(system_data.mission_))
     {
         master_state_helper = to_underlying(as_state.state_);
         checkup_state_helper = to_underlying(as_state._checkup_manager_.checkup_state_);
-        mission_helper = to_underlying(system_data.mission);
+        mission_helper = to_underlying(system_data.mission_);
         Communicator::publish_debug_log(system_data, to_underlying(as_state.state_), to_underlying(as_state._checkup_manager_.checkup_state_)); // mudar pointer se problemas de memória
     }
     if (mission_timer.check())
     {
-        Communicator::publish_mission(to_underlying(system_data.mission));
+        Communicator::publish_mission(to_underlying(system_data.mission_));
         mission_timer.reset();
     }
     if (state_timer.check())
