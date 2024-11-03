@@ -26,20 +26,12 @@ void setup() {
     Serial.begin(9600);
     Communicator::_systemData = &systemData;
     communicator.init();
-    // state_calculation_timer.begin([]() {
-    //     noInterrupts();
-    //     digitalReceiver.digitalReads();
-    //     as_state.calculateState();
-    //     interrupts();
-    // }, STATE_CALCULATION_INTERVAL); // Ensuring 50ms intervals beween state calculations
-
     rl_rpm_timer.reset();
     mission_timer.reset();
     state_timer.reset();
     DEBUG_PRINT("Starting up...");
 }
 
-// Metro testing_timestamp{5000};
 
 void loop() {   
     digitalReceiver.digitalReads();

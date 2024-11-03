@@ -14,7 +14,6 @@
 class DigitalSender {
 private:
     Metro _blinkTimer{LED_BLINK_INTERVAL}; ///< Timer for blinking LED
-    // Metro _watchdogTimer{WD_PULSE_INTERVAL_MS}; ///< Timer for toggling watchdog signal
 
     /**
      * @brief Turns off both ASSI LEDs (yellow and blue).
@@ -117,8 +116,6 @@ inline void DigitalSender::closeSDC() {
 }
 
 inline void DigitalSender::activateEBS() {
-    // pinMode(EBS_VALVE_1_PIN, OUTPUT);
-    // pinMode(EBS_VALVE_2_PIN, OUTPUT);
     digitalWrite(EBS_VALVE_1_PIN, HIGH);
     digitalWrite(EBS_VALVE_2_PIN, HIGH);
 }
@@ -180,12 +177,3 @@ inline void DigitalSender::blinkLED(const int pin) {
         analogWrite(pin, blinkState * 1023); // Analog works better
     }
 }
-
-// inline void DigitalSender::toggleWatchdog() {
-//     static bool watchdogState = false;
-//     if (_watchdogTimer.check()) {
-//         watchdogState = !watchdogState;
-//         digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, watchdogState);
-//         _watchdogTimer.reset();
-//     }
-// }
