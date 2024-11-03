@@ -37,12 +37,12 @@ void loop()
 {
     digital_receiver.digital_reads();
     as_state.calculate_state();
-    if (master_state_helper != static_cast<uint8_t>(as_state.state_) || checkup_state_helper != static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_) || mission_helper != static_cast<uint8_t>(system_data.mission))
+    if (master_state_helper != to_underlying(as_state.state_) || checkup_state_helper != to_underlying(as_state._checkup_manager_.checkup_state_) || mission_helper != to_underlying(system_data.mission))
     {
-        master_state_helper = static_cast<uint8_t>(as_state.state_);
-        checkup_state_helper = static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_);
-        mission_helper = static_cast<uint8_t>(system_data.mission);
-        Communicator::publish_debug_log(system_data, to_underlying(as_state.state_), static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_)); // mudar pointer se problemas de memória
+        master_state_helper = to_underlying(as_state.state_);
+        checkup_state_helper = to_underlying(as_state._checkup_manager_.checkup_state_);
+        mission_helper = to_underlying(system_data.mission);
+        Communicator::publish_debug_log(system_data, to_underlying(as_state.state_), to_underlying(as_state._checkup_manager_.checkup_state_)); // mudar pointer se problemas de memória
     }
     if (mission_timer.check())
     {
