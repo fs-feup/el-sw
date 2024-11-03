@@ -20,14 +20,6 @@ private:
 public:
     Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT}; ///< Timer for the EBS buzzer sound check.
 
-    // /**
-    //  * @brief Provides access to the initial checkup timestamp timer.
-    //  * @return Reference to the initial checkup timestamp timer.
-    //  */
-    // [[nodiscard]] Metro &getInitialCheckupTimestamp() {
-    //     return initialCheckupTimestamp;
-    // }
-
     /**
      * @brief The CheckupState enum represents the different states of 
      * the initial checkup process.

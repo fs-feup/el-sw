@@ -5,7 +5,7 @@
 /**
  * @brief Function to create left wheel msg
 */
-void create_left_wheel_msg(uint8_t *msg, double value) {
+void create_left_wheel_msg(std::array<uint8_t, 5>& msg, double value) {
     value /= WHEEL_PRECISION; // take precision off to send integer value
     if (value < 0) value = 0;
 
