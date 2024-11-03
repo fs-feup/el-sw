@@ -14,12 +14,12 @@
 class DigitalSender
 {
 private:
-    Metro _blinkTimer{LED_BLINK_INTERVAL}; ///< Timer for blinking LED
+    Metro blink_imer_{LED_BLINK_INTERVAL}; ///< Timer for blinking LED
 
     /**
      * @brief Turns off both ASSI LEDs (yellow and blue).
      */
-    static void turnOffASSI();
+    static void turn_off_assi();
 
 public:
     // Array of valid output pins
@@ -49,142 +49,142 @@ public:
     /**
      * @brief Opens the SDC in Master and SDC Logic.
      */
-    static void openSDC();
+    static void open_sdc();
 
     /**
      * @brief Closes the SDC in Master and SDC Logic.
      */
-    static void closeSDC();
+    static void close_sdc();
 
     /**
      * @brief Activates the solenoid EBS valves.
      */
-    static void activateEBS();
+    static void activate_ebs();
 
     /**
      * @brief Deactivates the solenoid EBS valves.
      */
-    static void deactivateEBS();
+    static void deactivate_ebs();
 
     /**
      * @brief ASSI LEDs blue flashing, sdc open and buzzer ringing.
      */
-    void enterEmergencyState();
+    void enter_emergency_state();
 
     /**
      * @brief Everything off, sdc closed.
      */
-    static void enterManualState();
+    static void enter_manual_state();
 
     /**
      * @brief Everything off, sdc open.
      */
-    static void enterOffState();
+    static void enter_off_state();
 
     /**
      * @brief ASSI yellow LED on, ebs valves activated, sdc closed.
      */
-    static void enterReadyState();
+    static void enter_ready_state();
 
     /**
      * @brief ASSI LEDs yellow flashing, ebs valves deactivated, sdc closed.
      */
-    void enterDrivingState();
+    void enter_driving_state();
 
     /**
      * @brief ASSI blue LED on, ebs valves activated, sdc open.
      */
-    static void enterFinishState();
+    static void enter_finish_state();
 
     /**
      * @brief Blinks the LED at the given pin.
      * @param pin The pin to blink.
      */
-    void blinkLED(int pin);
+    void blink_led(int pin);
 };
 
-inline void DigitalSender::openSDC()
+inline void DigitalSender::open_sdc()
 {
     digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, LOW);
     digitalWrite(MASTER_SDC_OUT_PIN, LOW);
 }
 
-inline void DigitalSender::closeSDC()
+inline void DigitalSender::close_sdc()
 {
     digitalWrite(SDC_LOGIC_CLOSE_SDC_PIN, HIGH);
     digitalWrite(MASTER_SDC_OUT_PIN, HIGH);
 }
 
-inline void DigitalSender::activateEBS()
+inline void DigitalSender::activate_ebs()
 {
     digitalWrite(EBS_VALVE_1_PIN, HIGH);
     digitalWrite(EBS_VALVE_2_PIN, HIGH);
 }
 
-inline void DigitalSender::deactivateEBS()
+inline void DigitalSender::deactivate_ebs()
 {
     digitalWrite(EBS_VALVE_1_PIN, LOW);
     digitalWrite(EBS_VALVE_2_PIN, LOW);
 }
 
-inline void DigitalSender::turnOffASSI()
+inline void DigitalSender::turn_off_assi()
 {
     analogWrite(ASSI_YELLOW_PIN, LOW);
     analogWrite(ASSI_BLUE_PIN, LOW);
 }
 
-inline void DigitalSender::enterEmergencyState()
+inline void DigitalSender::enter_emergency_state()
 {
-    turnOffASSI();
-    _blinkTimer.reset();
-    activateEBS();
-    openSDC();
+    turn_off_assi();
+    blink_imer_.reset();
+    activate_ebs();
+    open_sdc();
 }
 
-inline void DigitalSender::enterManualState()
+inline void DigitalSender::enter_manual_state()
 {
-    turnOffASSI();
-    deactivateEBS();
-    closeSDC();
+    turn_off_assi();
+    deactivate_ebs();
+    close_sdc();
 }
 
-inline void DigitalSender::enterOffState()
+inline void DigitalSender::enter_off_state()
 {
-    turnOffASSI();
-    deactivateEBS();
-    openSDC();
+    turn_off_assi();
+    deactivate_ebs();
+    open_sdc();
 }
 
-inline void DigitalSender::enterReadyState()
+inline void DigitalSender::enter_ready_state()
 {
-    turnOffASSI();
+    turn_off_assi();
     analogWrite(ASSI_YELLOW_PIN, 1023); // Analog works better
-    activateEBS();                      ///  these 2 should be redundant since we do it during initial checkup
-    closeSDC();                         ///
+    activate_ebs();                      ///  these 2 should be redundant since we do it during initial checkup
+    close_sdc();                         ///
 }
 
-inline void DigitalSender::enterDrivingState()
+inline void DigitalSender::enter_driving_state()
 {
-    turnOffASSI();
-    _blinkTimer.reset();
-    deactivateEBS();
-    closeSDC();
+    turn_off_assi();
+    blink_imer_.reset();
+    deactivate_ebs();
+    close_sdc();
 }
 
-inline void DigitalSender::enterFinishState()
+inline void DigitalSender::enter_finish_state()
 {
-    turnOffASSI();
+    turn_off_assi();
     analogWrite(ASSI_BLUE_PIN, 1023); // Analog works better
-    activateEBS();
-    openSDC();
+    activate_ebs();
+    open_sdc();
 }
 
-inline void DigitalSender::blinkLED(const int pin)
+inline void DigitalSender::blink_led(const int pin)
 {
-    static bool blinkState = false;
-    if (_blinkTimer.check())
+    static bool blink_state = false;
+    if (blink_imer_.check())
     {
-        blinkState = !blinkState;
-        analogWrite(pin, blinkState * 1023); // Analog works better
+        blink_state = !blink_state;
+        analogWrite(pin, blink_state * 1023); // Analog works better
     }
 }

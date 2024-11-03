@@ -9,9 +9,9 @@ struct DigitalData
     // double _left_wheel_rpm = 0;
 
     // Other reads
-    bool pneumatic_line_pressure = true;
-    bool pneumatic_line_pressure_1 = false;
-    bool pneumatic_line_pressure_2 = false;
-    bool asms_on = false;
-    bool sdcState_OPEN{true}; /*< Detects AATS >*/
+    bool pneumatic_line_pressure_ = true;
+    bool pneumatic_line_pressure_1_ = false;
+    bool pneumatic_line_pressure_2_ = false;
+    bool asms_on_ = false;
+    bool sdc_open_{true}; /*< Detects AATS >*/
 };

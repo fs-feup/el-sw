@@ -1,15 +1,6 @@
 #include "model/digitalData.hpp"
 #include "unity.h"
 
-#undef WHEEL_MEASUREMENT_INTERVAL_MS
-#undef WHEEL_MEASUREMENT_INTERVAL_MIN
-#undef PULSES_PER_ROTATION
-#undef ASMS_SWITCH_PIN
-#undef AATS_SWITCH_PIN
-#undef PNEUMATIC_PIN
-#undef WD_IN
-#undef LWSS_PIN
-
 #define GREEN_LED_1 4
 #define GREEN_LED_2 5
 #define GREEN_LED_3 6
@@ -40,8 +31,8 @@
 #include "model/systemData.hpp"
 
 
-SystemData systemData;
-auto digitalRecv = DigitalReceiver(&systemData.digitalData, &systemData.mission);
+SystemData system_data;
+auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.mission);
 
 
 /**
