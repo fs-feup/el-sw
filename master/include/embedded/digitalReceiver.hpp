@@ -55,7 +55,7 @@ private:
     unsigned int aats_change_counter_ = 0;      ///< counter to avoid noise on aats
     unsigned int pneumatic_change_counter_ = 0; ///< counter to avoid noise on pneumatic line
     unsigned int mission_change_counter_ = 0;   ///< counter to avoid noise on mission change
-    Mission last_tried_mission_ = MANUAL;      ///< Last attempted mission state
+    Mission last_tried_mission_ = Mission::MANUAL;      ///< Last attempted mission state
 
     /**
      * @brief Reads the pneumatic line pressure states and updates the DigitalData object.
@@ -112,13 +112,13 @@ inline void DigitalReceiver::read_mission()
 {
 
     Mission temp_res = static_cast<Mission>(
-        digitalRead(MISSION_MANUAL_PIN) * MANUAL |
-        digitalRead(MISSION_ACCELERATION_PIN) * ACCELERATION |
-        digitalRead(MISSION_SKIDPAD_PIN) * SKIDPAD |
-        digitalRead(MISSION_AUTOCROSS_PIN) * AUTOCROSS |
-        digitalRead(MISSION_TRACKDRIVE_PIN) * TRACKDRIVE |
-        digitalRead(MISSION_EBSTEST_PIN) * EBS_TEST |
-        digitalRead(MISSION_INSPECTION_PIN) * INSPECTION);
+        digitalRead(MISSION_MANUAL_PIN) * to_underlying(Mission::MANUAL) |
+        digitalRead(MISSION_ACCELERATION_PIN) * to_underlying(Mission::ACCELERATION) |
+        digitalRead(MISSION_SKIDPAD_PIN) * to_underlying(Mission::SKIDPAD) |
+        digitalRead(MISSION_AUTOCROSS_PIN) * to_underlying(Mission::AUTOCROSS) |
+        digitalRead(MISSION_TRACKDRIVE_PIN) * to_underlying(Mission::TRACKDRIVE) |
+        digitalRead(MISSION_EBSTEST_PIN) * to_underlying(Mission::EBS_TEST) |
+        digitalRead(MISSION_INSPECTION_PIN) * to_underlying(Mission::INSPECTION));
 
     mission_change_counter_ = (temp_res == *mission_) &&
                                      (temp_res == last_tried_mission_)

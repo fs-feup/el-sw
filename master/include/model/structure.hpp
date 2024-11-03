@@ -6,7 +6,7 @@ struct Code
     int code;
 };
 
-enum State
+enum class State
 {
     AS_MANUAL,
     AS_OFF,
@@ -16,7 +16,7 @@ enum State
     AS_EMERGENCY
 };
 
-enum Mission
+enum class Mission
 {
     MANUAL,
     ACCELERATION,

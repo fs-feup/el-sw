@@ -4,8 +4,8 @@
 #include "embedded/digitalSender.hpp"
 #include "logic/stateLogic.hpp"
 #include "timings.hpp"
+#include "enum_utils.hpp"
 #include "debugUtils.hpp"
-#include <utility>
 
 SystemData system_data;                                                                           // Model
 Communicator communicator = Communicator(&system_data);                                           // CAN
@@ -42,16 +42,16 @@ void loop()
         master_state_helper = static_cast<uint8_t>(as_state.state_);
         checkup_state_helper = static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_);
         mission_helper = static_cast<uint8_t>(system_data.mission);
-        Communicator::publish_debug_log(system_data, as_state.state_, static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_)); // mudar pointer se problemas de memória e incluir timer se demasiadas mensagens
+        Communicator::publish_debug_log(system_data, to_underlying(as_state.state_), static_cast<uint8_t>(as_state._checkup_manager_.checkup_state_)); // mudar pointer se problemas de memória
     }
     if (mission_timer.check())
     {
-        Communicator::publish_mission(system_data.mission);
+        Communicator::publish_mission(to_underlying(system_data.mission));
         mission_timer.reset();
     }
     if (state_timer.check())
     {
-        Communicator::publish_state(as_state.state_);
+        Communicator::publish_state(to_underlying(as_state.state_));
         state_timer.reset();
     }
 }

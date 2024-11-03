@@ -19,7 +19,7 @@ private:
 
 public:
     CheckupManager _checkup_manager_; ///< CheckupManager object for handling various checkup operations.
-    State state_{AS_OFF};            ///< Current state of the vehicle system, initialized to OFF.
+    State state_{State::AS_OFF};            ///< Current state of the vehicle system, initialized to OFF.
 
     /**
      * @brief Constructor for the ASState class.
@@ -40,24 +40,24 @@ inline void ASState::calculate_state()
 {
     switch (state_)
     {
-    case AS_MANUAL:
+    case State::AS_MANUAL:
         if (_checkup_manager_.should_stay_manual_driving())
             break;
 
         DEBUG_PRINT("Entering OFF state from MANUAL");
         DigitalSender::enter_off_state();
 
-        state_ = AS_OFF;
+        state_ = State::AS_OFF;
         break;
 
-    case AS_OFF:
+    case State::AS_OFF:
 
         // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
         if (_checkup_manager_.should_stay_manual_driving())
         {
             DEBUG_PRINT("Entering MANUAL state from OFF");
             DigitalSender::enter_manual_state();
-            state_ = AS_MANUAL;
+            state_ = State::AS_MANUAL;
             break;
         }
 
@@ -68,17 +68,17 @@ inline void ASState::calculate_state()
 
         DEBUG_PRINT("Entering READY state from OFF");
         DigitalSender::enter_ready_state();
-        state_ = AS_READY;
+        state_ = State::AS_READY;
         DEBUG_PRINT("READY state entered...");
         break;
 
-    case AS_READY:
+    case State::AS_READY:
         if (_checkup_manager_.should_enter_emergency(state_))
         {
             DEBUG_PRINT("Entering EMERGENCY state from READY");
             _digital_sender_->enter_emergency_state();
             _checkup_manager_._ebs_sound_timestamp_.reset();
-            state_ = AS_EMERGENCY;
+            state_ = State::AS_EMERGENCY;
             break;
         }
         if (_checkup_manager_.should_stay_ready())
@@ -88,9 +88,9 @@ inline void ASState::calculate_state()
 
         DEBUG_PRINT("Entering DRIVING state from READY");
         _digital_sender_->enter_driving_state();
-        state_ = AS_DRIVING;
+        state_ = State::AS_DRIVING;
         break;
-    case AS_DRIVING:
+    case State::AS_DRIVING:
         _digital_sender_->blink_led(ASSI_YELLOW_PIN);
 
         if (_checkup_manager_.should_enter_emergency(state_))
@@ -98,7 +98,7 @@ inline void ASState::calculate_state()
             DEBUG_PRINT("Entering EMERGENCY state from DRIVING");
             _digital_sender_->enter_emergency_state();
             _checkup_manager_._ebs_sound_timestamp_.reset();
-            state_ = AS_EMERGENCY;
+            state_ = State::AS_EMERGENCY;
             break;
         }
         if (_checkup_manager_.should_stay_driving())
@@ -106,16 +106,16 @@ inline void ASState::calculate_state()
 
         DEBUG_PRINT("Entering FINISHED state from DRIVING");
         DigitalSender::enter_finish_state();
-        state_ = AS_FINISHED;
+        state_ = State::AS_FINISHED;
         break;
-    case AS_FINISHED:
+    case State::AS_FINISHED:
         if (_checkup_manager_.res_triggered())
         {
             DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
 
             _digital_sender_->enter_emergency_state();
             _checkup_manager_._ebs_sound_timestamp_.reset();
-            state_ = AS_EMERGENCY;
+            state_ = State::AS_EMERGENCY;
             break;
         }
         if (_checkup_manager_.should_stay_mission_finished())
@@ -124,9 +124,9 @@ inline void ASState::calculate_state()
         DEBUG_PRINT("Entering OFF state from FINISHED");
         DigitalSender::enter_off_state();
         _checkup_manager_.reset_checkup_state();
-        state_ = AS_OFF;
+        state_ = State::AS_OFF;
         break;
-    case AS_EMERGENCY:
+    case State::AS_EMERGENCY:
         _digital_sender_->blink_led(ASSI_BLUE_PIN);
 
         if (_checkup_manager_.emergency_sequence_complete())
@@ -134,7 +134,7 @@ inline void ASState::calculate_state()
             DEBUG_PRINT("Entering OFF state from EMERGENCY");
             DigitalSender::enter_off_state();
             _checkup_manager_.reset_checkup_state();
-            state_ = AS_OFF;
+            state_ = State::AS_OFF;
             break;
         }
         break;

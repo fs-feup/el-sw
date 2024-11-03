@@ -27,7 +27,7 @@ struct R2DLogics
     /**
      * @brief resets timestamps for ready
      */
-    void enterReadyState()
+    void enter_ready_state()
     {
         readyTimestamp.reset();
         engageEbsTimestamp.reset();
@@ -37,7 +37,7 @@ struct R2DLogics
     /**
      * @brief resets timestamps for driving
      */
-    void enterDrivingState()
+    void enter_driving_state()
     {
         releaseEbsTimestamp.reset();
     }
@@ -51,7 +51,7 @@ struct R2DLogics
      * @return 0 if the go signal was successfully processed, 1 otherwise.
      */
 
-    bool processGoSignal()
+    bool process_go_signal()
     {
         // If r2d is not received or received before 5 seconds, return false (?_?)
         if (readyTimestamp.check())

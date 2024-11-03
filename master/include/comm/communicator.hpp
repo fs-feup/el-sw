@@ -7,6 +7,7 @@
 #include "comm/communicatorSettings.hpp"
 #include "model/systemData.hpp"
 #include "comm/utils.hpp"
+#include "enum_utils.hpp"
 #include "debugUtils.hpp"
 
 /**
@@ -74,32 +75,32 @@ public:
     /**
      * @brief Callback for message from AS CU
      */
-    static void pcCallback(const uint8_t *buf);
+    static void pc_callback(const uint8_t *buf);
 
     /**
      * @brief Callback for data from C1 Teensy
      */
-    static void c1Callback(const uint8_t *buf);
+    static void c1_callback(const uint8_t *buf);
 
     /**
      * @brief Callback RES default callback
      */
-    static void resStateCallback(const uint8_t *buf);
+    static void res_state_callback(const uint8_t *buf);
 
     /**
      * @brief Callback for RES activation
      */
-    static void resReadyCallback();
+    static void res_ready_callback();
 
     /**
      * @brief Callback from inversor, for alive signal and data
      */
-    static void bamocarCallback(const uint8_t *buf);
+    static void bamocar_callback(const uint8_t *buf);
 
     /**
      * @brief Callback for steering actuator information
      */
-    static void steeringCallback();
+    static void steering_callback();
 
     /**
      * @brief Publish AS State to CAN
@@ -154,7 +155,7 @@ void Communicator::init()
     can2.mailboxStatus(); // Prints CAN mailbox info
 }
 
-inline void Communicator::c1Callback(const uint8_t *buf)
+inline void Communicator::c1_callback(const uint8_t *buf)
 {
     if (buf[0] == HYDRAULIC_LINE)
     {
@@ -174,7 +175,7 @@ inline void Communicator::c1Callback(const uint8_t *buf)
     }
 }
 
-inline void Communicator::resStateCallback(const uint8_t *buf)
+inline void Communicator::res_state_callback(const uint8_t *buf)
 {
     bool emg_stop1 = buf[0] & 0x01;
     bool emg_stop2 = buf[3] >> 7 & 0x01;
@@ -184,7 +185,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf)
     // DEBUG_PRINT("Received message from RES");
 
     if (go_button || go_switch)
-        _systemData->r2d_logics.processGoSignal();
+        _systemData->r2d_logics.process_go_signal();
     else if (!emg_stop1 && !emg_stop2)
     {
         DEBUG_PRINT("RES Emergency Signal");
@@ -205,7 +206,7 @@ inline void Communicator::resStateCallback(const uint8_t *buf)
     }
 }
 
-inline void Communicator::resReadyCallback()
+inline void Communicator::res_ready_callback()
 {
     // If res sends boot message, activate it
     DEBUG_PRINT("Received RES Ready");
@@ -215,7 +216,7 @@ inline void Communicator::resReadyCallback()
     send_message(2, msg, id);
 }
 
-inline void Communicator::bamocarCallback(const uint8_t *buf)
+inline void Communicator::bamocar_callback(const uint8_t *buf)
 {
     _systemData->failure_detection.inversor_alive_timestamp.reset();
 
@@ -255,7 +256,7 @@ inline void Communicator::bamocarCallback(const uint8_t *buf)
     }
 }
 
-inline void Communicator::pcCallback(const uint8_t *buf)
+inline void Communicator::pc_callback(const uint8_t *buf)
 {
     DEBUG_PRINT("PC callback");
     if (buf[0] == PC_ALIVE)
@@ -274,7 +275,7 @@ inline void Communicator::pcCallback(const uint8_t *buf)
     }
 }
 
-inline void Communicator::steeringCallback()
+inline void Communicator::steering_callback()
 {
     _systemData->failure_detection.steer_alive_timestamp.reset();
 }
@@ -284,21 +285,21 @@ inline void Communicator::parse_message(const CAN_message_t &msg)
     switch (msg.id)
     {
     case AS_CU_ID:
-        pcCallback(msg.buf);
+        pc_callback(msg.buf);
     case RES_STATE:
-        resStateCallback(msg.buf);
+        res_state_callback(msg.buf);
         break;
     case RES_READY:
-        resReadyCallback();
+        res_ready_callback();
         break;
     case C1_ID:
-        c1Callback(msg.buf); // rwheel, lwheel and hydraulic line
+        c1_callback(msg.buf); // rwheel, lwheel and hydraulic line
         break;
     case BAMO_RESPONSE_ID:
-        bamocarCallback(msg.buf);
+        bamocar_callback(msg.buf);
         break;
     case STEERING_ID:
-        steeringCallback();
+        steering_callback();
         break;
     default:
         break;
@@ -337,7 +338,7 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
     uint8_t asms_on_bit = system_data.digital_data_.asms_on_;
     uint8_t ts_on_bit = system_data.failure_detection.ts_on;
     uint8_t sdc_state_open_bit = system_data.digital_data_.sdc_open_;
-    uint8_t mission = system_data.mission;
+    uint8_t mission = to_underlying(system_data.mission);
     const std::array<uint8_t, 8> msg = {
         DBG_LOG_MSG,
         (hydraulic_pressure >> 24) & 0xFF,

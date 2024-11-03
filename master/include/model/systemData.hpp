@@ -16,7 +16,8 @@ struct SystemData
     Sensors sensors;
 
     DigitalData digital_data_;
-    Mission mission{MANUAL};
+    Mission mission{Mission::MANUAL};
 
-    bool ready_2_drive{false}, mission_finished{false};
+    bool ready_2_drive{false};
+    bool mission_finished{false};
 };

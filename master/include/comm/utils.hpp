@@ -1,4 +1,4 @@
-
+#pragma once
 #include <Arduino.h>
 #include "comm/communicatorSettings.hpp"
 

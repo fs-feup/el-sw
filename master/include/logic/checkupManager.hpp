@@ -127,7 +127,7 @@ inline void CheckupManager::reset_checkup_state()
 
 inline bool CheckupManager::should_stay_manual_driving() const
 {
-    if (_system_data_->mission != MANUAL || _system_data_->digital_data_.pneumatic_line_pressure_ != 0 || _system_data_->digital_data_.asms_on_)
+    if (_system_data_->mission != Mission::MANUAL || _system_data_->digital_data_.pneumatic_line_pressure_ != 0 || _system_data_->digital_data_.asms_on_)
     {
         return false;
     }
@@ -225,7 +225,7 @@ inline bool CheckupManager::should_go_ready_from_off() const
     {
         return false;
     }
-    _system_data_->r2d_logics.enterReadyState();
+    _system_data_->r2d_logics.enter_ready_state();
     return true;
 }
 
@@ -235,13 +235,13 @@ inline bool CheckupManager::should_stay_ready() const
     {
         return true;
     }
-    _system_data_->r2d_logics.enterDrivingState();
+    _system_data_->r2d_logics.enter_driving_state();
     return false;
 }
 
 inline bool CheckupManager::should_enter_emergency(State current_state) const
 {
-    if (current_state == AS_READY)
+    if (current_state == State::AS_READY)
     {
         return _system_data_->failure_detection.emergency_signal ||
                (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 && _system_data_->r2d_logics.engageEbsTimestamp.checkWithoutReset()) || // 5 seconds have passed since ready state and line pressure is 0
@@ -251,7 +251,7 @@ inline bool CheckupManager::should_enter_emergency(State current_state) const
                (_system_data_->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD && _system_data_->r2d_logics.engageEbsTimestamp.checkWithoutReset()) ||
                _system_data_->digital_data_.sdc_open_;
     }
-    else if (current_state == AS_DRIVING)
+    else if (current_state == State::AS_DRIVING)
     {
         return _system_data_->failure_detection.has_any_component_timed_out() ||
                _system_data_->failure_detection.emergency_signal ||
