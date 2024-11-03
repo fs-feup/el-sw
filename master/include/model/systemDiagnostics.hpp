@@ -11,14 +11,15 @@ constexpr unsigned long READY_TIMEOUT_MS = 5000;
 constexpr unsigned long RELEASE_EBS_TIMEOUT_MS = 1000;
 constexpr unsigned long ENGAGE_EBS_TIMEOUT_MS = 5000;
 
-struct R2DLogics {
+struct R2DLogics
+{
     Metro readyTimestamp{READY_TIMEOUT_MS};
 
-    /// Timestamp from when EBS is released on r2d, 
+    /// Timestamp from when EBS is released on r2d,
     /// used to tolerate a small delay before entering driving state
-    Metro releaseEbsTimestamp{RELEASE_EBS_TIMEOUT_MS}; 
+    Metro releaseEbsTimestamp{RELEASE_EBS_TIMEOUT_MS};
 
-    /// Timestamp from when EBS is activate on entering ready state, 
+    /// Timestamp from when EBS is activate on entering ready state,
     /// used to tolerate a small delay in which pneumatic line pressure is low
     Metro engageEbsTimestamp{ENGAGE_EBS_TIMEOUT_MS};
     bool r2d{false};
@@ -26,20 +27,20 @@ struct R2DLogics {
     /**
      * @brief resets timestamps for ready
      */
-    void enterReadyState() {
+    void enterReadyState()
+    {
         readyTimestamp.reset();
         engageEbsTimestamp.reset();
         r2d = false;
     }
 
-
     /**
      * @brief resets timestamps for driving
      */
-    void enterDrivingState() {
+    void enterDrivingState()
+    {
         releaseEbsTimestamp.reset();
     }
-
 
     /**
      * @brief Processes the go signal.
@@ -50,9 +51,11 @@ struct R2DLogics {
      * @return 0 if the go signal was successfully processed, 1 otherwise.
      */
 
-    bool processGoSignal() {
+    bool processGoSignal()
+    {
         // If r2d is not received or received before 5 seconds, return false (?_?)
-        if (readyTimestamp.check()) {
+        if (readyTimestamp.check())
+        {
             r2d = true;
             return EXIT_SUCCESS;
         }
@@ -62,13 +65,14 @@ struct R2DLogics {
     }
 };
 
-struct FailureDetection {
+struct FailureDetection
+{
     Metro pcAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro steerAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro inversorAliveTimestamp{COMPONENT_TIMESTAMP_TIMEOUT};
     Metro resSignalLossTimestamp{RES_TIMESTAMP_TIMEOUT};
-    Metro dcVoltageDropTimestamp{DC_VOLTAGE_TIMEOUT}; //timer to check if dc voltage drops below threshold for more than 150ms
-    Metro dcVoltageHoldTimestamp{DC_VOLTAGE_HOLD}; // timer for ts on, only after enough voltage for 1 sec
+    Metro dcVoltageDropTimestamp{DC_VOLTAGE_TIMEOUT}; // timer to check if dc voltage drops below threshold for more than 150ms
+    Metro dcVoltageHoldTimestamp{DC_VOLTAGE_HOLD};    // timer for ts on, only after enough voltage for 1 sec
     bool steer_dead_{true};
     bool pc_dead_{true};
     bool inversor_dead_{true};
@@ -78,23 +82,12 @@ struct FailureDetection {
     double radio_quality{0};
     unsigned dc_voltage{0};
 
-     [[nodiscard]]  bool has_any_component_timed_out() {//no discard makes return value non ignorable
+    [[nodiscard]] bool has_any_component_timed_out()
+    { // no discard makes return value non ignorable
         steer_dead_ = steerAliveTimestamp.checkWithoutReset();
         pc_dead_ = pcAliveTimestamp.checkWithoutReset();
         inversor_dead_ = inversorAliveTimestamp.checkWithoutReset();
         res_dead_ = resSignalLossTimestamp.checkWithoutReset();
-        if (steer_dead_) {
-            DEBUG_PRINT_VAR(steer_dead_);
-        }
-        if (pc_dead_) {
-            DEBUG_PRINT_VAR(pc_dead_);
-        }
-        if (inversor_dead_) {
-            DEBUG_PRINT_VAR(inversor_dead_);
-        }
-        if (res_dead_) {
-            DEBUG_PRINT_VAR(res_dead_);
-        }
-        return steer_dead_ ||  pc_dead_ ||  inversor_dead_ || res_dead_;
+        return steer_dead_ || pc_dead_ || inversor_dead_ || res_dead_;
     }
 };

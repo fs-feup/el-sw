@@ -13,14 +13,13 @@
  * @brief Array of standard CAN message codes to be used for FIFO filtering
  * Each Code struct contains a key and a corresponding message ID.
  */
-inline std::array<Code, 7> fifoCodes = {{
-    {0, C1_ID},
-    {1, BAMO_RESPONSE_ID},
-    {2, AS_CU_EMERGENCY_SIGNAL},
-    {3, MISSION_FINISHED},
-    {4, AS_CU_ID},
-    {5, RES_STATE},
-    {6, RES_READY}}};
+inline std::array<Code, 7> fifoCodes = {{{0, C1_ID},
+                                         {1, BAMO_RESPONSE_ID},
+                                         {2, AS_CU_EMERGENCY_SIGNAL},
+                                         {3, MISSION_FINISHED},
+                                         {4, AS_CU_ID},
+                                         {5, RES_STATE},
+                                         {6, RES_READY}}};
 
 /**
  * @brief Array of extended CAN message codes to be used for FIFO filtering
@@ -70,7 +69,7 @@ public:
      * @return 0 if successful
      */
     template <std::size_t N>
-    static int send_message(unsigned len, const std::array<uint8_t, N>& buffer, unsigned id);
+    static int send_message(unsigned len, const std::array<uint8_t, N> &buffer, unsigned id);
 
     /**
      * @brief Callback for message from AS CU
@@ -315,7 +314,7 @@ inline int Communicator::publish_state(const int state_id)
 
 inline int Communicator::publish_mission(int mission_id)
 {
-    const std::array<uint8_t, 2> msg = {MISSION_MSG, static_cast<uint8_t>(mission_id)};   
+    const std::array<uint8_t, 2> msg = {MISSION_MSG, static_cast<uint8_t>(mission_id)};
 
     send_message(2, msg, MASTER_ID);
     return 0;
@@ -324,7 +323,7 @@ inline int Communicator::publish_mission(int mission_id)
 inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state, uint8_t state_checkup)
 {
 
-                                                        // 8 bytes for the CAN message
+    // 8 bytes for the CAN message
     uint32_t hydraulic_pressure = system_data.sensors._hydraulic_line_pressure; // 32-bit value
     // TBD, consider extracting to a function in utils.hpp
     uint8_t emergency_signal_bit = system_data.failureDetection.emergencySignal;
@@ -346,22 +345,21 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
         (hydraulic_pressure >> 8) & 0xFF,
         hydraulic_pressure & 0xFF,
         (emergency_signal_bit & 0x01) << 7 |
-        (pneumatic_line_pressure_bit & 0x01) << 6 |
-        (engage_ebs_check_bit & 0x01) << 5 |
-        (release_ebs_check_bit & 0x01) << 4 |
-        (steer_dead_bit & 0x01) << 3 |
-        (pc_dead_bit & 0x01) << 2 |
-        (inversor_dead_bit & 0x01) << 1 |
-        (res_dead_bit & 0x01),
+            (pneumatic_line_pressure_bit & 0x01) << 6 |
+            (engage_ebs_check_bit & 0x01) << 5 |
+            (release_ebs_check_bit & 0x01) << 4 |
+            (steer_dead_bit & 0x01) << 3 |
+            (pc_dead_bit & 0x01) << 2 |
+            (inversor_dead_bit & 0x01) << 1 |
+            (res_dead_bit & 0x01),
         (asms_on_bit & 0x01) << 7 |
-        (ts_on_bit & 0x01) << 6 |
-        (sdc_state_open_bit & 0x01) << 5 |
-        (state_checkup & 0x0F),
-        (mission & 0x0F) | ((state & 0x0F) << 4)
-    };
+            (ts_on_bit & 0x01) << 6 |
+            (sdc_state_open_bit & 0x01) << 5 |
+            (state_checkup & 0x0F),
+        (mission & 0x0F) | ((state & 0x0F) << 4)};
 
     send_message(8, msg, MASTER_ID);
-    
+
     uint32_t dc_voltage = system_data.failureDetection.dc_voltage;
     uint8_t pneumatic_line_pressure_bit_1 = system_data.digitalData.pneumatic_line_pressure_1;
     uint8_t pneumatic_line_pressure_bit_2 = system_data.digitalData.pneumatic_line_pressure_2;
@@ -373,8 +371,7 @@ inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state
         (dc_voltage >> 8) & 0xFF,
         dc_voltage & 0xFF,
         pneumatic_line_pressure_bit_1 & 0x01,
-        pneumatic_line_pressure_bit_2 & 0x01
-    };
+        pneumatic_line_pressure_bit_2 & 0x01};
     send_message(7, msg2, MASTER_ID);
     return 0;
 }
@@ -389,7 +386,7 @@ inline int Communicator::publish_left_wheel_rpm(double value)
 }
 
 template <std::size_t N>
-inline int Communicator::send_message(const unsigned len, const std::array<uint8_t, N>& buffer, const unsigned id)
+inline int Communicator::send_message(const unsigned len, const std::array<uint8_t, N> &buffer, const unsigned id)
 {
     CAN_message_t can_message;
     can_message.id = id;

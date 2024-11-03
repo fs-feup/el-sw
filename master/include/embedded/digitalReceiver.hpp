@@ -45,7 +45,6 @@ public:
         pinMode(ASMS_IN_PIN, INPUT);
         pinMode(SENSOR_PRESSURE_1_PIN, INPUT);
         pinMode(SENSOR_PRESSURE_2_PIN, INPUT);
-
     }
 
 private:
@@ -81,9 +80,7 @@ private:
      * Debounces input changes to avoid spurious transitions.
      */
     void readAatsState();
-
 };
-
 
 inline void DigitalReceiver::digitalReads()
 {
@@ -96,7 +93,7 @@ inline void DigitalReceiver::digitalReads()
 inline void DigitalReceiver::readPneumaticLine()
 {
     bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
-    bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);// TODO: maybe poorly read 
+    bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN); // TODO: maybe poorly read
 
     digitalData->pneumatic_line_pressure_1 = pneumatic1;
     digitalData->pneumatic_line_pressure_2 = pneumatic2;

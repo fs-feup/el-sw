@@ -8,8 +8,9 @@
 /**
  * @brief The whole model of the system:
  * holds all the data necessary
-*/
-struct SystemData {
+ */
+struct SystemData
+{
     R2DLogics r2dLogics;
     FailureDetection failureDetection;
     Sensors sensors;
