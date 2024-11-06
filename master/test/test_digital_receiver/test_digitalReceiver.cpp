@@ -22,18 +22,16 @@
 #define SENSOR_PRESSURE_2_PIN BUTTON_5
 #define LWSS_PIN BUTTON_6
 
-#define WHEEL_MEASUREMENT_INTERVAL_MS 1000 // clicks measured every second 
+#define WHEEL_MEASUREMENT_INTERVAL_MS 1000  // clicks measured every second
 #define WHEEL_MEASUREMENT_INTERVAL_MIN (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0)
-#define PULSES_PER_ROTATION 60 // 60 pulses per rotation - if 1 pulse/click per sec will give 1 rpm
+#define PULSES_PER_ROTATION 60  // 60 pulses per rotation - if 1 pulse/click per sec will give 1 rpm
 // Constants defined to meassure number of clicks in 1s as rpm
 
 #include "embedded/digitalReceiver.hpp"
 #include "model/systemData.hpp"
 
-
 SystemData system_data;
-auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.mission_);
-
+auto digitalRecv = DigitalReceiver(&system_data.digital_data_, &system_data.mission_);
 
 /**
  * @attention PROTOCOL TEST
@@ -51,7 +49,7 @@ auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.missio
  * 9. Verify LED1 & LED2 & LED3 Green Turning On (High) = 3+ click (3+ rpm with test settings)
  * NOTE: do this inside 10 seconds
  * NOTE: moved to C1 Teensy
-*/
+ */
 // void test_lwss() {
 //     Metro test{10000};
 //     bool one_rpm = false, two_rpm = false, three_rpm = false, test_pass = false;
@@ -63,14 +61,14 @@ auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.missio
 //             digitalWrite(GREEN_LED_3, HIGH);
 //         } else {
 //             digitalWrite(GREEN_LED_3, LOW);
-//         } 
+//         }
 
 //         if (systemData.digitalData._left_wheel_rpm > 1) {
 //             two_rpm = true;
 //             digitalWrite(GREEN_LED_2, HIGH);
 //         } else {
 //             digitalWrite(GREEN_LED_2, LOW);
-//         } 
+//         }
 
 //         if (systemData.digitalData._left_wheel_rpm > 0) {
 //             one_rpm = true;
@@ -85,17 +83,17 @@ auto digitalRecv = DigitalReceiver(&system_data.digitalData, &system_data.missio
 // }
 
 void setUp() {
-    pinMode(GREEN_LED_1, OUTPUT);
-    pinMode(GREEN_LED_2, OUTPUT);
-    pinMode(GREEN_LED_3, OUTPUT);
-    pinMode(YELLOW_LED_1, OUTPUT);
-    pinMode(YELLOW_LED_2, OUTPUT);
-    pinMode(RED_LED_1, OUTPUT);
-    pinMode(RED_LED_2, OUTPUT);
+  pinMode(GREEN_LED_1, OUTPUT);
+  pinMode(GREEN_LED_2, OUTPUT);
+  pinMode(GREEN_LED_3, OUTPUT);
+  pinMode(YELLOW_LED_1, OUTPUT);
+  pinMode(YELLOW_LED_2, OUTPUT);
+  pinMode(RED_LED_1, OUTPUT);
+  pinMode(RED_LED_2, OUTPUT);
 }
 
 int main() {
-    UNITY_BEGIN();
-    // RUN_TEST(test_lwss);
-    return UNITY_END();
+  UNITY_BEGIN();
+  // RUN_TEST(test_lwss);
+  return UNITY_END();
 }

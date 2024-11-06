@@ -7,10 +7,13 @@ constexpr int DC_VOLTAGE_HOLD = 5000;
 constexpr int EBS_BUZZER_TIMEOUT = 8000;
 constexpr int LED_BLINK_INTERVAL = 500;
 constexpr int INITIAL_CHECKUP_STEP_TIMEOUT = 500;
+constexpr unsigned long READY_TIMEOUT_MS = 5000;
+constexpr unsigned long RELEASE_EBS_TIMEOUT_MS = 1000;
+constexpr unsigned long ENGAGE_EBS_TIMEOUT_MS = 5000;
 // #define WATCHDOG_TOGGLE_FREQUENCY 100
 // #define WATCHDOG_TIMEOUT 500
 
-constexpr int WHEEL_MEASUREMENT_INTERVAL_MS = 30; // 30ms // TODO(andre): change to adequate value
+constexpr int WHEEL_MEASUREMENT_INTERVAL_MS = 30;  // 30ms // TODO(andre): change to adequate value
 constexpr int WHEEL_MEASUREMENT_INTERVAL_MIN = (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0);
 constexpr int PULSES_PER_ROTATION = 48;
 
