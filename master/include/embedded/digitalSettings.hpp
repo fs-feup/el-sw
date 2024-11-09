@@ -3,7 +3,7 @@
 constexpr int COMPONENT_TIMESTAMP_TIMEOUT = 500;
 constexpr int RES_TIMESTAMP_TIMEOUT = 200;
 constexpr int DC_VOLTAGE_TIMEOUT = 150;
-constexpr int DC_VOLTAGE_HOLD = 5000;
+constexpr int DC_VOLTAGE_HOLD = 1000;
 constexpr int EBS_BUZZER_TIMEOUT = 8000;
 constexpr int LED_BLINK_INTERVAL = 500;
 constexpr int INITIAL_CHECKUP_STEP_TIMEOUT = 500;
@@ -29,8 +29,8 @@ constexpr int WD_PULSE_INTERVAL_MS = 10;
  * ===========
  */
 
-constexpr int ASSI_BLUE_PIN = 7;
-constexpr int ASSI_YELLOW_PIN = 4;
+constexpr int ASSI_BLUE_PIN = 4;
+constexpr int ASSI_YELLOW_PIN = 7;
 
 constexpr int SDC_LOGIC_CLOSE_SDC_PIN = 8;
 // #define SDC_LOGIC_WATCHDOG_OUT_PIN 10

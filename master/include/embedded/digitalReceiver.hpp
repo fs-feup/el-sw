@@ -43,7 +43,7 @@ public:
     pinMode(MISSION_TRACKDRIVE_PIN, INPUT);
     pinMode(ASMS_IN_PIN, INPUT);
     pinMode(SENSOR_PRESSURE_1_PIN, INPUT);
-    pinMode(SENSOR_PRESSURE_2_PIN, INPUT);
+    // pinMode(SENSOR_PRESSURE_2_PIN, INPUT);
   }
 
 private:
@@ -89,12 +89,12 @@ inline void DigitalReceiver::digital_reads() {
 }
 
 inline void DigitalReceiver::read_pneumatic_line() {
-  bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
+  // bool pneumatic1 = digitalRead(SENSOR_PRESSURE_1_PIN);
   bool pneumatic2 = digitalRead(SENSOR_PRESSURE_2_PIN);  // TODO: maybe poorly read
 
-  digital_data_->pneumatic_line_pressure_1_ = pneumatic1;
+  // digital_data_->pneumatic_line_pressure_1_ = pneumatic1;
   digital_data_->pneumatic_line_pressure_2_ = pneumatic2;
-  bool temp_res = pneumatic1 && pneumatic2;
+  bool temp_res = pneumatic2;
 
   // Only change the value if it has been different 5 times in a row
   pneumatic_change_counter_ =
