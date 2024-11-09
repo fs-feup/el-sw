@@ -71,10 +71,10 @@ struct FailureDetection {
     Metro dcVoltageHoldTimestamp{DC_VOLTAGE_HOLD}; // timer for ts on, only after enough voltage for 1 sec
     Metro ebsPreActivationHoldTimestamp{DC_VOLTAGE_HOLD}; // timer which waits before ebs activation b4 proceeding to next state
     Metro timestampPreCheckHoldTimestamp{DC_VOLTAGE_HOLD}; // timer which waits before checking timestamps before proceeding to next state
-    bool steer_dead_{true};
-    bool pc_dead_{true};
-    bool inversor_dead_{true};
-    bool res_dead_{true};
+    bool steer_dead_{false};
+    bool pc_dead_{false};
+    bool inversor_dead_{false};
+    bool res_dead_{false};
     bool emergencySignal{false};
     bool ts_on{false};
     double radio_quality{0};
@@ -97,7 +97,7 @@ struct FailureDetection {
         if (res_dead_) {
             DEBUG_PRINT_VAR(res_dead_);
         }
-        return steer_dead_ || /* pc_dead_ || */ inversor_dead_ || res_dead_;
+        return  steer_dead_ ||   pc_dead_ ||  inversor_dead_ || res_dead_;
             // pcAliveTimestamp.check() ||
             //    steerAliveTimestamp.check();
             //    inversorAliveTimestamp.check();

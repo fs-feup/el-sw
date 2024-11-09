@@ -44,7 +44,7 @@ public:
         pinMode(MISSION_TRACKDRIVE_PIN, INPUT);
         pinMode(ASMS_IN_PIN, INPUT);
         pinMode(SENSOR_PRESSURE_1_PIN, INPUT);
-        pinMode(SENSOR_PRESSURE_2_PIN, INPUT);
+        //pinMode(SENSOR_PRESSURE_2_PIN, INPUT);
 
         // attachInterrupt(digitalPinToInterrupt(LWSS_PIN), DigitalReceiver::updateLeftWheelRpm, RISING);
     }
