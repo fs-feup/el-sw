@@ -1,20 +1,12 @@
 #pragma once
 
-#include "metro.h"
 #include "embedded/digitalSettings.hpp"
-
+#include "metro.h"
 
 struct DigitalData {
-    // Rear Left Wheel Speed Encoder
-    // double _left_wheel_rpm = 0;
-
-    // Watchdog
-    Metro watchdogTimestamp{WATCHDOG_TIMEOUT};
-    bool watchdog_state = true; // starts true until false
-
-    // Other reads
-    bool pneumatic_line_pressure = true;
-    bool asms_on = false;
-    bool sdcState_OPEN{true}; /*< Detects AATS >*/ 
+  bool pneumatic_line_pressure_ = true;
+  bool pneumatic_line_pressure_1_ = false;
+  bool pneumatic_line_pressure_2_ = false;
+  bool asms_on_ = false;
+  bool sdc_open_{true}; /*< Detects AATS >*/
 };
-

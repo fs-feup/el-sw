@@ -157,7 +157,6 @@ void canbusSniffer(const CAN_message_t &msg)
         apps1 = ((msg.buf[1] << 8) | msg.buf[0]);
         apps2 = ((msg.buf[3] << 8) | msg.buf[2]);
         break;
-
     case BAMO_RESPONSE_ID:
         if (msg.buf[0] == BAMO_SPEED)
         {

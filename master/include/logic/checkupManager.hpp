@@ -2,11 +2,11 @@
 
 #include <cstdlib>
 
-#include "model/systemData.hpp"
 #include "comm/communicatorSettings.hpp"
+#include "debugUtils.hpp"
 #include "embedded/digitalSender.hpp"
 #include "embedded/digitalSettings.hpp"
-#include "debugUtils.hpp"
+#include "model/systemData.hpp"
 
 // Also known as Orchestrator
 /**
@@ -14,355 +14,268 @@
  */
 class CheckupManager {
 private:
-    SystemData *_systemData; ///< Pointer to the system data object containing system status and sensor information.
-    Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT}; ///< Timer for the initial checkup sequence.
+  SystemData *_system_data_;  ///< Pointer to the system data object containing system status and
+                              ///< sensor information.
+  // Metro initialCheckupTimestamp{INITIAL_CHECKUP_STEP_TIMEOUT}; ///< Timer for the initial checkup
+  // sequence.
 
 public:
-    Metro _ebsSoundTimestamp{EBS_BUZZER_TIMEOUT}; ///< Timer for the EBS buzzer sound check.
+  Metro _ebs_sound_timestamp_{EBS_BUZZER_TIMEOUT};  ///< Timer for the EBS buzzer sound check.
 
-    /**
-     * @brief Provides access to the initial checkup timestamp timer.
-     * @return Reference to the initial checkup timestamp timer.
-     */
-    [[nodiscard]] Metro &getInitialCheckupTimestamp() {
-        return initialCheckupTimestamp;
-    }
+  /**
+   * @brief The CheckupState enum represents the different states of
+   * the initial checkup process.
+   * The checkup process is a sequence of checks that the vehicle must pass
+   * before it can transition to ready state.
+   */
+  enum class CheckupState {
+    WAIT_FOR_ASMS,
+    START_TOGGLING_WATCHDOG,
+    WAIT_FOR_WATCHDOG,
+    STOP_TOGGLING_WATCHDOG,
+    CHECK_WATCHDOG,
+    CLOSE_SDC,
+    WAIT_FOR_AATS,
+    WAIT_FOR_TS,
+    TOGGLE_VALVE,
+    CHECK_PRESSURE,
+    CHECK_TIMESTAMPS,
+    CHECKUP_COMPLETE
+  };
 
-    /**
-     * @brief The CheckupState enum represents the different states of 
-     * the initial checkup process.
-     * The checkup process is a sequence of checks that the vehicle must pass
-     * before it can transition to ready state.
-    */
-    enum class CheckupState {
-        WAIT_FOR_ASMS,
-        START_TOGGLING_WATCHDOG,
-        WAIT_FOR_WATCHDOG,
-        STOP_TOGGLING_WATCHDOG,
-        CHECK_WATCHDOG,
-        CLOSE_SDC,
-        WAIT_FOR_AATS,
-        WAIT_FOR_TS,
-        TOGGLE_VALVE,
-        CHECK_PRESSURE,
-        CHECK_TIMESTAMPS
-    };
+  /**
+   * This is for easier debugging in case initial checkup fails
+   */
+  enum class CheckupError { WAITING_FOR_RESPONSE, ERROR, SUCCESS };
 
-    /**
-     * This is for easier debugging in case initial checkup fails
-    */
-    enum class CheckupError {
-        WAITING_FOR_RESPONSE,
-        ERROR,
-        SUCCESS
-    };
+  CheckupState checkup_state_{
+      CheckupState::WAIT_FOR_ASMS};  ///< Current state of the checkup process.
 
-    CheckupState checkupState{CheckupState::WAIT_FOR_ASMS}; ///< Current state of the checkup process.
+  /**
+   * @brief Constructor for the CheckupManager class.
+   * @param system_data Pointer to the system data object.
+   */
+  explicit CheckupManager(SystemData *system_data) : _system_data_(system_data) {};
 
-    /**
-     * @brief Constructor for the CheckupManager class.
-     * @param systemData Pointer to the system data object.
-     */
-    explicit CheckupManager(SystemData *systemData) : _systemData(systemData) { 
-    };
+  /**
+   * @brief Resets the checkup state to the initial state
+   */
+  void reset_checkup_state();
 
-    /**
-     * @brief Resets the checkup state to the initial state.
-     */
-    void resetCheckupState();
+  /**
+   * @brief Performs a manual driving checkup.
+   */
+  [[nodiscard]] bool should_stay_manual_driving() const;
 
-    /**
-     * @brief Performs a manual driving checkup.
-     */
-    [[nodiscard]] bool shouldStayManualDriving() const;
+  /**
+   * @brief Performs an off checkup.
+   */
+  bool should_stay_off(DigitalSender *digital_sender);
 
-    /**
-     * @brief Performs an off checkup.
-     */
-    bool shouldStayOff(DigitalSender *digitalSender);
+  /**
+   * @brief Performs an initial checkup.
+   */
+  CheckupError initial_checkup_sequence(DigitalSender *digital_sender);
 
-    /**
-     * @brief Performs an initial checkup.
-     */
-    CheckupError initialCheckupSequence(DigitalSender *digitalSender);
+  /**
+   * @brief Performs a last re-check for off to ready transition.
+   */
+  [[nodiscard]] bool should_go_ready_from_off() const;
 
-    /**
-     * @brief Performs a last re-check for off to ready transition.
-    */
-    [[nodiscard]] bool shouldGoReadyFromOff() const;
+  /**
+   * @brief Performs a ready to drive checkup.
+   */
+  [[nodiscard]] bool should_stay_ready() const;
 
-    /**
-     * @brief Performs a ready to drive checkup.
-     */
-    [[nodiscard]] bool shouldStayReady() const;
+  /**
+   * @brief Performs an emergency checkup.
+   */
+  [[nodiscard]] bool should_enter_emergency(State current_state) const;
 
-    /**
-     * @brief Performs an emergency checkup.
-     */
-    [[nodiscard]] bool shouldEnterEmergency(State current_state) const;
+  [[nodiscard]] bool should_stay_driving() const;
 
-    [[nodiscard]] bool shouldStayDriving() const;
+  /**
+   * @brief Performs a mission finished checkup.
+   */
+  [[nodiscard]] bool should_stay_mission_finished() const;
 
-    /**
-     * @brief Performs a mission finished checkup.
-     */
-    [[nodiscard]] bool shouldStayMissionFinished() const;
+  /**
+   * @brief Checks if the emergency sequence is complete and the vehicle can
+   * transition to AS_OFF.
+   */
+  [[nodiscard]] bool emergency_sequence_complete() const;
 
-    /**
-     * @brief Checks if the emergency sequence is complete and the vehicle can
-     * transition to AS_OFF.
-     */
-    [[nodiscard]] bool emergencySequenceComplete() const;
-
-    /**
-     * @brief Checks if the RES has been triggered.
-     *
-     * This function checks whether the RES has been triggered or not.
-     *
-     */
-    [[nodiscard]] bool resTriggered() const;
+  /**
+   * @brief Checks if the RES has been triggered.
+   *
+   * This function checks whether the RES has been triggered or not.
+   *
+   */
+  [[nodiscard]] bool res_triggered() const;
 };
 
-inline void CheckupManager::resetCheckupState() {
-    checkupState = CheckupState::WAIT_FOR_ASMS;
-    _systemData->missionFinished = false;
+inline void CheckupManager::reset_checkup_state() {
+  checkup_state_ = CheckupState::WAIT_FOR_ASMS;
+  _system_data_->mission_finished_ = false;
 }
 
-inline bool CheckupManager::shouldStayManualDriving() const {
-    if (_systemData->mission != MANUAL || _systemData->digitalData.pneumatic_line_pressure != 0
-        || _systemData->digitalData.asms_on) {
-        return false;
-    }
+inline bool CheckupManager::should_stay_manual_driving() const {
+  if (_system_data_->mission_ != Mission::MANUAL ||
+      _system_data_->digital_data_.pneumatic_line_pressure_ != 0 ||
+      _system_data_->digital_data_.asms_on_) {
+    return false;
+  }
 
+  return true;
+}
+
+inline bool CheckupManager::should_stay_off(DigitalSender *digital_sender) {
+  CheckupError init_sequence_state = initial_checkup_sequence(digital_sender);
+
+  if (init_sequence_state != CheckupError::SUCCESS) {
     return true;
+  }
+  return false;
 }
 
-inline bool CheckupManager::shouldStayOff(DigitalSender *digitalSender) {
-    CheckupError initSequenceState = initialCheckupSequence(digitalSender);
+inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(
+    DigitalSender *digital_sender) {
+  switch (checkup_state_) {
+    case CheckupState::WAIT_FOR_ASMS:
+      // ASMS Activated?
+      if (_system_data_->digital_data_.asms_on_) {
+        checkup_state_ = CheckupState::CLOSE_SDC;
+      }
+      break;
+    case CheckupState::CLOSE_SDC:
+      // Close SDC
+      DigitalSender::close_sdc();
+      checkup_state_ = CheckupState::WAIT_FOR_AATS;
 
-    if (initSequenceState != CheckupError::SUCCESS) {
-        return true;
+      break;
+    case CheckupState::WAIT_FOR_AATS:
+
+      // AATS Activated?
+      if (!_system_data_->digital_data_.sdc_open_) {
+        // At this point, the emergency signal should be set to false, since it is
+        // expected that the RES has already sent all initial emergency signals,
+        // and if RES unexpectedly sends another emergency signal, it will be
+        // set after the AATS button is pressed.
+        _system_data_->failure_detection_.emergency_signal_ = false;
+        checkup_state_ = CheckupState::WAIT_FOR_TS;
+      }
+      break;
+    case CheckupState::WAIT_FOR_TS:
+      if (_system_data_->failure_detection_.ts_on_) {
+        DEBUG_PRINT("TS activated");
+
+        checkup_state_ = CheckupState::TOGGLE_VALVE;
+      }
+      break;
+    case CheckupState::TOGGLE_VALVE:
+      // Toggle EBS Valves
+      checkup_state_ = CheckupState::CHECK_PRESSURE;
+      DEBUG_PRINT("EBS activated");
+      DigitalSender::activate_ebs();
+
+      break;
+    case CheckupState::CHECK_PRESSURE:
+      // Check hydraulic line pressure and pneumatic line pressure
+      if (_system_data_->sensors_._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD &&
+          _system_data_->digital_data_.pneumatic_line_pressure_) {
+        checkup_state_ = CheckupState::CHECK_TIMESTAMPS;
+      }
+      break;
+
+    case CheckupState::CHECK_TIMESTAMPS: {
+      // Check if all components have responded and no emergency signal has been sent
+      checkup_state_ = CheckupState::CHECK_TIMESTAMPS;
+      if (_system_data_->failure_detection_.has_any_component_timed_out() ||
+          _system_data_->failure_detection_.emergency_signal_) {
+        DEBUG_PRINT("Returning ERROR from CHECK_TIMESTAMPS")
+        return CheckupError::ERROR;
+      }
+      checkup_state_ = CheckupState::CHECKUP_COMPLETE;
+      DEBUG_PRINT("Checkup complete and returning success");
+      return CheckupError::SUCCESS;
     }
+    default:
+      break;
+  }
+  return CheckupError::WAITING_FOR_RESPONSE;
+}
+
+inline bool CheckupManager::should_go_ready_from_off() const {
+  if (!_system_data_->digital_data_.asms_on_ || !_system_data_->failure_detection_.ts_on_ ||
+      _system_data_->digital_data_.sdc_open_) {
     return false;
+  }
+  _system_data_->r2d_logics_.enter_ready_state();
+  return true;
 }
 
-inline CheckupManager::CheckupError CheckupManager::initialCheckupSequence(DigitalSender *digitalSender) {
-    // DEBUG_PRINT_VAR(static_cast<int>(checkupState));
-    switch (checkupState) {
-        case CheckupState::WAIT_FOR_ASMS:
-            // ASMS Activated?
-            if (_systemData->digitalData.asms_on) {
-                // checkupState = CheckupState::START_TOGGLING_WATCHDOG;
-                checkupState = CheckupState::CLOSE_SDC;
-            }
-            break;
-        // case CheckupState::START_TOGGLING_WATCHDOG:
-        //     // Start toggling watchdog
-        //     digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, HIGH);
-        //     initialCheckupTimestamp.reset();
-        //     checkupState = CheckupState::WAIT_FOR_WATCHDOG;
-        //     break;
-        // case CheckupState::WAIT_FOR_WATCHDOG:
-        //     // Watchdog_is_ready == 1
-        //     if (initialCheckupTimestamp.check()) {
-        //         return CheckupError::ERROR;
-        //     }
-        //     if (_systemData->digitalData.watchdog_state) {
-        //         checkupState = CheckupState::STOP_TOGGLING_WATCHDOG;
-        //     }
-        //     break;
-        // case CheckupState::STOP_TOGGLING_WATCHDOG:
-        //     // Stop toggling watchdog
-        //     digitalWrite(SDC_LOGIC_WATCHDOG_OUT_PIN, LOW);
-        //     initialCheckupTimestamp.reset();
-        //     checkupState = CheckupState::CHECK_WATCHDOG;
-        //     break;
-        // case CheckupState::CHECK_WATCHDOG:
-        //     // Watchdog_is_ready == 0
-        //     if (initialCheckupTimestamp.check() && !_systemData->digitalData.watchdog_state) {
-        //         checkupState = CheckupState::CLOSE_SDC;
-        //         //Start toggling watchdog again
-        //     }
-        //     break;
-        case CheckupState::CLOSE_SDC:
-            // Close SDC
-            DigitalSender::closeSDC();
-            checkupState = CheckupState::WAIT_FOR_AATS;
-            break;
-        case CheckupState::WAIT_FOR_AATS:
-            // digitalSender->toggleWatchdog();
-
-        // AATS Activated?
-            if (!_systemData->digitalData.sdcState_OPEN) {
-            // At this point, the emergency signal should be set to false, since it is
-            // expected that the RES has already sent all initial emergency signals,
-            // and if RES unexpectedly sends another emergency signal, it will be
-            // set after the AATS button is pressed.
-            _systemData->failureDetection.emergencySignal = false;
-                checkupState = CheckupState::WAIT_FOR_TS;
-            }
-            break;
-        case CheckupState::WAIT_FOR_TS:
-            // digitalSender->toggleWatchdog();
-        // TS Activated?
-            if (_systemData->failureDetection.ts_on) {
-                checkupState = CheckupState::TOGGLE_VALVE;
-            }
-            break;
-        case CheckupState::TOGGLE_VALVE:
-            // digitalSender->toggleWatchdog();
-            // Toggle EBS Valves
-            DigitalSender::activateEBS();
-
-            initialCheckupTimestamp.reset();
-            checkupState = CheckupState::CHECK_PRESSURE;
-            break;
-        case CheckupState::CHECK_PRESSURE:
-            // digitalSender->toggleWatchdog();
-            // Check hydraulic line pressure and pneumatic line pressure
-            // DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
-            // DEBUG_PRINT_VAR(_systemData->digitalData.pneumatic_line_pressure);
-            if (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD && _systemData->digitalData.
-                pneumatic_line_pressure) {
-                checkupState = CheckupState::CHECK_TIMESTAMPS;
-            }
-            break;
-        
-        case CheckupState::CHECK_TIMESTAMPS: {
-
-            // digitalSender->toggleWatchdog();
-            // Check if all components have responded and no emergency signal has been sent
-            if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-                DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
-            }
-            if (_systemData->failureDetection.hasAnyComponentTimedOut() || _systemData->failureDetection.
-                emergencySignal) {
-                return CheckupError::ERROR;
-            }
-            return CheckupError::SUCCESS;
-        }
-        default:
-            break;
-    }
-    return CheckupError::WAITING_FOR_RESPONSE;
-}
-
-inline bool CheckupManager::shouldGoReadyFromOff() const {
-    if (!_systemData->digitalData.asms_on || !_systemData->failureDetection.ts_on || _systemData->digitalData.sdcState_OPEN) {
-        return false;
-    }
-    _systemData->r2dLogics.enterReadyState();
+inline bool CheckupManager::should_stay_ready() const {
+  if (!_system_data_->r2d_logics_.r2d) {
     return true;
+  }
+  _system_data_->r2d_logics_.enter_driving_state();
+  return false;
 }
 
-inline bool CheckupManager::shouldStayReady() const {
-    if (!_systemData->r2dLogics.r2d) {
-        return true;
-    }
-    _systemData->r2dLogics.enterDrivingState();
+inline bool CheckupManager::should_enter_emergency(State current_state) const {
+  if (current_state == State::AS_READY) {
+    return _system_data_->failure_detection_.emergency_signal_ ||
+            (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 &&
+             _system_data_->r2d_logics_.engageEbsTimestamp
+                 .checkWithoutReset()) ||  // 5 seconds have passed since ready state and line
+                                           // pressure is 0
+           _system_data_->failure_detection_.has_any_component_timed_out() ||
+           !_system_data_->digital_data_.asms_on_ || !_system_data_->failure_detection_.ts_on_ ||
+            (_system_data_->sensors_._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD &&
+             _system_data_->r2d_logics_.engageEbsTimestamp.checkWithoutReset()) ||
+           _system_data_->digital_data_.sdc_open_;
+  } else if (current_state == State::AS_DRIVING) {
+    return _system_data_->failure_detection_.has_any_component_timed_out() ||
+           _system_data_->failure_detection_.emergency_signal_ ||
+           _system_data_->digital_data_.sdc_open_ ||
+            (_system_data_->digital_data_.pneumatic_line_pressure_ == 0 &&
+             _system_data_->r2d_logics_.releaseEbsTimestamp
+                 .checkWithoutReset()) ||  // car has one second to make pneumatic pressure 1
+            (_system_data_->sensors_._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD &&
+             _system_data_->r2d_logics_.releaseEbsTimestamp
+                 .checkWithoutReset()) ||  // car has 1 second to reduce hydraulic pressure
+           !_system_data_->digital_data_.asms_on_ ||
+           !_system_data_->failure_detection_.ts_on_;
+  }
+
+  return false;
+}
+
+inline bool CheckupManager::should_stay_driving() const {
+  if (abs(_system_data_->sensors_._left_wheel_rpm) < 0.1 &&
+      abs(_system_data_->sensors_._right_wheel_rpm) < 0.1 && _system_data_->mission_finished_) {
     return false;
+  }
+  return true;
 }
 
-inline bool CheckupManager::shouldEnterEmergency(State current_state) const {
-    if (current_state == AS_READY) {
-        if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
-        }
-        if (_systemData->failureDetection.emergencySignal) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
-        }
-        if (_systemData->digitalData.sdcState_OPEN) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.sdcState_OPEN);
-        }
-        if (!_systemData->digitalData.asms_on) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.asms_on);
-        }
-        if (!_systemData->failureDetection.ts_on) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
-        }
-        if (_systemData->digitalData.pneumatic_line_pressure == 0) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.pneumatic_line_pressure);
-            DEBUG_PRINT_VAR(_systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset());
-        }
-        if (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD) {
-            DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
-            DEBUG_PRINT_VAR(_systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset());
-        }
-        return _systemData->failureDetection.emergencySignal ||
-            (_systemData->digitalData.pneumatic_line_pressure == 0 
-                && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
-            _systemData->failureDetection.hasAnyComponentTimedOut() ||
-            // _systemData->digitalData.watchdogTimestamp.check() ||
-            !_systemData->digitalData.asms_on ||
-            !_systemData->failureDetection.ts_on ||
-            (_systemData->sensors._hydraulic_line_pressure < HYDRAULIC_BRAKE_THRESHOLD
-               && _systemData->r2dLogics.engageEbsTimestamp.checkWithoutReset()) ||
-            _systemData->digitalData.sdcState_OPEN
-            ;
-    } else if (current_state == AS_DRIVING) {
-        if (_systemData->failureDetection.hasAnyComponentTimedOut()) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.hasAnyComponentTimedOut());
-        }
-        if (_systemData->failureDetection.emergencySignal) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.emergencySignal);
-        }
-        if (_systemData->digitalData.sdcState_OPEN) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.sdcState_OPEN);
-        }
-        if (!_systemData->digitalData.asms_on) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.asms_on);
-        }
-        if (!_systemData->failureDetection.ts_on) {
-            DEBUG_PRINT_VAR(_systemData->failureDetection.ts_on);
-        }
-        if (_systemData->digitalData.pneumatic_line_pressure == 0) {
-            DEBUG_PRINT_VAR(_systemData->digitalData.pneumatic_line_pressure);
-            DEBUG_PRINT_VAR(_systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset());
-        }
-        if (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD) {
-            DEBUG_PRINT_VAR(_systemData->sensors._hydraulic_line_pressure);
-            DEBUG_PRINT_VAR(_systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset());
-        }
-        return _systemData->failureDetection.hasAnyComponentTimedOut() ||
-            _systemData->failureDetection.emergencySignal ||
-            _systemData->digitalData.sdcState_OPEN ||
-            (_systemData->digitalData.pneumatic_line_pressure == 0 
-               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
-            (_systemData->sensors._hydraulic_line_pressure >= HYDRAULIC_BRAKE_THRESHOLD
-               && _systemData->r2dLogics.releaseEbsTimestamp.checkWithoutReset()) ||
-            !_systemData->digitalData.asms_on ||
-            // _systemData->digitalData.watchdogTimestamp.check() ||
-            !_systemData->failureDetection.ts_on;
-    }
-
-    return false;
-}
-
-inline bool CheckupManager::shouldStayDriving() const {
-    if (abs(_systemData->sensors._left_wheel_rpm) < 0.1 && abs(_systemData->sensors._right_wheel_rpm) < 0.1 && _systemData->missionFinished) {
-        return false;
-    }
+inline bool CheckupManager::should_stay_mission_finished() const {
+  if (_system_data_->digital_data_.asms_on_) {
     return true;
+  }
+  return false;
 }
 
-inline bool CheckupManager::shouldStayMissionFinished() const {
-    if (_systemData->digitalData.asms_on) {
-        return true;
-    }
-    return false;
+inline bool CheckupManager::emergency_sequence_complete() const {
+  if (!_system_data_->digital_data_.asms_on_ && _ebs_sound_timestamp_.checkWithoutReset()) {
+    return true;
+  }
+  return false;
 }
 
-inline bool CheckupManager::emergencySequenceComplete() const {
-    if (!_systemData->digitalData.asms_on && _ebsSoundTimestamp.checkWithoutReset()) {
-        return true;
-    }
-    return false;
+inline bool CheckupManager::res_triggered() const {
+  if (_system_data_->failure_detection_.emergency_signal_) {
+    return true;
+  }
+  return false;
 }
-
-inline bool CheckupManager::resTriggered() const {
-    if (_systemData->failureDetection.emergencySignal) {
-        return true;
-    }
-    return false;
-}
-
