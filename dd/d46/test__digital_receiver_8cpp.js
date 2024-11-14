@@ -25,5 +25,5 @@ var test__digital_receiver_8cpp =
     [ "main", "dd/d46/test__digital_receiver_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4", null ],
     [ "setUp", "dd/d46/test__digital_receiver_8cpp.html#a63326a1b70b6e3f070e51687798e02de", null ],
     [ "digitalRecv", "dd/d46/test__digital_receiver_8cpp.html#ab86217a1b3614e429f61b7b7427a504c", null ],
-    [ "systemData", "dd/d46/test__digital_receiver_8cpp.html#ae360f00da1dc355b5e18b71d98afd216", null ]
+    [ "system_data", "dd/d46/test__digital_receiver_8cpp.html#a4899420cff5a1ca01c0906f2f0911a76", null ]
 ];

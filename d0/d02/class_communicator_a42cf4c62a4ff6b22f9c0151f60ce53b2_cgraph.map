@@ -1,0 +1,9 @@
+<map id="Communicator::res_state_callback" name="Communicator::res_state_callback">
+<area shape="rect" id="Node000001" title="Callback RES default callback." alt="" coords="5,35,171,75"/>
+<area shape="rect" id="Node000002" href="$d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732" title="Processes the go signal." alt="" coords="219,5,356,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,40,203,35,204,41,171,45"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="243,70,332,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,64,228,72,227,77,171,69"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="404,13,499,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,23,389,23,389,28,356,28"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="Communicator::res_ready_callback" name="Communicator::res_ready_callback">
+<area shape="rect" id="Node000001" title="Callback for RES activation." alt="" coords="474,73,642,113"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="283,73,426,113"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,96,426,96,426,90,459,90"/>
+<area shape="rect" id="Node000003" href="$d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,5,235,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,69,234,45,207,34,209,29,236,40,293,64"/>
+<area shape="rect" id="Node000005" href="$df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,55,221,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="267,84,221,77,222,72,268,78"/>
+<area shape="rect" id="Node000007" href="$df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="139,104,203,130"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="268,107,204,115,203,110,267,102"/>
+<area shape="rect" id="Node000008" href="$df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="119,153,223,179"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="291,122,236,145,208,155,206,150,234,140,289,117"/>
+<area shape="rect" id="Node000004" href="$d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,5,59,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="91,21,59,21,59,16,91,16"/>
+<area shape="rect" id="Node000006" href="$df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,104,57,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="119,89,58,111,56,106,117,84"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="123,120,57,120,57,114,123,114"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="117,150,56,128,58,123,119,145"/>
+</map>

@@ -109,21 +109,20 @@ Collaboration diagram for Communicator:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/dfa/class_communicator__coll__graph.png" border="0" usemap="#a_communicator_coll__map" alt="Collaboration graph"/></div>
 <map name="a_communicator_coll__map" id="a_communicator_coll__map">
-<area shape="rect" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t..." alt="" coords="295,615,431,935"/>
-<area shape="rect" href="../../d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary." alt="" coords="305,447,422,552"/>
-<area shape="poly" title=" " alt="" coords="366,552,366,599,361,599,361,552"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html" title=" " alt="" coords="5,269,137,374"/>
-<area shape="poly" title=" " alt="" coords="137,372,151,382,222,424,291,461,288,466,219,429,149,386,134,376"/>
-<area shape="rect" href="../../db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="189,5,333,151"/>
-<area shape="poly" title=" " alt="" coords="190,115,151,142,117,176,97,213,84,253,79,251,92,211,113,173,148,138,187,111"/>
-<area shape="rect" href="../../d3/df6/struct_failure_detection.html" title=" " alt="" coords="162,269,359,374"/>
-<area shape="poly" title=" " alt="" coords="263,150,263,251,258,251,258,150"/>
-<area shape="rect" href="../../d3/d93/struct_digital_data.html" title=" " alt="" coords="383,259,551,384"/>
-<area shape="poly" title=" " alt="" coords="334,105,382,134,404,152,424,173,444,206,457,241,452,243,439,208,420,176,401,156,379,138,331,110"/>
-<area shape="poly" title=" " alt="" coords="279,373,302,422,309,432,304,435,297,424,274,375"/>
-<area shape="rect" href="../../d0/df5/struct_sensors.html" title="Sensors from CAN." alt="" coords="575,269,741,374"/>
-<area shape="poly" title=" " alt="" coords="581,376,565,386,438,460,435,456,562,382,578,372"/>
-<area shape="poly" title=" " alt="" coords="434,385,405,434,400,431,429,382"/>
+<area shape="rect" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t..." alt="" coords="315,815,458,1155"/>
+<area shape="rect" href="../../d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary." alt="" coords="323,647,450,752"/>
+<area shape="poly" title=" " alt="" coords="389,752,389,798,384,798,384,752"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html" title=" " alt="" coords="5,421,147,526"/>
+<area shape="poly" title=" " alt="" coords="113,524,161,582,182,603,206,620,257,647,308,669,306,674,254,652,203,625,178,607,157,585,109,528"/>
+<area shape="rect" href="../../db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="96,5,240,151"/>
+<area shape="poly" title=" " alt="" coords="103,152,90,176,74,234,67,294,66,353,69,404,64,404,61,353,62,294,69,233,86,174,98,149"/>
+<area shape="rect" href="../../d3/df6/struct_failure_detection.html" title=" " alt="" coords="171,364,352,584"/>
+<area shape="poly" title=" " alt="" coords="220,149,231,174,252,260,262,346,257,347,247,261,225,176,215,152"/>
+<area shape="poly" title=" " alt="" coords="279,582,296,621,313,643,309,647,291,624,274,585"/>
+<area shape="rect" href="../../d0/df5/struct_sensors.html" title="Sensors from CAN." alt="" coords="376,421,541,526"/>
+<area shape="poly" title=" " alt="" coords="445,527,411,631,406,630,440,525"/>
+<area shape="rect" href="../../d3/d93/struct_digital_data.html" title=" " alt="" coords="566,401,754,546"/>
+<area shape="poly" title=" " alt="" coords="596,548,555,586,466,652,462,647,552,582,592,544"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -141,33 +140,37 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a39af6c0700f1e9b5df6b63c9322bdcb6" id="r_a39af6c0700f1e9b5df6b63c9322bdcb6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6">parse_message</a> (const CAN_message_t &amp;<a class="el" href="../../df/d2e/test__callbacks_8cpp.html#a7b7e0c51c97a7d2837c3aef9953192f1">msg</a>)</td></tr>
 <tr class="memdesc:a39af6c0700f1e9b5df6b63c9322bdcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the message received from the CAN bus.  <br /></td></tr>
 <tr class="separator:a39af6c0700f1e9b5df6b63c9322bdcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a753f046da183412f4373ad1dc9e4c67c" id="r_a753f046da183412f4373ad1dc9e4c67c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c">send_message</a> (unsigned len, const unsigned char *buffer, unsigned id)</td></tr>
-<tr class="memdesc:a753f046da183412f4373ad1dc9e4c67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the CAN bus.  <br /></td></tr>
-<tr class="separator:a753f046da183412f4373ad1dc9e4c67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3854d96bc369d26c7de8864369a98ca" id="r_aa3854d96bc369d26c7de8864369a98ca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca">pcCallback</a> (const uint8_t *buf)</td></tr>
-<tr class="memdesc:aa3854d96bc369d26c7de8864369a98ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for message from AS CU.  <br /></td></tr>
-<tr class="separator:aa3854d96bc369d26c7de8864369a98ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a049d59831344d7a0999560e9fe9291ba" id="r_a049d59831344d7a0999560e9fe9291ba"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a049d59831344d7a0999560e9fe9291ba">c1Callback</a> (const uint8_t *buf)</td></tr>
-<tr class="memdesc:a049d59831344d7a0999560e9fe9291ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for data from C1 Teensy.  <br /></td></tr>
-<tr class="separator:a049d59831344d7a0999560e9fe9291ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51418ea43bfd1a189173cf72918f5859" id="r_a51418ea43bfd1a189173cf72918f5859"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859">resStateCallback</a> (const uint8_t *buf)</td></tr>
-<tr class="memdesc:a51418ea43bfd1a189173cf72918f5859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback RES default callback.  <br /></td></tr>
-<tr class="separator:a51418ea43bfd1a189173cf72918f5859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97f28d0b59b88e5b80f9a8d87f7ad18a" id="r_a97f28d0b59b88e5b80f9a8d87f7ad18a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a97f28d0b59b88e5b80f9a8d87f7ad18a">resReadyCallback</a> ()</td></tr>
-<tr class="memdesc:a97f28d0b59b88e5b80f9a8d87f7ad18a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for RES activation.  <br /></td></tr>
-<tr class="separator:a97f28d0b59b88e5b80f9a8d87f7ad18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3a46afd7d8b65ad4a2c914f6274cfd8" id="r_aa3a46afd7d8b65ad4a2c914f6274cfd8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#aa3a46afd7d8b65ad4a2c914f6274cfd8">bamocarCallback</a> (const uint8_t *buf)</td></tr>
-<tr class="memdesc:aa3a46afd7d8b65ad4a2c914f6274cfd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback from inversor, for alive signal and data.  <br /></td></tr>
-<tr class="separator:aa3a46afd7d8b65ad4a2c914f6274cfd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfd5d2ea20261f952547b1d1900d12ab" id="r_abfd5d2ea20261f952547b1d1900d12ab"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#abfd5d2ea20261f952547b1d1900d12ab">steeringCallback</a> ()</td></tr>
-<tr class="memdesc:abfd5d2ea20261f952547b1d1900d12ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for steering actuator information.  <br /></td></tr>
-<tr class="separator:abfd5d2ea20261f952547b1d1900d12ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c912e8973aa10866ae3fd9f2df8de7" id="r_a55c912e8973aa10866ae3fd9f2df8de7"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
+<tr class="memitem:a55c912e8973aa10866ae3fd9f2df8de7"><td class="memTemplItemLeft" align="right" valign="top">static int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7">send_message</a> (unsigned len, const std::array&lt; uint8_t, N &gt; &amp;buffer, unsigned id)</td></tr>
+<tr class="memdesc:a55c912e8973aa10866ae3fd9f2df8de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the CAN bus.  <br /></td></tr>
+<tr class="separator:a55c912e8973aa10866ae3fd9f2df8de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e76ba59f478d3957c757b4cd211935b" id="r_a6e76ba59f478d3957c757b4cd211935b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a6e76ba59f478d3957c757b4cd211935b">pc_callback</a> (const uint8_t *buf)</td></tr>
+<tr class="memdesc:a6e76ba59f478d3957c757b4cd211935b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for message from AS CU.  <br /></td></tr>
+<tr class="separator:a6e76ba59f478d3957c757b4cd211935b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6726b6167f35e19b5965518fca206a95" id="r_a6726b6167f35e19b5965518fca206a95"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a6726b6167f35e19b5965518fca206a95">c1_callback</a> (const uint8_t *buf)</td></tr>
+<tr class="memdesc:a6726b6167f35e19b5965518fca206a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for data from C1 Teensy.  <br /></td></tr>
+<tr class="separator:a6726b6167f35e19b5965518fca206a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42cf4c62a4ff6b22f9c0151f60ce53b2" id="r_a42cf4c62a4ff6b22f9c0151f60ce53b2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a42cf4c62a4ff6b22f9c0151f60ce53b2">res_state_callback</a> (const uint8_t *buf)</td></tr>
+<tr class="memdesc:a42cf4c62a4ff6b22f9c0151f60ce53b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback RES default callback.  <br /></td></tr>
+<tr class="separator:a42cf4c62a4ff6b22f9c0151f60ce53b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6c8ad4a457cda4b149c0fa44581002" id="r_ade6c8ad4a457cda4b149c0fa44581002"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#ade6c8ad4a457cda4b149c0fa44581002">res_ready_callback</a> ()</td></tr>
+<tr class="memdesc:ade6c8ad4a457cda4b149c0fa44581002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for RES activation.  <br /></td></tr>
+<tr class="separator:ade6c8ad4a457cda4b149c0fa44581002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb808b73526d1d221dafef31202f88cc" id="r_abb808b73526d1d221dafef31202f88cc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc">bamocar_callback</a> (const uint8_t *buf)</td></tr>
+<tr class="memdesc:abb808b73526d1d221dafef31202f88cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback from inversor, for alive signal and data.  <br /></td></tr>
+<tr class="separator:abb808b73526d1d221dafef31202f88cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04694b4fb21ef693a32ec31a13cd3127" id="r_a04694b4fb21ef693a32ec31a13cd3127"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a04694b4fb21ef693a32ec31a13cd3127">steering_callback</a> ()</td></tr>
+<tr class="memdesc:a04694b4fb21ef693a32ec31a13cd3127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for steering actuator information.  <br /></td></tr>
+<tr class="separator:a04694b4fb21ef693a32ec31a13cd3127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee4e8f33f420b9e3c49445a032f62185" id="r_aee4e8f33f420b9e3c49445a032f62185"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#aee4e8f33f420b9e3c49445a032f62185">publish_state</a> (int state_id)</td></tr>
 <tr class="memdesc:aee4e8f33f420b9e3c49445a032f62185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish AS State to CAN.  <br /></td></tr>
 <tr class="separator:aee4e8f33f420b9e3c49445a032f62185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cb8407cb7663056508998783d6db3cf" id="r_a0cb8407cb7663056508998783d6db3cf"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#a0cb8407cb7663056508998783d6db3cf">publish_mission</a> (int mission_id)</td></tr>
 <tr class="memdesc:a0cb8407cb7663056508998783d6db3cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish AS Mission to CAN.  <br /></td></tr>
 <tr class="separator:a0cb8407cb7663056508998783d6db3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4f0fc168203e9f3556e9d8ae6e802a" id="r_abe4f0fc168203e9f3556e9d8ae6e802a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#abe4f0fc168203e9f3556e9d8ae6e802a">publish_debug_log</a> (<a class="el" href="../../d0/d9d/struct_system_data.html">SystemData</a> <a class="el" href="../../d0/d84/master_2src_2main_8cpp.html#a4899420cff5a1ca01c0906f2f0911a76">system_data</a>, uint8_t sate, uint8_t state_checkup)</td></tr>
+<tr class="memdesc:abe4f0fc168203e9f3556e9d8ae6e802a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish AS Mission to CAN.  <br /></td></tr>
+<tr class="separator:abe4f0fc168203e9f3556e9d8ae6e802a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5d412a8f03a1963c59d0c26c0f0b82c" id="r_ae5d412a8f03a1963c59d0c26c0f0b82c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d02/class_communicator.html#ae5d412a8f03a1963c59d0c26c0f0b82c">publish_left_wheel_rpm</a> (double value)</td></tr>
 <tr class="memdesc:ae5d412a8f03a1963c59d0c26c0f0b82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish rl wheel rpm to CAN.  <br /></td></tr>
 <tr class="separator:ae5d412a8f03a1963c59d0c26c0f0b82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +183,7 @@ Static Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that contains definitions of typical messages to send via CAN It serves only as an example of the usage of the strategy pattern, where the communicator is the strategy. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00040">40</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2e0dd0b9a1c3afb728c17639180d56dd" name="a2e0dd0b9a1c3afb728c17639180d56dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e0dd0b9a1c3afb728c17639180d56dd">&#9670;&#160;</a></span>Communicator()</h2>
@@ -201,7 +204,7 @@ Static Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -209,18 +212,18 @@ Static Public Attributes</h2></td></tr>
 <p>Constructor for the <a class="el" href="../../d0/d02/class_communicator.html" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t...">Communicator</a> class Initializes the <a class="el" href="../../d0/d02/class_communicator.html" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t...">Communicator</a> with the given system data instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">systemData</td><td>Pointer to the <a class="el" href="../../d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary.">SystemData</a> instance. </td></tr>
+    <tr><td class="paramname">system_data</td><td>Pointer to the <a class="el" href="../../d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary.">SystemData</a> instance. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa3a46afd7d8b65ad4a2c914f6274cfd8" name="aa3a46afd7d8b65ad4a2c914f6274cfd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3a46afd7d8b65ad4a2c914f6274cfd8">&#9670;&#160;</a></span>bamocarCallback()</h2>
+<a id="abb808b73526d1d221dafef31202f88cc" name="abb808b73526d1d221dafef31202f88cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb808b73526d1d221dafef31202f88cc">&#9670;&#160;</a></span>bamocar_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +232,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::bamocarCallback </td>
+          <td class="memname">void Communicator::bamocar_callback </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -245,33 +248,35 @@ Static Public Attributes</h2></td></tr>
 
 <p>Callback from inversor, for alive signal and data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00202">202</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_cgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_cgraph" id="ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_cgraph">
-<area shape="rect" title="Callback from inversor, for alive signal and data." alt="" coords="5,5,217,31"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="265,5,354,31"/>
-<area shape="poly" title=" " alt="" coords="217,16,249,16,249,21,217,21"/>
+<div class="center"><img src="../../d0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_cgraph" id="ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_cgraph">
+<area shape="rect" title="Callback from inversor, for alive signal and data." alt="" coords="5,23,167,64"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="215,5,388,31"/>
+<area shape="poly" title=" " alt="" coords="167,31,199,28,199,33,167,37"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="257,55,346,80"/>
+<area shape="poly" title=" " alt="" coords="167,50,241,58,241,63,167,55"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_icgraph" id="ad0/d02/class_communicator_aa3a46afd7d8b65ad4a2c914f6274cfd8_icgraph">
-<area shape="rect" title="Callback from inversor, for alive signal and data." alt="" coords="554,255,766,280"/>
+<div class="center"><img src="../../d0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_icgraph" id="ad0/d02/class_communicator_abb808b73526d1d221dafef31202f88cc_icgraph">
+<area shape="rect" title="Callback from inversor, for alive signal and data." alt="" coords="554,247,716,288"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="348,97,491,137"/>
-<area shape="poly" title=" " alt="" coords="623,248,453,140,455,136,626,244"/>
+<area shape="poly" title=" " alt="" coords="590,240,449,140,452,135,593,236"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,204,475,230"/>
-<area shape="poly" title=" " alt="" coords="580,253,475,231,476,226,581,248"/>
+<area shape="poly" title=" " alt="" coords="538,248,475,232,476,227,540,242"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,255,506,280"/>
 <area shape="poly" title=" " alt="" coords="539,270,507,270,507,265,539,265"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="107,305,285,345"/>
-<area shape="poly" title=" " alt="" coords="569,286,507,295,286,320,285,314,506,290,568,281"/>
+<area shape="poly" title=" " alt="" coords="539,290,507,295,392,310,286,321,285,315,391,305,506,290,538,285"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="385,533,455,559"/>
-<area shape="poly" title=" " alt="" coords="639,294,434,535,430,531,635,291"/>
+<area shape="poly" title=" " alt="" coords="611,302,433,535,429,532,606,299"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="132,5,260,31"/>
 <area shape="poly" title=" " alt="" coords="372,91,330,67,284,45,253,34,255,29,286,40,333,62,375,86"/>
 <area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="146,55,246,80"/>
@@ -323,8 +328,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a049d59831344d7a0999560e9fe9291ba" name="a049d59831344d7a0999560e9fe9291ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a049d59831344d7a0999560e9fe9291ba">&#9670;&#160;</a></span>c1Callback()</h2>
+<a id="a6726b6167f35e19b5965518fca206a95" name="a6726b6167f35e19b5965518fca206a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6726b6167f35e19b5965518fca206a95">&#9670;&#160;</a></span>c1_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,7 +338,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::c1Callback </td>
+          <td class="memname">void Communicator::c1_callback </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -349,29 +354,29 @@ Here is the caller graph for this function:</div>
 
 <p>Callback for data from C1 Teensy. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00152">152</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a049d59831344d7a0999560e9fe9291ba_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a049d59831344d7a0999560e9fe9291ba_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a049d59831344d7a0999560e9fe9291ba_icgraph" id="ad0/d02/class_communicator_a049d59831344d7a0999560e9fe9291ba_icgraph">
-<area shape="rect" title="Callback for data from C1 Teensy." alt="" coords="554,468,730,494"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a6726b6167f35e19b5965518fca206a95_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a6726b6167f35e19b5965518fca206a95_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a6726b6167f35e19b5965518fca206a95_icgraph" id="ad0/d02/class_communicator_a6726b6167f35e19b5965518fca206a95_icgraph">
+<area shape="rect" title="Callback for data from C1 Teensy." alt="" coords="554,468,735,494"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="348,97,491,137"/>
-<area shape="poly" title=" " alt="" coords="625,456,574,358,504,237,435,139,439,136,509,234,579,355,630,453"/>
+<area shape="poly" title=" " alt="" coords="627,456,575,358,504,237,435,139,439,136,509,234,580,355,632,453"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="117,203,275,244"/>
-<area shape="poly" title=" " alt="" coords="621,457,573,397,541,364,505,336,448,304,388,278,274,243,276,238,389,273,450,299,508,332,544,360,577,393,625,453"/>
+<area shape="poly" title=" " alt="" coords="623,457,574,396,541,363,505,335,448,303,387,277,274,242,276,237,389,272,450,298,508,331,545,359,578,392,627,453"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="137,268,255,294"/>
-<area shape="poly" title=" " alt="" coords="612,460,564,423,505,386,446,358,398,340,284,307,248,297,250,292,286,302,399,335,448,353,508,381,567,418,616,456"/>
+<area shape="poly" title=" " alt="" coords="614,460,565,422,505,385,446,357,398,340,284,307,248,297,250,292,286,302,399,335,448,352,508,380,568,418,618,456"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="124,317,268,343"/>
-<area shape="poly" title=" " alt="" coords="590,465,453,415,284,358,245,346,246,341,286,353,454,410,592,460"/>
+<area shape="poly" title=" " alt="" coords="592,465,453,415,284,358,245,346,246,341,286,353,455,410,593,460"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="134,645,258,671"/>
-<area shape="poly" title=" " alt="" coords="565,500,452,535,392,560,334,590,320,601,311,612,302,624,286,635,259,647,257,642,284,631,298,620,307,609,317,597,332,585,389,555,450,530,563,495"/>
+<area shape="poly" title=" " alt="" coords="566,500,453,535,392,560,334,590,320,601,311,612,302,624,286,635,259,647,257,642,284,631,298,620,307,609,317,597,332,585,390,555,451,530,564,495"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,676,475,702"/>
-<area shape="poly" title=" " alt="" coords="622,507,572,564,508,627,442,678,439,673,505,623,568,560,618,504"/>
+<area shape="poly" title=" " alt="" coords="624,507,573,564,508,627,442,678,439,673,505,623,569,560,620,504"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,789,506,815"/>
-<area shape="poly" title=" " alt="" coords="630,509,581,603,547,660,508,716,472,758,438,791,434,787,468,754,504,713,542,657,576,600,626,506"/>
+<area shape="poly" title=" " alt="" coords="633,509,582,603,547,660,508,716,472,758,438,791,434,787,468,754,504,713,543,657,578,600,628,506"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="124,695,268,736"/>
-<area shape="poly" title=" " alt="" coords="617,506,568,548,508,590,286,686,257,697,255,692,284,681,505,585,565,543,614,502"/>
+<area shape="poly" title=" " alt="" coords="619,506,569,548,508,590,286,686,257,697,255,692,284,681,505,585,566,543,616,502"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="385,468,455,494"/>
 <area shape="poly" title=" " alt="" coords="539,484,455,484,455,478,539,478"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="132,5,260,31"/>
@@ -438,38 +443,40 @@ Here is the caller graph for this function:</div>
 
 <p>Initializes the CAN bus. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00128">128</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d02/class_communicator_a150bab96b93c2f5ecf51070ceda61240_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a150bab96b93c2f5ecf51070ceda61240_cgraph" alt=""/></div>
 <map name="ad0/d02/class_communicator_a150bab96b93c2f5ecf51070ceda61240_cgraph" id="ad0/d02/class_communicator_a150bab96b93c2f5ecf51070ceda61240_cgraph">
-<area shape="rect" title="Initializes the CAN bus." alt="" coords="5,129,134,155"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="182,122,325,163"/>
-<area shape="poly" title=" " alt="" coords="134,140,166,140,166,145,134,145"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3a46afd7d8b65ad4a2c914f6274cfd8" title="Callback from inversor, for alive signal and data." alt="" coords="375,5,586,31"/>
-<area shape="poly" title=" " alt="" coords="271,120,314,79,342,58,372,40,385,34,387,39,374,45,345,62,318,83,275,124"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a049d59831344d7a0999560e9fe9291ba" title="Callback for data from C1 Teensy." alt="" coords="393,55,568,80"/>
-<area shape="poly" title=" " alt="" coords="297,119,372,89,396,82,398,87,374,94,299,124"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca" title="Callback for message from AS CU." alt="" coords="393,104,568,130"/>
-<area shape="poly" title=" " alt="" coords="325,132,377,126,378,131,325,137"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a97f28d0b59b88e5b80f9a8d87f7ad18a" title="Callback for RES activation." alt="" coords="373,253,588,279"/>
-<area shape="poly" title=" " alt="" coords="275,161,318,201,345,221,374,238,391,246,389,250,372,243,342,226,315,205,272,165"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859" title="Callback RES default callback." alt="" coords="376,203,586,228"/>
-<area shape="poly" title=" " alt="" coords="300,161,374,189,398,196,396,201,372,194,299,165"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#abfd5d2ea20261f952547b1d1900d12ab" title="Callback for steering actuator information." alt="" coords="377,153,584,179"/>
-<area shape="poly" title=" " alt="" coords="325,147,362,151,361,156,325,152"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="687,128,776,154"/>
-<area shape="poly" title=" " alt="" coords="559,29,589,40,654,76,705,116,702,120,651,81,587,45,557,34"/>
-<area shape="poly" title=" " alt="" coords="569,123,671,132,671,138,569,128"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="662,250,801,291"/>
-<area shape="poly" title=" " alt="" coords="589,265,646,266,646,271,589,271"/>
-<area shape="poly" title=" " alt="" coords="547,199,588,189,681,157,683,162,589,194,548,205"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc" title="Processes the go signal." alt="" coords="636,200,827,226"/>
-<area shape="poly" title=" " alt="" coords="586,212,621,211,621,217,586,217"/>
-<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="875,200,970,226"/>
-<area shape="poly" title=" " alt="" coords="827,210,859,210,859,216,827,216"/>
-<area shape="poly" title=" " alt="" coords="584,153,671,144,672,149,585,158"/>
+<area shape="rect" title="Initializes the CAN bus." alt="" coords="5,149,134,175"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="182,141,325,182"/>
+<area shape="poly" title=" " alt="" coords="134,159,166,159,166,164,134,164"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc" title="Callback from inversor, for alive signal and data." alt="" coords="383,5,544,46"/>
+<area shape="poly" title=" " alt="" coords="272,139,315,97,372,55,380,51,383,55,374,60,319,101,276,143"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a6726b6167f35e19b5965518fca206a95" title="Callback for data from C1 Teensy." alt="" coords="373,70,553,96"/>
+<area shape="poly" title=" " alt="" coords="295,138,372,105,391,98,393,103,374,109,297,143"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a6e76ba59f478d3957c757b4cd211935b" title="Callback for message from AS CU." alt="" coords="373,120,553,145"/>
+<area shape="poly" title=" " alt="" coords="325,149,357,145,358,150,326,154"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#ade6c8ad4a457cda4b149c0fa44581002" title="Callback for RES activation." alt="" coords="380,300,547,341"/>
+<area shape="poly" title=" " alt="" coords="272,181,315,232,343,260,375,285,384,290,381,295,371,289,340,264,311,236,268,184"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a42cf4c62a4ff6b22f9c0151f60ce53b2" title="Callback RES default callback." alt="" coords="381,235,546,275"/>
+<area shape="poly" title=" " alt="" coords="294,180,374,219,390,226,388,231,372,224,292,185"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a04694b4fb21ef693a32ec31a13cd3127" title="Callback for steering actuator information." alt="" coords="385,169,542,210"/>
+<area shape="poly" title=" " alt="" coords="326,169,369,174,369,180,325,174"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="601,13,775,39"/>
+<area shape="poly" title=" " alt="" coords="544,23,586,23,586,28,544,28"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="643,149,733,175"/>
+<area shape="poly" title=" " alt="" coords="531,44,555,55,615,96,663,136,660,140,612,100,552,60,529,49"/>
+<area shape="poly" title=" " alt="" coords="554,141,628,151,627,157,553,147"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="618,300,758,341"/>
+<area shape="poly" title=" " alt="" coords="547,318,603,318,603,323,547,323"/>
+<area shape="poly" title=" " alt="" coords="521,232,552,219,644,179,646,184,554,224,523,236"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732" title="Processes the go signal." alt="" coords="619,235,757,275"/>
+<area shape="poly" title=" " alt="" coords="546,252,604,252,604,258,546,258"/>
+<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="823,242,918,268"/>
+<area shape="poly" title=" " alt="" coords="757,252,807,252,807,258,757,258"/>
+<area shape="poly" title=" " alt="" coords="542,177,627,166,628,172,543,183"/>
 </map>
 </div>
 <div class="dynheader">
@@ -511,36 +518,38 @@ Here is the caller graph for this function:</div>
 
 <p>Parses the message received from the CAN bus. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00257">257</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00248">248</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d02/class_communicator_a39af6c0700f1e9b5df6b63c9322bdcb6_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a39af6c0700f1e9b5df6b63c9322bdcb6_cgraph" alt=""/></div>
 <map name="ad0/d02/class_communicator_a39af6c0700f1e9b5df6b63c9322bdcb6_cgraph" id="ad0/d02/class_communicator_a39af6c0700f1e9b5df6b63c9322bdcb6_cgraph">
-<area shape="rect" title="Parses the message received from the CAN bus." alt="" coords="5,122,149,163"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3a46afd7d8b65ad4a2c914f6274cfd8" title="Callback from inversor, for alive signal and data." alt="" coords="199,5,410,31"/>
-<area shape="poly" title=" " alt="" coords="95,120,138,79,166,58,195,40,208,34,211,39,198,45,169,62,141,83,99,124"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a049d59831344d7a0999560e9fe9291ba" title="Callback for data from C1 Teensy." alt="" coords="217,55,392,80"/>
-<area shape="poly" title=" " alt="" coords="121,119,196,89,220,82,221,87,198,94,123,124"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca" title="Callback for message from AS CU." alt="" coords="217,104,392,130"/>
-<area shape="poly" title=" " alt="" coords="149,132,201,126,202,131,149,137"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a97f28d0b59b88e5b80f9a8d87f7ad18a" title="Callback for RES activation." alt="" coords="197,253,412,279"/>
-<area shape="poly" title=" " alt="" coords="99,161,142,201,169,221,198,238,214,246,212,250,195,243,166,226,139,205,95,165"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859" title="Callback RES default callback." alt="" coords="199,203,410,228"/>
-<area shape="poly" title=" " alt="" coords="124,161,198,189,221,196,220,201,196,194,122,165"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#abfd5d2ea20261f952547b1d1900d12ab" title="Callback for steering actuator information." alt="" coords="201,153,408,179"/>
-<area shape="poly" title=" " alt="" coords="149,147,185,151,185,156,149,152"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="511,128,600,154"/>
-<area shape="poly" title=" " alt="" coords="383,29,413,40,477,76,529,116,526,120,474,81,411,45,381,34"/>
-<area shape="poly" title=" " alt="" coords="393,123,495,132,494,138,392,128"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="486,250,625,291"/>
-<area shape="poly" title=" " alt="" coords="412,265,470,266,470,271,412,271"/>
-<area shape="poly" title=" " alt="" coords="371,199,411,189,505,157,506,162,413,194,372,205"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc" title="Processes the go signal." alt="" coords="460,200,650,226"/>
-<area shape="poly" title=" " alt="" coords="410,212,444,211,444,217,410,217"/>
-<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="698,200,794,226"/>
-<area shape="poly" title=" " alt="" coords="651,210,683,210,683,216,651,216"/>
-<area shape="poly" title=" " alt="" coords="408,153,495,144,495,149,409,158"/>
+<area shape="rect" title="Parses the message received from the CAN bus." alt="" coords="5,141,149,182"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc" title="Callback from inversor, for alive signal and data." alt="" coords="206,5,368,46"/>
+<area shape="poly" title=" " alt="" coords="96,139,139,97,195,55,204,51,206,55,198,60,142,101,99,143"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a6726b6167f35e19b5965518fca206a95" title="Callback for data from C1 Teensy." alt="" coords="197,70,377,96"/>
+<area shape="poly" title=" " alt="" coords="118,138,196,105,215,98,217,103,198,109,120,143"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a6e76ba59f478d3957c757b4cd211935b" title="Callback for message from AS CU." alt="" coords="197,120,377,145"/>
+<area shape="poly" title=" " alt="" coords="149,149,180,145,181,150,149,154"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#ade6c8ad4a457cda4b149c0fa44581002" title="Callback for RES activation." alt="" coords="203,300,371,341"/>
+<area shape="poly" title=" " alt="" coords="95,181,138,232,167,260,198,285,207,290,204,295,195,289,163,264,134,236,91,184"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a42cf4c62a4ff6b22f9c0151f60ce53b2" title="Callback RES default callback." alt="" coords="204,235,370,275"/>
+<area shape="poly" title=" " alt="" coords="118,180,198,219,214,226,212,231,196,224,116,185"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a04694b4fb21ef693a32ec31a13cd3127" title="Callback for steering actuator information." alt="" coords="208,169,366,210"/>
+<area shape="poly" title=" " alt="" coords="149,169,193,174,192,180,149,174"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="425,13,598,39"/>
+<area shape="poly" title=" " alt="" coords="368,23,409,23,409,28,368,28"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="467,149,556,175"/>
+<area shape="poly" title=" " alt="" coords="355,44,378,55,439,96,487,136,484,140,435,100,376,60,353,49"/>
+<area shape="poly" title=" " alt="" coords="378,141,452,151,451,157,377,147"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="442,300,581,341"/>
+<area shape="poly" title=" " alt="" coords="371,318,426,318,426,323,371,323"/>
+<area shape="poly" title=" " alt="" coords="345,232,376,219,467,179,469,184,378,224,347,236"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732" title="Processes the go signal." alt="" coords="443,235,580,275"/>
+<area shape="poly" title=" " alt="" coords="370,252,427,252,427,258,370,258"/>
+<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="646,242,742,268"/>
+<area shape="poly" title=" " alt="" coords="581,252,631,252,631,258,581,258"/>
+<area shape="poly" title=" " alt="" coords="366,177,451,166,452,172,366,183"/>
 </map>
 </div>
 <div class="dynheader">
@@ -568,8 +577,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aa3854d96bc369d26c7de8864369a98ca" name="aa3854d96bc369d26c7de8864369a98ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3854d96bc369d26c7de8864369a98ca">&#9670;&#160;</a></span>pcCallback()</h2>
+<a id="a6e76ba59f478d3957c757b4cd211935b" name="a6e76ba59f478d3957c757b4cd211935b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e76ba59f478d3957c757b4cd211935b">&#9670;&#160;</a></span>pc_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -578,7 +587,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::pcCallback </td>
+          <td class="memname">void Communicator::pc_callback </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -594,31 +603,31 @@ Here is the caller graph for this function:</div>
 
 <p>Callback for message from AS CU. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00238">238</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00231">231</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_cgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_cgraph" id="ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_cgraph">
-<area shape="rect" title="Callback for message from AS CU." alt="" coords="5,5,181,31"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="229,5,318,31"/>
-<area shape="poly" title=" " alt="" coords="181,16,213,16,213,21,181,21"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_cgraph" id="ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_cgraph">
+<area shape="rect" title="Callback for message from AS CU." alt="" coords="5,5,186,31"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="234,5,323,31"/>
+<area shape="poly" title=" " alt="" coords="186,16,218,16,218,21,186,21"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_icgraph" id="ad0/d02/class_communicator_aa3854d96bc369d26c7de8864369a98ca_icgraph">
-<area shape="rect" title="Callback for message from AS CU." alt="" coords="488,187,664,212"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_icgraph" id="ad0/d02/class_communicator_a6e76ba59f478d3957c757b4cd211935b_icgraph">
+<area shape="rect" title="Callback for message from AS CU." alt="" coords="488,187,669,212"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="290,85,433,125"/>
-<area shape="poly" title=" " alt="" coords="531,182,439,141,411,128,413,123,441,136,533,177"/>
+<area shape="poly" title=" " alt="" coords="533,182,439,141,411,128,413,123,441,136,535,177"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="283,150,440,191"/>
-<area shape="poly" title=" " alt="" coords="472,188,440,184,441,178,473,183"/>
+<area shape="poly" title=" " alt="" coords="473,188,440,183,441,178,474,183"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="290,215,433,240"/>
-<area shape="poly" title=" " alt="" coords="473,216,434,221,433,215,473,210"/>
+<area shape="poly" title=" " alt="" coords="474,216,434,221,433,216,473,210"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="300,264,424,290"/>
-<area shape="poly" title=" " alt="" coords="530,221,441,255,409,266,407,261,439,250,528,216"/>
+<area shape="poly" title=" " alt="" coords="532,221,441,255,409,266,407,261,439,250,530,216"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,5,235,31"/>
 <area shape="poly" title=" " alt="" coords="307,80,234,45,208,34,210,29,236,40,309,75"/>
 <area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,55,221,80"/>
@@ -637,6 +646,76 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="278,198,197,223,195,218,277,193"/>
 <area shape="poly" title=" " alt="" coords="275,230,196,230,196,225,275,225"/>
 <area shape="poly" title=" " alt="" coords="294,262,195,236,197,231,295,257"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abe4f0fc168203e9f3556e9d8ae6e802a" name="abe4f0fc168203e9f3556e9d8ae6e802a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4f0fc168203e9f3556e9d8ae6e802a">&#9670;&#160;</a></span>publish_debug_log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Communicator::publish_debug_log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/d9d/struct_system_data.html">SystemData</a>&#160;</td>
+          <td class="paramname"><em>system_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>state_checkup</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Publish AS Mission to CAN. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00285">285</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_cgraph" id="ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_cgraph">
+<area shape="rect" title="Publish AS Mission to CAN." alt="" coords="5,55,158,96"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="206,5,379,31"/>
+<area shape="poly" title=" " alt="" coords="157,52,227,33,229,38,159,57"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="223,55,362,96"/>
+<area shape="poly" title=" " alt="" coords="158,73,207,73,207,78,158,78"/>
+<area shape="rect" href="../../db/dac/enum__utils_8hpp.html#a7c51004dded6296bb71c6dd83c7ad4a9" title=" " alt="" coords="244,120,341,146"/>
+<area shape="poly" title=" " alt="" coords="159,94,229,113,228,118,157,99"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_icgraph" id="ad0/d02/class_communicator_abe4f0fc168203e9f3556e9d8ae6e802a_icgraph">
+<area shape="rect" title="Publish AS Mission to CAN." alt="" coords="99,5,251,46"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,13,51,39"/>
+<area shape="poly" title=" " alt="" coords="83,28,51,28,51,23,83,23"/>
 </map>
 </div>
 
@@ -668,16 +747,16 @@ Here is the caller graph for this function:</div>
 
 <p>Publish rl wheel rpm to CAN. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00296">296</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00333">333</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d02/class_communicator_ae5d412a8f03a1963c59d0c26c0f0b82c_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_ae5d412a8f03a1963c59d0c26c0f0b82c_cgraph" alt=""/></div>
 <map name="ad0/d02/class_communicator_ae5d412a8f03a1963c59d0c26c0f0b82c_cgraph" id="ad0/d02/class_communicator_ae5d412a8f03a1963c59d0c26c0f0b82c_cgraph">
 <area shape="rect" title="Publish rl wheel rpm to CAN." alt="" coords="5,27,158,68"/>
-<area shape="rect" href="../../df/d93/utils_8hpp.html#a6253519ad1a2817283408a79e18afa98" title="Function to create left wheel msg." alt="" coords="206,5,361,31"/>
+<area shape="rect" href="../../df/d93/utils_8hpp.html#a64debfb46d428531f2ce27fa92f63685" title="Function to create left wheel msg." alt="" coords="206,5,361,31"/>
 <area shape="poly" title=" " alt="" coords="158,34,190,29,191,34,159,39"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="214,55,353,96"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="214,55,353,96"/>
 <area shape="poly" title=" " alt="" coords="159,55,199,61,198,66,158,61"/>
 </map>
 </div>
@@ -710,14 +789,14 @@ Here is the call graph for this function:</div>
 
 <p>Publish AS Mission to CAN. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00289">289</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00278">278</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d02/class_communicator_a0cb8407cb7663056508998783d6db3cf_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a0cb8407cb7663056508998783d6db3cf_cgraph" alt=""/></div>
 <map name="ad0/d02/class_communicator_a0cb8407cb7663056508998783d6db3cf_cgraph" id="ad0/d02/class_communicator_a0cb8407cb7663056508998783d6db3cf_cgraph">
 <area shape="rect" title="Publish AS Mission to CAN." alt="" coords="5,5,158,46"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
 <area shape="poly" title=" " alt="" coords="158,23,190,23,190,28,158,28"/>
 </map>
 </div>
@@ -760,14 +839,14 @@ Here is the caller graph for this function:</div>
 
 <p>Publish AS State to CAN. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00281">281</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00272">272</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d02/class_communicator_aee4e8f33f420b9e3c49445a032f62185_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_aee4e8f33f420b9e3c49445a032f62185_cgraph" alt=""/></div>
 <map name="ad0/d02/class_communicator_aee4e8f33f420b9e3c49445a032f62185_cgraph" id="ad0/d02/class_communicator_aee4e8f33f420b9e3c49445a032f62185_cgraph">
 <area shape="rect" title="Publish AS State to CAN." alt="" coords="5,5,158,46"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
 <area shape="poly" title=" " alt="" coords="158,23,190,23,190,28,158,28"/>
 </map>
 </div>
@@ -784,8 +863,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a97f28d0b59b88e5b80f9a8d87f7ad18a" name="a97f28d0b59b88e5b80f9a8d87f7ad18a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97f28d0b59b88e5b80f9a8d87f7ad18a">&#9670;&#160;</a></span>resReadyCallback()</h2>
+<a id="ade6c8ad4a457cda4b149c0fa44581002" name="ade6c8ad4a457cda4b149c0fa44581002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6c8ad4a457cda4b149c0fa44581002">&#9670;&#160;</a></span>res_ready_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -794,7 +873,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::resReadyCallback </td>
+          <td class="memname">void Communicator::res_ready_callback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -809,25 +888,25 @@ Here is the caller graph for this function:</div>
 
 <p>Callback for RES activation. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00205">205</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00193">193</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_cgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_cgraph" id="ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_cgraph">
-<area shape="rect" title="Callback for RES activation." alt="" coords="5,13,221,39"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="269,5,408,46"/>
-<area shape="poly" title=" " alt="" coords="221,23,253,23,253,28,221,28"/>
+<div class="center"><img src="../../d0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_cgraph" id="ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_cgraph">
+<area shape="rect" title="Callback for RES activation." alt="" coords="5,5,173,46"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="221,5,360,46"/>
+<area shape="poly" title=" " alt="" coords="173,23,205,23,205,28,173,28"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_icgraph" id="ad0/d02/class_communicator_a97f28d0b59b88e5b80f9a8d87f7ad18a_icgraph">
-<area shape="rect" title="Callback for RES activation." alt="" coords="474,80,690,106"/>
+<div class="center"><img src="../../d0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_icgraph" id="ad0/d02/class_communicator_ade6c8ad4a457cda4b149c0fa44581002_icgraph">
+<area shape="rect" title="Callback for RES activation." alt="" coords="474,73,642,113"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="283,73,426,113"/>
-<area shape="poly" title=" " alt="" coords="459,96,427,96,427,90,459,90"/>
+<area shape="poly" title=" " alt="" coords="459,96,426,96,426,90,459,90"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,5,235,31"/>
 <area shape="poly" title=" " alt="" coords="291,69,234,45,207,34,209,29,236,40,293,64"/>
 <area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,55,221,80"/>
@@ -847,8 +926,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a51418ea43bfd1a189173cf72918f5859" name="a51418ea43bfd1a189173cf72918f5859"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51418ea43bfd1a189173cf72918f5859">&#9670;&#160;</a></span>resStateCallback()</h2>
+<a id="a42cf4c62a4ff6b22f9c0151f60ce53b2" name="a42cf4c62a4ff6b22f9c0151f60ce53b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42cf4c62a4ff6b22f9c0151f60ce53b2">&#9670;&#160;</a></span>res_state_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -857,7 +936,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::resStateCallback </td>
+          <td class="memname">void Communicator::res_state_callback </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -873,33 +952,33 @@ Here is the caller graph for this function:</div>
 
 <p>Callback RES default callback. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00170">170</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00166">166</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_cgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_cgraph" id="ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_cgraph">
-<area shape="rect" title="Callback RES default callback." alt="" coords="5,31,216,56"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc" title="Processes the go signal." alt="" coords="264,5,454,31"/>
-<area shape="poly" title=" " alt="" coords="216,30,248,27,249,32,216,35"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="314,55,404,80"/>
-<area shape="poly" title=" " alt="" coords="216,51,299,59,298,64,216,56"/>
-<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="502,5,597,31"/>
-<area shape="poly" title=" " alt="" coords="454,16,486,16,486,21,454,21"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_cgraph" id="ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_cgraph">
+<area shape="rect" title="Callback RES default callback." alt="" coords="5,35,171,75"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732" title="Processes the go signal." alt="" coords="219,5,356,46"/>
+<area shape="poly" title=" " alt="" coords="171,40,203,35,204,41,171,45"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="243,70,332,96"/>
+<area shape="poly" title=" " alt="" coords="171,64,228,72,227,77,171,69"/>
+<area shape="rect" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="404,13,499,39"/>
+<area shape="poly" title=" " alt="" coords="356,23,389,23,389,28,356,28"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_icgraph" id="ad0/d02/class_communicator_a51418ea43bfd1a189173cf72918f5859_icgraph">
-<area shape="rect" title="Callback RES default callback." alt="" coords="475,161,686,187"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_icgraph" id="ad0/d02/class_communicator_a42cf4c62a4ff6b22f9c0151f60ce53b2_icgraph">
+<area shape="rect" title="Callback RES default callback." alt="" coords="475,154,641,195"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="284,89,427,129"/>
-<area shape="poly" title=" " alt="" coords="518,159,427,132,428,127,520,154"/>
+<area shape="poly" title=" " alt="" coords="478,151,420,132,422,127,479,146"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="283,154,427,195"/>
 <area shape="poly" title=" " alt="" coords="460,177,428,177,428,172,460,172"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="283,219,427,260"/>
-<area shape="poly" title=" " alt="" coords="520,194,429,221,427,216,518,189"/>
+<area shape="poly" title=" " alt="" coords="479,202,422,221,420,216,478,197"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,5,235,31"/>
 <area shape="poly" title=" " alt="" coords="306,83,234,45,209,34,211,29,236,40,308,78"/>
 <area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,55,221,80"/>
@@ -922,11 +1001,13 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a753f046da183412f4373ad1dc9e4c67c" name="a753f046da183412f4373ad1dc9e4c67c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a753f046da183412f4373ad1dc9e4c67c">&#9670;&#160;</a></span>send_message()</h2>
+<a id="a55c912e8973aa10866ae3fd9f2df8de7" name="a55c912e8973aa10866ae3fd9f2df8de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55c912e8973aa10866ae3fd9f2df8de7">&#9670;&#160;</a></span>send_message()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -940,7 +1021,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramtype">const std::array&lt; uint8_t, N &gt; &amp;&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
@@ -973,47 +1054,50 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00304">304</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00342">342</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_a753f046da183412f4373ad1dc9e4c67c_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a753f046da183412f4373ad1dc9e4c67c_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_a753f046da183412f4373ad1dc9e4c67c_icgraph" id="ad0/d02/class_communicator_a753f046da183412f4373ad1dc9e4c67c_icgraph">
-<area shape="rect" title="Sends a message to the CAN bus." alt="" coords="738,104,877,145"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#ae5d412a8f03a1963c59d0c26c0f0b82c" title="Publish rl wheel rpm to CAN." alt="" coords="506,5,658,46"/>
-<area shape="poly" title=" " alt="" coords="759,98,689,61,656,49,658,44,691,57,761,93"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a0cb8407cb7663056508998783d6db3cf" title="Publish AS Mission to CAN." alt="" coords="506,71,658,111"/>
-<area shape="poly" title=" " alt="" coords="722,114,658,105,659,100,723,109"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aee4e8f33f420b9e3c49445a032f62185" title="Publish AS State to CAN." alt="" coords="506,136,658,177"/>
-<area shape="poly" title=" " alt="" coords="723,139,659,148,658,143,722,134"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a97f28d0b59b88e5b80f9a8d87f7ad18a" title="Callback for RES activation." alt="" coords="474,201,690,227"/>
-<area shape="poly" title=" " alt="" coords="762,155,691,191,652,203,651,198,689,186,759,151"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="332,112,377,137"/>
-<area shape="poly" title=" " alt="" coords="491,107,378,124,378,118,490,102"/>
-<area shape="poly" title=" " alt="" coords="490,146,378,130,378,125,491,141"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="283,193,426,234"/>
-<area shape="poly" title=" " alt="" coords="459,216,427,216,427,211,459,211"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,126,235,152"/>
-<area shape="poly" title=" " alt="" coords="291,189,234,165,207,155,209,150,236,161,293,184"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,176,221,201"/>
-<area shape="poly" title=" " alt="" coords="267,204,221,198,222,193,268,199"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="139,225,203,251"/>
-<area shape="poly" title=" " alt="" coords="268,228,204,236,203,231,267,222"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="119,274,223,300"/>
-<area shape="poly" title=" " alt="" coords="291,243,236,265,208,276,206,271,234,261,289,238"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,126,59,152"/>
-<area shape="poly" title=" " alt="" coords="91,142,59,142,59,136,91,136"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,225,57,251"/>
-<area shape="poly" title=" " alt="" coords="119,209,58,232,56,227,117,204"/>
-<area shape="poly" title=" " alt="" coords="123,240,57,240,57,235,123,235"/>
-<area shape="poly" title=" " alt="" coords="117,271,56,249,58,244,119,266"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a55c912e8973aa10866ae3fd9f2df8de7_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a55c912e8973aa10866ae3fd9f2df8de7_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a55c912e8973aa10866ae3fd9f2df8de7_icgraph" id="ad0/d02/class_communicator_a55c912e8973aa10866ae3fd9f2df8de7_icgraph">
+<area shape="rect" title="Sends a message to the CAN bus." alt="" coords="690,136,829,177"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abe4f0fc168203e9f3556e9d8ae6e802a" title="Publish AS Mission to CAN." alt="" coords="482,5,634,46"/>
+<area shape="poly" title=" " alt="" coords="725,127,686,93,640,61,616,49,619,44,643,57,689,89,728,123"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#ae5d412a8f03a1963c59d0c26c0f0b82c" title="Publish rl wheel rpm to CAN." alt="" coords="482,71,634,111"/>
+<area shape="poly" title=" " alt="" coords="680,133,622,115,624,109,681,128"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a0cb8407cb7663056508998783d6db3cf" title="Publish AS Mission to CAN." alt="" coords="482,136,634,177"/>
+<area shape="poly" title=" " alt="" coords="674,159,635,159,635,154,674,154"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#aee4e8f33f420b9e3c49445a032f62185" title="Publish AS State to CAN." alt="" coords="482,201,634,242"/>
+<area shape="poly" title=" " alt="" coords="681,184,624,203,622,198,680,179"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#ade6c8ad4a457cda4b149c0fa44581002" title="Callback for RES activation." alt="" coords="474,267,642,307"/>
+<area shape="poly" title=" " alt="" coords="728,189,689,223,643,256,619,268,616,264,640,251,686,219,725,185"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="332,144,377,169"/>
+<area shape="poly" title=" " alt="" coords="486,55,476,61,416,105,371,145,368,141,412,100,473,57,484,51"/>
+<area shape="poly" title=" " alt="" coords="466,159,378,159,378,154,466,154"/>
+<area shape="poly" title=" " alt="" coords="478,199,377,166,379,161,479,194"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="283,267,426,307"/>
+<area shape="poly" title=" " alt="" coords="459,290,426,290,426,284,459,284"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,200,235,225"/>
+<area shape="poly" title=" " alt="" coords="291,263,234,239,207,228,209,223,236,234,293,258"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,249,221,275"/>
+<area shape="poly" title=" " alt="" coords="267,278,221,271,222,266,268,272"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="139,298,203,324"/>
+<area shape="poly" title=" " alt="" coords="268,301,204,309,203,304,267,296"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="119,348,223,373"/>
+<area shape="poly" title=" " alt="" coords="291,316,236,339,208,350,206,345,234,334,289,311"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,200,59,225"/>
+<area shape="poly" title=" " alt="" coords="91,215,59,215,59,210,91,210"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,298,57,324"/>
+<area shape="poly" title=" " alt="" coords="119,283,58,305,56,300,117,278"/>
+<area shape="poly" title=" " alt="" coords="123,314,57,314,57,308,123,308"/>
+<area shape="poly" title=" " alt="" coords="117,344,56,322,58,317,119,339"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="abfd5d2ea20261f952547b1d1900d12ab" name="abfd5d2ea20261f952547b1d1900d12ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfd5d2ea20261f952547b1d1900d12ab">&#9670;&#160;</a></span>steeringCallback()</h2>
+<a id="a04694b4fb21ef693a32ec31a13cd3127" name="a04694b4fb21ef693a32ec31a13cd3127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04694b4fb21ef693a32ec31a13cd3127">&#9670;&#160;</a></span>steering_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1022,7 +1106,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Communicator::steeringCallback </td>
+          <td class="memname">void Communicator::steering_callback </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1037,23 +1121,23 @@ Here is the caller graph for this function:</div>
 
 <p>Callback for steering actuator information. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00252">252</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00244">244</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_cgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_cgraph" id="ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_cgraph">
-<area shape="rect" title="Callback for steering actuator information." alt="" coords="5,5,213,31"/>
-<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="261,5,350,31"/>
-<area shape="poly" title=" " alt="" coords="213,16,245,16,245,21,213,21"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_cgraph.png" border="0" usemap="#ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_cgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_cgraph" id="ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_cgraph">
+<area shape="rect" title="Callback for steering actuator information." alt="" coords="5,5,163,46"/>
+<area shape="rect" href="../../db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="211,13,300,39"/>
+<area shape="poly" title=" " alt="" coords="163,23,195,23,195,28,163,28"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_icgraph" alt=""/></div>
-<map name="ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_icgraph" id="ad0/d02/class_communicator_abfd5d2ea20261f952547b1d1900d12ab_icgraph">
-<area shape="rect" title="Callback for steering actuator information." alt="" coords="474,80,682,106"/>
+<div class="center"><img src="../../d0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_icgraph.png" border="0" usemap="#ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_icgraph" alt=""/></div>
+<map name="ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_icgraph" id="ad0/d02/class_communicator_a04694b4fb21ef693a32ec31a13cd3127_icgraph">
+<area shape="rect" title="Callback for steering actuator information." alt="" coords="474,73,632,113"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="283,73,426,113"/>
 <area shape="poly" title=" " alt="" coords="459,96,427,96,427,90,459,90"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,5,235,31"/>
@@ -1096,7 +1180,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d32/communicator_8hpp_source.html#l00046">46</a> of file <a class="el" href="../../d4/d32/communicator_8hpp_source.html">communicator.hpp</a>.</p>
 
 </div>
 </div>

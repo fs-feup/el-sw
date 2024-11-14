@@ -7,6 +7,8 @@ var communicator_settings_8hpp =
     [ "BTB_READY", "d6/d25/communicator_settings_8hpp.html#a8a2c511eec87717a988b00336087b898", null ],
     [ "C1_ID", "d6/d25/communicator_settings_8hpp.html#aafe6e2fbe02727632b4e30cf8087600b", null ],
     [ "C3_ID", "d6/d25/communicator_settings_8hpp.html#a28620754d9294974438ed5afa641b4b2", null ],
+    [ "DBG_LOG_MSG", "d6/d25/communicator_settings_8hpp.html#ab88711d0d4ec8fcdc4882803903df373", null ],
+    [ "DBG_LOG_MSG_2", "d6/d25/communicator_settings_8hpp.html#aa691071eade545862ba15ffcac346af7", null ],
     [ "DC_THRESHOLD", "d6/d25/communicator_settings_8hpp.html#a93257b1b068986c1d624144edbf54af7", null ],
     [ "DRIVING_CONTROL", "d6/d25/communicator_settings_8hpp.html#a47ef3e08da0238ba481fdb1dac284f7f", null ],
     [ "DRIVING_STATE", "d6/d25/communicator_settings_8hpp.html#af03a39267446bb99fb897b342273b18e", null ],

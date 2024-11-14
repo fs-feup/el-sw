@@ -1,17 +1,16 @@
 <map id="Communicator" name="Communicator">
-<area shape="rect" id="Node000001" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t..." alt="" coords="295,615,431,935"/>
-<area shape="rect" id="Node000002" href="$d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary." alt="" coords="305,447,422,552"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,552,366,599,361,599,361,552"/>
-<area shape="rect" id="Node000003" href="$d8/deb/struct_r2_d_logics.html" title=" " alt="" coords="5,269,137,374"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,372,151,382,222,424,291,461,288,466,219,429,149,386,134,376"/>
-<area shape="rect" id="Node000004" href="$db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="189,5,333,151"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,115,151,142,117,176,97,213,84,253,79,251,92,211,113,173,148,138,187,111"/>
-<area shape="rect" id="Node000005" href="$d3/df6/struct_failure_detection.html" title=" " alt="" coords="162,269,359,374"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="263,150,263,251,258,251,258,150"/>
-<area shape="rect" id="Node000007" href="$d3/d93/struct_digital_data.html" title=" " alt="" coords="383,259,551,384"/>
-<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="334,105,382,134,404,152,424,173,444,206,457,241,452,243,439,208,420,176,401,156,379,138,331,110"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="279,373,302,422,309,432,304,435,297,424,274,375"/>
-<area shape="rect" id="Node000006" href="$d0/df5/struct_sensors.html" title="Sensors from CAN." alt="" coords="575,269,741,374"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="581,376,565,386,438,460,435,456,562,382,578,372"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="434,385,405,434,400,431,429,382"/>
+<area shape="rect" id="Node000001" title="Class that contains definitions of typical messages to send via CAN It serves only as an example of t..." alt="" coords="315,815,458,1155"/>
+<area shape="rect" id="Node000002" href="$d0/d9d/struct_system_data.html" title="The whole model of the system: holds all the data necessary." alt="" coords="323,647,450,752"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,752,389,798,384,798,384,752"/>
+<area shape="rect" id="Node000003" href="$d8/deb/struct_r2_d_logics.html" title=" " alt="" coords="5,421,147,526"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,524,161,582,182,603,206,620,257,647,308,669,306,674,254,652,203,625,178,607,157,585,109,528"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="96,5,240,151"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="103,152,90,176,74,234,67,294,66,353,69,404,64,404,61,353,62,294,69,233,86,174,98,149"/>
+<area shape="rect" id="Node000005" href="$d3/df6/struct_failure_detection.html" title=" " alt="" coords="171,364,352,584"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="220,149,231,174,252,260,262,346,257,347,247,261,225,176,215,152"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="279,582,296,621,313,643,309,647,291,624,274,585"/>
+<area shape="rect" id="Node000006" href="$d0/df5/struct_sensors.html" title="Sensors from CAN." alt="" coords="376,421,541,526"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="445,527,411,631,406,630,440,525"/>
+<area shape="rect" id="Node000007" href="$d3/d93/struct_digital_data.html" title=" " alt="" coords="566,401,754,546"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="596,548,555,586,466,652,462,647,552,582,592,544"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="Communicator::publish_mission" name="Communicator::publish_mission">
 <area shape="rect" id="Node000001" title="Publish AS Mission to CAN." alt="" coords="5,5,158,46"/>
-<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a753f046da183412f4373ad1dc9e4c67c" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="206,5,345,46"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,23,190,23,190,28,158,28"/>
 </map>

@@ -1,10 +1,10 @@
 var struct_system_data =
 [
-    [ "digitalData", "d0/d9d/struct_system_data.html#a6e3e1d00554d630b803e0a56f5ec3c1d", null ],
-    [ "failureDetection", "d0/d9d/struct_system_data.html#a84052ad74b814d60ba88b99f58e99a64", null ],
-    [ "mission", "d0/d9d/struct_system_data.html#a77219a31afb7665bfcd6bb98bda003d1", null ],
-    [ "missionFinished", "d0/d9d/struct_system_data.html#a8340a62fe6974eacd755ac17a0c78f92", null ],
-    [ "r2dLogics", "d0/d9d/struct_system_data.html#abebfdff002ea3274238768370d85920d", null ],
-    [ "ready2Drive", "d0/d9d/struct_system_data.html#a04bff36342832ae595e87e6a217c56dd", null ],
-    [ "sensors", "d0/d9d/struct_system_data.html#a45e982b617531f80d6100542d6c628c1", null ]
+    [ "digital_data_", "d0/d9d/struct_system_data.html#a24b89cdcfcd9304e405be7a3d0a8c509", null ],
+    [ "failure_detection_", "d0/d9d/struct_system_data.html#a61d4d30966544fc57063cec0e6df8d62", null ],
+    [ "mission_", "d0/d9d/struct_system_data.html#a05c397b584d1a968e84a04f854f75487", null ],
+    [ "mission_finished_", "d0/d9d/struct_system_data.html#abfedeb2e4a282940269622f4b084e427", null ],
+    [ "r2d_logics_", "d0/d9d/struct_system_data.html#a46b9bffdccd74b3403d0f051137a7cbb", null ],
+    [ "ready_2_drive_", "d0/d9d/struct_system_data.html#a5ad78d1fe2b3e25f8fecfffdb87509c8", null ],
+    [ "sensors_", "d0/d9d/struct_system_data.html#afbf6fbc394f515489f9d1d2b5b4c6fde", null ]
 ];

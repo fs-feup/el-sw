@@ -1,92 +1,108 @@
 <map id="Metro::checkWithoutReset" name="Metro::checkWithoutReset">
-<area shape="rect" id="Node000001" title="Checks if the interval has passed without resetting the timer." alt="" coords="1559,519,1732,545"/>
-<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html#a531e435a6a3c0c1ca83f963c1c8541f3" title="Checks if the emergency sequence is complete and the vehicle can transition to AS_OFF." alt="" coords="834,469,1025,510"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1543,529,1025,498,1026,492,1543,523"/>
-<area shape="rect" id="Node000015" href="$da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="120,50,264,91"/>
-<area shape="poly" id="edge59_Node000001_Node000015" title=" " alt="" coords="1633,505,1615,453,1586,382,1548,300,1498,216,1438,136,1403,101,1367,70,1327,44,1285,25,1239,12,1191,8,662,8,553,13,445,25,265,57,264,52,444,20,553,8,662,3,1192,3,1240,7,1286,20,1329,40,1370,66,1407,97,1442,133,1502,213,1552,298,1591,380,1620,451,1638,503"/>
-<area shape="rect" id="Node000022" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="1346,569,1511,610"/>
-<area shape="poly" id="edge42_Node000001_Node000022" title=" " alt="" coords="1580,552,1509,571,1508,566,1579,547"/>
-<area shape="rect" id="Node000027" href="$d7/d1f/class_checkup_manager.html#a43ff573e094af8253c78e0aa69529d3a" title="Performs an emergency checkup." alt="" coords="831,698,1028,739"/>
-<area shape="poly" id="edge58_Node000001_Node000027" title=" " alt="" coords="1617,557,1569,590,1512,624,1409,672,1361,687,1299,701,1229,713,1157,719,1028,724,1028,718,1157,714,1228,707,1298,696,1360,682,1407,667,1509,619,1566,586,1614,552"/>
-<area shape="rect" id="Node000003" href="$d2/d46/class_a_s_state.html#a18ed9ab2d023965fe634543642114517" title="Calculates the state of the vehicle." alt="" coords="584,447,743,473"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="818,480,743,471,744,466,819,474"/>
-<area shape="rect" id="Node000020" href="$d9/d77/test__checkup_manager_8cpp.html#ad0af15f739a7c89635bb92f5341faa0b" title=" " alt="" coords="550,501,777,526"/>
-<area shape="poly" id="edge40_Node000002_Node000020" title=" " alt="" coords="818,502,777,506,777,500,818,497"/>
-<area shape="rect" id="Node000004" href="$d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="393,94,438,120"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="654,433,638,370,609,289,588,246,564,205,534,166,501,133,470,117,438,111,439,105,472,112,504,129,538,163,568,202,593,244,613,287,643,369,659,431"/>
-<area shape="rect" id="Node000005" href="$da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="113,180,271,220"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="645,435,622,399,589,355,548,312,501,276,444,248,384,228,324,215,270,208,271,202,325,210,385,223,446,243,504,271,552,308,593,352,626,396,650,432"/>
-<area shape="rect" id="Node000007" href="$da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="120,245,264,270"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="640,437,582,376,544,344,501,318,441,295,379,278,318,268,264,263,264,257,318,263,380,273,443,290,504,314,547,340,586,372,644,433"/>
-<area shape="rect" id="Node000008" href="$da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="133,294,251,320"/>
-<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="634,439,575,395,539,374,501,356,436,336,369,322,251,311,252,305,370,317,438,330,503,351,542,369,578,391,637,435"/>
-<area shape="rect" id="Node000009" href="$da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="120,343,264,369"/>
-<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="626,441,569,412,502,387,440,373,377,365,264,358,264,353,377,359,441,368,503,381,571,407,628,437"/>
-<area shape="rect" id="Node000010" href="$da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="130,442,254,468"/>
-<area shape="poly" id="edge12_Node000003_Node000010" title=" " alt="" coords="568,462,254,458,254,453,569,456"/>
-<area shape="rect" id="Node000011" href="$da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="360,143,471,169"/>
-<area shape="poly" id="edge14_Node000003_Node000011" title=" " alt="" coords="651,433,630,382,599,317,555,249,529,218,501,190,468,172,471,167,504,186,533,214,560,246,603,314,635,380,655,431"/>
-<area shape="rect" id="Node000012" href="$da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="350,649,481,690"/>
-<area shape="poly" id="edge16_Node000003_Node000012" title=" " alt="" coords="571,477,552,490,538,507,531,523,527,558,524,594,518,613,504,633,481,651,478,646,500,629,513,611,519,593,522,558,526,522,534,504,549,486,568,473"/>
-<area shape="rect" id="Node000013" href="$da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="329,714,502,740"/>
-<area shape="poly" id="edge18_Node000003_Node000013" title=" " alt="" coords="571,476,552,490,534,515,526,541,525,567,528,594,531,621,531,648,523,676,504,703,488,715,485,711,500,699,518,674,526,647,526,621,523,594,520,567,521,540,529,513,548,486,568,472"/>
-<area shape="rect" id="Node000014" href="$da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="103,492,281,532"/>
-<area shape="poly" id="edge20_Node000003_Node000014" title=" " alt="" coords="569,473,282,505,281,500,568,468"/>
-<area shape="poly" id="edge22_Node000003_Node000015" title=" " alt="" coords="657,432,647,359,636,312,621,261,601,211,575,162,542,119,501,84,474,68,445,57,382,47,320,48,265,56,264,50,320,43,383,42,446,52,476,63,504,79,546,116,579,160,606,209,627,260,642,310,652,358,663,431"/>
-<area shape="rect" id="Node000016" href="$da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="120,557,264,598"/>
-<area shape="poly" id="edge24_Node000003_Node000016" title=" " alt="" coords="592,480,551,491,503,505,265,564,263,559,502,500,550,485,591,474"/>
-<area shape="rect" id="Node000017" href="$da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="107,622,277,648"/>
-<area shape="poly" id="edge26_Node000003_Node000017" title=" " alt="" coords="571,480,552,490,537,505,529,520,520,537,504,553,449,583,390,605,331,620,278,629,277,624,330,614,388,600,447,578,501,549,516,534,524,518,532,502,549,486,568,475"/>
-<area shape="rect" id="Node000018" href="$da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="381,397,451,422"/>
-<area shape="poly" id="edge28_Node000003_Node000018" title=" " alt="" coords="582,446,451,419,452,414,583,441"/>
-<area shape="rect" id="Node000006" href="$da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,393,55,418"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="107,232,105,234,75,273,54,318,42,361,36,393,30,391,37,359,49,316,70,270,101,230,103,228"/>
-<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="109,280,104,283,79,309,60,340,38,393,33,391,55,337,75,306,101,279,106,276"/>
-<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="119,325,104,333,68,363,42,394,38,390,64,359,101,328,117,321"/>
-<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="125,376,103,383,56,399,54,394,102,377,123,371"/>
-<area shape="poly" id="edge13_Node000010_Node000006" title=" " alt="" coords="123,440,102,433,54,417,56,412,103,428,125,435"/>
-<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="352,142,295,132,229,130,195,133,163,141,132,153,104,170,81,194,63,222,50,254,41,286,34,348,33,392,28,392,28,348,36,285,45,252,58,220,77,190,101,166,130,148,161,136,195,128,229,125,295,127,353,136"/>
-<area shape="poly" id="edge17_Node000012_Node000006" title=" " alt="" coords="335,693,279,702,217,702,156,691,127,679,101,662,86,644,74,617,53,546,38,472,30,419,36,418,44,472,58,545,79,615,91,641,104,658,130,674,158,686,218,697,279,696,335,688"/>
-<area shape="poly" id="edge19_Node000013_Node000006" title=" " alt="" coords="349,746,291,754,225,754,192,749,159,741,129,728,101,709,84,687,71,654,50,569,36,481,30,419,35,418,42,480,55,568,76,652,89,684,105,705,131,723,161,736,193,744,225,749,290,748,348,740"/>
-<area shape="poly" id="edge21_Node000014_Node000006" title=" " alt="" coords="109,487,101,482,65,451,39,420,43,417,69,447,104,478,111,482"/>
-<area shape="poly" id="edge23_Node000015_Node000006" title=" " alt="" coords="131,101,105,126,84,160,67,197,46,275,36,344,34,392,29,392,31,344,41,274,62,196,79,157,101,122,127,98"/>
-<area shape="poly" id="edge25_Node000016_Node000006" title=" " alt="" coords="106,550,101,546,74,515,54,480,32,420,37,418,59,477,79,512,105,542,110,546"/>
-<area shape="poly" id="edge27_Node000017_Node000006" title=" " alt="" coords="105,615,101,611,81,589,66,563,44,508,33,456,29,419,35,418,39,456,49,507,70,561,86,586,105,607,109,611"/>
-<area shape="poly" id="edge29_Node000018_Node000005" title=" " alt="" coords="399,384,352,310,318,269,279,234,261,223,264,219,283,230,322,266,356,307,403,381"/>
-<area shape="poly" id="edge30_Node000018_Node000007" title=" " alt="" coords="393,386,345,334,314,307,280,284,256,273,258,268,282,279,317,302,348,330,397,382"/>
-<area shape="poly" id="edge31_Node000018_Node000008" title=" " alt="" coords="381,390,335,361,280,333,250,323,252,318,282,328,337,356,384,385"/>
-<area shape="poly" id="edge32_Node000018_Node000009" title=" " alt="" coords="365,400,248,372,249,367,366,395"/>
-<area shape="poly" id="edge33_Node000018_Node000010" title=" " alt="" coords="366,422,255,445,254,439,365,417"/>
-<area shape="poly" id="edge36_Node000018_Node000014" title=" " alt="" coords="380,432,282,482,255,494,253,489,280,478,377,428"/>
-<area shape="poly" id="edge37_Node000018_Node000015" title=" " alt="" coords="400,384,351,287,317,227,279,170,245,128,213,93,217,90,249,124,283,166,321,225,355,284,404,381"/>
-<area shape="poly" id="edge38_Node000018_Node000016" title=" " alt="" coords="397,436,349,491,317,520,282,546,259,559,257,554,280,542,314,516,345,487,393,433"/>
-<area shape="poly" id="edge39_Node000018_Node000017" title=" " alt="" coords="406,437,388,476,361,523,326,571,283,611,260,624,258,619,279,607,322,567,357,520,383,474,401,435"/>
-<area shape="rect" id="Node000019" href="$da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="104,393,280,418"/>
-<area shape="poly" id="edge34_Node000018_Node000019" title=" " alt="" coords="365,411,280,410,280,404,365,406"/>
-<area shape="poly" id="edge35_Node000019_Node000006" title=" " alt="" coords="88,408,55,408,55,403,88,403"/>
-<area shape="rect" id="Node000021" href="$d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="391,763,440,789"/>
-<area shape="poly" id="edge41_Node000020_Node000021" title=" " alt="" coords="570,536,552,550,535,575,528,600,527,625,529,650,532,676,531,702,523,728,504,754,490,765,474,772,441,778,440,773,472,767,487,760,500,750,518,726,525,701,526,676,524,651,522,625,522,599,530,572,548,546,567,531"/>
-<area shape="rect" id="Node000023" href="$d7/d1f/class_checkup_manager.html#aea13673f58405e59748d8baca61df4f3" title="Performs an initial checkup." alt="" coords="1086,540,1295,580"/>
-<area shape="poly" id="edge43_Node000022_Node000023" title=" " alt="" coords="1331,580,1295,576,1296,570,1331,575"/>
-<area shape="poly" id="edge50_Node000022_Node000027" title=" " alt="" coords="1370,619,1299,645,1158,681,1028,706,1027,701,1157,676,1298,640,1368,614"/>
-<area shape="rect" id="Node000030" href="$d5/d4f/test__system_diagnostics_8cpp.html#ac21d3db6320dfec155d288c14ab41ec5" title=" " alt="" coords="1082,605,1298,630"/>
-<area shape="poly" id="edge56_Node000022_Node000030" title=" " alt="" coords="1331,603,1299,607,1299,602,1331,598"/>
-<area shape="rect" id="Node000024" href="$d7/d1f/class_checkup_manager.html#a9b5b81b87d77e39901c2b5550e2a8aed" title="Performs an off checkup." alt="" coords="825,534,1034,560"/>
-<area shape="poly" id="edge44_Node000023_Node000024" title=" " alt="" coords="1070,557,1034,555,1034,549,1070,551"/>
-<area shape="rect" id="Node000026" href="$d9/d77/test__checkup_manager_8cpp.html#aadc5418e1777bcc168fc3375df7dce46" title=" " alt="" coords="835,584,1024,624"/>
-<area shape="poly" id="edge48_Node000023_Node000026" title=" " alt="" coords="1071,583,1025,591,1024,585,1070,578"/>
-<area shape="poly" id="edge45_Node000024_Node000003" title=" " alt="" coords="843,531,823,524,799,507,775,490,734,476,736,471,778,486,802,502,826,519,845,526"/>
-<area shape="rect" id="Node000025" href="$d9/d77/test__checkup_manager_8cpp.html#a27be3ebab870856632f7501493df3ff0" title=" " alt="" coords="561,560,766,600"/>
-<area shape="poly" id="edge46_Node000024_Node000025" title=" " alt="" coords="810,564,767,570,766,565,809,559"/>
-<area shape="poly" id="edge47_Node000025_Node000021" title=" " alt="" coords="591,610,570,623,552,639,542,654,535,668,530,697,525,725,517,740,504,754,473,771,441,777,440,772,471,766,501,750,513,737,520,723,525,696,530,666,537,651,548,636,567,619,588,605"/>
-<area shape="poly" id="edge49_Node000026_Node000021" title=" " alt="" coords="819,610,755,618,685,633,616,656,552,689,536,704,529,720,520,737,504,754,472,769,441,776,440,771,471,764,501,750,516,734,524,718,532,701,549,685,614,651,684,628,754,613,819,605"/>
-<area shape="poly" id="edge51_Node000027_Node000003" title=" " alt="" coords="824,690,823,688,805,663,797,637,796,612,799,586,801,562,800,537,792,514,775,490,760,478,742,471,745,466,763,474,779,486,797,511,805,536,806,562,804,587,802,612,803,636,810,661,827,685,828,686"/>
-<area shape="rect" id="Node000028" href="$d9/d77/test__checkup_manager_8cpp.html#a65c11786d98edc583387ba14a5999eb7" title=" " alt="" coords="572,763,755,789"/>
-<area shape="poly" id="edge52_Node000027_Node000028" title=" " alt="" coords="817,745,727,765,726,760,816,740"/>
-<area shape="rect" id="Node000029" href="$d9/d77/test__checkup_manager_8cpp.html#a5afd180c6692b45a5f85767d3365fd80" title=" " alt="" coords="572,698,755,739"/>
-<area shape="poly" id="edge54_Node000027_Node000029" title=" " alt="" coords="815,721,755,721,755,716,815,716"/>
-<area shape="poly" id="edge53_Node000028_Node000021" title=" " alt="" coords="557,779,441,779,441,773,557,773"/>
-<area shape="poly" id="edge55_Node000029_Node000021" title=" " alt="" coords="559,746,441,773,440,768,557,740"/>
-<area shape="rect" id="Node000031" href="$d5/d4f/test__system_diagnostics_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="905,649,954,674"/>
-<area shape="poly" id="edge57_Node000030_Node000031" title=" " alt="" coords="1096,636,955,660,954,655,1095,631"/>
+<area shape="rect" id="Node000001" title="Checks if the interval has passed without resetting the timer." alt="" coords="1548,337,1721,363"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc" title="Callback from inversor, for alive signal and data." alt="" coords="576,223,737,264"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1587,334,1545,318,1499,306,1394,287,1285,272,1072,254,882,246,738,245,738,240,882,241,1072,248,1286,267,1394,282,1500,301,1547,313,1589,329"/>
+<area shape="rect" id="Node000021" href="$da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="124,381,268,421"/>
+<area shape="poly" id="edge69_Node000001_Node000021" title=" " alt="" coords="1532,344,1356,331,1153,325,655,325,549,331,444,345,348,364,269,383,268,378,346,359,443,340,549,325,655,320,1154,320,1356,326,1532,338"/>
+<area shape="rect" id="Node000024" href="$d7/d1f/class_checkup_manager.html#a72c7e6b64cbfbea251a9d7c2c33adafd" title="Checks if the emergency sequence is complete and the vehicle can transition to AS_OFF." alt="" coords="1308,459,1500,500"/>
+<area shape="poly" id="edge37_Node000001_Node000024" title=" " alt="" coords="1598,373,1443,461,1441,456,1595,369"/>
+<area shape="rect" id="Node000028" href="$d3/df6/struct_failure_detection.html#a2dce218ec78f523302e547071e600d87" title=" " alt="" coords="1312,194,1496,235"/>
+<area shape="poly" id="edge54_Node000001_Node000028" title=" " alt="" coords="1604,329,1556,293,1498,255,1462,238,1464,233,1501,251,1559,288,1608,325"/>
+<area shape="rect" id="Node000034" href="$d7/d1f/class_checkup_manager.html#a1137db2adef0dae5c06fbbd1c86f8568" title="Performs an emergency checkup." alt="" coords="1069,359,1235,400"/>
+<area shape="poly" id="edge68_Node000001_Node000034" title=" " alt="" coords="1533,359,1236,377,1236,372,1532,354"/>
+<area shape="rect" id="Node000037" href="$d0/d02/class_communicator.html#abe4f0fc168203e9f3556e9d8ae6e802a" title="Publish AS Mission to CAN." alt="" coords="1328,749,1480,789"/>
+<area shape="poly" id="edge66_Node000001_Node000037" title=" " alt="" coords="1621,378,1419,750,1414,747,1616,375"/>
+<area shape="rect" id="Node000003" href="$d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="348,94,491,135"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="614,216,563,182,505,149,481,138,483,133,508,144,566,177,617,212"/>
+<area shape="rect" id="Node000010" href="$da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,159,475,184"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="577,221,506,198,469,187,471,182,507,193,579,215"/>
+<area shape="rect" id="Node000012" href="$da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,208,506,234"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="560,237,507,232,507,227,560,232"/>
+<area shape="rect" id="Node000013" href="$da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="107,315,285,356"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="561,263,334,306,284,317,283,312,332,301,560,257"/>
+<area shape="rect" id="Node000014" href="$da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="385,563,455,588"/>
+<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="634,278,433,564,428,561,630,275"/>
+<area shape="rect" id="Node000004" href="$d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="132,5,260,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="340,89,331,84,307,64,298,54,284,45,258,34,260,29,286,40,301,50,311,60,335,80,343,84"/>
+<area shape="rect" id="Node000006" href="$df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="146,55,246,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="332,99,246,81,247,75,333,93"/>
+<area shape="rect" id="Node000008" href="$df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="164,104,228,130"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="333,118,228,119,228,114,333,113"/>
+<area shape="rect" id="Node000009" href="$df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="144,153,248,179"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="334,137,249,157,248,151,332,132"/>
+<area shape="rect" id="Node000005" href="$d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,5,59,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="116,21,59,21,59,16,116,16"/>
+<area shape="rect" id="Node000007" href="$df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,104,57,130"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="131,87,107,94,58,111,56,106,106,89,130,82"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="148,120,57,120,57,114,148,114"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="128,151,106,145,56,128,58,123,107,140,130,146"/>
+<area shape="rect" id="Node000011" href="$da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="7,544,57,570"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="349,185,282,197,210,214,148,234,125,245,109,257,94,279,81,312,60,396,45,483,37,544,32,543,40,482,55,395,76,310,90,277,105,254,122,241,146,229,209,208,281,192,348,179"/>
+<area shape="poly" id="edge14_Node000012_Node000011" title=" " alt="" coords="318,239,194,267,142,285,108,306,86,333,68,365,55,399,46,434,37,498,36,544,30,543,32,498,41,433,50,398,63,363,81,330,105,301,140,280,193,262,317,234"/>
+<area shape="poly" id="edge16_Node000013_Node000011" title=" " alt="" coords="113,367,109,371,91,391,77,414,56,463,43,510,37,544,32,543,38,508,51,462,72,411,87,388,105,367,109,363"/>
+<area shape="poly" id="edge30_Node000014_Node000013" title=" " alt="" coords="405,549,387,510,360,462,325,413,283,371,264,359,267,354,287,367,329,410,365,459,391,508,410,547"/>
+<area shape="rect" id="Node000015" href="$da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="117,709,275,749"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="399,602,350,650,320,676,286,699,264,710,262,706,284,695,316,672,347,646,395,598"/>
+<area shape="rect" id="Node000016" href="$da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="124,773,268,799"/>
+<area shape="poly" id="edge20_Node000014_Node000016" title=" " alt="" coords="409,603,390,639,363,683,328,726,287,763,264,775,261,770,283,759,324,722,358,679,385,637,404,601"/>
+<area shape="rect" id="Node000017" href="$da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="137,823,255,848"/>
+<area shape="poly" id="edge22_Node000014_Node000017" title=" " alt="" coords="413,604,397,650,371,707,334,764,312,791,287,814,257,829,254,824,283,809,308,787,330,761,366,704,392,648,408,602"/>
+<area shape="rect" id="Node000018" href="$da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="124,445,268,471"/>
+<area shape="poly" id="edge24_Node000014_Node000018" title=" " alt="" coords="390,554,342,519,284,485,256,474,258,469,286,480,345,514,393,550"/>
+<area shape="rect" id="Node000019" href="$da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="134,495,258,520"/>
+<area shape="poly" id="edge26_Node000014_Node000019" title=" " alt="" coords="369,561,284,534,247,523,249,518,286,529,370,556"/>
+<area shape="rect" id="Node000020" href="$da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="108,544,284,570"/>
+<area shape="poly" id="edge28_Node000014_Node000020" title=" " alt="" coords="369,574,284,567,285,562,369,569"/>
+<area shape="poly" id="edge31_Node000014_Node000021" title=" " alt="" coords="398,552,350,494,319,462,284,435,264,424,266,419,286,431,322,458,354,490,403,548"/>
+<area shape="rect" id="Node000022" href="$da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="124,594,268,635"/>
+<area shape="poly" id="edge33_Node000014_Node000022" title=" " alt="" coords="370,587,269,604,268,599,369,581"/>
+<area shape="rect" id="Node000023" href="$da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="111,659,281,684"/>
+<area shape="poly" id="edge35_Node000014_Node000023" title=" " alt="" coords="385,599,338,624,286,649,251,661,249,656,284,644,336,620,382,594"/>
+<area shape="poly" id="edge19_Node000015_Node000011" title=" " alt="" coords="109,702,105,699,77,667,57,632,34,571,39,569,62,629,82,664,109,695,112,698"/>
+<area shape="poly" id="edge21_Node000016_Node000011" title=" " alt="" coords="110,767,105,763,85,740,69,715,47,660,36,608,31,570,37,570,41,607,53,658,74,712,89,737,109,759,114,763"/>
+<area shape="poly" id="edge23_Node000017_Node000011" title=" " alt="" coords="121,825,105,813,81,785,63,752,50,717,41,681,32,616,30,570,36,570,37,616,46,680,55,715,68,750,86,782,108,810,124,821"/>
+<area shape="poly" id="edge25_Node000018_Node000011" title=" " alt="" coords="117,480,108,484,71,515,45,545,41,542,67,511,105,480,115,475"/>
+<area shape="poly" id="edge27_Node000019_Node000011" title=" " alt="" coords="130,527,107,534,58,551,56,546,106,529,128,522"/>
+<area shape="poly" id="edge29_Node000020_Node000011" title=" " alt="" coords="92,560,57,560,57,554,92,554"/>
+<area shape="poly" id="edge32_Node000021_Node000011" title=" " alt="" coords="112,432,108,435,84,461,64,492,40,545,35,543,59,489,79,458,105,431,109,428"/>
+<area shape="poly" id="edge34_Node000022_Node000011" title=" " alt="" coords="121,591,56,568,58,563,122,586"/>
+<area shape="poly" id="edge36_Node000023_Node000011" title=" " alt="" coords="115,654,105,648,83,630,64,609,38,571,43,568,69,606,87,627,108,644,118,650"/>
+<area shape="rect" id="Node000025" href="$d2/d46/class_a_s_state.html#a813d8386653a4884bd4a8d986fc57d56" title="Calculates the state of the vehicle." alt="" coords="592,505,721,545"/>
+<area shape="poly" id="edge38_Node000024_Node000025" title=" " alt="" coords="1293,489,721,524,721,518,1293,484"/>
+<area shape="poly" id="edge45_Node000025_Node000010" title=" " alt="" coords="639,491,568,321,531,240,505,197,475,182,477,177,508,194,535,238,573,319,644,489"/>
+<area shape="poly" id="edge48_Node000025_Node000012" title=" " alt="" coords="628,493,429,235,433,232,632,490"/>
+<area shape="poly" id="edge49_Node000025_Node000013" title=" " alt="" coords="616,497,565,462,505,429,450,406,392,386,285,357,286,351,394,381,452,401,507,424,567,457,619,493"/>
+<area shape="poly" id="edge53_Node000025_Node000014" title=" " alt="" coords="578,544,456,571,455,565,576,539"/>
+<area shape="poly" id="edge40_Node000025_Node000015" title=" " alt="" coords="633,559,580,617,546,647,508,671,450,696,388,712,329,723,275,729,275,723,328,718,387,707,448,691,505,666,542,643,576,613,629,555"/>
+<area shape="poly" id="edge41_Node000025_Node000016" title=" " alt="" coords="642,560,620,600,591,645,553,689,508,726,449,755,386,773,323,784,268,789,268,783,323,779,384,768,447,750,505,721,549,685,586,641,616,597,637,558"/>
+<area shape="poly" id="edge42_Node000025_Node000017" title=" " alt="" coords="648,561,630,613,601,674,561,735,536,762,508,786,478,803,446,817,378,835,313,842,256,842,256,837,312,836,377,829,444,812,476,799,505,781,532,759,557,732,597,671,625,611,643,559"/>
+<area shape="poly" id="edge43_Node000025_Node000018" title=" " alt="" coords="577,512,506,499,268,468,268,463,507,494,578,507"/>
+<area shape="poly" id="edge44_Node000025_Node000019" title=" " alt="" coords="577,525,259,512,259,507,577,519"/>
+<area shape="poly" id="edge50_Node000025_Node000021" title=" " alt="" coords="594,501,506,469,381,437,268,415,269,410,382,432,507,464,595,496"/>
+<area shape="poly" id="edge51_Node000025_Node000022" title=" " alt="" coords="613,556,563,582,507,603,445,616,382,622,268,622,268,617,381,616,444,610,506,598,561,577,610,551"/>
+<area shape="poly" id="edge52_Node000025_Node000023" title=" " alt="" coords="622,557,570,595,507,627,450,646,391,658,281,671,281,666,390,653,449,640,505,622,567,590,618,553"/>
+<area shape="rect" id="Node000026" href="$d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="397,931,442,956"/>
+<area shape="poly" id="edge39_Node000025_Node000026" title=" " alt="" coords="646,561,577,764,538,865,521,900,508,920,493,931,476,938,443,945,442,940,474,933,490,926,504,916,517,898,533,863,572,763,641,559"/>
+<area shape="rect" id="Node000027" href="$da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="354,866,485,907"/>
+<area shape="poly" id="edge46_Node000025_Node000027" title=" " alt="" coords="650,561,633,622,605,698,564,778,538,816,508,849,483,867,480,863,505,846,534,812,559,775,600,696,628,620,645,560"/>
+<area shape="poly" id="edge47_Node000027_Node000011" title=" " alt="" coords="339,906,282,911,220,909,159,894,131,881,105,863,88,841,74,807,53,721,39,633,32,570,37,570,44,632,58,720,79,806,93,838,109,859,133,876,161,889,221,903,282,906,338,901"/>
+<area shape="rect" id="Node000029" href="$d7/d1f/class_checkup_manager.html#a242bb7e17395cd65fdc31a8a2c467336" title="Performs an initial checkup." alt="" coords="1073,129,1231,169"/>
+<area shape="poly" id="edge55_Node000028_Node000029" title=" " alt="" coords="1307,192,1231,172,1232,167,1309,187"/>
+<area shape="poly" id="edge62_Node000028_Node000034" title=" " alt="" coords="1360,246,1186,361,1183,357,1357,241"/>
+<area shape="rect" id="Node000035" href="$d5/d4f/test__system_diagnostics_8cpp.html#ac21d3db6320dfec155d288c14ab41ec5" title=" " alt="" coords="1044,201,1260,227"/>
+<area shape="poly" id="edge64_Node000028_Node000035" title=" " alt="" coords="1297,217,1261,217,1261,212,1297,212"/>
+<area shape="rect" id="Node000030" href="$d7/d1f/class_checkup_manager.html#a17d80bac83cbb3f7ea20b8e5a4b6df8a" title="Performs an off checkup." alt="" coords="818,129,985,169"/>
+<area shape="poly" id="edge56_Node000029_Node000030" title=" " alt="" coords="1058,152,985,152,985,146,1058,146"/>
+<area shape="rect" id="Node000033" href="$d9/d77/test__checkup_manager_8cpp.html#aadc5418e1777bcc168fc3375df7dce46" title=" " alt="" coords="807,46,996,87"/>
+<area shape="poly" id="edge60_Node000029_Node000033" title=" " alt="" coords="1073,126,965,90,967,85,1075,121"/>
+<area shape="poly" id="edge57_Node000030_Node000025" title=" " alt="" coords="822,180,809,191,781,240,740,331,668,505,664,503,735,328,776,237,805,187,819,175"/>
+<area shape="rect" id="Node000031" href="$d9/d77/test__checkup_manager_8cpp.html#a27be3ebab870856632f7501493df3ff0" title=" " alt="" coords="554,117,759,157"/>
+<area shape="poly" id="edge58_Node000030_Node000031" title=" " alt="" coords="802,147,759,145,759,139,803,141"/>
+<area shape="rect" id="Node000032" href="$d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="395,44,444,70"/>
+<area shape="poly" id="edge59_Node000031_Node000032" title=" " alt="" coords="585,113,505,85,444,66,445,61,507,80,587,108"/>
+<area shape="poly" id="edge61_Node000033_Node000032" title=" " alt="" coords="791,67,445,60,445,55,791,61"/>
+<area shape="poly" id="edge63_Node000034_Node000025" title=" " alt="" coords="1066,407,722,509,720,504,1064,402"/>
+<area shape="rect" id="Node000036" href="$d5/d4f/test__system_diagnostics_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="877,201,926,227"/>
+<area shape="poly" id="edge65_Node000035_Node000036" title=" " alt="" coords="1029,217,927,217,927,212,1029,212"/>
+<area shape="poly" id="edge67_Node000037_Node000026" title=" " alt="" coords="1313,788,443,942,442,937,1312,782"/>
 </map>

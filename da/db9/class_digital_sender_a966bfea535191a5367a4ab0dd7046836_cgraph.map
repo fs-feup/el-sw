@@ -1,0 +1,9 @@
+<map id="DigitalSender::enter_driving_state" name="DigitalSender::enter_driving_state">
+<area shape="rect" id="Node000001" title="ASSI LEDs yellow flashing, ebs valves deactivated, sdc closed." alt="" coords="5,47,139,88"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#aeba7623043aeabfc9c4340cf5185fbca" title="Closes the SDC in Master and SDC Logic." alt="" coords="201,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,49,209,32,211,38,140,54"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#ac37de32ae8c5d6aff580f8ee1e09dff1" title="Deactivates the solenoid EBS valves." alt="" coords="187,55,379,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,65,171,65,171,70,139,70"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="238,104,328,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,81,224,100,222,106,139,86"/>
+</map>

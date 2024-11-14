@@ -16,12 +16,15 @@ var searchData=
   ['as_5fcu_5fid_13',['AS_CU_ID',['../d6/d25/communicator_settings_8hpp.html#a59b5dcf623b44583ac8b4465a6aab582',1,'communicatorSettings.hpp']]],
   ['as_5fstate_14',['as_state',['../d0/d84/master_2src_2main_8cpp.html#a39aea26143b601c4c591d01356226729',1,'as_state:&#160;main.cpp'],['../da/dad/test__integration_8cpp.html#a39aea26143b601c4c591d01356226729',1,'as_state:&#160;test_integration.cpp']]],
   ['asemergencytimer_15',['asemergencytimer',['../db/dac/can_8cpp.html#a39a28561692018c2d98d82fd7ac1dc6a',1,'ASEmergencyTimer:&#160;can.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#a39a28561692018c2d98d82fd7ac1dc6a',1,'ASEmergencyTimer:&#160;can.cpp']]],
-  ['asms_5fon_16',['asms_on',['../d3/d93/struct_digital_data.html#a458cfb2673bc5812205e23636798ef7a',1,'DigitalData']]],
-  ['asready_17',['asready',['../d1/dea/integration__test_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../df/d60/statemachine_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../db/dac/can_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp']]],
-  ['asstatus_18',['ASStatus',['../db/dac/can_8cpp.html#a5400e39da213eb883689a2a76f6ffb64',1,'can.cpp']]],
-  ['average_19',['average',['../d8/d6a/message_8cpp.html#a199a8601ca4427e27601aecdbed4c2ca',1,'message.cpp']]],
-  ['avgbuffer1_20',['avgbuffer1',['../d1/dc2/c1_2src_2main_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;main.cpp'],['../da/dd7/apps_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;apps.cpp']]],
-  ['avgbuffer2_21',['avgBuffer2',['../da/dd7/apps_8cpp.html#abf01a0e91d9f4e7632c1a1de337f5723',1,'apps.cpp']]],
-  ['avgtemp_22',['avgTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a76e9789db2776a2239445cf0299b5721',1,'main.cpp']]],
-  ['avgtmp_23',['avgtmp',['../d1/dc2/c1_2src_2main_8cpp.html#a1af37ad43df0882b80ae409eb8fc5926',1,'main.cpp']]]
+  ['asms_5fin_5fpin_16',['ASMS_IN_PIN',['../d6/db3/digital_settings_8hpp.html#a29157794eacf4851ee5442c7954c6a8d',1,'digitalSettings.hpp']]],
+  ['asms_5fon_5f_17',['asms_on_',['../d3/d93/struct_digital_data.html#a2a159e7ae61f0017d6b49778ad1c7edc',1,'DigitalData']]],
+  ['asready_18',['asready',['../d1/dea/integration__test_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../df/d60/statemachine_8hpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../db/dac/can_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp'],['../d1/d12/c3_2src_2main_8cpp.html#a19a12421c800ef51276bc758402294fc',1,'ASReady:&#160;main.cpp']]],
+  ['assi_5fblue_5fpin_19',['ASSI_BLUE_PIN',['../d6/db3/digital_settings_8hpp.html#a99e5c7f4a404f01ad3dd48b067eaa2a2',1,'digitalSettings.hpp']]],
+  ['assi_5fyellow_5fpin_20',['ASSI_YELLOW_PIN',['../d6/db3/digital_settings_8hpp.html#ae89c6bae760914131177dd543172dcf9',1,'digitalSettings.hpp']]],
+  ['asstatus_21',['ASStatus',['../db/dac/can_8cpp.html#a5400e39da213eb883689a2a76f6ffb64',1,'can.cpp']]],
+  ['average_22',['average',['../d8/d6a/message_8cpp.html#a199a8601ca4427e27601aecdbed4c2ca',1,'message.cpp']]],
+  ['avgbuffer1_23',['avgbuffer1',['../d1/dc2/c1_2src_2main_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;main.cpp'],['../da/dd7/apps_8cpp.html#afe1c7350e6e46ff83ef3fc13888bd8d8',1,'avgBuffer1:&#160;apps.cpp']]],
+  ['avgbuffer2_24',['avgBuffer2',['../da/dd7/apps_8cpp.html#abf01a0e91d9f4e7632c1a1de337f5723',1,'apps.cpp']]],
+  ['avgtemp_25',['avgTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#a76e9789db2776a2239445cf0299b5721',1,'main.cpp']]],
+  ['avgtmp_26',['avgtmp',['../d1/dc2/c1_2src_2main_8cpp.html#a1af37ad43df0882b80ae409eb8fc5926',1,'main.cpp']]]
 ];

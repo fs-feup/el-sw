@@ -1,0 +1,9 @@
+<map id="Communicator::publish_debug_log" name="Communicator::publish_debug_log">
+<area shape="rect" id="Node000001" title="Publish AS Mission to CAN." alt="" coords="5,55,158,96"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="206,5,379,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,52,227,33,229,38,159,57"/>
+<area shape="rect" id="Node000003" href="$d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="223,55,362,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,73,207,73,207,78,158,78"/>
+<area shape="rect" id="Node000004" href="$db/dac/enum__utils_8hpp.html#a7c51004dded6296bb71c6dd83c7ad4a9" title=" " alt="" coords="244,120,341,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="159,94,229,113,228,118,157,99"/>
+</map>

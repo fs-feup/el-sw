@@ -1,0 +1,9 @@
+<map id="DigitalSender::enter_emergency_state" name="DigitalSender::enter_emergency_state">
+<area shape="rect" id="Node000001" title="ASSI LEDs blue flashing, sdc open and buzzer ringing." alt="" coords="5,47,139,88"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#ab0cfa966c0a5e7c9538761dab485e4e2" title="Activates the solenoid EBS valves." alt="" coords="187,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,49,205,33,206,38,140,54"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#add14481fc3edc2d052e8bc20dc5e7845" title="Opens the SDC in Master and SDC Logic." alt="" coords="196,55,356,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,65,180,65,180,70,139,70"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="231,104,321,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,81,217,100,215,105,139,86"/>
+</map>

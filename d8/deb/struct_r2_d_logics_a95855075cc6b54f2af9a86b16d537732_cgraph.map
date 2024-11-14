@@ -1,0 +1,5 @@
+<map id="R2DLogics::process_go_signal" name="R2DLogics::process_go_signal">
+<area shape="rect" id="Node000001" title="Processes the go signal." alt="" coords="5,5,143,46"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="191,13,286,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,23,175,23,175,28,143,28"/>
+</map>

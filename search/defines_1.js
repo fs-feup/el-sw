@@ -23,8 +23,6 @@ var searchData=
   ['apps_5fread_5fperiod_5fms_20',['APPS_READ_PERIOD_MS',['../df/d60/statemachine_8hpp.html#a440488361fc9dad4d2c6f5fe149a8a4a',1,'statemachine.hpp']]],
   ['as_5fready_5fpin_21',['as_ready_pin',['../d1/dea/integration__test_8hpp.html#afc1b60ca34640dec50a7bbc86efa18e0',1,'AS_READY_PIN:&#160;integration_test.hpp'],['../dd/d27/test___c3_8cpp.html#afc1b60ca34640dec50a7bbc86efa18e0',1,'AS_READY_PIN:&#160;test_C3.cpp']]],
   ['asbuzzer_22',['ASBuzzer',['../df/d60/statemachine_8hpp.html#a9baf76e6e9759746d5afaf46f8cb10a5',1,'statemachine.hpp']]],
-  ['asms_5fin_5fpin_23',['asms_in_pin',['../d6/db3/digital_settings_8hpp.html#a0a16fa5264538aa2b4e20397aa609079',1,'ASMS_IN_PIN:&#160;digitalSettings.hpp'],['../dd/d46/test__digital_receiver_8cpp.html#a0a16fa5264538aa2b4e20397aa609079',1,'ASMS_IN_PIN:&#160;test_digitalReceiver.cpp']]],
-  ['assi_5fblue_5fpin_24',['ASSI_BLUE_PIN',['../d6/db3/digital_settings_8hpp.html#aac80174e905fb6ec19e3c2c7f23d2f31',1,'digitalSettings.hpp']]],
-  ['assi_5fyellow_5fpin_25',['ASSI_YELLOW_PIN',['../d6/db3/digital_settings_8hpp.html#af1b445f1153f495223e58a012da7982c',1,'digitalSettings.hpp']]],
-  ['avg_5fsamples_26',['avg_samples',['../d1/dc2/c1_2src_2main_8cpp.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;main.cpp'],['../da/d81/apps_8h.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;apps.h']]]
+  ['asms_5fin_5fpin_23',['ASMS_IN_PIN',['../dd/d46/test__digital_receiver_8cpp.html#a0a16fa5264538aa2b4e20397aa609079',1,'test_digitalReceiver.cpp']]],
+  ['avg_5fsamples_24',['avg_samples',['../d1/dc2/c1_2src_2main_8cpp.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;main.cpp'],['../da/d81/apps_8h.html#ae2ccd5787498d4d76fccbb64a06b8ea2',1,'AVG_SAMPLES:&#160;apps.h']]]
 ];

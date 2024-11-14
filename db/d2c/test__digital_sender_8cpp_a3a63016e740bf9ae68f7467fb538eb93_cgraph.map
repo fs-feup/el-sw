@@ -1,7 +1,5 @@
 <map id="test_openSDC_then_closeSDC" name="test_openSDC_then_closeSDC">
-<area shape="rect" id="Node000001" title="Test the SDC Functions PROTOCOL:" alt="" coords="5,31,208,56"/>
-<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#a4bacfe08c69bb34cca2617bc27f2f49b" title="Closes the SDC in Master and SDC Logic." alt="" coords="256,5,418,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,30,240,26,241,31,208,35"/>
-<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#ac05508d737d1a16851d65c9a3219bab0" title="Opens the SDC in Master and SDC Logic." alt="" coords="257,55,417,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,51,242,55,241,60,207,57"/>
+<area shape="rect" id="Node000001" title="Test the SDC Functions PROTOCOL:" alt="" coords="5,5,208,31"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#add14481fc3edc2d052e8bc20dc5e7845" title="Opens the SDC in Master and SDC Logic." alt="" coords="256,5,416,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,16,240,16,240,21,208,21"/>
 </map>

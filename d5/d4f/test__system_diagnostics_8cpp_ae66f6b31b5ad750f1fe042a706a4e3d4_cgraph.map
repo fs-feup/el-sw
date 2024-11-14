@@ -2,8 +2,8 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,13,55,39"/>
 <area shape="rect" id="Node000002" href="$d5/d4f/test__system_diagnostics_8cpp.html#ac21d3db6320dfec155d288c14ab41ec5" title=" " alt="" coords="103,13,319,39"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,23,87,23,87,28,55,28"/>
-<area shape="rect" id="Node000003" href="$d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="367,5,531,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="320,23,351,23,351,28,320,28"/>
-<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="579,13,753,39"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="531,23,564,23,564,28,531,28"/>
+<area shape="rect" id="Node000003" href="$d3/df6/struct_failure_detection.html#a2dce218ec78f523302e547071e600d87" title=" " alt="" coords="367,5,550,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,23,351,23,351,28,319,28"/>
+<area shape="rect" id="Node000004" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="598,13,772,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="551,23,583,23,583,28,551,28"/>
 </map>

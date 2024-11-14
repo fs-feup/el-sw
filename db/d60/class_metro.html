@@ -179,7 +179,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>This constructor allows the user to specify both the interval and the autoreset behavior. If <code>autoreset</code> is set to zero, the timer will follow Benjamin Soelberg's check behavior where the timer will update based on the interval instead of resetting to the current time. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00071">71</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00070">70</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -223,106 +223,104 @@ Here is the call graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>true if the interval has passed, false otherwise</dd></dl>
 <p>This method checks whether the specified interval has passed since the last reset. If the interval has passed, the timer is reset according to the autoreset behavior. If autoreset is enabled, the timer resets to the current time; otherwise, it increments by the interval. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00091">91</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00090">90</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d60/class_metro_aca78646b9ae992c81ffc395c1a1da997_icgraph.png" border="0" usemap="#adb/d60/class_metro_aca78646b9ae992c81ffc395c1a1da997_icgraph" alt=""/></div>
 <map name="adb/d60/class_metro_aca78646b9ae992c81ffc395c1a1da997_icgraph" id="adb/d60/class_metro_aca78646b9ae992c81ffc395c1a1da997_icgraph">
-<area shape="rect" title="Checks if the interval has passed and resets the timer if true." alt="" coords="1235,711,1331,736"/>
-<area shape="rect" href="../../da/db9/class_digital_sender.html#acfa52afd5bc15cb015cf83271e791714" title="Blinks the LED at the given pin." alt="" coords="1011,685,1167,711"/>
-<area shape="poly" title=" " alt="" coords="1220,718,1167,711,1168,706,1220,713"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="592,5,637,31"/>
-<area shape="poly" title=" " alt="" coords="1266,698,1198,578,1144,494,1079,401,1002,304,916,209,821,121,771,81,718,46,677,29,637,22,638,17,678,24,721,41,774,77,825,117,920,205,1006,300,1083,397,1148,491,1202,576,1270,696"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc" title="Processes the go signal." alt="" coords="994,735,1184,760"/>
-<area shape="poly" title=" " alt="" coords="1220,734,1185,738,1184,733,1220,729"/>
-<area shape="rect" href="../../da/db9/class_digital_sender.html#a323177916d67cb1d0e20f8f0268a356e" title="Toggles the watchdog pin, to ensure certify of masters&#39; liveness." alt="" coords="990,784,1187,810"/>
-<area shape="poly" title=" " alt="" coords="1248,747,1188,775,1155,786,1153,781,1186,770,1246,742"/>
-<area shape="rect" href="../../d2/d46/class_a_s_state.html#a18ed9ab2d023965fe634543642114517" title="Calculates the state of the vehicle." alt="" coords="775,372,935,398"/>
-<area shape="poly" title=" " alt="" coords="1066,674,864,400,868,397,1070,671"/>
-<area shape="rect" href="../../db/d2c/test__digital_sender_8cpp.html#a1a17630affcf8069f032e3de3d70d207" title="Test the blinkLED function The toggle watchdog is the same function as blink LED so we can afirm that..." alt="" coords="804,775,906,800"/>
-<area shape="poly" title=" " alt="" coords="1003,719,991,724,977,734,968,744,958,754,943,765,908,779,906,774,941,760,955,750,964,740,974,730,989,720,1001,714"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#a300f7b73a5b155e1a6f101369d21ec01" title="Test the enterDrivingState function PROTOCOL:" alt="" coords="780,710,930,751"/>
-<area shape="poly" title=" " alt="" coords="996,714,931,723,930,717,995,708"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae1cc77642939ff7c949df12ff07102c4" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="768,645,942,685"/>
-<area shape="poly" title=" " alt="" coords="995,688,942,680,943,675,996,682"/>
-<area shape="poly" title=" " alt="" coords="838,359,803,287,765,196,754,151,751,113,743,79,733,63,718,46,700,33,679,26,637,20,638,15,680,20,702,28,721,41,738,60,748,77,756,112,759,150,770,195,808,284,843,357"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="294,475,451,516"/>
-<area shape="poly" title=" " alt="" coords="825,409,777,438,721,463,651,481,579,492,451,499,451,494,579,486,650,476,719,458,775,434,822,405"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="300,540,444,566"/>
-<area shape="poly" title=" " alt="" coords="835,411,786,459,755,484,721,503,650,529,577,544,506,553,445,556,445,551,506,548,576,539,649,523,719,498,752,479,783,455,831,408"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="313,589,431,615"/>
-<area shape="poly" title=" " alt="" coords="843,413,824,447,797,487,763,526,721,558,685,575,647,588,569,605,495,610,432,610,432,604,494,605,568,599,646,583,683,570,718,553,759,522,793,484,820,444,839,410"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="301,212,444,238"/>
-<area shape="poly" title=" " alt="" coords="823,365,776,332,719,302,647,277,574,258,444,235,445,230,575,253,649,272,721,297,779,327,826,360"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="310,261,434,287"/>
-<area shape="poly" title=" " alt="" coords="803,369,719,342,566,308,434,286,435,280,567,303,720,337,805,364"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="559,169,670,195"/>
-<area shape="poly" title=" " alt="" coords="837,360,790,288,757,249,718,216,695,204,670,195,671,190,697,199,721,212,761,246,795,285,842,357"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="549,55,680,96"/>
-<area shape="poly" title=" " alt="" coords="839,359,770,212,718,109,700,98,679,89,681,84,702,93,722,106,775,209,844,357"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="528,120,701,146"/>
-<area shape="poly" title=" " alt="" coords="843,358,826,314,801,259,765,205,743,180,718,159,699,148,702,144,721,155,746,176,769,201,805,257,831,312,848,356"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="283,311,461,352"/>
-<area shape="poly" title=" " alt="" coords="759,376,719,371,461,343,462,338,720,366,760,371"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="300,639,444,680"/>
-<area shape="poly" title=" " alt="" coords="849,413,833,459,807,514,770,570,747,594,721,615,688,633,653,648,580,665,508,671,445,670,445,665,508,666,579,660,652,642,686,629,718,611,744,590,766,566,802,512,828,457,843,412"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="300,705,444,745"/>
-<area shape="poly" title=" " alt="" coords="852,413,839,469,815,540,798,577,777,612,752,645,721,672,682,685,610,698,445,720,444,715,609,693,680,680,718,668,748,641,773,609,794,574,810,538,834,467,847,412"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="287,376,457,402"/>
-<area shape="poly" title=" " alt="" coords="759,388,458,391,458,385,759,383"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="579,423,650,448"/>
-<area shape="poly" title=" " alt="" coords="776,404,651,431,650,426,775,399"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="146,376,196,402"/>
-<area shape="poly" title=" " alt="" coords="292,471,282,466,229,434,187,404,191,400,232,430,284,461,295,466"/>
-<area shape="poly" title=" " alt="" coords="292,536,281,530,246,499,216,464,177,404,181,401,220,461,249,496,285,525,294,531"/>
-<area shape="poly" title=" " alt="" coords="297,590,281,580,259,560,239,537,208,487,186,439,174,403,179,401,191,437,213,484,244,534,263,556,285,576,300,585"/>
-<area shape="poly" title=" " alt="" coords="292,247,285,251,249,281,219,316,181,377,177,374,215,313,245,277,281,247,289,242"/>
-<area shape="poly" title=" " alt="" coords="299,295,284,302,228,340,186,378,183,374,224,336,282,297,296,290"/>
-<area shape="poly" title=" " alt="" coords="543,170,484,164,416,164,348,175,315,186,284,202,261,219,241,241,210,291,189,340,178,376,173,375,184,338,205,288,237,238,258,215,282,197,313,181,346,170,416,159,484,159,544,165"/>
-<area shape="poly" title=" " alt="" coords="533,68,474,67,408,73,343,91,313,105,285,123,256,151,233,184,214,220,200,257,183,327,176,376,171,375,177,326,195,256,209,218,228,181,252,147,281,119,310,100,341,86,407,68,473,62,533,63"/>
-<area shape="poly" title=" " alt="" coords="519,121,462,118,401,123,340,137,311,149,285,164,259,187,237,214,219,244,205,275,186,334,177,376,171,375,181,332,200,273,214,241,232,211,255,183,281,160,309,144,338,132,400,117,462,113,519,115"/>
-<area shape="poly" title=" " alt="" coords="285,359,197,385,195,379,283,354"/>
-<area shape="poly" title=" " alt="" coords="285,633,281,629,256,602,235,572,203,507,182,446,172,403,177,402,188,445,208,504,240,569,260,599,285,626,289,629"/>
-<area shape="poly" title=" " alt="" coords="285,697,281,693,252,658,228,617,209,575,195,532,177,455,171,402,176,401,183,454,200,531,214,573,233,615,256,655,285,690,289,693"/>
-<area shape="poly" title=" " alt="" coords="271,392,196,392,196,386,271,386"/>
-<area shape="poly" title=" " alt="" coords="565,450,452,479,451,473,564,445"/>
-<area shape="poly" title=" " alt="" coords="584,460,529,495,462,530,430,542,428,537,460,525,526,491,581,455"/>
-<area shape="poly" title=" " alt="" coords="595,462,540,522,503,553,463,581,433,593,431,588,460,576,500,549,536,518,591,459"/>
-<area shape="poly" title=" " alt="" coords="597,411,574,374,543,331,505,288,460,251,439,241,441,236,463,247,509,284,548,328,579,371,601,408"/>
-<area shape="poly" title=" " alt="" coords="590,413,535,357,499,327,460,302,432,290,435,285,463,297,502,323,538,353,594,409"/>
-<area shape="poly" title=" " alt="" coords="573,418,460,366,432,355,434,350,462,361,575,413"/>
-<area shape="poly" title=" " alt="" coords="601,463,547,545,508,590,463,630,444,641,441,636,460,625,504,586,543,541,597,461"/>
-<area shape="poly" title=" " alt="" coords="606,464,587,513,556,574,515,638,491,667,463,694,444,706,441,702,460,689,487,664,511,634,552,571,582,510,601,462"/>
-<area shape="poly" title=" " alt="" coords="564,429,442,405,443,400,565,423"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="284,425,460,451"/>
-<area shape="poly" title=" " alt="" coords="564,439,461,440,460,435,564,433"/>
-<area shape="poly" title=" " alt="" coords="301,424,195,397,196,392,302,418"/>
-<area shape="rect" href="../../db/d2c/test__digital_sender_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="590,776,639,802"/>
-<area shape="poly" title=" " alt="" coords="788,791,639,791,639,786,788,785"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="590,727,639,752"/>
-<area shape="poly" title=" " alt="" coords="765,736,640,741,640,736,765,731"/>
-<area shape="poly" title=" " alt="" coords="774,693,720,710,641,735,639,730,719,705,773,688"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859" title="Callback RES default callback." alt="" coords="509,825,720,851"/>
-<area shape="poly" title=" " alt="" coords="1003,768,991,774,977,784,968,795,959,806,943,815,888,833,830,844,773,848,720,849,720,844,773,843,829,838,886,828,941,810,955,802,964,791,974,780,989,769,1001,764"/>
-<area shape="poly" title=" " alt="" coords="511,819,507,816,494,801,487,786,482,755,478,724,471,710,459,695,443,682,446,678,463,691,476,707,483,723,487,754,492,784,499,798,511,812,514,815"/>
-<area shape="poly" title=" " alt="" coords="525,823,508,817,447,783,397,748,401,743,450,779,510,812,527,818"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="301,818,444,859"/>
-<area shape="poly" title=" " alt="" coords="494,841,444,841,444,836,494,836"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,751,235,776"/>
-<area shape="poly" title=" " alt="" coords="300,814,207,779,209,774,302,809"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,800,221,826"/>
-<area shape="poly" title=" " alt="" coords="285,830,221,822,222,816,286,825"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="139,849,203,875"/>
-<area shape="poly" title=" " alt="" coords="285,851,203,861,203,856,285,846"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="119,899,223,924"/>
-<area shape="poly" title=" " alt="" coords="301,867,210,901,208,896,299,862"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,751,59,776"/>
-<area shape="poly" title=" " alt="" coords="91,766,59,766,59,761,91,761"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,849,57,875"/>
-<area shape="poly" title=" " alt="" coords="119,834,58,856,56,851,117,829"/>
-<area shape="poly" title=" " alt="" coords="123,865,57,865,57,860,123,860"/>
-<area shape="poly" title=" " alt="" coords="117,895,56,873,58,868,119,890"/>
+<area shape="rect" title="Checks if the interval has passed and resets the timer if true." alt="" coords="1156,683,1252,708"/>
+<area shape="rect" href="../../da/db9/class_digital_sender.html#a2e7fd9af17e61e7b0976de86e603895c" title="Blinks the LED at the given pin." alt="" coords="953,683,1108,708"/>
+<area shape="poly" title=" " alt="" coords="1141,698,1109,698,1109,693,1141,693"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="573,5,619,31"/>
+<area shape="poly" title=" " alt="" coords="1187,671,1124,556,1074,476,1013,388,943,295,864,204,776,119,681,46,650,31,619,24,620,18,651,26,684,41,780,115,867,200,947,292,1018,384,1078,473,1128,554,1192,668"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732" title="Processes the go signal." alt="" coords="962,765,1099,805"/>
+<area shape="poly" title=" " alt="" coords="1165,718,1073,766,1070,762,1162,714"/>
+<area shape="rect" href="../../d2/d46/class_a_s_state.html#a813d8386653a4884bd4a8d986fc57d56" title="Calculates the state of the vehicle." alt="" coords="754,365,882,405"/>
+<area shape="poly" title=" " alt="" coords="1010,671,831,407,835,404,1014,668"/>
+<area shape="rect" href="../../db/d2c/test__digital_sender_8cpp.html#a1a17630affcf8069f032e3de3d70d207" title="Test the blinkLED function The toggle watchdog is the same function as blink LED so we can afirm that..." alt="" coords="767,653,869,679"/>
+<area shape="poly" title=" " alt="" coords="938,685,869,676,869,670,938,680"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#a300f7b73a5b155e1a6f101369d21ec01" title="Test the enterDrivingState function PROTOCOL:" alt="" coords="743,703,893,744"/>
+<area shape="poly" title=" " alt="" coords="938,710,894,716,893,711,937,705"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae1cc77642939ff7c949df12ff07102c4" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="731,769,905,809"/>
+<area shape="poly" title=" " alt="" coords="990,718,906,758,876,770,874,765,904,753,988,713"/>
+<area shape="poly" title=" " alt="" coords="797,352,764,279,728,192,717,148,713,112,705,79,696,63,681,45,667,35,651,28,619,22,620,17,652,23,670,31,684,42,700,60,710,77,719,111,722,147,733,191,769,277,802,349"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="294,529,451,569"/>
+<area shape="poly" title=" " alt="" coords="789,419,743,461,714,481,684,498,625,520,564,535,504,544,451,549,451,544,504,539,563,529,624,515,682,493,711,477,739,457,786,415"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="300,593,444,619"/>
+<area shape="poly" title=" " alt="" coords="800,420,754,487,721,520,684,548,625,576,561,594,500,604,445,608,444,603,499,599,560,588,623,571,681,544,718,516,750,483,796,417"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="313,216,431,242"/>
+<area shape="poly" title=" " alt="" coords="776,357,732,329,682,303,616,280,549,262,431,239,432,234,550,257,618,275,684,298,734,324,779,353"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="301,265,444,291"/>
+<area shape="poly" title=" " alt="" coords="749,361,682,339,556,311,444,291,445,286,557,305,683,334,751,356"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="310,315,434,340"/>
+<area shape="poly" title=" " alt="" coords="738,376,682,369,434,338,435,332,683,364,739,371"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="540,169,652,195"/>
+<area shape="poly" title=" " alt="" coords="796,353,749,284,717,248,681,216,646,198,648,193,684,212,721,244,753,281,800,350"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="530,55,662,96"/>
+<area shape="poly" title=" " alt="" coords="799,351,735,210,703,144,681,109,660,96,663,91,685,106,707,142,740,208,804,349"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="509,120,683,146"/>
+<area shape="poly" title=" " alt="" coords="803,351,785,307,760,255,725,203,681,159,663,149,666,144,684,155,729,199,764,252,790,304,808,349"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="283,365,461,405"/>
+<area shape="poly" title=" " alt="" coords="738,388,462,388,462,382,738,382"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="300,709,444,749"/>
+<area shape="poly" title=" " alt="" coords="813,421,799,477,774,544,757,579,737,612,713,643,684,670,642,689,580,705,445,725,444,719,579,700,640,684,681,665,709,640,733,609,753,577,770,542,794,475,808,420"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="300,643,444,684"/>
+<area shape="poly" title=" " alt="" coords="808,421,791,464,764,515,729,565,708,588,684,607,656,624,626,637,563,656,501,665,445,669,445,663,500,660,562,651,624,632,654,619,681,603,704,584,725,562,760,512,786,462,803,419"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="287,479,457,504"/>
+<area shape="poly" title=" " alt="" coords="777,416,733,442,684,463,626,478,566,488,458,495,457,490,566,482,625,473,682,458,731,437,774,412"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="561,423,631,448"/>
+<area shape="poly" title=" " alt="" coords="739,406,632,430,631,425,738,400"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="146,372,196,398"/>
+<area shape="poly" title=" " alt="" coords="288,523,281,519,247,490,217,456,178,400,182,397,222,453,251,486,285,515,291,519"/>
+<area shape="poly" title=" " alt="" coords="289,588,281,583,259,562,239,538,207,485,186,435,173,399,178,397,191,434,212,483,243,535,263,558,285,579,292,584"/>
+<area shape="poly" title=" " alt="" coords="299,247,284,255,250,283,221,316,182,373,177,370,216,312,246,279,282,251,297,242"/>
+<area shape="poly" title=" " alt="" coords="297,299,284,305,229,339,188,374,184,370,226,335,282,300,295,294"/>
+<area shape="poly" title=" " alt="" coords="311,348,284,355,197,381,195,375,282,350,309,342"/>
+<area shape="poly" title=" " alt="" coords="525,172,469,168,407,169,343,181,313,191,284,206,262,223,242,243,211,291,190,337,178,373,173,371,185,336,206,288,238,240,258,219,282,201,311,186,342,176,406,164,469,163,525,167"/>
+<area shape="poly" title=" " alt="" coords="515,71,460,71,399,79,338,96,310,110,285,127,257,154,234,186,216,221,202,257,184,324,176,372,171,371,178,323,196,255,211,219,229,183,253,150,281,123,308,105,337,91,398,74,459,66,515,65"/>
+<area shape="poly" title=" " alt="" coords="494,123,442,123,387,129,333,143,284,168,259,190,238,216,206,274,187,331,177,372,172,371,181,330,201,272,234,213,256,186,282,164,331,138,386,124,442,118,494,118"/>
+<area shape="poly" title=" " alt="" coords="267,388,196,388,196,382,267,382"/>
+<area shape="poly" title=" " alt="" coords="285,701,281,697,251,661,227,619,208,576,194,532,177,452,170,398,176,398,182,452,199,531,213,574,232,617,256,658,285,694,289,698"/>
+<area shape="poly" title=" " alt="" coords="285,637,281,633,256,605,234,574,202,506,182,443,172,399,177,398,187,442,207,504,239,571,260,602,285,630,289,633"/>
+<area shape="poly" title=" " alt="" coords="295,475,282,470,226,435,184,400,188,396,229,430,284,465,297,471"/>
+<area shape="poly" title=" " alt="" coords="564,460,517,489,463,519,437,530,435,526,460,514,514,485,561,455"/>
+<area shape="poly" title=" " alt="" coords="580,463,532,523,500,555,463,583,437,595,435,590,460,579,496,551,528,520,576,459"/>
+<area shape="poly" title=" " alt="" coords="580,410,561,374,534,332,500,290,460,255,431,241,433,236,463,251,504,287,539,329,566,372,585,407"/>
+<area shape="poly" title=" " alt="" coords="574,412,526,357,495,329,460,304,437,294,439,289,463,300,498,325,530,354,578,409"/>
+<area shape="poly" title=" " alt="" coords="563,415,516,385,460,355,428,343,430,338,462,350,518,380,566,411"/>
+<area shape="poly" title=" " alt="" coords="545,427,461,408,462,402,546,422"/>
+<area shape="poly" title=" " alt="" coords="590,464,574,514,549,576,512,641,489,671,463,698,445,710,442,706,460,693,485,667,507,638,544,574,569,512,585,463"/>
+<area shape="poly" title=" " alt="" coords="586,463,567,501,540,546,505,593,463,634,445,645,442,640,460,629,501,589,535,543,562,498,581,461"/>
+<area shape="poly" title=" " alt="" coords="546,450,427,481,426,475,545,445"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="284,429,460,455"/>
+<area shape="poly" title=" " alt="" coords="546,440,461,442,461,437,545,434"/>
+<area shape="poly" title=" " alt="" coords="309,427,282,419,195,394,197,389,284,414,311,422"/>
+<area shape="rect" href="../../db/d2c/test__digital_sender_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="571,727,621,752"/>
+<area shape="poly" title=" " alt="" coords="756,686,732,694,622,733,620,728,730,689,754,681"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="571,776,621,802"/>
+<area shape="poly" title=" " alt="" coords="736,751,683,767,622,785,621,780,682,762,735,746"/>
+<area shape="poly" title=" " alt="" coords="716,792,621,792,621,786,716,786"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a42cf4c62a4ff6b22f9c0151f60ce53b2" title="Callback RES default callback." alt="" coords="513,826,679,867"/>
+<area shape="poly" title=" " alt="" coords="952,813,905,823,787,839,679,847,679,841,787,834,905,818,951,807"/>
+<area shape="poly" title=" " alt="" coords="519,822,508,817,450,784,401,752,404,747,453,779,511,812,522,817"/>
+<area shape="poly" title=" " alt="" coords="510,818,507,816,495,801,488,786,483,756,478,727,471,713,459,699,443,687,446,682,463,695,476,710,483,725,488,755,493,784,500,798,511,812,514,815"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="301,826,444,867"/>
+<area shape="poly" title=" " alt="" coords="498,849,444,849,444,844,498,844"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="107,759,235,784"/>
+<area shape="poly" title=" " alt="" coords="300,822,207,787,209,782,302,817"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="121,808,221,834"/>
+<area shape="poly" title=" " alt="" coords="285,838,221,830,222,824,286,833"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="139,857,203,883"/>
+<area shape="poly" title=" " alt="" coords="285,859,203,869,203,864,285,854"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="119,907,223,932"/>
+<area shape="poly" title=" " alt="" coords="301,875,210,909,208,904,299,870"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,759,59,784"/>
+<area shape="poly" title=" " alt="" coords="91,774,59,774,59,769,91,769"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,857,57,883"/>
+<area shape="poly" title=" " alt="" coords="119,842,58,864,56,859,117,837"/>
+<area shape="poly" title=" " alt="" coords="123,873,57,873,57,868,123,868"/>
+<area shape="poly" title=" " alt="" coords="117,903,56,881,58,876,119,898"/>
 </map>
 </div>
 
@@ -355,102 +353,118 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>true if the interval has passed, false otherwise</dd></dl>
 <p>This method performs a check similar to <code><a class="el" href="../../db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true.">check()</a></code>, but it does not reset the timer upon a successful check. It is useful when you want to verify the passage of time without affecting the internal state. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00116">116</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00115">115</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d60/class_metro_a95ed7cb80b7f56a80790c34fcea93724_icgraph.png" border="0" usemap="#adb/d60/class_metro_a95ed7cb80b7f56a80790c34fcea93724_icgraph" alt=""/></div>
 <map name="adb/d60/class_metro_a95ed7cb80b7f56a80790c34fcea93724_icgraph" id="adb/d60/class_metro_a95ed7cb80b7f56a80790c34fcea93724_icgraph">
-<area shape="rect" title="Checks if the interval has passed without resetting the timer." alt="" coords="1559,519,1732,545"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a531e435a6a3c0c1ca83f963c1c8541f3" title="Checks if the emergency sequence is complete and the vehicle can transition to AS_OFF." alt="" coords="834,469,1025,510"/>
-<area shape="poly" title=" " alt="" coords="1543,529,1025,498,1026,492,1543,523"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="120,50,264,91"/>
-<area shape="poly" title=" " alt="" coords="1633,505,1615,453,1586,382,1548,300,1498,216,1438,136,1403,101,1367,70,1327,44,1285,25,1239,12,1191,8,662,8,553,13,445,25,265,57,264,52,444,20,553,8,662,3,1192,3,1240,7,1286,20,1329,40,1370,66,1407,97,1442,133,1502,213,1552,298,1591,380,1620,451,1638,503"/>
-<area shape="rect" href="../../d3/df6/struct_failure_detection.html#a2fbd2049dfb1b430e2b54992a1804cbb" title=" " alt="" coords="1346,569,1511,610"/>
-<area shape="poly" title=" " alt="" coords="1580,552,1509,571,1508,566,1579,547"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a43ff573e094af8253c78e0aa69529d3a" title="Performs an emergency checkup." alt="" coords="831,698,1028,739"/>
-<area shape="poly" title=" " alt="" coords="1617,557,1569,590,1512,624,1409,672,1361,687,1299,701,1229,713,1157,719,1028,724,1028,718,1157,714,1228,707,1298,696,1360,682,1407,667,1509,619,1566,586,1614,552"/>
-<area shape="rect" href="../../d2/d46/class_a_s_state.html#a18ed9ab2d023965fe634543642114517" title="Calculates the state of the vehicle." alt="" coords="584,447,743,473"/>
-<area shape="poly" title=" " alt="" coords="818,480,743,471,744,466,819,474"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#ad0af15f739a7c89635bb92f5341faa0b" title=" " alt="" coords="550,501,777,526"/>
-<area shape="poly" title=" " alt="" coords="818,502,777,506,777,500,818,497"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="393,94,438,120"/>
-<area shape="poly" title=" " alt="" coords="654,433,638,370,609,289,588,246,564,205,534,166,501,133,470,117,438,111,439,105,472,112,504,129,538,163,568,202,593,244,613,287,643,369,659,431"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="113,180,271,220"/>
-<area shape="poly" title=" " alt="" coords="645,435,622,399,589,355,548,312,501,276,444,248,384,228,324,215,270,208,271,202,325,210,385,223,446,243,504,271,552,308,593,352,626,396,650,432"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="120,245,264,270"/>
-<area shape="poly" title=" " alt="" coords="640,437,582,376,544,344,501,318,441,295,379,278,318,268,264,263,264,257,318,263,380,273,443,290,504,314,547,340,586,372,644,433"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="133,294,251,320"/>
-<area shape="poly" title=" " alt="" coords="634,439,575,395,539,374,501,356,436,336,369,322,251,311,252,305,370,317,438,330,503,351,542,369,578,391,637,435"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="120,343,264,369"/>
-<area shape="poly" title=" " alt="" coords="626,441,569,412,502,387,440,373,377,365,264,358,264,353,377,359,441,368,503,381,571,407,628,437"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="130,442,254,468"/>
-<area shape="poly" title=" " alt="" coords="568,462,254,458,254,453,569,456"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="360,143,471,169"/>
-<area shape="poly" title=" " alt="" coords="651,433,630,382,599,317,555,249,529,218,501,190,468,172,471,167,504,186,533,214,560,246,603,314,635,380,655,431"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="350,649,481,690"/>
-<area shape="poly" title=" " alt="" coords="571,477,552,490,538,507,531,523,527,558,524,594,518,613,504,633,481,651,478,646,500,629,513,611,519,593,522,558,526,522,534,504,549,486,568,473"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="329,714,502,740"/>
-<area shape="poly" title=" " alt="" coords="571,476,552,490,534,515,526,541,525,567,528,594,531,621,531,648,523,676,504,703,488,715,485,711,500,699,518,674,526,647,526,621,523,594,520,567,521,540,529,513,548,486,568,472"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="103,492,281,532"/>
-<area shape="poly" title=" " alt="" coords="569,473,282,505,281,500,568,468"/>
-<area shape="poly" title=" " alt="" coords="657,432,647,359,636,312,621,261,601,211,575,162,542,119,501,84,474,68,445,57,382,47,320,48,265,56,264,50,320,43,383,42,446,52,476,63,504,79,546,116,579,160,606,209,627,260,642,310,652,358,663,431"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="120,557,264,598"/>
-<area shape="poly" title=" " alt="" coords="592,480,551,491,503,505,265,564,263,559,502,500,550,485,591,474"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="107,622,277,648"/>
-<area shape="poly" title=" " alt="" coords="571,480,552,490,537,505,529,520,520,537,504,553,449,583,390,605,331,620,278,629,277,624,330,614,388,600,447,578,501,549,516,534,524,518,532,502,549,486,568,475"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="381,397,451,422"/>
-<area shape="poly" title=" " alt="" coords="582,446,451,419,452,414,583,441"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,393,55,418"/>
-<area shape="poly" title=" " alt="" coords="107,232,105,234,75,273,54,318,42,361,36,393,30,391,37,359,49,316,70,270,101,230,103,228"/>
-<area shape="poly" title=" " alt="" coords="109,280,104,283,79,309,60,340,38,393,33,391,55,337,75,306,101,279,106,276"/>
-<area shape="poly" title=" " alt="" coords="119,325,104,333,68,363,42,394,38,390,64,359,101,328,117,321"/>
-<area shape="poly" title=" " alt="" coords="125,376,103,383,56,399,54,394,102,377,123,371"/>
-<area shape="poly" title=" " alt="" coords="123,440,102,433,54,417,56,412,103,428,125,435"/>
-<area shape="poly" title=" " alt="" coords="352,142,295,132,229,130,195,133,163,141,132,153,104,170,81,194,63,222,50,254,41,286,34,348,33,392,28,392,28,348,36,285,45,252,58,220,77,190,101,166,130,148,161,136,195,128,229,125,295,127,353,136"/>
-<area shape="poly" title=" " alt="" coords="335,693,279,702,217,702,156,691,127,679,101,662,86,644,74,617,53,546,38,472,30,419,36,418,44,472,58,545,79,615,91,641,104,658,130,674,158,686,218,697,279,696,335,688"/>
-<area shape="poly" title=" " alt="" coords="349,746,291,754,225,754,192,749,159,741,129,728,101,709,84,687,71,654,50,569,36,481,30,419,35,418,42,480,55,568,76,652,89,684,105,705,131,723,161,736,193,744,225,749,290,748,348,740"/>
-<area shape="poly" title=" " alt="" coords="109,487,101,482,65,451,39,420,43,417,69,447,104,478,111,482"/>
-<area shape="poly" title=" " alt="" coords="131,101,105,126,84,160,67,197,46,275,36,344,34,392,29,392,31,344,41,274,62,196,79,157,101,122,127,98"/>
-<area shape="poly" title=" " alt="" coords="106,550,101,546,74,515,54,480,32,420,37,418,59,477,79,512,105,542,110,546"/>
-<area shape="poly" title=" " alt="" coords="105,615,101,611,81,589,66,563,44,508,33,456,29,419,35,418,39,456,49,507,70,561,86,586,105,607,109,611"/>
-<area shape="poly" title=" " alt="" coords="399,384,352,310,318,269,279,234,261,223,264,219,283,230,322,266,356,307,403,381"/>
-<area shape="poly" title=" " alt="" coords="393,386,345,334,314,307,280,284,256,273,258,268,282,279,317,302,348,330,397,382"/>
-<area shape="poly" title=" " alt="" coords="381,390,335,361,280,333,250,323,252,318,282,328,337,356,384,385"/>
-<area shape="poly" title=" " alt="" coords="365,400,248,372,249,367,366,395"/>
-<area shape="poly" title=" " alt="" coords="366,422,255,445,254,439,365,417"/>
-<area shape="poly" title=" " alt="" coords="380,432,282,482,255,494,253,489,280,478,377,428"/>
-<area shape="poly" title=" " alt="" coords="400,384,351,287,317,227,279,170,245,128,213,93,217,90,249,124,283,166,321,225,355,284,404,381"/>
-<area shape="poly" title=" " alt="" coords="397,436,349,491,317,520,282,546,259,559,257,554,280,542,314,516,345,487,393,433"/>
-<area shape="poly" title=" " alt="" coords="406,437,388,476,361,523,326,571,283,611,260,624,258,619,279,607,322,567,357,520,383,474,401,435"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="104,393,280,418"/>
-<area shape="poly" title=" " alt="" coords="365,411,280,410,280,404,365,406"/>
-<area shape="poly" title=" " alt="" coords="88,408,55,408,55,403,88,403"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="391,763,440,789"/>
-<area shape="poly" title=" " alt="" coords="570,536,552,550,535,575,528,600,527,625,529,650,532,676,531,702,523,728,504,754,490,765,474,772,441,778,440,773,472,767,487,760,500,750,518,726,525,701,526,676,524,651,522,625,522,599,530,572,548,546,567,531"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#aea13673f58405e59748d8baca61df4f3" title="Performs an initial checkup." alt="" coords="1086,540,1295,580"/>
-<area shape="poly" title=" " alt="" coords="1331,580,1295,576,1296,570,1331,575"/>
-<area shape="poly" title=" " alt="" coords="1370,619,1299,645,1158,681,1028,706,1027,701,1157,676,1298,640,1368,614"/>
-<area shape="rect" href="../../d5/d4f/test__system_diagnostics_8cpp.html#ac21d3db6320dfec155d288c14ab41ec5" title=" " alt="" coords="1082,605,1298,630"/>
-<area shape="poly" title=" " alt="" coords="1331,603,1299,607,1299,602,1331,598"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a9b5b81b87d77e39901c2b5550e2a8aed" title="Performs an off checkup." alt="" coords="825,534,1034,560"/>
-<area shape="poly" title=" " alt="" coords="1070,557,1034,555,1034,549,1070,551"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#aadc5418e1777bcc168fc3375df7dce46" title=" " alt="" coords="835,584,1024,624"/>
-<area shape="poly" title=" " alt="" coords="1071,583,1025,591,1024,585,1070,578"/>
-<area shape="poly" title=" " alt="" coords="843,531,823,524,799,507,775,490,734,476,736,471,778,486,802,502,826,519,845,526"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a27be3ebab870856632f7501493df3ff0" title=" " alt="" coords="561,560,766,600"/>
-<area shape="poly" title=" " alt="" coords="810,564,767,570,766,565,809,559"/>
-<area shape="poly" title=" " alt="" coords="591,610,570,623,552,639,542,654,535,668,530,697,525,725,517,740,504,754,473,771,441,777,440,772,471,766,501,750,513,737,520,723,525,696,530,666,537,651,548,636,567,619,588,605"/>
-<area shape="poly" title=" " alt="" coords="819,610,755,618,685,633,616,656,552,689,536,704,529,720,520,737,504,754,472,769,441,776,440,771,471,764,501,750,516,734,524,718,532,701,549,685,614,651,684,628,754,613,819,605"/>
-<area shape="poly" title=" " alt="" coords="824,690,823,688,805,663,797,637,796,612,799,586,801,562,800,537,792,514,775,490,760,478,742,471,745,466,763,474,779,486,797,511,805,536,806,562,804,587,802,612,803,636,810,661,827,685,828,686"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a65c11786d98edc583387ba14a5999eb7" title=" " alt="" coords="572,763,755,789"/>
-<area shape="poly" title=" " alt="" coords="817,745,727,765,726,760,816,740"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a5afd180c6692b45a5f85767d3365fd80" title=" " alt="" coords="572,698,755,739"/>
-<area shape="poly" title=" " alt="" coords="815,721,755,721,755,716,815,716"/>
-<area shape="poly" title=" " alt="" coords="557,779,441,779,441,773,557,773"/>
-<area shape="poly" title=" " alt="" coords="559,746,441,773,440,768,557,740"/>
-<area shape="rect" href="../../d5/d4f/test__system_diagnostics_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="905,649,954,674"/>
-<area shape="poly" title=" " alt="" coords="1096,636,955,660,954,655,1095,631"/>
+<area shape="rect" title="Checks if the interval has passed without resetting the timer." alt="" coords="1548,337,1721,363"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc" title="Callback from inversor, for alive signal and data." alt="" coords="576,223,737,264"/>
+<area shape="poly" title=" " alt="" coords="1587,334,1545,318,1499,306,1394,287,1285,272,1072,254,882,246,738,245,738,240,882,241,1072,248,1286,267,1394,282,1500,301,1547,313,1589,329"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="124,381,268,421"/>
+<area shape="poly" title=" " alt="" coords="1532,344,1356,331,1153,325,655,325,549,331,444,345,348,364,269,383,268,378,346,359,443,340,549,325,655,320,1154,320,1356,326,1532,338"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a72c7e6b64cbfbea251a9d7c2c33adafd" title="Checks if the emergency sequence is complete and the vehicle can transition to AS_OFF." alt="" coords="1308,459,1500,500"/>
+<area shape="poly" title=" " alt="" coords="1598,373,1443,461,1441,456,1595,369"/>
+<area shape="rect" href="../../d3/df6/struct_failure_detection.html#a2dce218ec78f523302e547071e600d87" title=" " alt="" coords="1312,194,1496,235"/>
+<area shape="poly" title=" " alt="" coords="1604,329,1556,293,1498,255,1462,238,1464,233,1501,251,1559,288,1608,325"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a1137db2adef0dae5c06fbbd1c86f8568" title="Performs an emergency checkup." alt="" coords="1069,359,1235,400"/>
+<area shape="poly" title=" " alt="" coords="1533,359,1236,377,1236,372,1532,354"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abe4f0fc168203e9f3556e9d8ae6e802a" title="Publish AS Mission to CAN." alt="" coords="1328,749,1480,789"/>
+<area shape="poly" title=" " alt="" coords="1621,378,1419,750,1414,747,1616,375"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="348,94,491,135"/>
+<area shape="poly" title=" " alt="" coords="614,216,563,182,505,149,481,138,483,133,508,144,566,177,617,212"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,159,475,184"/>
+<area shape="poly" title=" " alt="" coords="577,221,506,198,469,187,471,182,507,193,579,215"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,208,506,234"/>
+<area shape="poly" title=" " alt="" coords="560,237,507,232,507,227,560,232"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="107,315,285,356"/>
+<area shape="poly" title=" " alt="" coords="561,263,334,306,284,317,283,312,332,301,560,257"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="385,563,455,588"/>
+<area shape="poly" title=" " alt="" coords="634,278,433,564,428,561,630,275"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="132,5,260,31"/>
+<area shape="poly" title=" " alt="" coords="340,89,331,84,307,64,298,54,284,45,258,34,260,29,286,40,301,50,311,60,335,80,343,84"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="146,55,246,80"/>
+<area shape="poly" title=" " alt="" coords="332,99,246,81,247,75,333,93"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="164,104,228,130"/>
+<area shape="poly" title=" " alt="" coords="333,118,228,119,228,114,333,113"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="144,153,248,179"/>
+<area shape="poly" title=" " alt="" coords="334,137,249,157,248,151,332,132"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,5,59,31"/>
+<area shape="poly" title=" " alt="" coords="116,21,59,21,59,16,116,16"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,104,57,130"/>
+<area shape="poly" title=" " alt="" coords="131,87,107,94,58,111,56,106,106,89,130,82"/>
+<area shape="poly" title=" " alt="" coords="148,120,57,120,57,114,148,114"/>
+<area shape="poly" title=" " alt="" coords="128,151,106,145,56,128,58,123,107,140,130,146"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="7,544,57,570"/>
+<area shape="poly" title=" " alt="" coords="349,185,282,197,210,214,148,234,125,245,109,257,94,279,81,312,60,396,45,483,37,544,32,543,40,482,55,395,76,310,90,277,105,254,122,241,146,229,209,208,281,192,348,179"/>
+<area shape="poly" title=" " alt="" coords="318,239,194,267,142,285,108,306,86,333,68,365,55,399,46,434,37,498,36,544,30,543,32,498,41,433,50,398,63,363,81,330,105,301,140,280,193,262,317,234"/>
+<area shape="poly" title=" " alt="" coords="113,367,109,371,91,391,77,414,56,463,43,510,37,544,32,543,38,508,51,462,72,411,87,388,105,367,109,363"/>
+<area shape="poly" title=" " alt="" coords="405,549,387,510,360,462,325,413,283,371,264,359,267,354,287,367,329,410,365,459,391,508,410,547"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="117,709,275,749"/>
+<area shape="poly" title=" " alt="" coords="399,602,350,650,320,676,286,699,264,710,262,706,284,695,316,672,347,646,395,598"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="124,773,268,799"/>
+<area shape="poly" title=" " alt="" coords="409,603,390,639,363,683,328,726,287,763,264,775,261,770,283,759,324,722,358,679,385,637,404,601"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="137,823,255,848"/>
+<area shape="poly" title=" " alt="" coords="413,604,397,650,371,707,334,764,312,791,287,814,257,829,254,824,283,809,308,787,330,761,366,704,392,648,408,602"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="124,445,268,471"/>
+<area shape="poly" title=" " alt="" coords="390,554,342,519,284,485,256,474,258,469,286,480,345,514,393,550"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="134,495,258,520"/>
+<area shape="poly" title=" " alt="" coords="369,561,284,534,247,523,249,518,286,529,370,556"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="108,544,284,570"/>
+<area shape="poly" title=" " alt="" coords="369,574,284,567,285,562,369,569"/>
+<area shape="poly" title=" " alt="" coords="398,552,350,494,319,462,284,435,264,424,266,419,286,431,322,458,354,490,403,548"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="124,594,268,635"/>
+<area shape="poly" title=" " alt="" coords="370,587,269,604,268,599,369,581"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="111,659,281,684"/>
+<area shape="poly" title=" " alt="" coords="385,599,338,624,286,649,251,661,249,656,284,644,336,620,382,594"/>
+<area shape="poly" title=" " alt="" coords="109,702,105,699,77,667,57,632,34,571,39,569,62,629,82,664,109,695,112,698"/>
+<area shape="poly" title=" " alt="" coords="110,767,105,763,85,740,69,715,47,660,36,608,31,570,37,570,41,607,53,658,74,712,89,737,109,759,114,763"/>
+<area shape="poly" title=" " alt="" coords="121,825,105,813,81,785,63,752,50,717,41,681,32,616,30,570,36,570,37,616,46,680,55,715,68,750,86,782,108,810,124,821"/>
+<area shape="poly" title=" " alt="" coords="117,480,108,484,71,515,45,545,41,542,67,511,105,480,115,475"/>
+<area shape="poly" title=" " alt="" coords="130,527,107,534,58,551,56,546,106,529,128,522"/>
+<area shape="poly" title=" " alt="" coords="92,560,57,560,57,554,92,554"/>
+<area shape="poly" title=" " alt="" coords="112,432,108,435,84,461,64,492,40,545,35,543,59,489,79,458,105,431,109,428"/>
+<area shape="poly" title=" " alt="" coords="121,591,56,568,58,563,122,586"/>
+<area shape="poly" title=" " alt="" coords="115,654,105,648,83,630,64,609,38,571,43,568,69,606,87,627,108,644,118,650"/>
+<area shape="rect" href="../../d2/d46/class_a_s_state.html#a813d8386653a4884bd4a8d986fc57d56" title="Calculates the state of the vehicle." alt="" coords="592,505,721,545"/>
+<area shape="poly" title=" " alt="" coords="1293,489,721,524,721,518,1293,484"/>
+<area shape="poly" title=" " alt="" coords="639,491,568,321,531,240,505,197,475,182,477,177,508,194,535,238,573,319,644,489"/>
+<area shape="poly" title=" " alt="" coords="628,493,429,235,433,232,632,490"/>
+<area shape="poly" title=" " alt="" coords="616,497,565,462,505,429,450,406,392,386,285,357,286,351,394,381,452,401,507,424,567,457,619,493"/>
+<area shape="poly" title=" " alt="" coords="578,544,456,571,455,565,576,539"/>
+<area shape="poly" title=" " alt="" coords="633,559,580,617,546,647,508,671,450,696,388,712,329,723,275,729,275,723,328,718,387,707,448,691,505,666,542,643,576,613,629,555"/>
+<area shape="poly" title=" " alt="" coords="642,560,620,600,591,645,553,689,508,726,449,755,386,773,323,784,268,789,268,783,323,779,384,768,447,750,505,721,549,685,586,641,616,597,637,558"/>
+<area shape="poly" title=" " alt="" coords="648,561,630,613,601,674,561,735,536,762,508,786,478,803,446,817,378,835,313,842,256,842,256,837,312,836,377,829,444,812,476,799,505,781,532,759,557,732,597,671,625,611,643,559"/>
+<area shape="poly" title=" " alt="" coords="577,512,506,499,268,468,268,463,507,494,578,507"/>
+<area shape="poly" title=" " alt="" coords="577,525,259,512,259,507,577,519"/>
+<area shape="poly" title=" " alt="" coords="594,501,506,469,381,437,268,415,269,410,382,432,507,464,595,496"/>
+<area shape="poly" title=" " alt="" coords="613,556,563,582,507,603,445,616,382,622,268,622,268,617,381,616,444,610,506,598,561,577,610,551"/>
+<area shape="poly" title=" " alt="" coords="622,557,570,595,507,627,450,646,391,658,281,671,281,666,390,653,449,640,505,622,567,590,618,553"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="397,931,442,956"/>
+<area shape="poly" title=" " alt="" coords="646,561,577,764,538,865,521,900,508,920,493,931,476,938,443,945,442,940,474,933,490,926,504,916,517,898,533,863,572,763,641,559"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="354,866,485,907"/>
+<area shape="poly" title=" " alt="" coords="650,561,633,622,605,698,564,778,538,816,508,849,483,867,480,863,505,846,534,812,559,775,600,696,628,620,645,560"/>
+<area shape="poly" title=" " alt="" coords="339,906,282,911,220,909,159,894,131,881,105,863,88,841,74,807,53,721,39,633,32,570,37,570,44,632,58,720,79,806,93,838,109,859,133,876,161,889,221,903,282,906,338,901"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a242bb7e17395cd65fdc31a8a2c467336" title="Performs an initial checkup." alt="" coords="1073,129,1231,169"/>
+<area shape="poly" title=" " alt="" coords="1307,192,1231,172,1232,167,1309,187"/>
+<area shape="poly" title=" " alt="" coords="1360,246,1186,361,1183,357,1357,241"/>
+<area shape="rect" href="../../d5/d4f/test__system_diagnostics_8cpp.html#ac21d3db6320dfec155d288c14ab41ec5" title=" " alt="" coords="1044,201,1260,227"/>
+<area shape="poly" title=" " alt="" coords="1297,217,1261,217,1261,212,1297,212"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a17d80bac83cbb3f7ea20b8e5a4b6df8a" title="Performs an off checkup." alt="" coords="818,129,985,169"/>
+<area shape="poly" title=" " alt="" coords="1058,152,985,152,985,146,1058,146"/>
+<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#aadc5418e1777bcc168fc3375df7dce46" title=" " alt="" coords="807,46,996,87"/>
+<area shape="poly" title=" " alt="" coords="1073,126,965,90,967,85,1075,121"/>
+<area shape="poly" title=" " alt="" coords="822,180,809,191,781,240,740,331,668,505,664,503,735,328,776,237,805,187,819,175"/>
+<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a27be3ebab870856632f7501493df3ff0" title=" " alt="" coords="554,117,759,157"/>
+<area shape="poly" title=" " alt="" coords="802,147,759,145,759,139,803,141"/>
+<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="395,44,444,70"/>
+<area shape="poly" title=" " alt="" coords="585,113,505,85,444,66,445,61,507,80,587,108"/>
+<area shape="poly" title=" " alt="" coords="791,67,445,60,445,55,791,61"/>
+<area shape="poly" title=" " alt="" coords="1066,407,722,509,720,504,1064,402"/>
+<area shape="rect" href="../../d5/d4f/test__system_diagnostics_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="877,201,926,227"/>
+<area shape="poly" title=" " alt="" coords="1029,217,927,217,927,212,1029,212"/>
+<area shape="poly" title=" " alt="" coords="1313,788,443,942,442,937,1312,782"/>
 </map>
 </div>
 
@@ -489,7 +503,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <p>This method allows the user to change the interval dynamically at runtime. The interval will be used for subsequent checks. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00078">78</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00077">77</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -521,157 +535,140 @@ Here is the caller graph for this function:</div>
 <p>Resets the timer to the current time. </p>
 <p>This method resets the timer, updating the internal state to the current time. After calling this method, the timer will begin counting from zero again. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00125">125</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d73/metro_8h_source.html#l00124">124</a> of file <a class="el" href="../../d1/d73/metro_8h_source.html">metro.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d60/class_metro_a40a8e2c535e7558224f4336628797dbd_icgraph.png" border="0" usemap="#adb/d60/class_metro_a40a8e2c535e7558224f4336628797dbd_icgraph" alt=""/></div>
 <map name="adb/d60/class_metro_a40a8e2c535e7558224f4336628797dbd_icgraph" id="adb/d60/class_metro_a40a8e2c535e7558224f4336628797dbd_icgraph">
-<area shape="rect" title="Resets the timer to the current time." alt="" coords="1328,735,1418,761"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3a46afd7d8b65ad4a2c914f6274cfd8" title="Callback from inversor, for alive signal and data." alt="" coords="554,403,766,429"/>
-<area shape="poly" title=" " alt="" coords="1370,720,1368,661,1356,587,1345,548,1329,511,1307,478,1279,450,1241,431,1189,417,1124,408,1052,404,901,404,766,410,766,405,901,398,1052,398,1125,403,1190,412,1243,426,1282,446,1311,475,1333,509,1350,546,1361,585,1373,661,1375,720"/>
+<area shape="rect" title="Resets the timer to the current time." alt="" coords="1235,658,1325,684"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#abb808b73526d1d221dafef31202f88cc" title="Callback from inversor, for alive signal and data." alt="" coords="564,358,725,399"/>
+<area shape="poly" title=" " alt="" coords="1275,643,1269,594,1255,534,1243,503,1228,474,1209,447,1186,425,1132,392,1074,369,1012,355,949,348,886,347,827,350,726,363,725,358,827,345,886,341,949,343,1012,350,1075,364,1135,387,1189,421,1213,444,1233,471,1248,501,1260,532,1274,593,1280,642"/>
 <area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,18,59,44"/>
-<area shape="poly" title=" " alt="" coords="1368,720,1363,597,1349,425,1338,337,1322,257,1303,190,1291,164,1278,144,1239,100,1201,67,1163,43,1123,26,1080,16,1033,11,920,8,418,8,314,11,211,17,59,30,59,25,211,11,314,5,418,3,920,3,1033,5,1081,11,1125,21,1165,38,1204,63,1243,97,1282,141,1296,162,1308,188,1328,255,1343,337,1355,425,1369,597,1374,720"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,454,475,480"/>
-<area shape="poly" title=" " alt="" coords="1360,722,1329,659,1306,625,1279,595,1216,550,1161,525,1100,510,1023,495,947,481,869,472,715,462,578,462,476,466,476,460,578,456,715,457,869,466,947,476,1023,489,1101,505,1163,520,1219,545,1282,591,1311,621,1334,656,1364,719"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,353,506,378"/>
-<area shape="poly" title=" " alt="" coords="1366,720,1355,646,1336,551,1311,463,1295,430,1279,409,1254,392,1221,379,1138,358,1036,347,923,342,806,342,693,347,507,360,506,354,693,341,806,337,923,336,1036,341,1139,353,1223,374,1256,388,1282,405,1300,427,1316,461,1341,550,1360,645,1371,719"/>
+<area shape="poly" title=" " alt="" coords="1274,642,1265,538,1249,396,1237,324,1222,258,1205,204,1185,165,1151,123,1118,88,1086,61,1052,40,1015,25,973,15,926,10,871,8,418,8,314,11,211,17,59,30,59,25,211,11,314,5,418,3,871,3,926,4,974,10,1016,20,1054,35,1089,56,1122,84,1155,119,1190,163,1210,202,1227,257,1242,323,1254,396,1271,537,1279,642"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ac41be4ed7a2b91bafe7b0b4010d91417" title="Test function to validate flow diagram conditions to go AS_READY." alt="" coords="364,403,475,429"/>
+<area shape="poly" title=" " alt="" coords="1271,643,1261,607,1245,564,1220,522,1204,504,1186,489,1161,475,1129,463,1049,444,952,431,846,422,636,416,476,417,476,412,636,410,847,417,953,425,1050,439,1131,458,1163,470,1189,484,1208,500,1224,519,1249,562,1266,605,1276,642"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae58375ced56286047b208255596c5457" title="Test function to validate AS_OFF to AS_Ready transition with checks reverting to invalid mid transiti..." alt="" coords="333,302,506,328"/>
+<area shape="poly" title=" " alt="" coords="1277,642,1274,584,1262,510,1250,471,1234,434,1213,400,1186,371,1164,357,1136,344,1063,325,975,312,876,305,674,304,507,311,507,306,674,299,876,300,975,307,1064,320,1138,339,1166,352,1189,367,1217,397,1239,432,1255,470,1267,509,1279,583,1282,642"/>
 <area shape="rect" href="../../da/dad/test__integration_8cpp.html#abd09e1416aa231f6439d77b22bb05c10" title="Auxiliary function to set state as ready." alt="" coords="385,771,455,797"/>
-<area shape="poly" title=" " alt="" coords="1354,774,1322,804,1281,829,1224,849,1164,864,1103,874,1042,880,919,882,800,872,689,856,592,836,455,798,456,793,593,830,690,851,800,867,919,876,1041,874,1103,868,1163,858,1222,844,1279,824,1319,800,1350,770"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="124,438,268,479"/>
-<area shape="poly" title=" " alt="" coords="1366,720,1357,636,1340,527,1313,425,1297,386,1279,361,1250,344,1209,332,1161,324,1108,319,1002,317,920,317,659,317,608,315,563,310,487,301,452,300,416,306,377,319,335,342,317,361,310,382,304,404,287,427,268,440,265,436,283,423,299,402,305,380,312,358,331,338,375,314,414,301,451,295,487,295,564,305,608,310,659,312,920,312,1002,311,1108,314,1161,318,1211,326,1252,339,1282,357,1302,384,1319,423,1345,526,1362,635,1372,719"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="124,373,268,414"/>
-<area shape="poly" title=" " alt="" coords="1369,720,1365,604,1353,443,1341,361,1325,288,1305,229,1292,206,1279,190,1236,158,1196,141,1156,135,1116,137,1028,154,977,162,920,165,659,165,564,163,488,164,453,169,417,178,378,194,334,218,291,253,255,296,227,339,209,374,204,372,223,336,250,293,287,249,332,214,376,190,415,173,452,163,488,158,564,158,659,160,920,160,976,157,1027,149,1115,132,1157,130,1197,136,1239,154,1282,186,1297,203,1309,226,1330,286,1346,360,1358,442,1371,603,1374,720"/>
-<area shape="rect" href="../../d2/d46/class_a_s_state.html#a18ed9ab2d023965fe634543642114517" title="Calculates the state of the vehicle." alt="" coords="580,754,740,780"/>
-<area shape="poly" title=" " alt="" coords="1313,752,740,767,740,762,1313,747"/>
-<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="397,1126,442,1152"/>
-<area shape="poly" title=" " alt="" coords="1373,777,1367,825,1352,885,1341,916,1325,945,1306,972,1282,994,1254,1011,1219,1023,1134,1039,1035,1045,927,1044,715,1041,625,1045,587,1051,555,1059,521,1073,489,1091,439,1127,435,1123,486,1087,519,1068,553,1053,586,1045,624,1040,714,1036,927,1039,1034,1039,1134,1034,1218,1018,1251,1006,1279,990,1302,968,1321,942,1336,913,1347,883,1362,824,1368,776"/>
-<area shape="rect" href="../../da/db9/class_digital_sender.html#a7ea265f97869814f5818796a594b3c66" title="ASSI LEDs yellow flashing, ebs valves deactivated, sdc closed." alt="" coords="1089,605,1262,646"/>
-<area shape="poly" title=" " alt="" coords="1350,725,1319,692,1279,661,1254,649,1257,644,1282,656,1322,688,1354,721"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#aed03d5da475b2e8a022692776f0d4d30" title="resets timestamps for driving" alt="" coords="1080,954,1271,980"/>
-<area shape="poly" title=" " alt="" coords="1368,777,1357,812,1339,854,1315,897,1282,934,1264,947,1243,956,1241,951,1261,942,1279,930,1310,894,1334,852,1352,810,1363,775"/>
-<area shape="rect" href="../../da/db9/class_digital_sender.html#a86a6fec2ee10f99426d6bdc2b7d94344" title="ASSI LEDs blue flashing, sdc open and buzzer ringing." alt="" coords="1077,670,1274,711"/>
-<area shape="poly" title=" " alt="" coords="1313,733,1247,714,1249,709,1314,728"/>
-<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a70929319b77c347b9bb5ca7e14dcd5dd" title="resets timestamps for ready" alt="" coords="1082,789,1269,814"/>
-<area shape="poly" title=" " alt="" coords="1314,767,1227,790,1225,785,1313,761"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#aea13673f58405e59748d8baca61df4f3" title="Performs an initial checkup." alt="" coords="1071,1112,1280,1152"/>
-<area shape="poly" title=" " alt="" coords="1375,777,1372,841,1360,925,1349,970,1332,1015,1311,1057,1282,1095,1259,1113,1255,1109,1278,1091,1306,1054,1328,1013,1344,969,1355,924,1367,840,1370,776"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#aadc5418e1777bcc168fc3375df7dce46" title=" " alt="" coords="824,1202,1013,1243"/>
-<area shape="poly" title=" " alt="" coords="1372,777,1363,866,1346,982,1334,1041,1320,1094,1303,1137,1282,1166,1245,1180,1178,1194,1014,1216,1013,1210,1177,1188,1244,1175,1279,1162,1298,1134,1315,1092,1329,1040,1341,982,1358,865,1367,776"/>
-<area shape="rect" href="../../db/d60/class_metro.html#ab8afbe8e9358b5826823c8d79373402f" title="Constructor to initialize the timer with a given interval and autoreset behavior." alt="" coords="1129,1227,1222,1253"/>
-<area shape="poly" title=" " alt="" coords="1372,776,1364,873,1347,1002,1335,1067,1321,1127,1303,1176,1282,1210,1255,1229,1224,1239,1222,1234,1253,1224,1278,1206,1298,1173,1315,1125,1330,1066,1342,1001,1359,872,1367,776"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca" title="Callback for message from AS CU." alt="" coords="572,965,748,990"/>
-<area shape="poly" title=" " alt="" coords="1363,777,1333,832,1310,861,1282,884,1218,916,1162,933,1109,940,1057,939,948,931,886,932,814,941,709,966,707,961,813,936,885,927,948,926,1057,934,1108,934,1160,928,1216,911,1279,879,1306,857,1329,829,1359,774"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#a51418ea43bfd1a189173cf72918f5859" title="Callback RES default callback." alt="" coords="555,251,765,277"/>
-<area shape="poly" title=" " alt="" coords="1368,720,1361,624,1345,495,1333,431,1319,374,1300,328,1279,298,1242,278,1190,263,1126,254,1053,250,901,250,766,257,765,252,901,244,1054,244,1126,249,1191,258,1244,273,1282,294,1305,325,1324,372,1339,430,1350,495,1366,623,1373,719"/>
-<area shape="rect" href="../../d0/d02/class_communicator.html#abfd5d2ea20261f952547b1d1900d12ab" title="Callback for steering actuator information." alt="" coords="1072,201,1279,226"/>
-<area shape="poly" title=" " alt="" coords="1368,720,1360,616,1345,474,1333,402,1318,337,1300,283,1278,247,1253,229,1256,225,1282,244,1305,281,1323,336,1338,401,1350,473,1366,615,1373,720"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a5afd180c6692b45a5f85767d3365fd80" title=" " alt="" coords="827,1137,1010,1178"/>
-<area shape="poly" title=" " alt="" coords="1374,777,1370,833,1356,905,1344,943,1329,980,1308,1014,1282,1045,1257,1065,1232,1077,1208,1084,1183,1086,1132,1088,1104,1093,1072,1102,1024,1128,994,1139,992,1134,1022,1123,1070,1098,1102,1088,1132,1083,1183,1081,1207,1078,1230,1072,1254,1061,1278,1041,1304,1011,1324,977,1339,941,1351,903,1364,832,1369,776"/>
-<area shape="rect" href="../../da/db9/class_digital_sender.html#a323177916d67cb1d0e20f8f0268a356e" title="Toggles the watchdog pin, to ensure certify of masters&#39; liveness." alt="" coords="1077,1277,1274,1302"/>
-<area shape="poly" title=" " alt="" coords="1373,776,1367,884,1352,1031,1340,1105,1325,1173,1306,1229,1282,1267,1269,1278,1265,1274,1278,1264,1301,1227,1320,1172,1335,1104,1347,1030,1362,883,1368,776"/>
+<area shape="poly" title=" " alt="" coords="1274,700,1262,732,1245,771,1220,809,1189,841,1159,861,1132,876,1081,889,957,899,895,905,842,906,796,903,752,896,664,871,553,835,454,800,456,795,555,829,666,866,754,890,796,897,843,900,895,899,957,893,1080,884,1130,871,1156,857,1186,837,1216,805,1240,768,1257,730,1269,698"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af9be37ef8f6eeaaabdfe963a421b22d8" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if brakes ..." alt="" coords="124,986,268,1027"/>
+<area shape="poly" title=" " alt="" coords="1278,699,1268,787,1249,903,1223,1015,1207,1059,1190,1091,1154,1133,1121,1166,1087,1193,1052,1213,1015,1227,973,1236,926,1241,871,1243,643,1243,552,1244,480,1241,446,1236,411,1225,374,1208,332,1185,287,1149,251,1106,223,1064,204,1029,209,1026,228,1061,255,1103,291,1146,334,1180,376,1204,413,1220,447,1230,481,1236,552,1239,643,1237,871,1237,925,1236,972,1231,1013,1222,1050,1208,1084,1188,1117,1162,1150,1129,1185,1088,1202,1057,1218,1013,1244,902,1262,786,1273,698"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a736c262e298425de32bfa70c2d2f51ff" title="Test function to validate AS_READY to AS_Driving transition and AS_DRIVING to AS_EMERGENCY if failure..." alt="" coords="124,921,268,962"/>
+<area shape="poly" title=" " alt="" coords="1278,699,1270,743,1254,797,1228,851,1210,876,1189,898,1105,962,1026,1005,951,1031,875,1044,796,1050,710,1052,615,1056,507,1065,457,1075,416,1084,377,1083,355,1077,332,1065,319,1055,312,1045,305,1022,299,999,283,977,265,964,268,960,287,973,304,996,310,1020,316,1042,323,1052,334,1060,357,1072,378,1078,416,1078,456,1069,506,1060,615,1050,710,1047,795,1045,874,1039,949,1026,1024,1000,1102,958,1186,894,1206,873,1223,849,1249,795,1265,741,1273,698"/>
+<area shape="rect" href="../../d2/d46/class_a_s_state.html#a813d8386653a4884bd4a8d986fc57d56" title="Calculates the state of the vehicle." alt="" coords="580,662,709,703"/>
+<area shape="poly" title=" " alt="" coords="1220,670,1187,669,985,667,783,675,709,680,709,674,783,669,985,662,1187,664,1220,665"/>
+<area shape="rect" href="../../d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="397,1025,442,1050"/>
+<area shape="poly" title=" " alt="" coords="1278,699,1266,771,1248,862,1222,947,1207,979,1189,1001,1143,1033,1093,1058,1041,1077,987,1091,931,1101,875,1106,764,1105,659,1095,567,1079,442,1047,443,1042,568,1073,660,1090,764,1100,875,1100,931,1095,986,1086,1039,1072,1091,1053,1140,1028,1186,997,1202,976,1217,945,1243,861,1261,771,1272,699"/>
+<area shape="rect" href="../../da/db9/class_digital_sender.html#a966bfea535191a5367a4ab0dd7046836" title="ASSI LEDs yellow flashing, ebs valves deactivated, sdc closed." alt="" coords="1030,786,1163,827"/>
+<area shape="poly" title=" " alt="" coords="1251,695,1127,788,1123,784,1248,691"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a653573aa20aaed5f5e5da8721554a089" title="resets timestamps for driving" alt="" coords="1014,498,1179,539"/>
+<area shape="poly" title=" " alt="" coords="1262,646,1230,599,1209,575,1186,554,1165,542,1168,537,1189,550,1213,571,1235,596,1266,643"/>
+<area shape="rect" href="../../da/db9/class_digital_sender.html#a04d0cb69bbee63b4c0e68eafb7b7383a" title="ASSI LEDs blue flashing, sdc open and buzzer ringing." alt="" coords="1030,678,1163,719"/>
+<area shape="poly" title=" " alt="" coords="1221,682,1164,691,1163,686,1220,677"/>
+<area shape="rect" href="../../d8/deb/struct_r2_d_logics.html#a48fc4782d4892a02da9b25b0ded154a4" title="resets timestamps for ready" alt="" coords="1017,564,1175,604"/>
+<area shape="poly" title=" " alt="" coords="1240,652,1186,625,1147,607,1149,603,1188,620,1242,648"/>
+<area shape="rect" href="../../db/d60/class_metro.html#ab8afbe8e9358b5826823c8d79373402f" title="Constructor to initialize the timer with a given interval and autoreset behavior." alt="" coords="1050,1278,1143,1304"/>
+<area shape="poly" title=" " alt="" coords="1281,699,1275,818,1261,986,1250,1071,1234,1150,1214,1215,1203,1240,1189,1260,1169,1277,1144,1287,1142,1282,1166,1272,1185,1257,1198,1238,1209,1213,1229,1149,1244,1070,1256,985,1270,818,1275,699"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a6e76ba59f478d3957c757b4cd211935b" title="Callback for message from AS CU." alt="" coords="554,201,735,226"/>
+<area shape="poly" title=" " alt="" coords="1273,643,1263,563,1245,460,1219,363,1203,326,1186,302,1154,282,1108,265,1051,252,988,241,854,226,735,219,735,213,854,221,988,235,1052,246,1109,260,1156,277,1189,298,1208,324,1224,361,1250,459,1268,562,1278,642"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a42cf4c62a4ff6b22f9c0151f60ce53b2" title="Callback RES default callback." alt="" coords="562,1118,727,1159"/>
+<area shape="poly" title=" " alt="" coords="1282,699,1280,761,1268,842,1256,885,1240,927,1218,966,1189,1001,1138,1042,1081,1075,1019,1100,956,1118,892,1131,832,1139,728,1144,728,1139,831,1133,892,1126,954,1113,1017,1095,1078,1070,1135,1038,1185,997,1213,963,1235,925,1251,883,1263,841,1275,760,1277,699"/>
+<area shape="rect" href="../../d0/d02/class_communicator.html#a04694b4fb21ef693a32ec31a13cd3127" title="Callback for steering actuator information." alt="" coords="791,120,949,160"/>
+<area shape="poly" title=" " alt="" coords="1274,643,1266,548,1249,422,1237,359,1223,301,1205,255,1185,223,1161,201,1133,184,1071,159,1008,146,949,141,949,135,1008,141,1073,154,1136,179,1164,197,1189,220,1210,252,1228,300,1242,358,1254,421,1271,548,1279,642"/>
+<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a5afd180c6692b45a5f85767d3365fd80" title=" " alt="" coords="1005,1328,1187,1368"/>
+<area shape="poly" title=" " alt="" coords="1281,699,1277,829,1265,1013,1253,1108,1237,1195,1216,1267,1204,1296,1189,1318,1177,1329,1174,1325,1185,1314,1199,1293,1211,1265,1232,1194,1248,1107,1259,1013,1272,829,1276,699"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6" title="Parses the message received from the CAN bus." alt="" coords="348,85,491,126"/>
-<area shape="poly" title=" " alt="" coords="635,393,552,291,433,128,438,124,556,288,639,389"/>
-<area shape="poly" title=" " alt="" coords="581,435,476,458,475,452,580,430"/>
-<area shape="poly" title=" " alt="" coords="580,402,483,381,485,376,581,397"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="107,654,285,695"/>
-<area shape="poly" title=" " alt="" coords="570,403,513,400,452,404,390,417,361,428,335,443,315,463,306,483,299,507,287,536,213,656,209,653,283,533,294,506,301,482,310,460,331,439,359,424,389,412,451,398,513,395,570,398"/>
-<area shape="poly" title=" " alt="" coords="634,441,595,482,557,532,540,566,531,594,524,623,509,659,469,723,434,772,429,769,465,720,504,656,519,621,526,592,535,564,552,529,591,478,630,438"/>
+<area shape="poly" title=" " alt="" coords="614,347,436,128,440,124,619,344"/>
+<area shape="poly" title=" " alt="" coords="549,397,476,409,475,404,548,392"/>
+<area shape="poly" title=" " alt="" coords="555,356,467,331,468,326,557,351"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a0ad2fba381b8d0d077a2c522bf133b5c" title="Test function to validate AS_READY doesn&#39;t revert to AS_Ready." alt="" coords="107,658,285,699"/>
+<area shape="poly" title=" " alt="" coords="553,358,498,351,440,352,384,364,358,376,335,393,311,421,302,451,302,481,307,513,313,547,314,580,307,614,287,648,274,660,271,656,283,645,302,612,309,580,307,547,302,514,296,482,296,450,307,418,331,389,355,372,382,359,439,346,498,345,554,352"/>
+<area shape="poly" title=" " alt="" coords="627,414,431,772,426,770,622,411"/>
 <area shape="rect" href="../../d0/d02/class_communicator.html#a150bab96b93c2f5ecf51070ceda61240" title="Initializes the CAN bus." alt="" coords="132,43,260,69"/>
 <area shape="poly" title=" " alt="" coords="332,89,257,72,258,67,333,84"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="146,191,246,217"/>
-<area shape="poly" title=" " alt="" coords="355,135,334,146,311,165,286,182,247,197,245,192,284,178,308,161,332,142,352,130"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="164,93,228,118"/>
-<area shape="poly" title=" " alt="" coords="333,108,228,108,228,103,333,103"/>
-<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="144,142,248,168"/>
-<area shape="poly" title=" " alt="" coords="334,127,249,146,248,141,333,122"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a52d28999c07434392567cd27c936944f" title="Tests if the messages from Bamocar are correctly parsed and the Tractive System State is matching rec..." alt="" coords="146,93,246,118"/>
+<area shape="poly" title=" " alt="" coords="333,108,246,108,246,103,333,103"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#abe441660616299491af73f98f8d1556c" title="Tests if the messages from C1 are correctly parsed for Hydraulic Brake Pressure and Right Wheel Rpm&#39;s..." alt="" coords="164,142,228,168"/>
+<area shape="poly" title=" " alt="" coords="333,127,229,150,228,145,332,122"/>
+<area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#ad86d36c0154f17954835cc33167f5d3e" title="Tests if the messages from RES are correctly parsed for R2D and Emergency activations,..." alt="" coords="144,191,248,217"/>
+<area shape="poly" title=" " alt="" coords="355,135,334,146,311,165,286,182,249,196,248,191,284,178,308,161,332,142,352,130"/>
 <area shape="poly" title=" " alt="" coords="116,46,59,37,59,32,117,41"/>
 <area shape="rect" href="../../df/d2e/test__callbacks_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="7,142,57,168"/>
-<area shape="poly" title=" " alt="" coords="130,190,106,183,56,166,58,161,107,177,131,185"/>
-<area shape="poly" title=" " alt="" coords="149,120,107,132,58,149,56,144,106,127,148,115"/>
-<area shape="poly" title=" " alt="" coords="128,157,57,157,57,152,128,152"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="7,719,57,745"/>
-<area shape="poly" title=" " alt="" coords="382,490,286,537,234,556,192,566,152,579,108,609,84,636,64,666,40,720,35,718,59,664,80,632,105,605,150,574,190,560,233,550,284,532,379,485"/>
-<area shape="poly" title=" " alt="" coords="358,387,335,403,319,425,312,447,305,470,287,493,263,509,239,518,195,523,152,528,131,537,108,554,92,573,77,595,56,642,44,686,38,719,32,718,39,685,51,640,73,592,87,570,105,550,128,533,151,523,194,517,238,512,260,504,283,489,300,467,307,446,314,423,331,399,356,383"/>
-<area shape="poly" title=" " alt="" coords="122,703,58,726,56,721,121,698"/>
-<area shape="poly" title=" " alt="" coords="384,765,337,737,284,709,258,698,260,693,286,704,340,732,387,760"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="117,917,275,958"/>
-<area shape="poly" title=" " alt="" coords="399,810,350,859,320,885,286,908,264,919,262,914,284,903,316,880,347,855,395,806"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="124,818,268,844"/>
-<area shape="poly" title=" " alt="" coords="370,797,262,820,261,815,369,792"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="137,867,255,893"/>
-<area shape="poly" title=" " alt="" coords="386,807,339,834,286,858,255,869,253,864,284,854,337,829,383,803"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="124,982,268,1008"/>
-<area shape="poly" title=" " alt="" coords="409,812,390,848,363,891,328,934,287,972,264,984,261,979,283,967,324,931,358,888,385,845,404,809"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="134,1031,258,1057"/>
-<area shape="poly" title=" " alt="" coords="413,813,397,858,371,915,334,973,312,999,287,1022,260,1036,257,1032,283,1018,308,995,330,970,366,912,392,856,408,811"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="108,769,284,794"/>
-<area shape="poly" title=" " alt="" coords="369,786,284,785,284,780,369,781"/>
-<area shape="poly" title=" " alt="" coords="399,760,209,481,214,478,403,757"/>
-<area shape="poly" title=" " alt="" coords="395,761,362,715,331,658,319,624,315,592,317,536,317,509,313,483,303,457,283,428,267,415,270,411,287,425,307,454,318,482,322,509,322,536,321,592,325,622,335,656,366,712,399,757"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="111,719,281,745"/>
-<area shape="poly" title=" " alt="" coords="369,775,254,748,255,743,370,770"/>
-<area shape="poly" title=" " alt="" coords="107,910,105,907,74,867,52,821,39,778,33,746,38,745,45,777,57,819,78,864,109,904,111,906"/>
-<area shape="poly" title=" " alt="" coords="115,814,105,809,67,778,41,747,45,743,71,774,108,804,117,809"/>
-<area shape="poly" title=" " alt="" coords="121,868,105,858,79,832,58,800,35,746,40,744,63,798,83,828,108,854,124,863"/>
-<area shape="poly" title=" " alt="" coords="109,975,105,971,83,944,65,914,43,849,33,788,31,745,36,745,39,787,48,847,70,912,87,941,109,967,113,971"/>
-<area shape="poly" title=" " alt="" coords="118,1032,105,1022,90,1000,77,968,56,887,32,746,38,745,61,886,82,966,95,997,109,1018,121,1028"/>
-<area shape="poly" title=" " alt="" coords="128,766,106,760,56,743,58,738,107,755,130,761"/>
-<area shape="poly" title=" " alt="" coords="119,490,109,499,89,526,73,556,51,620,40,678,36,719,31,719,35,677,46,618,68,554,84,523,105,496,115,486"/>
-<area shape="poly" title=" " alt="" coords="113,424,109,428,95,451,82,485,61,570,38,719,32,718,56,569,77,483,90,449,105,425,109,420"/>
-<area shape="poly" title=" " alt="" coords="95,735,57,735,57,729,95,729"/>
-<area shape="poly" title=" " alt="" coords="641,741,504,501,473,482,476,478,508,497,646,739"/>
-<area shape="poly" title=" " alt="" coords="640,742,598,671,552,582,538,543,531,510,523,479,504,443,473,407,440,381,443,377,476,403,509,440,528,477,536,509,543,541,557,580,602,669,644,740"/>
-<area shape="poly" title=" " alt="" coords="592,752,506,732,285,691,286,686,507,727,593,747"/>
-<area shape="poly" title=" " alt="" coords="565,776,455,784,455,779,565,771"/>
-<area shape="poly" title=" " alt="" coords="633,792,578,834,543,855,507,873,448,895,387,911,275,932,274,926,386,906,447,890,505,868,541,850,575,829,630,788"/>
-<area shape="poly" title=" " alt="" coords="605,787,507,812,381,827,268,833,268,827,380,822,506,807,604,782"/>
-<area shape="poly" title=" " alt="" coords="620,789,567,813,507,835,441,851,373,863,256,878,255,873,372,858,439,846,506,829,565,808,618,784"/>
-<area shape="poly" title=" " alt="" coords="643,794,588,861,550,897,508,926,448,954,384,973,322,985,268,993,267,987,322,980,383,968,446,949,505,922,547,892,584,857,639,791"/>
-<area shape="poly" title=" " alt="" coords="651,795,630,838,600,891,559,944,534,967,508,988,478,1004,446,1018,380,1036,315,1045,259,1048,258,1043,314,1040,378,1031,444,1013,476,1000,505,983,531,963,555,940,595,888,625,835,646,792"/>
-<area shape="poly" title=" " alt="" coords="640,742,585,669,548,630,505,596,460,573,422,563,381,555,332,538,276,510,228,482,231,477,279,506,334,534,383,550,423,558,462,568,508,591,551,626,590,666,644,739"/>
-<area shape="poly" title=" " alt="" coords="645,741,624,698,593,646,553,593,505,547,482,534,460,526,420,521,378,516,356,508,331,494,315,478,306,461,298,445,283,429,263,416,266,412,287,425,303,442,311,458,319,474,335,490,358,503,379,511,420,516,462,521,484,529,508,543,557,589,598,643,629,696,650,738"/>
-<area shape="poly" title=" " alt="" coords="565,762,281,741,282,736,565,757"/>
-<area shape="poly" title=" " alt="" coords="645,794,557,953,535,1006,525,1030,508,1058,474,1097,440,1127,436,1123,470,1093,504,1054,521,1027,530,1004,552,951,641,792"/>
-<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="354,605,485,646"/>
-<area shape="poly" title=" " alt="" coords="627,747,572,708,505,666,470,649,472,644,508,662,574,703,630,742"/>
-<area shape="poly" title=" " alt="" coords="339,615,285,612,225,614,165,624,108,645,86,661,67,681,42,720,37,717,63,678,82,657,105,640,163,619,225,609,285,607,339,610"/>
-<area shape="poly" title=" " alt="" coords="1074,642,949,665,814,700,744,728,687,756,685,751,742,723,813,695,948,660,1073,636"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#a300f7b73a5b155e1a6f101369d21ec01" title="Test the enterDrivingState function PROTOCOL:" alt="" coords="843,504,994,544"/>
-<area shape="poly" title=" " alt="" coords="1116,600,1022,560,987,547,989,542,1024,555,1119,596"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="635,543,685,569"/>
-<area shape="poly" title=" " alt="" coords="828,538,686,556,685,550,828,532"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#aa0fedbdde63d4e608350dfb6434bd719" title="Performs a ready to drive checkup." alt="" coords="822,950,1015,991"/>
-<area shape="poly" title=" " alt="" coords="1065,971,1015,972,1015,967,1064,966"/>
-<area shape="poly" title=" " alt="" coords="877,943,677,782,680,778,881,938"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a0125a19ddcfb685ed70af481d5d2a6db" title=" " alt="" coords="585,1069,735,1094"/>
-<area shape="poly" title=" " alt="" coords="856,1000,693,1070,691,1065,854,995"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="395,1278,444,1304"/>
-<area shape="poly" title=" " alt="" coords="572,1102,556,1114,542,1131,535,1149,532,1185,530,1222,522,1241,508,1261,494,1272,478,1281,445,1290,444,1285,476,1276,491,1268,504,1257,518,1239,524,1221,527,1184,530,1147,538,1129,552,1110,569,1098"/>
-<area shape="poly" title=" " alt="" coords="1062,701,942,714,814,732,710,756,708,751,813,727,942,708,1061,696"/>
-<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae1cc77642939ff7c949df12ff07102c4" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="831,569,1006,610"/>
-<area shape="poly" title=" " alt="" coords="1091,667,1070,660,962,613,964,608,1072,655,1093,662"/>
-<area shape="poly" title=" " alt="" coords="816,579,685,562,685,556,816,574"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#ad10b40a4a2f06c0b4a6eb64050db042c" title="Performs a last re&#45;check for off to ready transition." alt="" coords="827,785,1010,826"/>
-<area shape="poly" title=" " alt="" coords="1067,806,1011,807,1011,801,1067,800"/>
-<area shape="poly" title=" " alt="" coords="811,792,740,781,740,776,811,787"/>
-<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a9b5b81b87d77e39901c2b5550e2a8aed" title="Performs an off checkup." alt="" coords="814,1087,1023,1113"/>
-<area shape="poly" title=" " alt="" coords="1055,1120,1023,1116,1024,1110,1056,1114"/>
-<area shape="poly" title=" " alt="" coords="1105,1161,1072,1173,1024,1192,987,1204,986,1199,1022,1187,1070,1168,1103,1156"/>
-<area shape="poly" title=" " alt="" coords="887,1079,850,1045,812,1004,764,942,722,877,666,781,671,778,726,874,768,938,816,1001,854,1041,891,1075"/>
-<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#a27be3ebab870856632f7501493df3ff0" title=" " alt="" coords="558,1124,762,1164"/>
-<area shape="poly" title=" " alt="" coords="824,1119,763,1129,762,1124,823,1113"/>
-<area shape="poly" title=" " alt="" coords="591,1174,556,1197,541,1213,533,1228,524,1244,508,1261,477,1278,446,1288,444,1283,474,1273,505,1257,520,1241,528,1226,537,1210,553,1193,588,1169"/>
-<area shape="poly" title=" " alt="" coords="808,1240,445,1290,444,1285,808,1235"/>
-<area shape="poly" title=" " alt="" coords="638,953,593,883,570,839,552,793,534,726,525,668,521,616,522,568,522,467,516,408,504,341,487,279,466,219,428,127,433,125,471,217,492,277,509,339,522,408,527,466,527,568,527,616,530,668,539,725,557,791,575,837,598,881,642,950"/>
-<area shape="poly" title=" " alt="" coords="557,974,333,957,275,951,275,945,333,952,557,969"/>
-<area shape="poly" title=" " alt="" coords="623,1001,588,1026,556,1058,547,1072,542,1087,537,1115,530,1142,522,1155,508,1166,462,1191,419,1199,398,1198,376,1191,331,1166,315,1150,307,1132,304,1094,303,1056,297,1038,283,1021,267,1009,270,1005,287,1017,301,1035,308,1055,309,1094,312,1130,319,1147,335,1162,378,1186,399,1192,419,1194,460,1186,505,1162,518,1151,525,1140,532,1114,537,1086,542,1070,552,1054,585,1022,620,997"/>
-<area shape="poly" title=" " alt="" coords="621,1001,587,1026,556,1058,546,1077,541,1097,539,1135,534,1170,525,1188,508,1203,464,1227,443,1232,422,1233,380,1224,332,1204,307,1190,285,1172,247,1131,219,1090,201,1058,206,1056,223,1087,251,1128,289,1168,310,1185,334,1199,382,1219,423,1228,442,1227,462,1222,505,1199,520,1184,529,1169,533,1134,535,1096,541,1075,552,1054,583,1022,618,996"/>
-<area shape="poly" title=" " alt="" coords="583,248,553,234,498,188,439,128,443,124,501,184,556,230,585,243"/>
-<area shape="poly" title=" " alt="" coords="569,252,512,249,450,253,389,269,361,281,335,298,321,312,314,327,310,359,306,393,300,410,287,427,270,440,267,436,283,423,295,408,301,391,304,358,309,325,317,309,331,294,358,277,387,264,449,248,511,243,569,246"/>
-<area shape="poly" title=" " alt="" coords="604,249,546,236,477,227,404,229,368,236,334,248,293,274,258,308,230,344,211,374,206,371,226,340,254,304,289,269,332,243,367,231,403,224,477,222,547,230,605,244"/>
-<area shape="poly" title=" " alt="" coords="1065,200,492,118,492,113,1066,195"/>
-<area shape="poly" title=" " alt="" coords="812,1179,688,1206,555,1241,496,1262,446,1283,444,1278,494,1257,554,1236,687,1201,811,1174"/>
+<area shape="poly" title=" " alt="" coords="131,125,107,132,58,149,56,144,106,127,130,120"/>
+<area shape="poly" title=" " alt="" coords="148,157,57,157,57,152,148,152"/>
+<area shape="poly" title=" " alt="" coords="128,189,106,183,56,166,58,161,107,177,130,184"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="7,666,57,692"/>
+<area shape="poly" title=" " alt="" coords="354,402,297,393,231,392,198,395,166,403,136,415,108,433,84,458,65,488,52,521,43,555,35,620,35,666,30,666,30,619,38,554,47,519,61,485,80,454,105,429,133,411,165,398,198,390,231,386,297,388,355,397"/>
+<area shape="poly" title=" " alt="" coords="318,317,264,323,208,337,154,360,130,375,109,394,95,414,82,445,61,525,46,607,38,666,32,665,41,606,56,524,77,443,90,412,105,390,127,371,152,355,206,332,263,318,317,311"/>
+<area shape="poly" title=" " alt="" coords="91,681,57,681,57,676,91,676"/>
+<area shape="poly" title=" " alt="" coords="382,765,284,713,257,702,259,697,286,708,385,761"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1136867e1558c6e16064d9a381541d74" title="Test function to validate AS_DRIVING to AS_FINISHED transition and AS_FINISHED to AS_OFF after." alt="" coords="117,442,275,483"/>
+<area shape="poly" title=" " alt="" coords="403,758,331,608,319,574,313,547,304,522,283,497,268,486,272,481,287,493,308,520,318,545,324,573,335,606,407,756"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5d3fca79015e34f8e50e160e73ae04d3" title="Test function to validate AS_FINISHED to AS_EMERGENCY transition if RES is activated after mission fi..." alt="" coords="124,723,268,749"/>
+<area shape="poly" title=" " alt="" coords="369,776,259,752,260,747,370,771"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#af34db6a28b556f40fe93b7f5b65be950" title="Test function to validate flow diagram conditions to go AS_DRIVING." alt="" coords="137,822,255,848"/>
+<area shape="poly" title=" " alt="" coords="370,798,256,824,255,819,369,793"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a6184f596da9420293a095cd7c912c1df" title="Test function to validate flow diagram conditions to go AS_EMERGENCY." alt="" coords="124,609,268,634"/>
+<area shape="poly" title=" " alt="" coords="398,760,350,704,319,674,284,649,258,637,260,632,286,644,322,670,354,700,402,757"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a1a978d53e812c37eb128fd7dc33438a4" title="Test function to validate flow diagram conditions to go AS_FINISHED." alt="" coords="134,507,258,533"/>
+<area shape="poly" title=" " alt="" coords="401,760,351,685,283,598,247,563,213,535,217,531,251,559,287,594,356,681,405,757"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a5665bb2a1cfd6e9bc513ed13f99dc95e" title="Test function to validate AS_OFF to AS_Ready transition normal and successful transition." alt="" coords="108,773,284,798"/>
+<area shape="poly" title=" " alt="" coords="369,787,284,787,284,782,369,782"/>
+<area shape="poly" title=" " alt="" coords="408,812,389,848,362,892,328,936,287,975,267,988,264,983,283,971,324,933,358,889,385,845,404,809"/>
+<area shape="poly" title=" " alt="" coords="400,810,351,861,320,888,286,912,265,923,263,918,284,907,317,884,347,857,396,807"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#a20511278436d764bb8ba543573c729ed" title="Test function to validate AS_READY to AS_Emergency and the AS_EMERGENCY to AS_OFF transition." alt="" coords="111,871,281,897"/>
+<area shape="poly" title=" " alt="" coords="388,808,341,836,286,862,255,873,254,868,284,858,338,831,385,803"/>
+<area shape="poly" title=" " alt="" coords="111,494,109,497,91,516,77,539,56,587,44,632,38,666,32,665,38,631,51,585,72,536,87,513,105,493,107,490"/>
+<area shape="poly" title=" " alt="" coords="128,721,106,713,56,692,58,687,108,708,130,716"/>
+<area shape="poly" title=" " alt="" coords="121,822,105,813,78,784,57,751,34,693,39,691,62,748,82,781,108,809,123,818"/>
+<area shape="poly" title=" " alt="" coords="130,642,108,649,58,670,56,665,106,644,128,637"/>
+<area shape="poly" title=" " alt="" coords="127,542,108,554,83,581,64,612,40,667,35,664,59,610,79,578,105,550,124,537"/>
+<area shape="poly" title=" " alt="" coords="114,768,105,764,84,747,66,729,39,694,44,690,70,725,88,743,108,759,116,764"/>
+<area shape="poly" title=" " alt="" coords="110,980,105,975,79,940,60,901,47,859,38,818,30,743,30,692,35,692,35,743,43,817,52,858,65,899,84,937,109,972,113,976"/>
+<area shape="poly" title=" " alt="" coords="109,915,105,911,84,885,67,855,45,792,35,734,31,692,36,692,40,733,50,791,72,853,88,882,109,908,113,911"/>
+<area shape="poly" title=" " alt="" coords="108,865,105,862,87,843,72,820,50,772,38,726,32,692,37,691,43,725,55,770,76,818,91,839,108,858,112,861"/>
+<area shape="poly" title=" " alt="" coords="629,649,611,604,584,551,549,497,505,450,472,432,475,427,508,446,553,494,589,548,616,602,634,647"/>
+<area shape="poly" title=" " alt="" coords="630,649,583,530,547,459,504,392,471,357,438,330,442,326,475,353,508,389,552,457,588,528,634,647"/>
+<area shape="poly" title=" " alt="" coords="565,685,285,682,285,677,565,679"/>
+<area shape="poly" title=" " alt="" coords="593,713,507,754,456,775,454,770,505,750,590,708"/>
+<area shape="poly" title=" " alt="" coords="625,650,605,615,578,577,545,539,505,509,449,484,388,469,329,462,275,461,275,455,329,457,389,464,450,479,508,504,548,535,582,573,610,613,629,648"/>
+<area shape="poly" title=" " alt="" coords="565,695,269,730,268,725,564,689"/>
+<area shape="poly" title=" " alt="" coords="621,717,573,768,542,792,507,812,442,833,375,843,310,846,255,844,255,838,310,840,374,838,441,827,505,807,539,788,569,764,617,713"/>
+<area shape="poly" title=" " alt="" coords="564,673,506,664,267,633,268,627,507,659,565,667"/>
+<area shape="poly" title=" " alt="" coords="620,651,572,594,541,567,505,545,443,524,377,514,313,512,259,515,258,510,313,507,377,509,444,519,507,540,544,562,576,590,624,648"/>
+<area shape="poly" title=" " alt="" coords="610,716,582,747,557,783,546,807,542,830,541,874,540,894,536,915,526,935,508,955,491,966,467,976,405,990,335,1000,269,1006,268,1000,334,995,404,985,465,971,488,962,505,951,522,932,531,913,535,894,535,873,536,830,541,806,552,780,577,743,606,712"/>
+<area shape="poly" title=" " alt="" coords="612,716,583,747,557,783,543,815,538,843,530,870,522,884,508,897,481,915,451,928,388,946,325,952,269,952,269,947,325,947,387,940,449,923,478,910,505,893,518,880,526,868,533,842,538,813,552,780,579,744,608,712"/>
+<area shape="poly" title=" " alt="" coords="615,716,556,783,544,802,536,819,526,835,508,849,453,873,393,887,335,893,282,894,282,889,335,888,393,882,451,868,505,844,522,831,531,816,539,799,552,780,611,713"/>
+<area shape="poly" title=" " alt="" coords="609,716,581,746,557,783,544,815,539,844,541,898,541,925,538,951,528,979,508,1007,494,1020,477,1028,444,1038,442,1032,475,1023,491,1015,504,1004,523,976,533,950,536,924,535,898,534,844,539,813,552,780,577,743,605,712"/>
+<area shape="rect" href="../../da/dad/test__integration_8cpp.html#ae14d101f4be75b5ff4fe487b96ce50ca" title="Test function to validate AS_OFF to AS_Manual transition and the other way around." alt="" coords="354,554,485,595"/>
+<area shape="poly" title=" " alt="" coords="589,657,505,616,467,598,469,593,507,611,591,653"/>
+<area shape="poly" title=" " alt="" coords="338,567,285,565,226,567,165,578,108,598,86,613,68,631,42,667,38,664,64,628,83,609,105,594,164,573,225,562,285,559,339,561"/>
+<area shape="poly" title=" " alt="" coords="1014,814,961,814,902,810,841,801,782,784,747,768,715,747,665,706,669,702,718,743,750,763,784,779,842,795,903,805,962,809,1014,809"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#a300f7b73a5b155e1a6f101369d21ec01" title="Test the enterDrivingState function PROTOCOL:" alt="" coords="795,844,945,884"/>
+<area shape="poly" title=" " alt="" coords="1015,830,946,847,945,842,1014,825"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="620,794,669,820"/>
+<area shape="poly" title=" " alt="" coords="779,844,669,815,670,810,781,839"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a880c417754f8b2b1a171f70893326f16" title="Performs a ready to drive checkup." alt="" coords="787,498,953,539"/>
+<area shape="poly" title=" " alt="" coords="998,521,954,521,954,516,998,516"/>
+<area shape="poly" title=" " alt="" coords="794,548,784,554,748,580,715,610,665,664,661,660,712,606,745,576,781,550,791,544"/>
+<area shape="poly" title=" " alt="" coords="1014,698,709,688,709,682,1014,693"/>
+<area shape="rect" href="../../d9/dff/test__assi__car_8cpp.html#ae1cc77642939ff7c949df12ff07102c4" title="Test the enterEmergency state function PROTOCOL:" alt="" coords="783,729,957,770"/>
+<area shape="poly" title=" " alt="" coords="1015,719,958,732,957,727,1014,714"/>
+<area shape="poly" title=" " alt="" coords="774,776,670,803,669,798,772,771"/>
+<area shape="rect" href="../../d7/d1f/class_checkup_manager.html#a9a609a4d9f99f91092792ac2105eb247" title="Performs a last re&#45;check for off to ready transition." alt="" coords="787,564,953,604"/>
+<area shape="poly" title=" " alt="" coords="1002,587,954,587,954,581,1002,581"/>
+<area shape="poly" title=" " alt="" coords="809,614,694,664,692,659,806,609"/>
+<area shape="poly" title=" " alt="" coords="603,195,505,146,467,129,469,124,507,142,606,191"/>
+<area shape="poly" title=" " alt="" coords="596,197,539,181,471,170,435,170,400,173,366,182,334,197,303,221,277,251,256,285,238,321,215,390,203,443,198,441,209,388,233,319,251,282,273,248,300,217,332,192,364,177,399,168,435,164,471,165,540,176,597,192"/>
+<area shape="poly" title=" " alt="" coords="573,233,334,292,313,322,303,351,301,381,303,411,307,442,308,475,303,510,287,547,273,566,256,584,222,610,219,606,253,580,269,563,283,544,298,508,303,475,302,443,298,411,295,381,297,350,308,319,332,287,571,228"/>
+<area shape="poly" title=" " alt="" coords="539,214,478,216,418,221,367,231,348,239,335,247,313,276,304,305,304,336,309,367,314,399,316,432,308,464,287,496,274,507,260,514,257,509,271,503,283,493,303,462,310,431,309,400,304,368,299,336,298,304,308,273,331,243,346,234,366,226,417,216,478,210,539,209"/>
+<area shape="poly" title=" " alt="" coords="628,1104,590,985,569,909,552,832,539,750,534,680,534,559,535,501,531,440,522,371,504,290,488,243,468,198,431,127,436,125,473,195,493,241,509,289,527,370,537,439,540,501,540,559,539,680,545,750,557,832,574,908,595,983,633,1103"/>
+<area shape="poly" title=" " alt="" coords="564,1166,510,1176,451,1181,390,1177,360,1170,332,1160,289,1133,253,1097,225,1060,206,1029,210,1026,230,1057,257,1093,292,1128,334,1155,362,1165,391,1171,451,1175,510,1171,563,1161"/>
+<area shape="poly" title=" " alt="" coords="546,1156,493,1158,436,1152,381,1137,355,1125,331,1109,316,1093,308,1077,304,1043,301,1009,295,993,283,977,267,964,270,960,287,973,300,990,307,1008,310,1043,313,1075,321,1090,335,1105,358,1120,383,1132,437,1147,493,1152,546,1151"/>
+<area shape="poly" title=" " alt="" coords="775,135,492,113,492,108,775,130"/>
+<area shape="rect" href="../../d9/d77/test__checkup_manager_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="845,1335,895,1361"/>
+<area shape="poly" title=" " alt="" coords="989,1351,895,1351,895,1345,989,1345"/>
 </map>
 </div>
 

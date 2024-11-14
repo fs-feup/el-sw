@@ -10,12 +10,14 @@ var searchData=
   ['ibat_7',['Ibat',['../db/dac/can_8cpp.html#a5e4061729f13dd0b287d021a4af31387',1,'can.cpp']]],
   ['imax_5fpeak_8',['imax_peak',['../d1/d87/write__data_8cpp.html#a631d7867824d93da3e16f7610cf495ab',1,'Imax_peak:&#160;can.cpp'],['../db/dac/can_8cpp.html#a631d7867824d93da3e16f7610cf495ab',1,'Imax_peak:&#160;can.cpp']]],
   ['imax_5fpeak_5fmsg_9',['Imax_peak_msg',['../d1/d87/write__data_8cpp.html#a0555a18946e3f4d4270b4d7e37620e85',1,'write_data.cpp']]],
-  ['input_10',['input',['../da/d91/unionfloat2bytes.html#a97b0b4d27bef1faacffe9d373a982f39',1,'float2bytes']]],
-  ['inputpins_11',['inputPins',['../d2/d5d/ami_2src_2main_8cpp.html#af88ecf075602c586e309ca476d7ecd50',1,'main.cpp']]],
-  ['inversoralivetimestamp_12',['inversorAliveTimestamp',['../d3/df6/struct_failure_detection.html#ab8aafba39bb48547c48c1a4e2c8e4508',1,'FailureDetection']]],
-  ['iq_5factual_13',['iq_actual',['../db/dac/can_8cpp.html#a0809b043efe30f16c89249bdabe61ebb',1,'Iq_actual:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a0809b043efe30f16c89249bdabe61ebb',1,'Iq_actual:&#160;can.cpp']]],
-  ['iq_5factual_5fmsg_14',['Iq_actual_msg',['../d1/d87/write__data_8cpp.html#a528e52f37fee60f615b8192025231b53',1,'write_data.cpp']]],
-  ['iq_5fcmd_15',['iq_cmd',['../db/dac/can_8cpp.html#a4a0a17213a115a83f4619c1293be23c2',1,'Iq_cmd:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a4a0a17213a115a83f4619c1293be23c2',1,'Iq_cmd:&#160;can.cpp']]],
-  ['iq_5fcmd_5fmsg_16',['Iq_cmd_msg',['../d1/d87/write__data_8cpp.html#a0278671e4f97b442fbddbf9a656119ec',1,'write_data.cpp']]],
-  ['is_5fsteady_17',['is_steady',['../d8/d23/structteensy__clock.html#a3df0795b1bfd655f7a5589e54c9eb21a',1,'teensy_clock']]]
+  ['initial_5fcheckup_5fstep_5ftimeout_10',['INITIAL_CHECKUP_STEP_TIMEOUT',['../d6/db3/digital_settings_8hpp.html#a9692fa8e18a96450e8d32744ddd73d6e',1,'digitalSettings.hpp']]],
+  ['input_11',['input',['../da/d91/unionfloat2bytes.html#a97b0b4d27bef1faacffe9d373a982f39',1,'float2bytes']]],
+  ['inputpins_12',['inputPins',['../d2/d5d/ami_2src_2main_8cpp.html#af88ecf075602c586e309ca476d7ecd50',1,'main.cpp']]],
+  ['inversor_5falive_5ftimestamp_5f_13',['inversor_alive_timestamp_',['../d3/df6/struct_failure_detection.html#aa6ff48f35e9a69d1eb8b2026c301317a',1,'FailureDetection']]],
+  ['inversor_5fdead_5f_14',['inversor_dead_',['../d3/df6/struct_failure_detection.html#a19aa96f1084b2d5681789a8942fc86a1',1,'FailureDetection']]],
+  ['iq_5factual_15',['iq_actual',['../db/dac/can_8cpp.html#a0809b043efe30f16c89249bdabe61ebb',1,'Iq_actual:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a0809b043efe30f16c89249bdabe61ebb',1,'Iq_actual:&#160;can.cpp']]],
+  ['iq_5factual_5fmsg_16',['Iq_actual_msg',['../d1/d87/write__data_8cpp.html#a528e52f37fee60f615b8192025231b53',1,'write_data.cpp']]],
+  ['iq_5fcmd_17',['iq_cmd',['../db/dac/can_8cpp.html#a4a0a17213a115a83f4619c1293be23c2',1,'Iq_cmd:&#160;can.cpp'],['../d1/d87/write__data_8cpp.html#a4a0a17213a115a83f4619c1293be23c2',1,'Iq_cmd:&#160;can.cpp']]],
+  ['iq_5fcmd_5fmsg_18',['Iq_cmd_msg',['../d1/d87/write__data_8cpp.html#a0278671e4f97b442fbddbf9a656119ec',1,'write_data.cpp']]],
+  ['is_5fsteady_19',['is_steady',['../d8/d23/structteensy__clock.html#a3df0795b1bfd655f7a5589e54c9eb21a',1,'teensy_clock']]]
 ];

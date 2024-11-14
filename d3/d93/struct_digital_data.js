@@ -1,8 +1,8 @@
 var struct_digital_data =
 [
-    [ "asms_on", "d3/d93/struct_digital_data.html#a458cfb2673bc5812205e23636798ef7a", null ],
-    [ "pneumatic_line_pressure", "d3/d93/struct_digital_data.html#a32167aeb492ccb3970051d0c78b6b1b0", null ],
-    [ "sdcState_OPEN", "d3/d93/struct_digital_data.html#a3ee917a7f1985f0fae04550c5b80884f", null ],
-    [ "watchdog_state", "d3/d93/struct_digital_data.html#afe2c32fdbbc14d3ff847ec93c68e1f0f", null ],
-    [ "watchdogTimestamp", "d3/d93/struct_digital_data.html#a39b11c209ef77de788664b8217d403a4", null ]
+    [ "asms_on_", "d3/d93/struct_digital_data.html#a2a159e7ae61f0017d6b49778ad1c7edc", null ],
+    [ "pneumatic_line_pressure_", "d3/d93/struct_digital_data.html#ac925b99bca3f522f8919b063948dcae7", null ],
+    [ "pneumatic_line_pressure_1_", "d3/d93/struct_digital_data.html#ab341f0b8e61035e5bbac1137d0ac2461", null ],
+    [ "pneumatic_line_pressure_2_", "d3/d93/struct_digital_data.html#aeb6ab617ea672938b0684b8b17ff3ddb", null ],
+    [ "sdc_open_", "d3/d93/struct_digital_data.html#a40edb046dd90f106ab7a2201f7f465b0", null ]
 ];

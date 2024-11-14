@@ -1,0 +1,7 @@
+<map id="DigitalSender::enter_finish_state" name="DigitalSender::enter_finish_state">
+<area shape="rect" id="Node000001" title="ASSI blue LED on, ebs valves activated, sdc open." alt="" coords="5,23,139,64"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#ab0cfa966c0a5e7c9538761dab485e4e2" title="Activates the solenoid EBS valves." alt="" coords="187,5,365,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,33,171,29,172,34,140,38"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#add14481fc3edc2d052e8bc20dc5e7845" title="Opens the SDC in Master and SDC Logic." alt="" coords="196,55,356,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,49,181,54,180,59,139,54"/>
+</map>

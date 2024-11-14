@@ -1,7 +1,7 @@
 <map id="ASState" name="ASState">
-<area shape="rect" id="Node000001" title="The ASState class manages and transitions between different states of the vehicle system." alt="" coords="52,582,167,667"/>
-<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html" title="The CheckupManager class handles various checkup operations." alt="" coords="5,214,213,519"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,519,112,565,107,565,107,519"/>
-<area shape="rect" id="Node000003" href="$db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="37,5,181,151"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,150,112,197,107,197,107,150"/>
+<area shape="rect" id="Node000001" title="The ASState class manages and transitions between different states of the vehicle system." alt="" coords="35,621,155,706"/>
+<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html" title="The CheckupManager class handles various checkup operations." alt="" coords="5,214,185,558"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,558,98,604,93,604,93,558"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html" title="Our own implementation of Metro class." alt="" coords="23,5,167,151"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,150,98,197,93,197,93,150"/>
 </map>

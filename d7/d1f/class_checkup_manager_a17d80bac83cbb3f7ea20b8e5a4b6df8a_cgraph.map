@@ -1,0 +1,13 @@
+<map id="CheckupManager::should_stay_off" name="CheckupManager::should_stay_off">
+<area shape="rect" id="Node000001" title="Performs an off checkup." alt="" coords="5,47,172,88"/>
+<area shape="rect" id="Node000002" href="$d7/d1f/class_checkup_manager.html#a242bb7e17395cd65fdc31a8a2c467336" title="Performs an initial checkup." alt="" coords="220,47,378,88"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,65,204,65,204,70,172,70"/>
+<area shape="rect" id="Node000003" href="$da/db9/class_digital_sender.html#ab0cfa966c0a5e7c9538761dab485e4e2" title="Activates the solenoid EBS valves." alt="" coords="429,5,607,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,47,442,32,443,38,379,52"/>
+<area shape="rect" id="Node000004" href="$da/db9/class_digital_sender.html#aeba7623043aeabfc9c4340cf5185fbca" title="Closes the SDC in Master and SDC Logic." alt="" coords="436,55,599,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="378,65,420,65,420,70,378,70"/>
+<area shape="rect" id="Node000005" href="$d3/df6/struct_failure_detection.html#a2dce218ec78f523302e547071e600d87" title=" " alt="" coords="426,105,609,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="379,86,423,97,422,103,378,91"/>
+<area shape="rect" id="Node000006" href="$db/d60/class_metro.html#a95ed7cb80b7f56a80790c34fcea93724" title="Checks if the interval has passed without resetting the timer." alt="" coords="657,112,831,138"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="610,122,642,122,642,128,610,128"/>
+</map>

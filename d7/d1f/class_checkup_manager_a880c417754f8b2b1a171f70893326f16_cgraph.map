@@ -1,0 +1,7 @@
+<map id="CheckupManager::should_stay_ready" name="CheckupManager::should_stay_ready">
+<area shape="rect" id="Node000001" title="Performs a ready to drive checkup." alt="" coords="5,5,172,46"/>
+<area shape="rect" id="Node000002" href="$d8/deb/struct_r2_d_logics.html#a653573aa20aaed5f5e5da8721554a089" title="resets timestamps for driving" alt="" coords="220,5,385,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,23,204,23,204,28,172,28"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="433,13,522,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="385,23,417,23,417,28,385,28"/>
+</map>

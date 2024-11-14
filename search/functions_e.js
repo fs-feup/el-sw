@@ -2,7 +2,7 @@ var searchData=
 [
   ['parse_5fmessage_0',['parse_message',['../d0/d02/class_communicator.html#a39af6c0700f1e9b5df6b63c9322bdcb6',1,'Communicator']]],
   ['parsemessage_1',['parseMessage',['../de/d53/charger_2src_2main_8cpp.html#ab222e5d38b8d0cefaa19ec6d5aa18658',1,'main.cpp']]],
-  ['pccallback_2',['pcCallback',['../d0/d02/class_communicator.html#aa3854d96bc369d26c7de8864369a98ca',1,'Communicator']]],
+  ['pc_5fcallback_2',['pc_callback',['../d0/d02/class_communicator.html#a6e76ba59f478d3957c757b4cd211935b',1,'Communicator']]],
   ['percent_5fdeviation_3',['percent_deviation',['../df/d1d/namespacecalibration.html#a4bb556c95184d73d8de0cd846d303161',1,'calibration']]],
   ['plausibility_4',['plausibility',['../da/dd7/apps_8cpp.html#a01eb763bee6b8303572157f06e009a17',1,'apps.cpp']]],
   ['play_5fr2d_5fsound_5',['play_r2d_sound',['../da/d81/r2d_8cpp.html#ab21c485ccacb6072441e914144fd988e',1,'play_r2d_sound():&#160;r2d.cpp'],['../d8/dd7/r2d_8h.html#ab21c485ccacb6072441e914144fd988e',1,'play_r2d_sound():&#160;r2d.cpp']]],
@@ -13,9 +13,10 @@ var searchData=
   ['printtemp_10',['printTemp',['../d1/d91/temp-acq_2src_2main_8cpp.html#adad6a69ed4d09d97bffdcbf1b11014aa',1,'main.cpp']]],
   ['printvariables_11',['printVariables',['../d1/dea/integration__test_8hpp.html#a06f4c6dee88aa6c5f3d5336c98a4a8ac',1,'integration_test.hpp']]],
   ['process_5fand_5fsave_12',['process_and_save',['../df/d1d/namespacecalibration.html#a95f4f81a2aadbc01e811d5fe48cf97b1',1,'calibration']]],
-  ['process_5finterpolation_5fresults_13',['process_interpolation_results',['../da/db7/namespacecalibv2.html#a6fb8f783796013df540fedaa6779440f',1,'calibv2']]],
-  ['processgosignal_14',['processGoSignal',['../d8/deb/struct_r2_d_logics.html#ad1ff78cb267613a43e766ebc7b22ebbc',1,'R2DLogics']]],
-  ['publish_5fleft_5fwheel_5frpm_15',['publish_left_wheel_rpm',['../d0/d02/class_communicator.html#ae5d412a8f03a1963c59d0c26c0f0b82c',1,'Communicator']]],
-  ['publish_5fmission_16',['publish_mission',['../d0/d02/class_communicator.html#a0cb8407cb7663056508998783d6db3cf',1,'Communicator']]],
-  ['publish_5fstate_17',['publish_state',['../d0/d02/class_communicator.html#aee4e8f33f420b9e3c49445a032f62185',1,'Communicator']]]
+  ['process_5fgo_5fsignal_13',['process_go_signal',['../d8/deb/struct_r2_d_logics.html#a95855075cc6b54f2af9a86b16d537732',1,'R2DLogics']]],
+  ['process_5finterpolation_5fresults_14',['process_interpolation_results',['../da/db7/namespacecalibv2.html#a6fb8f783796013df540fedaa6779440f',1,'calibv2']]],
+  ['publish_5fdebug_5flog_15',['publish_debug_log',['../d0/d02/class_communicator.html#abe4f0fc168203e9f3556e9d8ae6e802a',1,'Communicator']]],
+  ['publish_5fleft_5fwheel_5frpm_16',['publish_left_wheel_rpm',['../d0/d02/class_communicator.html#ae5d412a8f03a1963c59d0c26c0f0b82c',1,'Communicator']]],
+  ['publish_5fmission_17',['publish_mission',['../d0/d02/class_communicator.html#a0cb8407cb7663056508998783d6db3cf',1,'Communicator']]],
+  ['publish_5fstate_18',['publish_state',['../d0/d02/class_communicator.html#aee4e8f33f420b9e3c49445a032f62185',1,'Communicator']]]
 ];

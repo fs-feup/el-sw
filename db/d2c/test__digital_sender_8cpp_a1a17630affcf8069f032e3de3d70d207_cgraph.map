@@ -1,7 +1,7 @@
 <map id="test_blinkLED" name="test_blinkLED">
 <area shape="rect" id="Node000001" title="Test the blinkLED function The toggle watchdog is the same function as blink LED so we can afirm that..." alt="" coords="5,5,108,31"/>
-<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#acfa52afd5bc15cb015cf83271e791714" title="Blinks the LED at the given pin." alt="" coords="156,5,312,31"/>
+<area shape="rect" id="Node000002" href="$da/db9/class_digital_sender.html#a2e7fd9af17e61e7b0976de86e603895c" title="Blinks the LED at the given pin." alt="" coords="156,5,311,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,16,140,16,140,21,108,21"/>
-<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="360,5,455,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,16,344,16,344,21,312,21"/>
+<area shape="rect" id="Node000003" href="$db/d60/class_metro.html#aca78646b9ae992c81ffc395c1a1da997" title="Checks if the interval has passed and resets the timer if true." alt="" coords="359,5,454,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,16,343,16,343,21,312,21"/>
 </map>

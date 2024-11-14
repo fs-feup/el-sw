@@ -1,0 +1,5 @@
+<map id="DigitalReceiver::digital_reads" name="DigitalReceiver::digital_reads">
+<area shape="rect" id="Node000001" title="read all digital inputs" alt="" coords="99,5,247,46"/>
+<area shape="rect" id="Node000002" href="$d0/d84/master_2src_2main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,13,51,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,28,51,28,51,23,83,23"/>
+</map>

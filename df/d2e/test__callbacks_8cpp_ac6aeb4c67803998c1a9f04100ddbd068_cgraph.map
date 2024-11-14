@@ -1,5 +1,5 @@
 <map id="wss_message_high_rpm" name="wss_message_high_rpm">
 <area shape="rect" id="Node000001" title="Test if the message wheel rpm message is created correctly for a large rpm value." alt="" coords="5,5,171,31"/>
-<area shape="rect" id="Node000002" href="$df/d93/utils_8hpp.html#a6253519ad1a2817283408a79e18afa98" title="Function to create left wheel msg." alt="" coords="219,5,374,31"/>
+<area shape="rect" id="Node000002" href="$df/d93/utils_8hpp.html#a64debfb46d428531f2ce27fa92f63685" title="Function to create left wheel msg." alt="" coords="219,5,374,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,16,203,16,203,21,171,21"/>
 </map>

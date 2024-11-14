@@ -1,0 +1,5 @@
+<map id="Communicator::pc_callback" name="Communicator::pc_callback">
+<area shape="rect" id="Node000001" title="Callback for message from AS CU." alt="" coords="5,5,186,31"/>
+<area shape="rect" id="Node000002" href="$db/d60/class_metro.html#a40a8e2c535e7558224f4336628797dbd" title="Resets the timer to the current time." alt="" coords="234,5,323,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,16,218,16,218,21,186,21"/>
+</map>

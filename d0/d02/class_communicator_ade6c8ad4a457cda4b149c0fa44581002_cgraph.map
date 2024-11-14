@@ -1,0 +1,5 @@
+<map id="Communicator::res_ready_callback" name="Communicator::res_ready_callback">
+<area shape="rect" id="Node000001" title="Callback for RES activation." alt="" coords="5,5,173,46"/>
+<area shape="rect" id="Node000002" href="$d0/d02/class_communicator.html#a55c912e8973aa10866ae3fd9f2df8de7" title="Sends a message to the CAN bus." alt="" coords="221,5,360,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,23,205,23,205,28,173,28"/>
+</map>
