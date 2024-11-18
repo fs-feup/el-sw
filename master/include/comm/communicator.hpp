@@ -132,7 +132,9 @@ void Communicator::init() {
 
   // Enable FIFO
   can2.enableFIFO();
-  can2.enableFIFOInterrupt();
+  can2.enableFIFOInterrupt();  // TODO(PedroRomao3) all variables updated by interrupts need to be
+                               // read  under noInterrupts(atomically) and declared volatile(avoid
+                               // being optimized out)
 
   // Set filters
   can2.setFIFOFilter(REJECT_ALL);
@@ -182,7 +184,7 @@ inline void Communicator::res_state_callback(const uint8_t *buf) {
   bool signal_loss = (buf[7] >> 6) & 0x01;
   if (!signal_loss) {
     _systemData->failure_detection_.res_signal_loss_timestamp_
-        .reset();  // making ure we dont receive only ignal lo for the defined time interval
+        .reset();  // making sure we dont receive only signal loss for the defined time interval
                    // DEBUG_PRINT("SIGNAL OKAY");
   } else {
     // Too many will violate the disconnection time limit
@@ -281,11 +283,11 @@ inline int Communicator::publish_mission(int mission_id) {
   send_message(2, msg, MASTER_ID);
   return 0;
 }
-
+// TODO: clean this function (PedroRomao3)
 inline int Communicator::publish_debug_log(SystemData system_data, uint8_t state,
                                            uint8_t state_checkup) {
   // 8 bytes for the CAN message
-  uint32_t hydraulic_pressure = system_data.sensors_._hydraulic_line_pressure;  // 32-bit value
+  uint32_t hydraulic_pressure = system_data.sensors_._hydraulic_line_pressure;
   // TBD, consider extracting to a function in utils.hpp
   uint8_t emergency_signal_bit = system_data.failure_detection_.emergency_signal_;
   uint8_t pneumatic_line_pressure_bit = system_data.digital_data_.pneumatic_line_pressure_;
