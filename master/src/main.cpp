@@ -32,7 +32,7 @@ void setup() {
         digital_receiver.digital_reads();
         as_state.calculate_state();
         interrupts();
-    }, STATE_CALCULATION_INTERVAL); // Ensuring 50ms intervals beween state calculations
+    }, STATE_CALCULATION_INTERVAL); 
   rl_rpm_timer.reset();
   mission_timer.reset();
   state_timer.reset();
@@ -40,8 +40,6 @@ void setup() {
 }
 
 void loop() {
-  // digital_receiver.digital_reads();
-  // as_state.calculate_state();
   if (master_state_helper != to_underlying(as_state.state_) ||
       checkup_state_helper != to_underlying(as_state._checkup_manager_.checkup_state_) ||
       mission_helper != to_underlying(system_data.mission_)) {
