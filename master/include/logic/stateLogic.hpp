@@ -14,10 +14,25 @@
  */
 class ASState {
 private:
+  IntervalTimer checkup_timer_;
   DigitalSender
       *_digital_sender_;  ///< Pointer to the DigitalSender object for hardware interactions.
   Communicator
       *_communicator_;  ///< Pointer to the Communicator object for communication operations.
+
+  inline static ASState *instance = nullptr;
+
+  static void timerISR() {
+    if (instance->_checkup_manager_.should_enter_emergency(instance->state_)) {
+      instance->_digital_sender_->enter_emergency_state();
+      instance->_checkup_manager_._ebs_sound_timestamp_.reset();
+      instance->state_ = State::AS_EMERGENCY;
+    }
+  }
+
+  void initialize_timer() {
+    checkup_timer_.begin(timerISR, 50000);  // 50 ms
+  }
 
 public:
   CheckupManager
@@ -35,7 +50,10 @@ public:
                    DigitalSender *digital_sender)
       : _digital_sender_(digital_sender),
         _communicator_(communicator),
-        _checkup_manager_(system_data) {}
+        _checkup_manager_(system_data) {
+    instance = this;
+    initialize_timer();
+  }
 
   /**
    * @brief Calculates the state of the vehicle.
@@ -74,37 +92,20 @@ inline void ASState::calculate_state() {
       break;
 
     case State::AS_READY:
-      if (_checkup_manager_.should_enter_emergency(state_)) {
-        DEBUG_PRINT("Entering EMERGENCY state from READY");
-        _digital_sender_->enter_emergency_state();
-        _checkup_manager_._ebs_sound_timestamp_.reset();
-        state_ = State::AS_EMERGENCY;
-        break;
-      }
       if (_checkup_manager_.should_stay_ready()) {
         break;
       }
-
-      DEBUG_PRINT("Entering DRIVING state from READY");
       _digital_sender_->enter_driving_state();
       state_ = State::AS_DRIVING;
       break;
+
     case State::AS_DRIVING:
       _digital_sender_->blink_led(ASSI_YELLOW_PIN);
-
-      if (_checkup_manager_.should_enter_emergency(state_)) {
-        DEBUG_PRINT("Entering EMERGENCY state from DRIVING");
-        _digital_sender_->enter_emergency_state();
-        _checkup_manager_._ebs_sound_timestamp_.reset();
-        state_ = State::AS_EMERGENCY;
-        break;
-      }
       if (_checkup_manager_.should_stay_driving()) break;
-
-      DEBUG_PRINT("Entering FINISHED state from DRIVING");
       DigitalSender::enter_finish_state();
       state_ = State::AS_FINISHED;
       break;
+
     case State::AS_FINISHED:
       if (_checkup_manager_.res_triggered()) {
         DEBUG_PRINT("Entering EMERGENCY state from FINISHED");
@@ -121,6 +122,7 @@ inline void ASState::calculate_state() {
       _checkup_manager_.reset_checkup_state();
       state_ = State::AS_OFF;
       break;
+
     case State::AS_EMERGENCY:
       _digital_sender_->blink_led(ASSI_BLUE_PIN);
 
