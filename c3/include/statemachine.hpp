@@ -109,6 +109,17 @@ void statemachine(){
             can1.write(disable);
             break;
         }
+        if (APPSTimer > APPS_READ_PERIOD_MS)
+        {
+            APPSTimer = 0;
+            int apps_value = readApps();
+
+            if (apps_value >= 0)
+                sendTorqueVal(apps_value);
+            else
+                sendTorqueVal(0);
+            break;
+        }
         break;
     default:
         ERROR("Invalid r2d_status");

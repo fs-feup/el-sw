@@ -62,10 +62,10 @@ void sendMout(int value)
 
 void checkASEmergencySound()
 {
-    if (ASEmergencyTimer < ASBuzzer)
-        digitalWrite(buzzerPin, HIGH);
-    else
-        digitalWrite(buzzerPin, LOW);
+    // if (ASEmergencyTimer < ASBuzzer)
+    //     digitalWrite(buzzerPin, HIGH);
+    // else
+    //     digitalWrite(buzzerPin, LOW);
 }
 
 void setup()
