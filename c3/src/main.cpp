@@ -62,10 +62,10 @@ void sendMout(int value)
 
 void checkASEmergencySound()
 {
-    if (ASEmergencyTimer < ASBuzzer)
-        digitalWrite(buzzerPin, HIGH);
-    else
-        digitalWrite(buzzerPin, LOW);
+    // if (ASEmergencyTimer < ASBuzzer)
+    //     //digitalWrite(buzzerPin, HIGH);
+    // else
+    //     digitalWrite(buzzerPin, LOW);
 }
 
 void setup()
@@ -110,6 +110,13 @@ void loop()
         return;
     statemachine();
     checkASEmergencySound();
+    // int v_apps1 = analogRead(APPS_1_PIN);
+    // int v_apps2 = analogRead(APPS_2_PIN);
+
+    // Serial.print("v_apps1: ");
+    // Serial.println(v_apps1);
+    // Serial.print("v_apps2: ");
+    // Serial.println(v_apps2);
     //Uncomment this to run the integration test on the Testing Board
     //integrationtest(R2DStatus);
 }

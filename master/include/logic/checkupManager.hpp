@@ -120,11 +120,11 @@ inline void CheckupManager::reset_checkup_state() {
 }
 
 inline bool CheckupManager::should_stay_manual_driving() const {
-  if (_system_data_->mission_ != Mission::MANUAL ||
+  /* if (_system_data_->mission_ != Mission::MANUAL ||
       _system_data_->digital_data_.pneumatic_line_pressure_ != 0 ||
-      _system_data_->digital_data_.asms_on_) {
+       _system_data_->digital_data_.asms_on_ ) {
     return false;
-  }
+  } */
 
   return true;
 }

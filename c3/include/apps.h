@@ -18,8 +18,8 @@
 
 #define APPS_LINEAR_OFFSET 124
 
-#define APPS_MAX 770
-#define APPS_MIN 270
+#define APPS_MAX 795
+#define APPS_MIN 360
 #define BAMOCAR_MAX 32760
 #define BAMOCAR_MIN 0
 
