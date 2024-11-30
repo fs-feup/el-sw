@@ -120,11 +120,11 @@ inline void CheckupManager::reset_checkup_state() {
 }
 
 inline bool CheckupManager::should_stay_manual_driving() const {
-  /* if (_system_data_->mission_ != Mission::MANUAL ||
-      _system_data_->digital_data_.pneumatic_line_pressure_ != 0 ||
+  if (_system_data_->mission_ != Mission::MANUAL ||
+     /*  _system_data_->digital_data_.pneumatic_line_pressure_ != 0 || */
        _system_data_->digital_data_.asms_on_ ) {
     return false;
-  } */
+  }
 
   return true;
 }
@@ -193,7 +193,6 @@ inline CheckupManager::CheckupError CheckupManager::initial_checkup_sequence(
       checkup_state_ = CheckupState::CHECK_TIMESTAMPS;
       if (_system_data_->failure_detection_.has_any_component_timed_out() ||
           _system_data_->failure_detection_.emergency_signal_) {
-        DEBUG_PRINT("Returning ERROR from CHECK_TIMESTAMPS")
         return CheckupError::ERROR;
       }
       checkup_state_ = CheckupState::CHECKUP_COMPLETE;

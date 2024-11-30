@@ -49,11 +49,15 @@ void playR2DSound()
     delay(1000);
     digitalWrite(buzzerPin, LOW);
 }
-
+bool requested_data = false;
 void statemachine(){
     switch (R2DStatus)
     {
     case IDLE:
+        if (!requested_data) {
+            request_dataLOG_messages();
+            requested_data = true;
+        }
         r2dButton.update();
         #ifdef CAN_DEBUG
         Serial.print("TSOn:");
@@ -67,7 +71,6 @@ void statemachine(){
         {
             playR2DSound();
             initBamocarD3();
-            request_dataLOG_messages();
             R2DStatus = DRIVING;
             break;
         }
@@ -75,7 +78,6 @@ void statemachine(){
         {
             delay(2000);
             initBamocarD3();
-            request_dataLOG_messages();
             R2DStatus = ASDRIVING;
             break;
         }

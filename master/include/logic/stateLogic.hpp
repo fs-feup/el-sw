@@ -4,6 +4,9 @@
 #include <logic/checkupManager.hpp>
 #include <model/structure.hpp>
 
+#include "TeensyTimerTool.h"
+using namespace TeensyTimerTool;
+
 /**
  * @brief The ASState class manages and transitions between different states of the vehicle system.
  *
@@ -14,25 +17,14 @@
  */
 class ASState {
 private:
-  IntervalTimer checkup_timer_;
+  PeriodicTimer t1;
+  volatile int a = 0;
   DigitalSender
       *_digital_sender_;  ///< Pointer to the DigitalSender object for hardware interactions.
   Communicator
       *_communicator_;  ///< Pointer to the Communicator object for communication operations.
 
   inline static ASState *instance = nullptr;
-
-  static void timerISR() {
-    if (instance->_checkup_manager_.should_enter_emergency(instance->state_)) {
-      instance->_digital_sender_->enter_emergency_state();
-      instance->_checkup_manager_._ebs_sound_timestamp_.reset();
-      instance->state_ = State::AS_EMERGENCY;
-    }
-  }
-
-  void initialize_timer() {
-    checkup_timer_.begin(timerISR, 50000);  // 50 ms
-  }
 
 public:
   CheckupManager
@@ -52,13 +44,13 @@ public:
         _communicator_(communicator),
         _checkup_manager_(system_data) {
     instance = this;
-    initialize_timer();
   }
 
   /**
    * @brief Calculates the state of the vehicle.
    */
   void calculate_state();
+  void a_plus_plus() { a++; }
 };
 
 inline void ASState::calculate_state() {
@@ -75,6 +67,20 @@ inline void ASState::calculate_state() {
     case State::AS_OFF:
 
       // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
+      if (a == 0) {
+        a_plus_plus();
+        t1.begin(
+            [] {
+              instance->a_plus_plus();
+              if (instance->_checkup_manager_.should_enter_emergency(instance->state_)) {
+                instance->_digital_sender_->enter_emergency_state();
+                instance->_checkup_manager_._ebs_sound_timestamp_.reset();
+                instance->state_ = State::AS_EMERGENCY;
+              }
+            },
+            250'000);
+      }
+      //DEBUG_PRINT(a);
       if (_checkup_manager_.should_stay_manual_driving()) {
         DEBUG_PRINT("Entering MANUAL state from OFF");
         DigitalSender::enter_manual_state();
@@ -92,6 +98,7 @@ inline void ASState::calculate_state() {
       break;
 
     case State::AS_READY:
+
       if (_checkup_manager_.should_stay_ready()) {
         break;
       }

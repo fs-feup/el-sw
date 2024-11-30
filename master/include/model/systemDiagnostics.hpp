@@ -73,10 +73,21 @@ struct FailureDetection {
   unsigned dc_voltage_{0};
 
   [[nodiscard]] bool has_any_component_timed_out() {  // no discard makes return value non ignorable
+
     steer_dead_ = steer_alive_timestamp_.checkWithoutReset();
     pc_dead_ = pc_alive_timestamp_.checkWithoutReset();
     inversor_dead_ = inversor_alive_timestamp_.checkWithoutReset();
     res_dead_ = res_signal_loss_timestamp_.checkWithoutReset();
+    DEBUG_PRINT("=== System Component Status Check ===");
+    DEBUG_PRINT("Steering System: " + String(steer_dead_ ? "DEAD" : "ALIVE"));
+    DEBUG_PRINT("PC Connection: " + String(pc_dead_ ? "DEAD" : "ALIVE"));
+    DEBUG_PRINT("Inverter Status: " + String(inversor_dead_ ? "DEAD" : "ALIVE"));
+    DEBUG_PRINT("RES Signal: " + String(res_dead_ ? "DEAD" : "ALIVE"));
+    // Print final result
+    DEBUG_PRINT("Overall System Status: " +
+                String((steer_dead_ || pc_dead_ || inversor_dead_ || res_dead_) ? "FAULT DETECTED"
+                                                                                : "ALL OK"));
+
     return steer_dead_ || pc_dead_ || inversor_dead_ || res_dead_;
   }
 };

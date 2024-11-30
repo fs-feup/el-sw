@@ -13,7 +13,7 @@ constexpr unsigned long ENGAGE_EBS_TIMEOUT_MS = 5000;
 // #define WATCHDOG_TOGGLE_FREQUENCY 100
 // #define WATCHDOG_TIMEOUT 500
 
-constexpr int WHEEL_MEASUREMENT_INTERVAL_MS = 30;  // 30ms // TODO(andre): change to adequate value
+constexpr int WHEEL_MEASUREMENT_INTERVAL_MS = 30;  // 30ms // TODO: change to adequate value
 constexpr int WHEEL_MEASUREMENT_INTERVAL_MIN = (WHEEL_MEASUREMENT_INTERVAL_MS / 60000.0);
 constexpr int PULSES_PER_ROTATION = 48;
 
