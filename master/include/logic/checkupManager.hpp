@@ -67,6 +67,8 @@ public:
    */
   [[nodiscard]] bool should_stay_manual_driving() const;
 
+  [[nodiscard]] bool waiting_for_ts() const;
+
   /**
    * @brief Performs an off checkup.
    */
@@ -117,6 +119,14 @@ public:
 inline void CheckupManager::reset_checkup_state() {
   checkup_state_ = CheckupState::WAIT_FOR_ASMS;
   _system_data_->mission_finished_ = false;
+}
+
+inline bool CheckupManager::waiting_for_ts() const {
+  if (checkup_state_ == CheckupState::WAIT_FOR_TS) {
+    return true;
+  }
+
+  return true;
 }
 
 inline bool CheckupManager::should_stay_manual_driving() const {

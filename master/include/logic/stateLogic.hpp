@@ -17,7 +17,7 @@ using namespace TeensyTimerTool;
  */
 class ASState {
 private:
-  PeriodicTimer t1;
+  PeriodicTimer continuous_monitor_timer;
   volatile bool timer_has_started = false;
   DigitalSender
       *_digital_sender_;  ///< Pointer to the DigitalSender object for hardware interactions.
@@ -65,10 +65,8 @@ inline void ASState::calculate_state() {
       break;
 
     case State::AS_OFF:
-
-      // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
       if (!timer_has_started) {
-        t1.begin(
+        continuous_monitor_timer.begin(
             [] {
               instance->timer_started();
               if (instance->_checkup_manager_.should_enter_emergency(instance->state_)) {
@@ -79,13 +77,16 @@ inline void ASState::calculate_state() {
             },
             250'000);
       }
+      // If manual driving checkup fails, the car can't be in OFF state, so it goes back to MANUAL
       if (_checkup_manager_.should_stay_manual_driving()) {
         DEBUG_PRINT("Entering MANUAL state from OFF");
         DigitalSender::enter_manual_state();
         state_ = State::AS_MANUAL;
         break;
       }
-
+      if (_checkup_manager_.waiting_for_ts()) {
+        _communicator_->emergency_off();
+      }
       if (_checkup_manager_.should_stay_off(_digital_sender_)) break;
       if (!_checkup_manager_.should_go_ready_from_off()) break;  // recheck all states
 
@@ -96,7 +97,7 @@ inline void ASState::calculate_state() {
       break;
 
     case State::AS_READY:
-
+      
       if (_checkup_manager_.should_stay_ready()) {
         break;
       }

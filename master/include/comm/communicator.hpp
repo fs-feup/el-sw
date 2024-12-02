@@ -121,6 +121,8 @@ public:
    * @brief Publish rl wheel rpm to CAN
    */
   static int publish_left_wheel_rpm(double value);
+
+  static void emergency_off();
 };
 
 inline Communicator::Communicator(SystemData *system_data) { _systemData = system_data; }
@@ -141,6 +143,10 @@ void Communicator::init() {
   can2.onReceive(FIFO, parse_message);
 
   can2.mailboxStatus();
+}
+
+inline void Communicator::emergency_off(){
+  _systemData->failure_detection_.emergency_signal_=false;
 }
 
 inline void Communicator::c1_callback(const uint8_t *buf) {
