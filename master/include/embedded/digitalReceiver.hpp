@@ -94,19 +94,20 @@ inline void DigitalReceiver::read_pneumatic_line() {
 
   // digital_data_->pneumatic_line_pressure_1_ = pneumatic1;
   digital_data_->pneumatic_line_pressure_2_ = pneumatic2;
-  bool temp_res = pneumatic2;
+  bool latest_pneumatic_pressure = pneumatic2;
 
   // Only change the value if it has been different 5 times in a row
-  pneumatic_change_counter_ =
-      temp_res == digital_data_->pneumatic_line_pressure_ ? 0 : pneumatic_change_counter_ + 1;
+  pneumatic_change_counter_ = latest_pneumatic_pressure == digital_data_->pneumatic_line_pressure_
+                                  ? 0
+                                  : pneumatic_change_counter_ + 1;
   if (pneumatic_change_counter_ >= DIGITAL_INPUT_COUNTER_LIMIT) {
-    digital_data_->pneumatic_line_pressure_ = temp_res;  // both need to be True
+    digital_data_->pneumatic_line_pressure_ = latest_pneumatic_pressure;  // both need to be True
     pneumatic_change_counter_ = 0;
   }
 }
 
 inline void DigitalReceiver::read_mission() {
-  Mission temp_res = static_cast<Mission>(
+  Mission latest_mission = static_cast<Mission>(
       digitalRead(MISSION_MANUAL_PIN) * to_underlying(Mission::MANUAL) |
       digitalRead(MISSION_ACCELERATION_PIN) * to_underlying(Mission::ACCELERATION) |
       digitalRead(MISSION_SKIDPAD_PIN) * to_underlying(Mission::SKIDPAD) |
@@ -115,23 +116,23 @@ inline void DigitalReceiver::read_mission() {
       digitalRead(MISSION_EBSTEST_PIN) * to_underlying(Mission::EBS_TEST) |
       digitalRead(MISSION_INSPECTION_PIN) * to_underlying(Mission::INSPECTION));
 
-  mission_change_counter_ = (temp_res == *mission_) && (temp_res == last_tried_mission_)
+  mission_change_counter_ = (latest_mission == *mission_) && (latest_mission == last_tried_mission_)
                                 ? 0
                                 : mission_change_counter_ + 1;
-  this->last_tried_mission_ = temp_res;
+  this->last_tried_mission_ = latest_mission;
   if (mission_change_counter_ >= DIGITAL_INPUT_COUNTER_LIMIT) {
-    *mission_ = temp_res;
+    *mission_ = latest_mission;
     mission_change_counter_ = 0;
   }
 }
 
 inline void DigitalReceiver::read_asms_switch() {
-  bool temp_res = digitalRead(ASMS_IN_PIN);
+  bool latest_asms_status = digitalRead(ASMS_IN_PIN);
 
-  // Only change the value if it has been different 5 times in a row
-  asms_change_counter_ = temp_res == digital_data_->asms_on_ ? 0 : asms_change_counter_ + 1;
+  asms_change_counter_ =
+      latest_asms_status == digital_data_->asms_on_ ? 0 : asms_change_counter_ + 1;
   if (asms_change_counter_ >= DIGITAL_INPUT_COUNTER_LIMIT) {
-    digital_data_->asms_on_ = temp_res;
+    digital_data_->asms_on_ = latest_asms_status;
     asms_change_counter_ = 0;
   }
 }
@@ -139,7 +140,6 @@ inline void DigitalReceiver::read_asms_switch() {
 inline void DigitalReceiver::read_aats_state() {
   // AATS is on if SDC is closed (SDC STATE PIN AS HIGH)
   bool is_sdc_closed = !digitalRead(SDC_STATE_PIN);
-  // Only change the value if it has been different 5 times in a row
   aats_change_counter_ = is_sdc_closed == digital_data_->sdc_open_ ? 0 : aats_change_counter_ + 1;
   if (aats_change_counter_ >= DIGITAL_INPUT_COUNTER_LIMIT) {
     digital_data_->sdc_open_ = is_sdc_closed;  // both need to be True

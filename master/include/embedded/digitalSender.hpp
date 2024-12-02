@@ -143,9 +143,9 @@ inline void DigitalSender::enter_off_state() {
 
 inline void DigitalSender::enter_ready_state() {
   turn_off_assi();
-  analogWrite(ASSI_YELLOW_PIN, 1023);  // Analog works better
-  activate_ebs();  ///  these 2 should be redundant since we do it during initial checkup
-  close_sdc();     ///
+  analogWrite(ASSI_YELLOW_PIN, 1023);
+  activate_ebs();
+  close_sdc();
 }
 
 inline void DigitalSender::enter_driving_state() {
@@ -157,7 +157,7 @@ inline void DigitalSender::enter_driving_state() {
 
 inline void DigitalSender::enter_finish_state() {
   turn_off_assi();
-  analogWrite(ASSI_BLUE_PIN, 1023);  // Analog works better
+  analogWrite(ASSI_BLUE_PIN, 1023);
   activate_ebs();
   open_sdc();
 }
@@ -166,6 +166,6 @@ inline void DigitalSender::blink_led(const int pin) {
   static bool blink_state = false;
   if (blink_imer_.check()) {
     blink_state = !blink_state;
-    analogWrite(pin, blink_state * 1023);  // Analog works better
+    analogWrite(pin, blink_state * 1023);
   }
 }
